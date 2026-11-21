@@ -96,9 +96,9 @@ const needs: NeedItem[] = [
 
 export default function NeedsSection() {
   return (
-    <section className="bg-surface/50 relative border-t border-white/5 py-20 sm:py-28 lg:py-32">
+    <section className="bg-surface/50 relative overflow-hidden border-t border-white/5 py-20 sm:py-28 lg:py-32">
       {/* Background Subtle Gradient */}
-      <div className="bg-primary-600/5 pointer-events-none absolute top-1/2 left-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[180px]" />
+      <div className="bg-primary-600/5 pointer-events-none absolute top-1/2 left-1/2 h-[500px] w-[min(800px,100vw)] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[180px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}

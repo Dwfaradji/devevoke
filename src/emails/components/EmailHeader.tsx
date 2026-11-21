@@ -37,7 +37,7 @@ export function EmailHeader({ referenceId }: EmailHeaderProps) {
             </td>
             {referenceId && (
               <td style={{ verticalAlign: 'middle', textAlign: 'left' }}>
-                <Text style={refBadgeStyle} >
+                <Text style={refBadgeStyle}>
                   Réf :{' '}
                   <strong style={{ color: emailTokens.colors.primaryLight }}>{referenceId}</strong>
                 </Text>
