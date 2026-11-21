@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from '@react-email/components';
 import { emailTokens } from '../design-tokens';
+import Image from 'next/image';
+import logo from '../../images/logo.webp';
 
 interface EmailLogoProps {
   size?: 'sm' | 'md' | 'lg';
@@ -40,7 +42,11 @@ export function EmailLogo({ size = 'md' }: EmailLogoProps) {
                   boxShadow: '0 2px 8px rgba(56, 198, 217, 0.4)',
                 }}
               >
-                D
+                <Image
+                  src={logo}
+                  alt="DevEvoke Logo"
+                  style={{ width: `${iconSize}px`, height: `${iconSize}px` }}
+                />
               </div>
             </td>
             <td style={{ verticalAlign: 'middle' }}>

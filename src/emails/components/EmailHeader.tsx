@@ -17,7 +17,7 @@ export function EmailHeader({ referenceId }: EmailHeaderProps) {
   const refBadgeStyle: React.CSSProperties = {
     margin: 0,
     display: 'inline-block',
-    fontSize: '11px',
+    fontSize: '10px',
     fontFamily: emailTokens.typography.monoFamily,
     color: emailTokens.colors.muted,
     backgroundColor: emailTokens.colors.surface,
@@ -36,8 +36,8 @@ export function EmailHeader({ referenceId }: EmailHeaderProps) {
               <EmailLogo size="md" />
             </td>
             {referenceId && (
-              <td style={{ verticalAlign: 'middle', textAlign: 'right' }}>
-                <Text style={refBadgeStyle}>
+              <td style={{ verticalAlign: 'middle', textAlign: 'left' }}>
+                <Text style={refBadgeStyle} >
                   Réf :{' '}
                   <strong style={{ color: emailTokens.colors.primaryLight }}>{referenceId}</strong>
                 </Text>
