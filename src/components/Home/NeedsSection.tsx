@@ -71,7 +71,8 @@ const needs: NeedItem[] = [
   },
   {
     id: 'automation',
-    problem: '« Nos équipes passent des heures à ressaisir les mêmes données entre plusieurs outils »',
+    problem:
+      '« Nos équipes passent des heures à ressaisir les mêmes données entre plusieurs outils »',
     solution: 'Automatisation & interconnexion d’outils',
     description:
       'Suppression des tâches manuelles répétitives, synchronisation automatique de vos bases et interconnexion de vos logiciels via APIs sécurisées.',
@@ -95,74 +96,71 @@ const needs: NeedItem[] = [
 
 export default function NeedsSection() {
   return (
-    <section className="py-20 sm:py-28 lg:py-32 relative bg-surface/50 border-t border-white/5">
+    <section className="bg-surface/50 relative border-t border-white/5 py-20 sm:py-28 lg:py-32">
       {/* Background Subtle Gradient */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-primary-600/5 blur-[180px] pointer-events-none rounded-full" />
+      <div className="bg-primary-600/5 pointer-events-none absolute top-1/2 left-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[180px]" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <span className="section-label mb-3 inline-block">
-            Partir de vos Réalités de Terrain
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-5 leading-tight">
+        <div className="mx-auto mb-16 max-w-3xl text-center sm:mb-20">
+          <span className="section-label mb-3 inline-block">Partir de vos Réalités de Terrain</span>
+          <h2 className="mb-5 text-3xl leading-tight font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Quelle problématique souhaitez-vous{' '}
             <span className="text-gradient">résoudre en priorité ?</span>
           </h2>
-          <p className="text-base sm:text-lg text-muted leading-relaxed">
-            La technologie n’est qu’un moyen. Nous commençons toujours par écouter vos irritants quotidiens, vos contraintes métiers et vos objectifs opérationnels.
+          <p className="text-muted text-base leading-relaxed sm:text-lg">
+            La technologie n’est qu’un moyen. Nous commençons toujours par écouter vos irritants
+            quotidiens, vos contraintes métiers et vos objectifs opérationnels.
           </p>
         </div>
 
         {/* Needs Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {needs.map((item) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.id}
-                className={`group relative flex flex-col justify-between rounded-2xl p-5 sm:p-7 border transition-all duration-300 ${
+                className={`group relative flex flex-col justify-between rounded-2xl border p-5 transition-all duration-300 sm:p-7 ${
                   item.highlight
-                    ? 'bg-gradient-to-b from-primary-950/40 via-surface to-surface border-primary-500/40 shadow-xl shadow-primary-950/30 hover:border-primary-400'
+                    ? 'from-primary-950/40 via-surface to-surface border-primary-500/40 shadow-primary-950/30 hover:border-primary-400 bg-gradient-to-b shadow-xl'
                     : 'glass border-white/10 hover:border-white/20 hover:bg-white/[0.04]'
                 }`}
               >
                 <div>
-                  <div className="flex items-center justify-between mb-5">
+                  <div className="mb-5 flex items-center justify-between">
                     <div
-                      className={`w-12 h-12 rounded-xl flex items-center justify-center border transition-all duration-300 ${
+                      className={`flex h-12 w-12 items-center justify-center rounded-xl border transition-all duration-300 ${
                         item.highlight
                           ? 'bg-primary-500/20 text-primary-400 border-primary-500/30 group-hover:scale-110'
-                          : 'bg-white/5 text-gray-300 border-white/10 group-hover:text-primary-400 group-hover:border-primary-500/30'
+                          : 'group-hover:text-primary-400 group-hover:border-primary-500/30 border-white/10 bg-white/5 text-gray-300'
                       }`}
                     >
-                      <Icon className="w-6 h-6" />
+                      <Icon className="h-6 w-6" />
                     </div>
-                    <span className="text-[11px] font-semibold tracking-wide uppercase px-2.5 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10">
+                    <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-gray-300 uppercase">
                       {item.tag}
                     </span>
                   </div>
 
-                  <p className="text-sm font-semibold text-primary-300 italic mb-2">
+                  <p className="text-primary-300 mb-2 text-sm font-semibold italic">
                     {item.problem}
                   </p>
 
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary-400 transition-colors">
+                  <h3 className="group-hover:text-primary-400 mb-3 text-xl font-bold text-white transition-colors">
                     {item.solution}
                   </h3>
 
-                  <p className="text-sm text-muted leading-relaxed mb-6">
-                    {item.description}
-                  </p>
+                  <p className="text-muted mb-6 text-sm leading-relaxed">{item.description}</p>
                 </div>
 
-                <div className="pt-4 border-t border-white/5">
+                <div className="border-t border-white/5 pt-4">
                   <Link
                     href={item.link}
-                    className="inline-flex items-center gap-2 text-sm font-medium text-white group-hover:text-primary-400 transition-colors"
+                    className="group-hover:text-primary-400 inline-flex items-center gap-2 text-sm font-medium text-white transition-colors"
                   >
                     <span>{item.ctaText}</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                    <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                   </Link>
                 </div>
               </div>
@@ -171,26 +169,24 @@ export default function NeedsSection() {
         </div>
 
         {/* Bottom Banner */}
-        <div className="mt-12 sm:mt-16 p-5 sm:p-8 rounded-2xl glass border border-primary-500/20 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="glass border-primary-500/20 mt-12 flex flex-col items-center justify-between gap-6 rounded-2xl border p-5 sm:mt-16 sm:flex-row sm:p-8">
           <div className="flex items-center gap-4 text-center sm:text-left">
-            <div className="w-12 h-12 rounded-xl bg-primary-500/20 text-primary-400 flex items-center justify-center shrink-0 border border-primary-500/30">
-              <ShieldCheck className="w-6 h-6" />
+            <div className="bg-primary-500/20 text-primary-400 border-primary-500/30 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border">
+              <ShieldCheck className="h-6 w-6" />
             </div>
             <div>
-              <p className="text-sm sm:text-base font-semibold text-white">
+              <p className="text-sm font-semibold text-white sm:text-base">
                 Votre situation ne rentre dans aucune case ?
               </p>
-              <p className="text-xs sm:text-sm text-muted">
-                C’est normal : chaque établissement a ses particularités. Échangeons 30 minutes pour clarifier votre besoin.
+              <p className="text-muted text-xs sm:text-sm">
+                C’est normal : chaque établissement a ses particularités. Échangeons 30 minutes pour
+                clarifier votre besoin.
               </p>
             </div>
           </div>
-          <Link
-            href="/contact"
-            className="btn-primary w-full sm:w-auto text-sm shrink-0"
-          >
+          <Link href="/contact" className="btn-primary w-full shrink-0 text-sm sm:w-auto">
             <span>Demander un diagnostic offert</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>

@@ -25,14 +25,17 @@ export function DiagnosticInternalEmail({ data, referenceId }: DiagnosticInterna
   const fullName = formatName(data.firstName, data.lastName);
   const organization = formatCompany(data.organization);
   const phone = formatPhone(data.phone);
-  const replySubject = encodeURIComponent(`DevEvoke : Restitution de votre diagnostic numérique pour ${organization} [Réf: ${referenceId}]`);
+  const replySubject = encodeURIComponent(
+    `DevEvoke : Restitution de votre diagnostic numérique pour ${organization} [Réf: ${referenceId}]`
+  );
   const mailtoUrl = `mailto:${data.email}?subject=${replySubject}`;
 
   // Choix de couleur de score
   const score = data.globalScore ?? (data as any).score ?? 0;
   const level = data.maturityLevel ?? (data as any).level ?? 'Évaluation initiale';
   const scoreVariant = score >= 70 ? 'success' : score >= 40 ? 'primary' : 'warning';
-  const risksCount = data.criticalRisksCount || (data.criticalRisksSummary ? data.criticalRisksSummary.length : 0);
+  const risksCount =
+    data.criticalRisksCount || (data.criticalRisksSummary ? data.criticalRisksSummary.length : 0);
 
   return (
     <EmailLayout
@@ -41,12 +44,11 @@ export function DiagnosticInternalEmail({ data, referenceId }: DiagnosticInterna
     >
       <EmailBadge variant="purple">Diagnostic Médico-Social Complété</EmailBadge>
 
-      <EmailHeading as="h1">
-        Nouveau diagnostic complété
-      </EmailHeading>
+      <EmailHeading as="h1">Nouveau diagnostic complété</EmailHeading>
 
       <EmailText variant="muted">
-        Un responsable d'établissement vient de finaliser l'évaluation de maturité numérique sur le site DevEvoke.
+        Un responsable d'établissement vient de finaliser l'évaluation de maturité numérique sur le
+        site DevEvoke.
       </EmailText>
 
       {/* BLOC 1 : CARTE PRINCIPALE SCORE & NIVEAU */}
@@ -67,13 +69,23 @@ export function DiagnosticInternalEmail({ data, referenceId }: DiagnosticInterna
 
       {/* Mention de prudence analytique */}
       <EmailAlert variant="neutral">
-        <strong style={{ color: '#ffffff' }}>Indicateur d'analyse :</strong> ce score reflète les réponses déclaratives fournies lors du questionnaire d'auto-évaluation et constitue une base de cadrage technique.
+        <strong style={{ color: '#ffffff' }}>Indicateur d'analyse :</strong> ce score reflète les
+        réponses déclaratives fournies lors du questionnaire d'auto-évaluation et constitue une base
+        de cadrage technique.
       </EmailAlert>
 
       {/* BLOC 2 : RISQUES & RECOMMANDATIONS */}
       {data.criticalRisksSummary && data.criticalRisksSummary.length > 0 && (
         <EmailCard title="Principaux Risques Détectés" variant="warning">
-          <ul style={{ margin: '0', paddingLeft: '20px', color: emailTokens.colors.muted, fontSize: '13px', lineHeight: '1.6' }}>
+          <ul
+            style={{
+              margin: '0',
+              paddingLeft: '20px',
+              color: emailTokens.colors.muted,
+              fontSize: '13px',
+              lineHeight: '1.6',
+            }}
+          >
             {data.criticalRisksSummary.map((risk, idx) => (
               <li key={idx} style={{ marginBottom: '6px' }}>
                 <strong style={{ color: emailTokens.colors.warningText }}>{risk}</strong>
@@ -85,7 +97,15 @@ export function DiagnosticInternalEmail({ data, referenceId }: DiagnosticInterna
 
       {data.topPriorities && data.topPriorities.length > 0 && (
         <EmailCard title="Recommandations Prioritaires" variant="surface">
-          <ul style={{ margin: '0', paddingLeft: '20px', color: emailTokens.colors.muted, fontSize: '13px', lineHeight: '1.6' }}>
+          <ul
+            style={{
+              margin: '0',
+              paddingLeft: '20px',
+              color: emailTokens.colors.muted,
+              fontSize: '13px',
+              lineHeight: '1.6',
+            }}
+          >
             {data.topPriorities.map((rec, idx) => (
               <li key={idx} style={{ marginBottom: '6px' }}>
                 <strong style={{ color: '#ffffff' }}>{rec}</strong>
@@ -99,14 +119,19 @@ export function DiagnosticInternalEmail({ data, referenceId }: DiagnosticInterna
       <EmailCard title="Informations du Prospect">
         <EmailFieldGroup>
           <EmailField label="Établissement / Asso :" value={<strong>{organization}</strong>} />
-          {data.structureType && <EmailField label="Type de structure :" value={data.structureType} />}
+          {data.structureType && (
+            <EmailField label="Type de structure :" value={data.structureType} />
+          )}
           {data.siteCount && <EmailField label="Nombre de sites :" value={data.siteCount} />}
           <EmailField label="Contact référent :" value={<strong>{fullName}</strong>} />
           {data.role && <EmailField label="Fonction :" value={data.role} />}
           <EmailField
             label="Email :"
             value={
-              <a href={`mailto:${data.email}`} style={{ color: emailTokens.colors.primaryLight, textDecoration: 'none' }}>
+              <a
+                href={`mailto:${data.email}`}
+                style={{ color: emailTokens.colors.primaryLight, textDecoration: 'none' }}
+              >
                 {data.email}
               </a>
             }
@@ -115,7 +140,10 @@ export function DiagnosticInternalEmail({ data, referenceId }: DiagnosticInterna
             label="Téléphone :"
             value={
               phone !== 'Non renseigné' ? (
-                <a href={`tel:${phone}`} style={{ color: emailTokens.colors.primaryLight, textDecoration: 'none' }}>
+                <a
+                  href={`tel:${phone}`}
+                  style={{ color: emailTokens.colors.primaryLight, textDecoration: 'none' }}
+                >
                   {phone}
                 </a>
               ) : (
@@ -132,7 +160,11 @@ export function DiagnosticInternalEmail({ data, referenceId }: DiagnosticInterna
         <EmailFieldGroup>
           <EmailField
             label="Référence dossier :"
-            value={<strong style={{ fontFamily: emailTokens.typography.monoFamily }}>{referenceId}</strong>}
+            value={
+              <strong style={{ fontFamily: emailTokens.typography.monoFamily }}>
+                {referenceId}
+              </strong>
+            }
           />
           <EmailField label="Date d'évaluation :" value={formatDate(new Date())} isLast />
         </EmailFieldGroup>
@@ -145,7 +177,10 @@ export function DiagnosticInternalEmail({ data, referenceId }: DiagnosticInterna
   );
 }
 
-export function renderDiagnosticInternalText(data: DiagnosticEmailData, referenceId: string): string {
+export function renderDiagnosticInternalText(
+  data: DiagnosticEmailData,
+  referenceId: string
+): string {
   const fullName = formatName(data.firstName, data.lastName);
   const organization = formatCompany(data.organization);
   const phone = formatPhone(data.phone);
@@ -167,7 +202,7 @@ ${data.structureType ? `- Type : ${data.structureType}\n` : ''}${data.siteCount 
 ${data.role ? `- Fonction : ${data.role}\n` : ''}- Email : ${data.email}
 - Téléphone : ${phone}
 
-${data.criticalRisksSummary && data.criticalRisksSummary.length > 0 ? `RISQUES IDENTIFIÉS :\n${data.criticalRisksSummary.map(r => `- ${r}`).join('\n')}\n\n` : ''}${data.topPriorities && data.topPriorities.length > 0 ? `RECOMMANDATIONS :\n${data.topPriorities.map(p => `- ${p}`).join('\n')}\n\n` : ''}Réf dossier : ${referenceId}
+${data.criticalRisksSummary && data.criticalRisksSummary.length > 0 ? `RISQUES IDENTIFIÉS :\n${data.criticalRisksSummary.map((r) => `- ${r}`).join('\n')}\n\n` : ''}${data.topPriorities && data.topPriorities.length > 0 ? `RECOMMANDATIONS :\n${data.topPriorities.map((p) => `- ${p}`).join('\n')}\n\n` : ''}Réf dossier : ${referenceId}
 Date : ${formatDate(new Date())}
 
 Pour répondre, écrivez directement à : ${data.email}

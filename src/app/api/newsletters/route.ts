@@ -1,18 +1,11 @@
 import { NextResponse } from 'next/server';
 import { validateFormRequest } from '@/lib/security/requestValidation';
 import { checkHoneypot } from '@/lib/security/honeypot';
-import {
-  rateLimiter,
-  getClientIp,
-  computeSubmissionFingerprint,
-} from '@/lib/security/rateLimit';
+import { rateLimiter, getClientIp, computeSubmissionFingerprint } from '@/lib/security/rateLimit';
 import { securityLogger, generateRequestId } from '@/lib/security/logger';
 import { generateReference } from '@/lib/security/reference';
 import { newsletterSubmissionSchema } from '@/lib/forms/schemas';
-import {
-  EMAIL_VALIDATION_MESSAGES,
-  validateProfessionalEmail,
-} from '@/lib/validation/email';
+import { EMAIL_VALIDATION_MESSAGES, validateProfessionalEmail } from '@/lib/validation/email';
 import { verifyProfessionalEmail } from '@/lib/email/verifyProfessionalEmail';
 import { sendTransactionalEmail } from '@/lib/email/sendTransactionalEmail';
 import { getEmailConfig } from '@/lib/email/config';
@@ -96,13 +89,12 @@ export async function POST(request: Request) {
   const parseResult = newsletterSubmissionSchema.safeParse(rawBody);
 
   if (!parseResult.success || !emailCheck.isValid) {
-    const formattedErrors: Record<string, string[] | undefined> =
-      !parseResult.success ? parseResult.error.flatten().fieldErrors : {};
+    const formattedErrors: Record<string, string[] | undefined> = !parseResult.success
+      ? parseResult.error.flatten().fieldErrors
+      : {};
 
     if (!emailCheck.isValid && !formattedErrors.email) {
-      formattedErrors.email = [
-        emailCheck.message ?? EMAIL_VALIDATION_MESSAGES.INVALID_SYNTAX,
-      ];
+      formattedErrors.email = [emailCheck.message ?? EMAIL_VALIDATION_MESSAGES.INVALID_SYNTAX];
     }
 
     const logDetails = Object.entries(formattedErrors)
@@ -156,8 +148,7 @@ export async function POST(request: Request) {
 
     if (hunterVerification.status === 'error') {
       const unavailableMsg =
-        hunterVerification.userMessage ??
-        EMAIL_VALIDATION_MESSAGES.VERIFICATION_UNAVAILABLE;
+        hunterVerification.userMessage ?? EMAIL_VALIDATION_MESSAGES.VERIFICATION_UNAVAILABLE;
 
       return NextResponse.json(
         {
@@ -173,19 +164,18 @@ export async function POST(request: Request) {
     }
 
     const userVerificationError =
-      hunterVerification.userMessage ??
-      EMAIL_VALIDATION_MESSAGES.UNVERIFIED_PROFESSIONAL;
+      hunterVerification.userMessage ?? EMAIL_VALIDATION_MESSAGES.UNVERIFIED_PROFESSIONAL;
 
     const verificationCode =
       hunterVerification.status === 'personal'
         ? 'FREE_EMAIL_PROVIDER'
         : hunterVerification.status === 'disposable'
-        ? 'DISPOSABLE_EMAIL_DOMAIN'
-        : hunterVerification.status === 'accept_all'
-        ? 'EMAIL_ACCEPT_ALL_REJECTED'
-        : hunterVerification.status === 'unknown'
-        ? 'EMAIL_VERIFICATION_UNKNOWN'
-        : 'EMAIL_VERIFICATION_INVALID';
+          ? 'DISPOSABLE_EMAIL_DOMAIN'
+          : hunterVerification.status === 'accept_all'
+            ? 'EMAIL_ACCEPT_ALL_REJECTED'
+            : hunterVerification.status === 'unknown'
+              ? 'EMAIL_VERIFICATION_UNKNOWN'
+              : 'EMAIL_VERIFICATION_INVALID';
 
     return NextResponse.json(
       {
@@ -202,11 +192,7 @@ export async function POST(request: Request) {
 
   // 6. Protection contre les soumissions répétitives identiques
   const fingerprint = computeSubmissionFingerprint(rawBody);
-  const duplicateCheck = rateLimiter.checkDuplicate(
-    clientIp,
-    'newsletter',
-    fingerprint
-  );
+  const duplicateCheck = rateLimiter.checkDuplicate(clientIp, 'newsletter', fingerprint);
   if (duplicateCheck.isDuplicate) {
     securityLogger.logFormEvent({
       requestId,
@@ -277,8 +263,7 @@ export async function POST(request: Request) {
           success: false,
           status: 500,
           message: 'EMAIL_SENDING_FAILED',
-          error:
-            'Une erreur est survenue lors de l’inscription. Veuillez réessayer.',
+          error: 'Une erreur est survenue lors de l’inscription. Veuillez réessayer.',
           requestId,
         },
         { status: 500 }
@@ -297,9 +282,7 @@ export async function POST(request: Request) {
     );
   } catch (error: unknown) {
     const internalErrMsg =
-      error instanceof Error
-        ? error.message
-        : 'Unexpected newsletter subscription error';
+      error instanceof Error ? error.message : 'Unexpected newsletter subscription error';
 
     securityLogger.logFormEvent({
       requestId,

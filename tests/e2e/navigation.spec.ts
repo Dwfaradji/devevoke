@@ -23,7 +23,10 @@ test.describe('P0 — Navigation principale, parcours critiques & intégrité de
     await expect(page.getByRole('heading', { level: 1 })).toContainText(/Expertises/i);
 
     // Cliquer sur le CTA vers Contact
-    await page.getByRole('link', { name: /Parler de votre projet/i }).first().click();
+    await page
+      .getByRole('link', { name: /Parler de votre projet/i })
+      .first()
+      .click();
     await expect(page).toHaveURL(/\/contact$/);
     await expect(page.getByRole('heading', { level: 1 })).toContainText(/solution digitale/i);
 
@@ -33,7 +36,9 @@ test.describe('P0 — Navigation principale, parcours critiques & intégrité de
     expect(consoleErrors).toEqual([]);
   });
 
-  test('Parcours Accueil → Solutions médico-sociales → Sous-secteur IME → Contact', async ({ page }) => {
+  test('Parcours Accueil → Solutions médico-sociales → Sous-secteur IME → Contact', async ({
+    page,
+  }) => {
     await page.goto('/');
 
     // Cliquer sur le CTA secondaire du Hero vers /solutions-medico-social
@@ -60,19 +65,24 @@ test.describe('P0 — Navigation principale, parcours critiques & intégrité de
     await expect(page.getByRole('heading', { level: 1 })).toContainText(/Projets & réalisations/i);
 
     // Ouvrir l'étude de cas Floticar
-    await page.locator('article').filter({ hasText: 'Floticar' }).getByRole('link', { name: /Découvrir le projet/i }).click();
+    await page
+      .locator('article')
+      .filter({ hasText: 'Floticar' })
+      .getByRole('link', { name: /Découvrir le projet/i })
+      .click();
     await expect(page).toHaveURL(/\/realisations\/floticar$/);
     await expect(page.getByRole('heading', { level: 1 })).toContainText(/Floticar/i);
   });
 
-  test('Liens du Footer : présence et navigation vers les pages piliers médico-sociales et légales', async ({ page }) => {
+  test('Liens du Footer : présence et navigation vers les pages piliers médico-sociales et légales', async ({
+    page,
+  }) => {
     await page.goto('/');
     const footer = page.locator('footer');
 
-    await expect(footer.getByRole('link', { name: 'Agence Digitale Médico-Social' })).toHaveAttribute(
-      'href',
-      '/agence-digitale-medico-social'
-    );
+    await expect(
+      footer.getByRole('link', { name: 'Agence Digitale Médico-Social' })
+    ).toHaveAttribute('href', '/agence-digitale-medico-social');
     await expect(footer.getByRole('link', { name: 'Solutions Médico-Sociales' })).toHaveAttribute(
       'href',
       '/solutions-medico-social'
@@ -81,17 +91,18 @@ test.describe('P0 — Navigation principale, parcours critiques & intégrité de
       'href',
       '/developpement-logiciel-medico-social'
     );
-    await expect(footer.getByRole('link', { name: 'Transformation Numérique ESMS' })).toHaveAttribute(
-      'href',
-      '/medico-social'
-    );
+    await expect(
+      footer.getByRole('link', { name: 'Transformation Numérique ESMS' })
+    ).toHaveAttribute('href', '/medico-social');
 
     await footer.getByRole('link', { name: 'Mentions Légales' }).click();
     await expect(page).toHaveURL(/\/mentions-legal$/);
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
 
-  test('Contrôle d’intégrité des routes internes stratégiques (aucune 404 ni 500, aucun crash JS)', async ({ page }) => {
+  test('Contrôle d’intégrité des routes internes stratégiques (aucune 404 ni 500, aucun crash JS)', async ({
+    page,
+  }) => {
     const criticalRoutes = [
       '/',
       '/agence-digitale-medico-social',
@@ -140,4 +151,3 @@ test.describe('P0 — Navigation principale, parcours critiques & intégrité de
     expect(pageErrors).toEqual([]);
   });
 });
-

@@ -17,7 +17,7 @@ export default function FloatingQuickNav() {
       const scrollY = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = docHeight > 0 ? Math.min(100, Math.round((scrollY / docHeight) * 100)) : 0;
-      
+
       setScrollProgress(progress);
       // Afficher dès qu'on a fait défiler de plus de 250px
       setIsVisible(scrollY > 250);
@@ -51,7 +51,7 @@ export default function FloatingQuickNav() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 15, scale: 0.95 }}
           transition={{ duration: 0.22, ease: 'easeOut' }}
-          className="fixed bottom-[max(1rem,calc(env(safe-area-inset-bottom)+0.75rem))] right-[max(1rem,calc(env(safe-area-inset-right)+0.75rem))] sm:bottom-6 sm:right-6 z-40 flex items-center gap-1.5 p-1.5 rounded-full bg-neutral-900/90 backdrop-blur-2xl border border-white/10 shadow-2xl shadow-black/60"
+          className="fixed right-[max(1rem,calc(env(safe-area-inset-right)+0.75rem))] bottom-[max(1rem,calc(env(safe-area-inset-bottom)+0.75rem))] z-40 flex items-center gap-1.5 rounded-full border border-white/10 bg-neutral-900/90 p-1.5 shadow-2xl shadow-black/60 backdrop-blur-2xl sm:right-6 sm:bottom-6"
         >
           {/* Bouton Retour rapide (si pas sur la page d'accueil) */}
           {!isHome && (
@@ -60,9 +60,9 @@ export default function FloatingQuickNav() {
               onClick={handleBack}
               aria-label="Retourner à la page précédente"
               title="Retour à la page précédente"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium text-neutral-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/5 hover:border-primary-500/30 transition-all active:scale-95 cursor-pointer"
+              className="hover:border-primary-500/30 flex cursor-pointer items-center gap-1.5 rounded-full border border-white/5 bg-white/5 px-3 py-2 text-xs font-medium text-neutral-300 transition-all hover:bg-white/10 hover:text-white active:scale-95"
             >
-              <ArrowLeft className="size-3.5 text-primary-400" />
+              <ArrowLeft className="text-primary-400 size-3.5" />
               <span className="hidden sm:inline">Retour</span>
             </button>
           )}
@@ -73,10 +73,13 @@ export default function FloatingQuickNav() {
             onClick={scrollToTop}
             aria-label="Remonter en haut de la page"
             title={`Haut de page (${scrollProgress}%)`}
-            className="relative flex size-9 items-center justify-center rounded-full bg-white/5 hover:bg-white/10 border border-white/5 hover:border-primary-500/30 text-neutral-300 hover:text-white transition-all active:scale-95 cursor-pointer group"
+            className="hover:border-primary-500/30 group relative flex size-9 cursor-pointer items-center justify-center rounded-full border border-white/5 bg-white/5 text-neutral-300 transition-all hover:bg-white/10 hover:text-white active:scale-95"
           >
             {/* SVG Ring de progression */}
-            <svg className="absolute inset-0 size-full -rotate-90 pointer-events-none" viewBox="0 0 36 36">
+            <svg
+              className="pointer-events-none absolute inset-0 size-full -rotate-90"
+              viewBox="0 0 36 36"
+            >
               <path
                 className="text-white/5"
                 strokeWidth="2.5"
@@ -94,7 +97,7 @@ export default function FloatingQuickNav() {
                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
               />
             </svg>
-            <ArrowUp className="size-3.5 text-neutral-300 group-hover:text-primary-400 transition-colors" />
+            <ArrowUp className="group-hover:text-primary-400 size-3.5 text-neutral-300 transition-colors" />
           </button>
 
           {/* CTA rapide Contact (si pas déjà sur contact) */}
@@ -103,7 +106,7 @@ export default function FloatingQuickNav() {
               href="/contact"
               aria-label="Discuter de votre projet avec l'agence"
               title="Discuter de votre projet"
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-primary-500 to-secondary-500 hover:opacity-95 shadow-md shadow-primary-500/20 transition-all active:scale-95"
+              className="from-primary-500 to-secondary-500 shadow-primary-500/20 flex items-center gap-1.5 rounded-full bg-gradient-to-r px-3.5 py-2 text-xs font-semibold text-white shadow-md transition-all hover:opacity-95 active:scale-95"
             >
               <MessageSquare className="size-3.5" />
               <span className="hidden md:inline">Parler de votre projet</span>

@@ -13,49 +13,47 @@ const Page = () => {
   const [activeCategory, setActiveCategory] = useState<string>('Tous');
 
   // Extraire toutes les catégories uniques
-  const categories = ['Tous', ...Array.from(new Set(articles.map(a => a.type)))];
+  const categories = ['Tous', ...Array.from(new Set(articles.map((a) => a.type)))];
 
   // Filtrer les articles
-  const filteredArticles = activeCategory === 'Tous' 
-    ? articles 
-    : articles.filter(a => a.type === activeCategory);
+  const filteredArticles =
+    activeCategory === 'Tous' ? articles : articles.filter((a) => a.type === activeCategory);
 
   return (
     <div className="min-h-screen pb-24">
       {/* Fil d'Ariane & Navigation Switcher */}
       <Breadcrumb
-        items={[
-          { label: 'Nos Expertises', href: '/services' },
-          { label: 'Socles & Templates' },
-        ]}
+        items={[{ label: 'Nos Expertises', href: '/services' }, { label: 'Socles & Templates' }]}
         backLink={{ href: '/services', label: 'Retour aux services' }}
       />
       <ServicesNavSwitcher />
 
-      <header className="mx-auto mb-10 sm:mb-12 text-center mt-4 sm:mt-6 px-4 relative z-10">
+      <header className="relative z-10 mx-auto mt-4 mb-10 px-4 text-center sm:mt-6 sm:mb-12">
         <Fade direction="up" cascade damping={0.1} triggerOnce>
-          <span className="section-label mb-3 sm:mb-4 inline-block">Socles & Architectures</span>
-          <h1 className="mb-4 sm:mb-6 text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white">
+          <span className="section-label mb-3 inline-block sm:mb-4">Socles & Architectures</span>
+          <h1 className="mb-4 text-3xl font-bold tracking-tight text-white sm:mb-6 sm:text-5xl lg:text-6xl">
             Socles Numériques <span className="text-highlight">Métiers</span>
           </h1>
 
-          <p className="text-sm sm:text-lg text-muted leading-relaxed max-w-3xl mx-auto mb-4">
-            Découvrez nos modèles et socles pré-configurés pour le secteur médico-social et sanitaire (EHPAD, résidences autonomie, coordination de soins, services à domicile). Accélérez votre déploiement tout en assurant une conformité immédiate.
+          <p className="text-muted mx-auto mb-4 max-w-3xl text-sm leading-relaxed sm:text-lg">
+            Découvrez nos modèles et socles pré-configurés pour le secteur médico-social et
+            sanitaire (EHPAD, résidences autonomie, coordination de soins, services à domicile).
+            Accélérez votre déploiement tout en assurant une conformité immédiate.
           </p>
         </Fade>
       </header>
 
       {/* Barre de filtres */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 relative z-10">
+      <section className="relative z-10 mx-auto mb-12 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-wrap justify-center gap-3">
           {categories.map((cat, index) => (
             <button
               key={index}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 sm:px-5 py-2 sm:py-2.5 min-h-[40px] rounded-full text-xs sm:text-sm font-medium transition-all duration-300 border cursor-pointer ${
+              className={`min-h-[40px] cursor-pointer rounded-full border px-4 py-2 text-xs font-medium transition-all duration-300 sm:px-5 sm:py-2.5 sm:text-sm ${
                 activeCategory === cat
-                  ? 'bg-primary-500 text-white border-primary-500 shadow-[0_0_15px_rgba(59,130,246,0.5)]'
-                  : 'bg-white/5 text-gray-400 border-white/10 hover:bg-white/10 hover:text-white'
+                  ? 'bg-primary-500 border-primary-500 text-white shadow-[0_0_15px_rgba(59,130,246,0.5)]'
+                  : 'border-white/10 bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
               }`}
             >
               {cat}
@@ -65,8 +63,8 @@ const Page = () => {
       </section>
 
       {/* Grille de templates */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 relative z-10">
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="relative z-10 mx-auto mb-24 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div layout className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence>
             {filteredArticles.map((article) => (
               <motion.div
@@ -91,21 +89,22 @@ const Page = () => {
         </motion.div>
 
         {filteredArticles.length === 0 && (
-          <div className="text-center py-20 text-gray-400">
+          <div className="py-20 text-center text-gray-400">
             Aucun template trouvé pour cette catégorie.
           </div>
         )}
       </section>
 
       {/* Call to Action Final */}
-      <section className="py-24 px-4 relative overflow-hidden mb-16">
-        <div className="absolute inset-0 bg-gradient-to-t from-primary-500/10 to-transparent pointer-events-none" />
-        <div className="max-w-4xl mx-auto glass p-10 sm:p-16 rounded-3xl text-center border border-primary-500/20 shadow-[0_0_50px_rgba(59,130,246,0.15)] relative z-10">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+      <section className="relative mb-16 overflow-hidden px-4 py-24">
+        <div className="from-primary-500/10 pointer-events-none absolute inset-0 bg-gradient-to-t to-transparent" />
+        <div className="glass border-primary-500/20 relative z-10 mx-auto max-w-4xl rounded-3xl border p-10 text-center shadow-[0_0_50px_rgba(59,130,246,0.15)] sm:p-16">
+          <h2 className="mb-6 text-3xl font-bold text-white sm:text-4xl">
             Un template a retenu votre attention ?
           </h2>
-          <p className="text-muted text-lg mb-8 max-w-2xl mx-auto">
-            Démarrez votre projet avec l'un de nos modèles de base. Nous nous chargeons de la personnalisation complète pour l'adapter parfaitement à votre image.
+          <p className="text-muted mx-auto mb-8 max-w-2xl text-lg">
+            Démarrez votre projet avec l'un de nos modèles de base. Nous nous chargeons de la
+            personnalisation complète pour l'adapter parfaitement à votre image.
           </p>
           <Link href="/contact" className="btn-primary inline-flex">
             Démarrer votre projet avec un socle →

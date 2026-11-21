@@ -3,17 +3,8 @@
 import React, { useState } from 'react';
 import { DiagnosticReport } from '@/lib/diagnostic/types';
 import callApi from '@/utils/callApi';
-import {
-  EMAIL_VALIDATION_MESSAGES,
-  validateProfessionalEmail,
-} from '@/lib/validation/email';
-import {
-  ArrowLeft,
-  CheckCircle2,
-  FileText,
-  Printer,
-  Send,
-} from 'lucide-react';
+import { EMAIL_VALIDATION_MESSAGES, validateProfessionalEmail } from '@/lib/validation/email';
+import { ArrowLeft, CheckCircle2, FileText, Printer, Send } from 'lucide-react';
 
 interface DiagnosticReportFormProps {
   report: DiagnosticReport;
@@ -88,8 +79,7 @@ export default function DiagnosticReportForm({
 
     const emailValidation = validateProfessionalEmail(email);
     if (!emailValidation.isValid) {
-      const msg =
-        emailValidation.message || EMAIL_VALIDATION_MESSAGES.INVALID_SYNTAX;
+      const msg = emailValidation.message || EMAIL_VALIDATION_MESSAGES.INVALID_SYNTAX;
       setEmailError(msg);
       hasValidationError = true;
     } else {
@@ -130,10 +120,12 @@ Détail des dimensions :
 ${report.fleet ? `- Flotte automobile : ${report.fleet.score}/100 (${report.fleet.level})` : '- Pas de flotte gérée'}
 
 Risques critiques (${report.riskCounts.critical}) :
-${report.risks
-  .filter((r) => r.level === 'critical')
-  .map((r) => `* [CRITIQUE] ${r.title} : ${r.recommendation}`)
-  .join('\n') || 'Aucun'}
+${
+  report.risks
+    .filter((r) => r.level === 'critical')
+    .map((r) => `* [CRITIQUE] ${r.title} : ${r.recommendation}`)
+    .join('\n') || 'Aucun'
+}
 
 Top 3 priorités :
 ${report.priorities.map((p, i) => `${i + 1}. ${p.title} (${p.horizon})`).join('\n')}
@@ -170,8 +162,7 @@ Consentement communications séparé : ${consentNewsletter ? 'Oui' : 'Non'}
           setEmailError(emailFieldErr);
         } else {
           setSendError(
-            response?.data?.error ||
-              'Une erreur est survenue lors de l’envoi. Veuillez réessayer.'
+            response?.data?.error || 'Une erreur est survenue lors de l’envoi. Veuillez réessayer.'
           );
         }
       }
@@ -196,39 +187,40 @@ Consentement communications séparé : ${consentNewsletter ? 'Oui' : 'Non'}
   };
 
   return (
-    <div className="max-w-2xl mx-auto space-y-6 animate-in fade-in duration-200 py-4">
+    <div className="animate-in fade-in mx-auto max-w-2xl space-y-6 py-4 duration-200">
       {/* Bouton retour vers résultats */}
       <div className="flex items-center justify-between">
         <button
           type="button"
           onClick={onBackToResults}
-          className="inline-flex items-center gap-2 text-xs font-semibold text-neutral-400 hover:text-white transition-colors cursor-pointer"
+          className="inline-flex cursor-pointer items-center gap-2 text-xs font-semibold text-neutral-400 transition-colors hover:text-white"
         >
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="h-4 w-4" />
           <span>Revenir aux résultats</span>
         </button>
-        <span className="text-xs font-mono text-primary-300">
+        <span className="text-primary-300 font-mono text-xs">
           Score : {report.globalScore}/100 ({report.maturityLevel.label})
         </span>
       </div>
 
       <div className="space-y-2">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-xs font-semibold uppercase tracking-wider">
-          <FileText className="w-3.5 h-3.5" />
+        <div className="bg-primary-500/10 border-primary-500/20 text-primary-400 inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+          <FileText className="h-3.5 w-3.5" />
           <span>Restitution Complète & Rapport</span>
         </div>
-        <h3 className="text-2xl sm:text-3xl font-black text-white">
+        <h3 className="text-2xl font-black text-white sm:text-3xl">
           Recevez votre rapport détaillé & plan d'action
         </h3>
-        <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
-          Générez instantanément votre rapport au format PDF ou recevez la synthèse complète par email avec les recommandations d'un architecte DevEvoke.
+        <p className="text-xs leading-relaxed text-neutral-300 sm:text-sm">
+          Générez instantanément votre rapport au format PDF ou recevez la synthèse complète par
+          email avec les recommandations d'un architecte DevEvoke.
         </p>
       </div>
 
       {/* Téléchargement direct PDF */}
-      <div className="p-4 rounded-2xl bg-primary-500/10 border border-primary-500/30 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div className="bg-primary-500/10 border-primary-500/30 flex flex-col items-center justify-between gap-3 rounded-2xl border p-4 sm:flex-row">
         <div className="text-xs text-neutral-200">
-          <strong className="text-white block font-semibold mb-0.5">
+          <strong className="mb-0.5 block font-semibold text-white">
             Export vectoriel immédiat :
           </strong>
           <span>Générez votre rapport complet au format A4 sans attendre.</span>
@@ -236,48 +228,54 @@ Consentement communications séparé : ${consentNewsletter ? 'Oui' : 'Non'}
         <button
           type="button"
           onClick={handlePrintPdf}
-          className="btn-primary px-4 py-2.5 text-xs font-bold flex items-center gap-2 shrink-0 cursor-pointer shadow-md"
+          className="btn-primary flex shrink-0 cursor-pointer items-center gap-2 px-4 py-2.5 text-xs font-bold shadow-md"
         >
-          <Printer className="w-4 h-4" />
+          <Printer className="h-4 w-4" />
           <span>Imprimer / PDF</span>
         </button>
       </div>
 
       {/* Formulaire de réception email */}
       {sendSuccess ? (
-        <div className="p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-center text-emerald-300 space-y-3">
-          <CheckCircle2 className="w-10 h-10 mx-auto text-emerald-400" />
+        <div className="space-y-3 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-6 text-center text-emerald-300">
+          <CheckCircle2 className="mx-auto h-10 w-10 text-emerald-400" />
           <h4 className="text-lg font-bold text-white">Rapport bien transmis !</h4>
-          <p className="text-xs text-emerald-200/90 leading-relaxed max-w-md mx-auto">
-            Votre diagnostic a été enregistré avec succès. Un architecte spécialisé dans le secteur médico-social prendra contact avec vous sous 24 à 48 heures ouvrées pour échanger sur vos priorités.
+          <p className="mx-auto max-w-md text-xs leading-relaxed text-emerald-200/90">
+            Votre diagnostic a été enregistré avec succès. Un architecte spécialisé dans le secteur
+            médico-social prendra contact avec vous sous 24 à 48 heures ouvrées pour échanger sur
+            vos priorités.
           </p>
           {referenceId && (
             <div className="pt-1">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-xs text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/10 px-3 py-1 font-mono text-xs text-white">
                 <span className="text-neutral-400">Réf :</span>
                 <strong className="text-emerald-400">{referenceId}</strong>
               </span>
             </div>
           )}
-          <div className="pt-2 flex justify-center gap-3">
+          <div className="flex justify-center gap-3 pt-2">
             <button
               type="button"
               onClick={onBackToResults}
-              className="px-4 py-2 text-xs font-bold rounded-xl bg-white/10 hover:bg-white/20 text-white cursor-pointer transition-colors"
+              className="cursor-pointer rounded-xl bg-white/10 px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-white/20"
             >
               Revoir les résultats
             </button>
             <button
               type="button"
               onClick={onClose}
-              className="btn-primary px-4 py-2 text-xs font-bold cursor-pointer"
+              className="btn-primary cursor-pointer px-4 py-2 text-xs font-bold"
             >
               Fermer le diagnostic
             </button>
           </div>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} noValidate className="space-y-4 p-5 rounded-2xl bg-neutral-900/60 border border-white/10 text-left">
+        <form
+          onSubmit={handleSubmit}
+          noValidate
+          className="space-y-4 rounded-2xl border border-white/10 bg-neutral-900/60 p-5 text-left"
+        >
           {/* Honeypot anti-spam */}
           <input
             type="text"
@@ -286,12 +284,15 @@ Consentement communications séparé : ${consentNewsletter ? 'Oui' : 'Non'}
             onChange={(e) => setWebsite(e.target.value)}
             tabIndex={-1}
             autoComplete="off"
-            className="opacity-0 absolute -left-[9999px] w-1 h-1 pointer-events-none"
+            className="pointer-events-none absolute -left-[9999px] h-1 w-1 opacity-0"
             aria-hidden="true"
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
             <div>
-              <label htmlFor="diagnostic-firstname" className="block text-xs font-semibold text-neutral-300 mb-1">
+              <label
+                htmlFor="diagnostic-firstname"
+                className="mb-1 block text-xs font-semibold text-neutral-300"
+              >
                 Prénom *
               </label>
               <input
@@ -305,16 +306,19 @@ Consentement communications séparé : ${consentNewsletter ? 'Oui' : 'Non'}
                   if (firstNameError) setFirstNameError(null);
                 }}
                 placeholder="Ex : Pierre"
-                className="w-full rounded-xl bg-black/40 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-sm text-white placeholder:text-neutral-500 focus:outline-none focus:ring-1 focus:ring-primary-400"
+                className="focus:ring-primary-400 min-h-[44px] w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-base text-white placeholder:text-neutral-500 focus:ring-1 focus:outline-none sm:text-sm"
               />
               {firstNameError && (
-                <span role="alert" className="text-rose-400 text-xs mt-1 block">
+                <span role="alert" className="mt-1 block text-xs text-rose-400">
                   {firstNameError}
                 </span>
               )}
             </div>
             <div>
-              <label htmlFor="diagnostic-lastname" className="block text-xs font-semibold text-neutral-300 mb-1">
+              <label
+                htmlFor="diagnostic-lastname"
+                className="mb-1 block text-xs font-semibold text-neutral-300"
+              >
                 Nom
               </label>
               <input
@@ -323,14 +327,17 @@ Consentement communications séparé : ${consentNewsletter ? 'Oui' : 'Non'}
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
                 placeholder="Ex : Dubois"
-                className="w-full rounded-xl bg-black/40 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-sm text-white placeholder:text-neutral-500 focus:outline-none focus:ring-1 focus:ring-primary-400"
+                className="focus:ring-primary-400 min-h-[44px] w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-base text-white placeholder:text-neutral-500 focus:ring-1 focus:outline-none sm:text-sm"
               />
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
             <div>
-              <label htmlFor="diagnostic-organization" className="block text-xs font-semibold text-neutral-300 mb-1">
+              <label
+                htmlFor="diagnostic-organization"
+                className="mb-1 block text-xs font-semibold text-neutral-300"
+              >
                 Association / Établissement *
               </label>
               <input
@@ -344,16 +351,19 @@ Consentement communications séparé : ${consentNewsletter ? 'Oui' : 'Non'}
                   if (orgError) setOrgError(null);
                 }}
                 placeholder="Ex : Association Solidarité Autisme"
-                className="w-full rounded-xl bg-black/40 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-sm text-white placeholder:text-neutral-500 focus:outline-none focus:ring-1 focus:ring-primary-400"
+                className="focus:ring-primary-400 min-h-[44px] w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-base text-white placeholder:text-neutral-500 focus:ring-1 focus:outline-none sm:text-sm"
               />
               {orgError && (
-                <span role="alert" className="text-rose-400 text-xs mt-1 block">
+                <span role="alert" className="mt-1 block text-xs text-rose-400">
                   {orgError}
                 </span>
               )}
             </div>
             <div>
-              <label htmlFor="diagnostic-role" className="block text-xs font-semibold text-neutral-300 mb-1">
+              <label
+                htmlFor="diagnostic-role"
+                className="mb-1 block text-xs font-semibold text-neutral-300"
+              >
                 Fonction
               </label>
               <input
@@ -362,14 +372,17 @@ Consentement communications séparé : ${consentNewsletter ? 'Oui' : 'Non'}
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
                 placeholder="Ex : Directeur Général, DSI, Cadre..."
-                className="w-full rounded-xl bg-black/40 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-sm text-white placeholder:text-neutral-500 focus:outline-none focus:ring-1 focus:ring-primary-400"
+                className="focus:ring-primary-400 min-h-[44px] w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-base text-white placeholder:text-neutral-500 focus:ring-1 focus:outline-none sm:text-sm"
               />
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
             <div>
-              <label htmlFor="diagnostic-email" className="block text-xs font-semibold text-neutral-300 mb-1">
+              <label
+                htmlFor="diagnostic-email"
+                className="mb-1 block text-xs font-semibold text-neutral-300"
+              >
                 Email professionnel *
               </label>
               <input
@@ -392,20 +405,23 @@ Consentement communications séparé : ${consentNewsletter ? 'Oui' : 'Non'}
                   }
                 }}
                 placeholder="p.dubois@association-exemple.fr"
-                className="w-full rounded-xl bg-black/40 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-sm text-white placeholder:text-neutral-500 focus:outline-none focus:ring-1 focus:ring-primary-400"
+                className="focus:ring-primary-400 min-h-[44px] w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-base text-white placeholder:text-neutral-500 focus:ring-1 focus:outline-none sm:text-sm"
               />
               {emailError && (
                 <span
                   id="diagnostic-email-error"
                   role="alert"
-                  className="text-rose-400 text-xs mt-1 block"
+                  className="mt-1 block text-xs text-rose-400"
                 >
                   {emailError}
                 </span>
               )}
             </div>
             <div>
-              <label htmlFor="diagnostic-phone" className="block text-xs font-semibold text-neutral-300 mb-1">
+              <label
+                htmlFor="diagnostic-phone"
+                className="mb-1 block text-xs font-semibold text-neutral-300"
+              >
                 Téléphone (facultatif)
               </label>
               <input
@@ -415,14 +431,17 @@ Consentement communications séparé : ${consentNewsletter ? 'Oui' : 'Non'}
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="Ex : 06 12 34 56 78"
-                className="w-full rounded-xl bg-black/40 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-sm text-white placeholder:text-neutral-500 focus:outline-none focus:ring-1 focus:ring-primary-400"
+                className="focus:ring-primary-400 min-h-[44px] w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-base text-white placeholder:text-neutral-500 focus:ring-1 focus:outline-none sm:text-sm"
               />
             </div>
           </div>
 
           {/* Cases de consentement */}
-          <div className="space-y-2 pt-2 border-t border-white/5 text-xs text-neutral-300">
-            <label htmlFor="diagnostic-consent-report" className="min-h-[44px] flex items-start gap-3 cursor-pointer select-none">
+          <div className="space-y-2 border-t border-white/5 pt-2 text-xs text-neutral-300">
+            <label
+              htmlFor="diagnostic-consent-report"
+              className="flex min-h-[44px] cursor-pointer items-start gap-3 select-none"
+            >
               <input
                 id="diagnostic-consent-report"
                 required
@@ -433,34 +452,42 @@ Consentement communications séparé : ${consentNewsletter ? 'Oui' : 'Non'}
                   setConsentReport(e.target.checked);
                   if (consentError) setConsentError(null);
                 }}
-                className="mt-1 size-4 rounded border-white/20 text-primary-500 focus:ring-primary-400 cursor-pointer shrink-0"
+                className="text-primary-500 focus:ring-primary-400 mt-1 size-4 shrink-0 cursor-pointer rounded border-white/20"
               />
               <span className="leading-relaxed">
-                J’accepte que les données de mon diagnostic soient transmises à DevEvoke afin de recevoir mon rapport d'évaluation personnalisé par email. *
+                J’accepte que les données de mon diagnostic soient transmises à DevEvoke afin de
+                recevoir mon rapport d'évaluation personnalisé par email. *
               </span>
             </label>
             {consentError && (
-              <span role="alert" className="text-rose-400 text-xs block">
+              <span role="alert" className="block text-xs text-rose-400">
                 {consentError}
               </span>
             )}
 
-            <label htmlFor="diagnostic-consent-newsletter" className="min-h-[44px] flex items-start gap-3 cursor-pointer select-none text-neutral-400">
+            <label
+              htmlFor="diagnostic-consent-newsletter"
+              className="flex min-h-[44px] cursor-pointer items-start gap-3 text-neutral-400 select-none"
+            >
               <input
                 id="diagnostic-consent-newsletter"
                 type="checkbox"
                 checked={consentNewsletter}
                 onChange={(e) => setConsentNewsletter(e.target.checked)}
-                className="mt-1 size-4 rounded border-white/20 text-primary-500 focus:ring-primary-400 cursor-pointer shrink-0"
+                className="text-primary-500 focus:ring-primary-400 mt-1 size-4 shrink-0 cursor-pointer rounded border-white/20"
               />
               <span className="leading-relaxed">
-                (Optionnel) J’accepte de recevoir des retours d’expérience et conseils de DevEvoke sur la modernisation du secteur médico-social.
+                (Optionnel) J’accepte de recevoir des retours d’expérience et conseils de DevEvoke
+                sur la modernisation du secteur médico-social.
               </span>
             </label>
           </div>
 
           {sendError && (
-            <p role="alert" className="text-xs text-rose-400 bg-rose-500/10 p-2.5 rounded-lg border border-rose-500/20">
+            <p
+              role="alert"
+              className="rounded-lg border border-rose-500/20 bg-rose-500/10 p-2.5 text-xs text-rose-400"
+            >
               {sendError}
             </p>
           )}
@@ -468,10 +495,8 @@ Consentement communications séparé : ${consentNewsletter ? 'Oui' : 'Non'}
           <button
             type="submit"
             disabled={isSending}
-            className={`btn-primary w-full py-3.5 text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary-500/20 transition-all duration-200 ${
-              isSending
-                ? 'opacity-70 cursor-wait'
-                : 'cursor-pointer'
+            className={`btn-primary shadow-primary-500/20 flex w-full items-center justify-center gap-2 py-3.5 text-xs font-bold shadow-lg transition-all duration-200 sm:text-sm ${
+              isSending ? 'cursor-wait opacity-70' : 'cursor-pointer'
             }`}
           >
             {isSending ? (
@@ -479,7 +504,7 @@ Consentement communications séparé : ${consentNewsletter ? 'Oui' : 'Non'}
             ) : (
               <>
                 <span>Transmettre et recevoir mon rapport</span>
-                <Send className="w-4 h-4" />
+                <Send className="h-4 w-4" />
               </>
             )}
           </button>

@@ -28,7 +28,10 @@ test.describe('P0 — Formulaire de Contact (/contact) : Validation, Emails Pro,
     ).toBeVisible();
 
     await expect(page.getByLabel('Prénom *')).toHaveAttribute('aria-invalid', 'true');
-    await expect(page.getByLabel('Entreprise / Organisation *')).toHaveAttribute('aria-invalid', 'true');
+    await expect(page.getByLabel('Entreprise / Organisation *')).toHaveAttribute(
+      'aria-invalid',
+      'true'
+    );
     await expect(page.getByLabel('Email professionnel *')).toHaveAttribute('aria-invalid', 'true');
     expect(apiCalls).toBe(0);
   });
@@ -268,7 +271,9 @@ test.describe('P0 — Formulaire de Contact (/contact) : Validation, Emails Pro,
     await page.getByLabel('Entreprise / Organisation *').fill('IME Les Glycines');
     await page
       .getByLabel('Description de votre besoin ou contexte *')
-      .fill('Mise en place d’un portail numérique sécurisé pour notre établissement médico-social.');
+      .fill(
+        'Mise en place d’un portail numérique sécurisé pour notre établissement médico-social.'
+      );
     await page.getByRole('checkbox').check();
 
     const emailInput = page.getByLabel('Email professionnel *');
@@ -328,4 +333,3 @@ test.describe('P0 — Formulaire de Contact (/contact) : Validation, Emails Pro,
     await expect(page.getByText(/DEV-\d{8}-[A-Z0-9]{4}/)).toBeVisible();
   });
 });
-

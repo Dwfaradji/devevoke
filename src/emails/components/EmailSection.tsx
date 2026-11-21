@@ -9,12 +9,7 @@ interface EmailSectionProps {
   style?: React.CSSProperties;
 }
 
-export function EmailSection({
-  title,
-  children,
-  variant = 'card',
-  style,
-}: EmailSectionProps) {
+export function EmailSection({ title, children, variant = 'card', style }: EmailSectionProps) {
   let bg = 'transparent';
   let border = 'none';
   let padding = '0';
@@ -57,7 +52,11 @@ export function EmailSection({
 
   return (
     <Section style={sectionStyle}>
-      {title && <Heading as="h3" style={titleStyle}>{title}</Heading>}
+      {title && (
+        <Heading as="h3" style={titleStyle}>
+          {title}
+        </Heading>
+      )}
       {children}
     </Section>
   );

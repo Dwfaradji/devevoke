@@ -7,10 +7,7 @@ interface EmailSignatureProps {
   style?: React.CSSProperties;
 }
 
-export function EmailSignature({
-  customSignOff = 'À bientôt,',
-  style,
-}: EmailSignatureProps) {
+export function EmailSignature({ customSignOff = 'À bientôt,', style }: EmailSignatureProps) {
   const containerStyle: React.CSSProperties = {
     marginTop: '32px',
     paddingTop: '20px',

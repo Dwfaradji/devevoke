@@ -284,10 +284,7 @@ export function normalizeEmail(email: unknown): string {
 export function isValidEmailSyntax(email: unknown): boolean {
   const normalized = normalizeEmail(email);
 
-  if (
-    normalized.length < MIN_EMAIL_LENGTH ||
-    normalized.length > MAX_EMAIL_LENGTH
-  ) {
+  if (normalized.length < MIN_EMAIL_LENGTH || normalized.length > MAX_EMAIL_LENGTH) {
     return false;
   }
 
@@ -393,10 +390,7 @@ function resolveDomainInput(domainOrEmail: unknown): string | null {
  * ou en est un sous-domaine direct (ex: `mail.yopmail.com` -> `yopmail.com`).
  * Ne bloque JAMAIS par correspondance partielle de mot (ex: `ime-free.fr` reste autorisé).
  */
-function matchesDomainBlacklist(
-  domain: string,
-  blacklist: ReadonlySet<string>
-): boolean {
+function matchesDomainBlacklist(domain: string, blacklist: ReadonlySet<string>): boolean {
   if (blacklist.has(domain)) {
     return true;
   }
@@ -507,4 +501,3 @@ export function validateProfessionalEmail(email: unknown): EmailValidationResult
 export function isProfessionalEmail(email: unknown): boolean {
   return validateProfessionalEmail(email).isValid;
 }
-

@@ -13,16 +13,19 @@ export const metadata: Metadata = {
       'Libérez du temps pour l’accompagnement humain : connectez vos outils, supprimez les ressaisies manuelles et automatisez vos bilans d’activité.',
     url: 'https://www.devevoke.com/automatisation',
     siteName: 'DevEvoke',
-    images: [{ url: '/icon.png', width: 800, height: 600, alt: 'Automatisation des processus médico-sociaux DevEvoke' }],
+    images: [
+      {
+        url: '/icon.png',
+        width: 800,
+        height: 600,
+        alt: 'Automatisation des processus médico-sociaux DevEvoke',
+      },
+    ],
     locale: 'fr_FR',
     type: 'website',
   },
 };
 
-export default function AutomatisationLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AutomatisationLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

@@ -22,28 +22,13 @@ export type StructureType =
   | 'aide_domicile'
   | 'autre';
 
-export type OrganizationSize =
-  | '1-20'
-  | '21-50'
-  | '51-100'
-  | '101-250'
-  | '251-500'
-  | '500+';
+export type OrganizationSize = '1-20' | '21-50' | '51-100' | '101-250' | '251-500' | '500+';
 
 export type SiteCount = '1' | '2-5' | '6-10' | '11-30' | '30+';
 
-export type MobilityLevel =
-  | 'rarely'
-  | 'occasionally'
-  | 'regularly'
-  | 'daily';
+export type MobilityLevel = 'rarely' | 'occasionally' | 'regularly' | 'daily';
 
-export type FleetSize =
-  | 'none'
-  | '1-5'
-  | '6-15'
-  | '16-50'
-  | '50+';
+export type FleetSize = 'none' | '1-5' | '6-15' | '16-50' | '50+';
 
 export interface OrganizationProfile {
   structureType: StructureType;
@@ -54,12 +39,7 @@ export interface OrganizationProfile {
   name?: string;
 }
 
-export type MaturityLevelKey =
-  | 'initial'
-  | 'structuration'
-  | 'transition'
-  | 'maitrise'
-  | 'avance';
+export type MaturityLevelKey = 'initial' | 'structuration' | 'transition' | 'maitrise' | 'avance';
 
 export interface MaturityLevel {
   key: MaturityLevelKey;

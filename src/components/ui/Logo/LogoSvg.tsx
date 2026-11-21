@@ -212,10 +212,7 @@ export default function LogoSVG({
 
         {/* Barre médiane horizontale du 'E' */}
         <g id={`${id}-E-middle-bar`}>
-          <path
-            d="M 618 363 L 754 363 C 754 404, 735 429, 696 429 L 621 429 Z"
-            fill="#0E497A"
-          />
+          <path d="M 618 363 L 754 363 C 754 404, 735 429, 696 429 L 621 429 Z" fill="#0E497A" />
           <path
             d="M 618 363 L 754 363 L 742 375 L 620 375 Z"
             fill="#67CFF0"
@@ -226,11 +223,7 @@ export default function LogoSVG({
             d="M 622 375 L 741 375 C 738 400, 723 416, 694 416 L 623 416 Z"
             fill={`url(#${id}-eMidGrad)`}
           />
-          <path
-            d="M 618 363 L 637 363 L 638 429 L 621 429 Z"
-            fill="#07284F"
-            opacity="0.45"
-          />
+          <path d="M 618 363 L 637 363 L 638 429 L 621 429 Z" fill="#07284F" opacity="0.45" />
         </g>
 
         {/* Branche inférieure du 'E' */}

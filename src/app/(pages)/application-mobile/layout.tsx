@@ -13,16 +13,19 @@ export const metadata: Metadata = {
       'Applications mobiles sur-mesure pour professionnels médico-sociaux et équipes en tournée. Fonctionnement 100% hors-ligne, synchronisation automatique et conformité RGPD.',
     url: 'https://www.devevoke.com/application-mobile',
     siteName: 'DevEvoke',
-    images: [{ url: '/icon.png', width: 800, height: 600, alt: 'Application mobile médico-sociale hors-ligne DevEvoke' }],
+    images: [
+      {
+        url: '/icon.png',
+        width: 800,
+        height: 600,
+        alt: 'Application mobile médico-sociale hors-ligne DevEvoke',
+      },
+    ],
     locale: 'fr_FR',
     type: 'website',
   },
 };
 
-export default function ApplicationMobileLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ApplicationMobileLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

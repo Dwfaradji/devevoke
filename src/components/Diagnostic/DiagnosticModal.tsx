@@ -131,7 +131,11 @@ export default function DiagnosticModal({
     if (currentQ.dimension === 'organization') return 'organization';
     if (currentQ.dimension === 'businessTools') return 'businessTools';
     if (currentQ.dimension === 'mobility' || currentQ.dimension === 'data') return 'data';
-    if (currentQ.dimension === 'security' || currentQ.dimension === 'management' || currentQ.dimension === 'fleet') {
+    if (
+      currentQ.dimension === 'security' ||
+      currentQ.dimension === 'management' ||
+      currentQ.dimension === 'fleet'
+    ) {
       return 'security';
     }
     return 'organization';
@@ -300,10 +304,10 @@ export default function DiagnosticModal({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-[100] flex items-center justify-center p-0 sm:p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200 select-none print:static print:inset-auto print:z-auto print:bg-transparent print:backdrop-blur-none print:p-0 print:m-0 print:block print:w-full print:h-auto"
+      className="animate-in fade-in fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-0 backdrop-blur-md duration-200 select-none sm:p-4 print:static print:inset-auto print:z-auto print:m-0 print:block print:h-auto print:w-full print:bg-transparent print:p-0 print:backdrop-blur-none"
     >
       {/* Fenêtre Modal : Large Desktop min(1100px), Plein écran Mobile 100dvh */}
-      <div className="relative w-screen sm:w-[min(1100px,calc(100vw-32px))] h-[100dvh] sm:h-[min(820px,calc(100vh-32px))] bg-neutral-950 border-0 sm:border sm:border-primary-500/30 rounded-none sm:rounded-[24px] shadow-2xl flex flex-col overflow-hidden text-left print:hidden">
+      <div className="sm:border-primary-500/30 relative flex h-[100dvh] w-screen flex-col overflow-hidden rounded-none border-0 bg-neutral-950 text-left shadow-2xl sm:h-[min(820px,calc(100vh-32px))] sm:w-[min(1100px,calc(100vw-32px))] sm:rounded-[24px] sm:border print:hidden">
         {/* HEADER FIXE */}
         <DiagnosticHeader
           currentStepNumber={currentStepNumber}
@@ -316,7 +320,7 @@ export default function DiagnosticModal({
         {/* ZONE DE CONTENU SCROLLABLE CENTRÉE */}
         <div
           ref={contentRef}
-          className="flex-1 overflow-y-auto px-5 sm:px-12 py-6 sm:py-8 flex flex-col justify-start relative z-10"
+          className="relative z-10 flex flex-1 flex-col justify-start overflow-y-auto px-5 py-6 sm:px-12 sm:py-8"
         >
           <AnimatePresence mode="wait" custom={direction}>
             {/* 1. ÉCRAN D'INTRODUCTION */}
@@ -329,50 +333,51 @@ export default function DiagnosticModal({
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.28, ease: 'easeOut' }}
-                className="my-auto max-w-2xl mx-auto text-center space-y-6"
+                className="mx-auto my-auto max-w-2xl space-y-6 text-center"
               >
-                <div className="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-primary-600 to-cyan-400 p-0.5 shadow-xl shadow-primary-500/25">
-                  <div className="w-full h-full bg-neutral-950 rounded-2xl flex items-center justify-center">
-                    <Sparkles className="w-7 h-7 text-primary-400" />
+                <div className="from-primary-600 shadow-primary-500/25 mx-auto h-14 w-14 rounded-2xl bg-gradient-to-tr to-cyan-400 p-0.5 shadow-xl">
+                  <div className="flex h-full w-full items-center justify-center rounded-2xl bg-neutral-950">
+                    <Sparkles className="text-primary-400 h-7 w-7" />
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-primary-400">
+                  <span className="text-primary-400 text-xs font-bold tracking-wider uppercase">
                     Auto-évaluation médico-sociale
                   </span>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+                  <h2 className="text-3xl leading-tight font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
                     Évaluez votre maturité numérique
                   </h2>
-                  <p className="text-sm sm:text-base text-neutral-300 leading-relaxed max-w-lg mx-auto">
-                    Répondez à quelques questions pour identifier vos forces, vos points de vigilance et vos priorités numériques.
+                  <p className="mx-auto max-w-lg text-sm leading-relaxed text-neutral-300 sm:text-base">
+                    Répondez à quelques questions pour identifier vos forces, vos points de
+                    vigilance et vos priorités numériques.
                   </p>
                 </div>
 
                 {/* 3 Bénéfices */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-left py-2">
-                  <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 flex items-center gap-2.5">
-                    <Clock className="w-4 h-4 text-primary-400 shrink-0" />
+                <div className="grid grid-cols-1 gap-3 py-2 text-left sm:grid-cols-3">
+                  <div className="flex items-center gap-2.5 rounded-2xl border border-white/5 bg-white/[0.03] p-3.5">
+                    <Clock className="text-primary-400 h-4 w-4 shrink-0" />
                     <span className="text-xs font-semibold text-white">≈ 4 minutes</span>
                   </div>
-                  <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 flex items-center gap-2.5">
-                    <Award className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <div className="flex items-center gap-2.5 rounded-2xl border border-white/5 bg-white/[0.03] p-3.5">
+                    <Award className="h-4 w-4 shrink-0 text-emerald-400" />
                     <span className="text-xs font-semibold text-white">Résultat personnalisé</span>
                   </div>
-                  <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 flex items-center gap-2.5">
-                    <Target className="w-4 h-4 text-cyan-400 shrink-0" />
+                  <div className="flex items-center gap-2.5 rounded-2xl border border-white/5 bg-white/[0.03] p-3.5">
+                    <Target className="h-4 w-4 shrink-0 text-cyan-400" />
                     <span className="text-xs font-semibold text-white">Conseils concrets</span>
                   </div>
                 </div>
 
-                <div className="pt-4 flex flex-col items-center gap-3">
+                <div className="flex flex-col items-center gap-3 pt-4">
                   <button
                     type="button"
                     onClick={goToNext}
-                    className="btn-primary w-full sm:w-auto px-8 py-4 text-sm font-bold flex items-center justify-center gap-2 shadow-xl shadow-primary-500/25 cursor-pointer hover:scale-[1.02] active:scale-[0.98] transition-all"
+                    className="btn-primary shadow-primary-500/25 flex w-full cursor-pointer items-center justify-center gap-2 px-8 py-4 text-sm font-bold shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98] sm:w-auto"
                   >
                     <span>Commencer le diagnostic</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="h-4 w-4" />
                   </button>
                   <p className="text-[11px] text-neutral-400">
                     Aucune donnée concernant les personnes accompagnées ne vous sera demandée.
@@ -391,21 +396,22 @@ export default function DiagnosticModal({
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.28, ease: 'easeOut' }}
-                className="my-auto max-w-2xl mx-auto w-full space-y-6"
+                className="mx-auto my-auto w-full max-w-2xl space-y-6"
               >
-                <div className="text-center space-y-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-primary-400">
+                <div className="space-y-2 text-center">
+                  <span className="text-primary-400 text-xs font-bold tracking-wider uppercase">
                     Profil de votre organisation • 1 / 5
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                  <h3 className="text-2xl font-extrabold text-white sm:text-3xl">
                     Quel type d'établissement ou association représentez-vous ?
                   </h3>
                   <p className="text-xs text-neutral-400">
-                    Cette information permet de calibrer nos conseils selon vos contraintes légales. (0 point).
+                    Cette information permet de calibrer nos conseils selon vos contraintes légales.
+                    (0 point).
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   {STRUCTURE_OPTIONS.map((opt, idx) => (
                     <OptionCard
                       key={opt.value}
@@ -434,13 +440,13 @@ export default function DiagnosticModal({
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.28, ease: 'easeOut' }}
-                className="my-auto max-w-xl mx-auto w-full space-y-6"
+                className="mx-auto my-auto w-full max-w-xl space-y-6"
               >
-                <div className="text-center space-y-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-primary-400">
+                <div className="space-y-2 text-center">
+                  <span className="text-primary-400 text-xs font-bold tracking-wider uppercase">
                     Profil de votre organisation • 2 / 5
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                  <h3 className="text-2xl font-extrabold text-white sm:text-3xl">
                     Combien de professionnels travaillent dans votre structure ?
                   </h3>
                   <p className="text-xs text-neutral-400">
@@ -476,13 +482,13 @@ export default function DiagnosticModal({
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.28, ease: 'easeOut' }}
-                className="my-auto max-w-xl mx-auto w-full space-y-6"
+                className="mx-auto my-auto w-full max-w-xl space-y-6"
               >
-                <div className="text-center space-y-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-primary-400">
+                <div className="space-y-2 text-center">
+                  <span className="text-primary-400 text-xs font-bold tracking-wider uppercase">
                     Profil de votre organisation • 3 / 5
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                  <h3 className="text-2xl font-extrabold text-white sm:text-3xl">
                     Combien de sites ou établissements gérez-vous ?
                   </h3>
                   <p className="text-xs text-neutral-400">
@@ -518,13 +524,13 @@ export default function DiagnosticModal({
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.28, ease: 'easeOut' }}
-                className="my-auto max-w-xl mx-auto w-full space-y-6"
+                className="mx-auto my-auto w-full max-w-xl space-y-6"
               >
-                <div className="text-center space-y-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-primary-400">
+                <div className="space-y-2 text-center">
+                  <span className="text-primary-400 text-xs font-bold tracking-wider uppercase">
                     Profil de votre organisation • 4 / 5
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                  <h3 className="text-2xl font-extrabold text-white sm:text-3xl">
                     Vos équipes interviennent-elles régulièrement en mobilité ?
                   </h3>
                   <p className="text-xs text-neutral-400">
@@ -561,13 +567,13 @@ export default function DiagnosticModal({
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.28, ease: 'easeOut' }}
-                className="my-auto max-w-xl mx-auto w-full space-y-6"
+                className="mx-auto my-auto w-full max-w-xl space-y-6"
               >
-                <div className="text-center space-y-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-primary-400">
+                <div className="space-y-2 text-center">
+                  <span className="text-primary-400 text-xs font-bold tracking-wider uppercase">
                     Profil de votre organisation • 5 / 5
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                  <h3 className="text-2xl font-extrabold text-white sm:text-3xl">
                     Votre organisation gère-t-elle des véhicules de service ?
                   </h3>
                   <p className="text-xs text-neutral-400">
@@ -604,20 +610,20 @@ export default function DiagnosticModal({
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.28, ease: 'easeOut' }}
-                className="my-auto max-w-2xl mx-auto w-full space-y-6"
+                className="mx-auto my-auto w-full max-w-2xl space-y-6"
               >
                 {/* En-tête de la question */}
                 <div className="space-y-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-primary-400">
+                  <span className="text-primary-400 text-xs font-bold tracking-wider uppercase">
                     {currentQ.dimension === 'fleet'
                       ? 'GESTION DE FLOTTE AUTOMOBILE'
                       : currentQ.dimension?.toUpperCase()}
                   </span>
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white leading-snug">
+                  <h3 className="text-xl leading-snug font-extrabold text-white sm:text-2xl lg:text-3xl">
                     {currentQ.label}
                   </h3>
                   {currentQ.subtitle && (
-                    <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+                    <p className="text-xs leading-relaxed text-neutral-300 sm:text-sm">
                       {currentQ.subtitle}
                     </p>
                   )}
@@ -672,49 +678,49 @@ export default function DiagnosticModal({
                 className="w-full space-y-8 py-2"
               >
                 {/* Bloc 1 : Score Global Animé */}
-                <div className="glass rounded-3xl p-6 sm:p-10 border border-white/10 relative overflow-hidden shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
-                  <div className="space-y-3 text-center md:text-left flex-1">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-xs font-semibold uppercase tracking-wider">
-                      <Sparkles className="w-3.5 h-3.5" />
+                <div className="glass relative flex flex-col items-center justify-between gap-8 overflow-hidden rounded-3xl border border-white/10 p-6 shadow-2xl sm:p-10 md:flex-row">
+                  <div className="flex-1 space-y-3 text-center md:text-left">
+                    <div className="bg-primary-500/10 border-primary-500/20 text-primary-400 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+                      <Sparkles className="h-3.5 w-3.5" />
                       <span>Diagnostic finalisé</span>
                     </div>
 
-                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
-                      <h3 className="text-3xl sm:text-4xl font-black text-white">
+                    <div className="flex flex-wrap items-center justify-center gap-3 md:justify-start">
+                      <h3 className="text-3xl font-black text-white sm:text-4xl">
                         {report.maturityLevel.label}
                       </h3>
                       <span
-                        className={`text-xs font-bold px-3 py-1 rounded-full bg-gradient-to-r ${report.maturityLevel.color} text-black uppercase tracking-wider shadow`}
+                        className={`rounded-full bg-gradient-to-r px-3 py-1 text-xs font-bold ${report.maturityLevel.color} tracking-wider text-black uppercase shadow`}
                       >
                         {report.maturityLevel.badge}
                       </span>
                     </div>
 
-                    <p className="text-sm text-neutral-300 leading-relaxed max-w-xl">
+                    <p className="max-w-xl text-sm leading-relaxed text-neutral-300">
                       {report.maturityLevel.description}
                     </p>
 
-                    <div className="pt-2 text-xs text-neutral-400 italic border-t border-white/5 leading-relaxed">
+                    <div className="border-t border-white/5 pt-2 text-xs leading-relaxed text-neutral-400 italic">
                       « {report.customSynthesis} »
                     </div>
                   </div>
 
                   {/* Chiffre animé */}
-                  <div className="shrink-0 flex flex-col items-center justify-center w-36 h-36 sm:w-44 sm:h-44 rounded-3xl bg-neutral-900/90 border border-primary-500/30 shadow-2xl relative">
-                    <div className="text-5xl sm:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary-400 via-teal-300 to-emerald-400">
+                  <div className="border-primary-500/30 relative flex h-36 w-36 shrink-0 flex-col items-center justify-center rounded-3xl border bg-neutral-900/90 shadow-2xl sm:h-44 sm:w-44">
+                    <div className="from-primary-400 bg-gradient-to-r via-teal-300 to-emerald-400 bg-clip-text text-5xl font-black text-transparent sm:text-6xl">
                       {displayScore}
                     </div>
-                    <div className="text-xs font-bold text-neutral-400 uppercase tracking-widest mt-1">
+                    <div className="mt-1 text-xs font-bold tracking-widest text-neutral-400 uppercase">
                       sur 100
                     </div>
-                    <span className="text-[10px] text-primary-300 font-mono mt-1">
+                    <span className="text-primary-300 mt-1 font-mono text-[10px]">
                       Score de maturité
                     </span>
                   </div>
                 </div>
 
                 {/* Bloc 2 : Profil Radar */}
-                <div className="glass rounded-3xl p-6 sm:p-8 border border-white/10 space-y-4">
+                <div className="glass space-y-4 rounded-3xl border border-white/10 p-6 sm:p-8">
                   <div className="flex items-center justify-between border-b border-white/5 pb-4">
                     <div>
                       <h4 className="text-lg font-bold text-white">Votre profil numérique</h4>
@@ -728,22 +734,24 @@ export default function DiagnosticModal({
 
                 {/* Bloc 3 : Points Forts */}
                 {report.strengths.length > 0 && (
-                  <div className="glass rounded-3xl p-6 sm:p-8 border border-white/10 space-y-4">
+                  <div className="glass space-y-4 rounded-3xl border border-white/10 p-6 sm:p-8">
                     <div className="flex items-center gap-2">
-                      <Award className="w-5 h-5 text-emerald-400" />
+                      <Award className="h-5 w-5 text-emerald-400" />
                       <h4 className="text-lg font-bold text-white">Vos points forts</h4>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
                       {report.strengths.map((item) => (
                         <div
                           key={item.id}
-                          className="p-4 rounded-2xl bg-white/[0.02] border border-emerald-500/20"
+                          className="rounded-2xl border border-emerald-500/20 bg-white/[0.02] p-4"
                         >
-                          <div className="flex items-center gap-1.5 text-emerald-400 font-bold text-xs mb-1">
-                            <CheckCircle2 className="w-3.5 h-3.5" />
+                          <div className="mb-1 flex items-center gap-1.5 text-xs font-bold text-emerald-400">
+                            <CheckCircle2 className="h-3.5 w-3.5" />
                             <span>{item.title}</span>
                           </div>
-                          <p className="text-xs text-neutral-300 leading-snug">{item.description}</p>
+                          <p className="text-xs leading-snug text-neutral-300">
+                            {item.description}
+                          </p>
                         </div>
                       ))}
                     </div>
@@ -751,36 +759,37 @@ export default function DiagnosticModal({
                 )}
 
                 {/* Bloc 4 : Points de Vigilance */}
-                <div className="glass rounded-3xl p-6 sm:p-8 border border-white/10 space-y-4">
+                <div className="glass space-y-4 rounded-3xl border border-white/10 p-6 sm:p-8">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <AlertTriangle className="w-5 h-5 text-amber-400" />
+                      <AlertTriangle className="h-5 w-5 text-amber-400" />
                       <h4 className="text-lg font-bold text-white">Points de vigilance</h4>
                     </div>
                     <div className="flex items-center gap-2 text-xs">
                       {report.riskCounts.critical > 0 && (
-                        <span className="px-2 py-0.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 font-mono text-[11px]">
-                          🔴 {report.riskCounts.critical} critique{report.riskCounts.critical > 1 ? 's' : ''}
+                        <span className="rounded-full border border-rose-500/30 bg-rose-500/15 px-2 py-0.5 font-mono text-[11px] text-rose-300">
+                          🔴 {report.riskCounts.critical} critique
+                          {report.riskCounts.critical > 1 ? 's' : ''}
                         </span>
                       )}
                       {report.riskCounts.high > 0 && (
-                        <span className="px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 font-mono text-[11px]">
+                        <span className="rounded-full border border-amber-500/30 bg-amber-500/15 px-2 py-0.5 font-mono text-[11px] text-amber-300">
                           🟠 {report.riskCounts.high} élevé{report.riskCounts.high > 1 ? 's' : ''}
                         </span>
                       )}
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                  <div className="grid grid-cols-1 gap-3.5 md:grid-cols-2">
                     {report.risks.slice(0, 4).map((risk) => (
                       <div
                         key={risk.id}
-                        className="p-4 rounded-2xl bg-neutral-900/60 border border-white/10 space-y-2 text-xs"
+                        className="space-y-2 rounded-2xl border border-white/10 bg-neutral-900/60 p-4 text-xs"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="font-bold text-white text-xs">{risk.title}</span>
+                          <span className="text-xs font-bold text-white">{risk.title}</span>
                           <span
-                            className={`text-[9px] uppercase font-bold px-2 py-0.5 rounded-full ${
+                            className={`rounded-full px-2 py-0.5 text-[9px] font-bold uppercase ${
                               risk.level === 'critical'
                                 ? 'bg-rose-500/20 text-rose-300'
                                 : 'bg-amber-500/20 text-amber-300'
@@ -789,8 +798,10 @@ export default function DiagnosticModal({
                             {risk.level}
                           </span>
                         </div>
-                        <p className="text-neutral-400 leading-relaxed text-[11px]">{risk.description}</p>
-                        <p className="text-primary-300 font-medium text-[11px] pt-1 border-t border-white/5">
+                        <p className="text-[11px] leading-relaxed text-neutral-400">
+                          {risk.description}
+                        </p>
+                        <p className="text-primary-300 border-t border-white/5 pt-1 text-[11px] font-medium">
                           → {risk.recommendation}
                         </p>
                       </div>
@@ -799,30 +810,34 @@ export default function DiagnosticModal({
                 </div>
 
                 {/* Bloc 5 : Vos 3 Priorités */}
-                <div className="glass rounded-3xl p-6 sm:p-8 border border-primary-500/30 space-y-4">
+                <div className="glass border-primary-500/30 space-y-4 rounded-3xl border p-6 sm:p-8">
                   <div className="flex items-center gap-2">
-                    <Target className="w-5 h-5 text-primary-400" />
+                    <Target className="text-primary-400 h-5 w-5" />
                     <h4 className="text-lg font-bold text-white">Vos 3 priorités d'action</h4>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                     {report.priorities.map((item, idx) => (
                       <div
                         key={item.id}
-                        className="p-4 rounded-2xl bg-neutral-900/80 border border-white/10 flex flex-col justify-between space-y-3"
+                        className="flex flex-col justify-between space-y-3 rounded-2xl border border-white/10 bg-neutral-900/80 p-4"
                       >
                         <div>
-                          <div className="flex items-center justify-between gap-2 mb-2">
-                            <span className="w-5 h-5 rounded-md bg-primary-500 text-white font-black text-xs flex items-center justify-center">
+                          <div className="mb-2 flex items-center justify-between gap-2">
+                            <span className="bg-primary-500 flex h-5 w-5 items-center justify-center rounded-md text-xs font-black text-white">
                               0{idx + 1}
                             </span>
-                            <span className="text-[10px] font-mono text-primary-300 bg-primary-500/10 px-2 py-0.5 rounded">
+                            <span className="text-primary-300 bg-primary-500/10 rounded px-2 py-0.5 font-mono text-[10px]">
                               {item.horizon}
                             </span>
                           </div>
-                          <h5 className="font-bold text-white text-xs leading-snug mb-1">{item.title}</h5>
-                          <p className="text-[11px] text-neutral-400 leading-relaxed">{item.description}</p>
+                          <h5 className="mb-1 text-xs leading-snug font-bold text-white">
+                            {item.title}
+                          </h5>
+                          <p className="text-[11px] leading-relaxed text-neutral-400">
+                            {item.description}
+                          </p>
                         </div>
-                        <div className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 text-[11px] text-emerald-300">
+                        <div className="rounded-xl border border-white/5 bg-white/[0.02] p-2.5 text-[11px] text-emerald-300">
                           {item.action}
                         </div>
                       </div>
@@ -832,21 +847,23 @@ export default function DiagnosticModal({
 
                 {/* Bloc 6 : Actions rapides (Quick Wins) */}
                 {report.quickWins.length > 0 && (
-                  <div className="glass rounded-3xl p-6 sm:p-8 border border-white/10 space-y-4">
+                  <div className="glass space-y-4 rounded-3xl border border-white/10 p-6 sm:p-8">
                     <div className="flex items-center gap-2">
-                      <Zap className="w-5 h-5 text-amber-400" />
-                      <h4 className="text-lg font-bold text-white">Actions rapides à fort impact</h4>
+                      <Zap className="h-5 w-5 text-amber-400" />
+                      <h4 className="text-lg font-bold text-white">
+                        Actions rapides à fort impact
+                      </h4>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                       {report.quickWins.map((item) => (
                         <div
                           key={item.id}
-                          className="p-3.5 rounded-2xl bg-neutral-900/60 border border-white/10 text-xs"
+                          className="rounded-2xl border border-white/10 bg-neutral-900/60 p-3.5 text-xs"
                         >
-                          <span className="text-[10px] font-mono text-amber-300 block mb-1">
+                          <span className="mb-1 block font-mono text-[10px] text-amber-300">
                             Effort faible • 0–30 jours
                           </span>
-                          <h5 className="font-bold text-white mb-1">{item.title}</h5>
+                          <h5 className="mb-1 font-bold text-white">{item.title}</h5>
                           <p className="text-[11px] text-neutral-400">{item.action}</p>
                         </div>
                       ))}
@@ -855,30 +872,36 @@ export default function DiagnosticModal({
                 )}
 
                 {/* Bloc 7 : Roadmap Timeline (Horizontal desktop / Vertical mobile) */}
-                <div className="glass rounded-3xl p-6 sm:p-8 border border-white/10 space-y-4">
+                <div className="glass space-y-4 rounded-3xl border border-white/10 p-6 sm:p-8">
                   <div className="flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-primary-400" />
+                    <Calendar className="text-primary-400 h-5 w-5" />
                     <h4 className="text-lg font-bold text-white">Feuille de route séquentielle</h4>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-                    <div className="p-4 rounded-2xl bg-neutral-900/60 border border-rose-500/20 space-y-2">
-                      <span className="text-xs font-bold text-rose-300 block uppercase">30 JOURS</span>
+                  <div className="grid grid-cols-1 gap-3 text-xs md:grid-cols-3">
+                    <div className="space-y-2 rounded-2xl border border-rose-500/20 bg-neutral-900/60 p-4">
+                      <span className="block text-xs font-bold text-rose-300 uppercase">
+                        30 JOURS
+                      </span>
                       <ul className="space-y-1.5 text-[11px] text-neutral-300">
                         {report.roadmap.thirtyDays.map((r) => (
                           <li key={r.id}>• {r.title}</li>
                         ))}
                       </ul>
                     </div>
-                    <div className="p-4 rounded-2xl bg-neutral-900/60 border border-primary-500/20 space-y-2">
-                      <span className="text-xs font-bold text-primary-300 block uppercase">3 MOIS</span>
+                    <div className="border-primary-500/20 space-y-2 rounded-2xl border bg-neutral-900/60 p-4">
+                      <span className="text-primary-300 block text-xs font-bold uppercase">
+                        3 MOIS
+                      </span>
                       <ul className="space-y-1.5 text-[11px] text-neutral-300">
                         {report.roadmap.threeMonths.map((r) => (
                           <li key={r.id}>• {r.title}</li>
                         ))}
                       </ul>
                     </div>
-                    <div className="p-4 rounded-2xl bg-neutral-900/60 border border-emerald-500/20 space-y-2">
-                      <span className="text-xs font-bold text-emerald-300 block uppercase">6 MOIS</span>
+                    <div className="space-y-2 rounded-2xl border border-emerald-500/20 bg-neutral-900/60 p-4">
+                      <span className="block text-xs font-bold text-emerald-300 uppercase">
+                        6 MOIS
+                      </span>
                       <ul className="space-y-1.5 text-[11px] text-neutral-300">
                         {report.roadmap.sixMonths.map((r) => (
                           <li key={r.id}>• {r.title}</li>
@@ -889,33 +912,36 @@ export default function DiagnosticModal({
                 </div>
 
                 {/* Bloc 8 : CTA Final */}
-                <div className="glass rounded-3xl p-8 sm:p-10 border border-primary-500/40 text-center space-y-4">
-                  <div className="max-w-xl mx-auto space-y-2">
+                <div className="glass border-primary-500/40 space-y-4 rounded-3xl border p-8 text-center sm:p-10">
+                  <div className="mx-auto max-w-xl space-y-2">
                     <h4 className="text-2xl font-black text-white">
                       Vous souhaitez aller plus loin ?
                     </h4>
-                    <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
-                      Nous pouvons vous aider à transformer ces priorités en solutions numériques concrètes et adaptées à votre organisation.
+                    <p className="text-xs leading-relaxed text-neutral-300 sm:text-sm">
+                      Nous pouvons vous aider à transformer ces priorités en solutions numériques
+                      concrètes et adaptées à votre organisation.
                     </p>
-                    <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <div className="flex flex-col items-center justify-center gap-3 pt-3 sm:flex-row">
                       <button
                         type="button"
                         onClick={() => setScreen('report')}
-                        className="btn-primary w-full sm:w-auto px-6 py-3.5 text-xs sm:text-sm font-bold flex items-center justify-center gap-2 cursor-pointer shadow-xl"
+                        className="btn-primary flex w-full cursor-pointer items-center justify-center gap-2 px-6 py-3.5 text-xs font-bold shadow-xl sm:w-auto sm:text-sm"
                       >
-                        <FileText className="w-4 h-4" />
+                        <FileText className="h-4 w-4" />
                         <span>Recevoir mon rapport détaillé</span>
                       </button>
                       <button
                         type="button"
                         onClick={() => {
-                          const sanitizedOrg = (profile.name || 'etablissement').toLowerCase().replace(/[^a-z0-9]/g, '-');
+                          const sanitizedOrg = (profile.name || 'etablissement')
+                            .toLowerCase()
+                            .replace(/[^a-z0-9]/g, '-');
                           document.title = `diagnostic-numerique-devevoke-${sanitizedOrg}`;
                           window.print();
                         }}
-                        className="btn-outline w-full sm:w-auto px-5 py-3 text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer"
+                        className="btn-outline flex w-full cursor-pointer items-center justify-center gap-2 px-5 py-3 text-xs font-semibold sm:w-auto"
                       >
-                        <Printer className="w-4 h-4" />
+                        <Printer className="h-4 w-4" />
                         <span>Imprimer / PDF</span>
                       </button>
                     </div>
@@ -923,21 +949,21 @@ export default function DiagnosticModal({
                 </div>
 
                 {/* Disclaimer */}
-                <p className="text-[10px] text-neutral-400 text-center max-w-2xl mx-auto italic">
+                <p className="mx-auto max-w-2xl text-center text-[10px] text-neutral-400 italic">
                   {DIAGNOSTIC_DISCLAIMER}
                 </p>
 
                 {/* Recommencer */}
-                <div className="text-center pt-2 pb-4">
+                <div className="pt-2 pb-4 text-center">
                   <button
                     type="button"
                     onClick={() => {
                       onReset();
                       setScreen('intro');
                     }}
-                    className="inline-flex items-center gap-1.5 text-xs text-neutral-400 hover:text-white transition-colors cursor-pointer"
+                    className="inline-flex cursor-pointer items-center gap-1.5 text-xs text-neutral-400 transition-colors hover:text-white"
                   >
-                    <RotateCcw className="w-3.5 h-3.5" />
+                    <RotateCcw className="h-3.5 w-3.5" />
                     <span>Recommencer un nouveau diagnostic</span>
                   </button>
                 </div>
@@ -956,41 +982,44 @@ export default function DiagnosticModal({
         </div>
 
         {/* FOOTER DE NAVIGATION FIXE (uniquement sur étapes de questions) */}
-        {screen !== 'intro' && screen !== 'analyzing' && screen !== 'results' && screen !== 'report' && (
-          <DiagnosticFooter
-            onPrev={goToPrev}
-            onNext={goToNext}
-            canGoPrev={true}
-            canGoNext={
-              screen === 'profile_structure'
-                ? Boolean(profile.structureType)
-                : screen === 'profile_size'
-                ? Boolean(profile.size)
-                : screen === 'profile_sites'
-                ? Boolean(profile.siteCount)
-                : screen === 'profile_mobility'
-                ? Boolean(profile.mobility)
-                : screen === 'profile_fleet'
-                ? Boolean(profile.fleet)
-                : screen === 'question'
-                ? Boolean(answers[currentQ?.id])
-                : true
-            }
-            isLastQuestion={screen === 'question' && questionIndex === activeQuestions.length - 1}
-            estimatedTimeLeft={estimatedTimeLeft}
-          />
-        )}
+        {screen !== 'intro' &&
+          screen !== 'analyzing' &&
+          screen !== 'results' &&
+          screen !== 'report' && (
+            <DiagnosticFooter
+              onPrev={goToPrev}
+              onNext={goToNext}
+              canGoPrev={true}
+              canGoNext={
+                screen === 'profile_structure'
+                  ? Boolean(profile.structureType)
+                  : screen === 'profile_size'
+                    ? Boolean(profile.size)
+                    : screen === 'profile_sites'
+                      ? Boolean(profile.siteCount)
+                      : screen === 'profile_mobility'
+                        ? Boolean(profile.mobility)
+                        : screen === 'profile_fleet'
+                          ? Boolean(profile.fleet)
+                          : screen === 'question'
+                            ? Boolean(answers[currentQ?.id])
+                            : true
+              }
+              isLastQuestion={screen === 'question' && questionIndex === activeQuestions.length - 1}
+              estimatedTimeLeft={estimatedTimeLeft}
+            />
+          )}
       </div>
 
       {/* CONFIRMATION DE FERMETURE EN COURS DE PARCOURS */}
       {showExitConfirm && (
-        <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-in fade-in print:hidden">
-          <div className="bg-neutral-900 border border-white/10 rounded-2xl p-6 max-w-sm w-full space-y-4 text-center shadow-2xl">
-            <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mx-auto">
-              <AlertTriangle className="w-5 h-5" />
+        <div className="animate-in fade-in fixed inset-0 z-[110] flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm print:hidden">
+          <div className="w-full max-w-sm space-y-4 rounded-2xl border border-white/10 bg-neutral-900 p-6 text-center shadow-2xl">
+            <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-400">
+              <AlertTriangle className="h-5 w-5" />
             </div>
             <div>
-              <h4 className="text-base font-bold text-white mb-1">Quitter le diagnostic ?</h4>
+              <h4 className="mb-1 text-base font-bold text-white">Quitter le diagnostic ?</h4>
               <p className="text-xs text-neutral-400">
                 Votre progression en cours sera perdue si vous fermez maintenant.
               </p>
@@ -999,14 +1028,14 @@ export default function DiagnosticModal({
               <button
                 type="button"
                 onClick={() => setShowExitConfirm(false)}
-                className="btn-primary flex-1 py-2 text-xs font-bold cursor-pointer"
+                className="btn-primary flex-1 cursor-pointer py-2 text-xs font-bold"
               >
                 Continuer
               </button>
               <button
                 type="button"
                 onClick={handleConfirmExit}
-                className="flex-1 py-2 text-xs font-semibold rounded-xl bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white cursor-pointer transition-colors"
+                className="flex-1 cursor-pointer rounded-xl bg-white/5 py-2 text-xs font-semibold text-neutral-300 transition-colors hover:bg-white/10 hover:text-white"
               >
                 Quitter
               </button>

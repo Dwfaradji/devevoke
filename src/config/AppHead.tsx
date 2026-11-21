@@ -32,12 +32,7 @@ const AppHead: React.FC = () => {
         />
       ))}
       {metadata.icons.other.map((otherIcon, index) => (
-        <link
-          key={`other-icon-${index}`}
-          rel="mask-icon"
-          href={otherIcon.url}
-          color="#5bbad5"
-        />
+        <link key={`other-icon-${index}`} rel="mask-icon" href={otherIcon.url} color="#5bbad5" />
       ))}
       <link rel="manifest" href={metadata.manifest} />
     </>

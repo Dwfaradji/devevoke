@@ -26,7 +26,7 @@ export default function PrintableReport({ report }: PrintableReportProps) {
   return (
     <div
       id="printable-diagnostic-report"
-      className="hidden print:block text-black bg-white p-8 max-w-[210mm] mx-auto font-sans leading-relaxed text-xs"
+      className="mx-auto hidden max-w-[210mm] bg-white p-8 font-sans text-xs leading-relaxed text-black print:block"
     >
       <style>{`
         @media print {
@@ -64,49 +64,48 @@ export default function PrintableReport({ report }: PrintableReportProps) {
       `}</style>
 
       {/* EN-TÊTE DU RAPPORT */}
-      <div className="border-b-2 border-primary-600 pb-4 mb-6 flex justify-between items-start">
+      <div className="border-primary-600 mb-6 flex items-start justify-between border-b-2 pb-4">
         <div>
-          <span className="text-primary-700 font-bold uppercase text-[10px] tracking-wider block">
+          <span className="text-primary-700 block text-[10px] font-bold tracking-wider uppercase">
             DevEvoke • Ingénierie & Solutions Numériques Médico-Sociales
           </span>
-          <h1 className="text-xl font-black text-gray-900 mt-1">
+          <h1 className="mt-1 text-xl font-black text-gray-900">
             Rapport de Diagnostic de Maturité Numérique
           </h1>
-          <p className="text-gray-600 text-[11px] mt-0.5">
-            Structure : <strong>{organization.name || 'Établissement médico-social'}</strong> ({organization.structureType}) • {completedAt}
+          <p className="mt-0.5 text-[11px] text-gray-600">
+            Structure : <strong>{organization.name || 'Établissement médico-social'}</strong> (
+            {organization.structureType}) • {completedAt}
           </p>
         </div>
         <div className="text-right">
-          <div className="text-3xl font-black text-primary-700">{globalScore}/100</div>
-          <span className="text-[10px] font-bold uppercase bg-gray-100 px-2 py-0.5 rounded text-gray-800">
+          <div className="text-primary-700 text-3xl font-black">{globalScore}/100</div>
+          <span className="rounded bg-gray-100 px-2 py-0.5 text-[10px] font-bold text-gray-800 uppercase">
             {maturityLevel.label}
           </span>
         </div>
       </div>
 
       {/* SYNTHÈSE EXÉCUTIVE */}
-      <div className="avoid-break mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
-        <h2 className="text-sm font-bold text-gray-900 mb-1.5 uppercase tracking-wide">
+      <div className="avoid-break mb-6 rounded-lg border border-gray-200 bg-gray-50 p-4">
+        <h2 className="mb-1.5 text-sm font-bold tracking-wide text-gray-900 uppercase">
           1. Synthèse Exécutive
         </h2>
-        <p className="text-gray-700 text-xs leading-relaxed mb-2">
-          {maturityLevel.description}
-        </p>
-        <p className="text-gray-800 text-xs italic bg-white p-2.5 rounded border border-gray-200">
+        <p className="mb-2 text-xs leading-relaxed text-gray-700">{maturityLevel.description}</p>
+        <p className="rounded border border-gray-200 bg-white p-2.5 text-xs text-gray-800 italic">
           « {customSynthesis} »
         </p>
       </div>
 
       {/* SCORES PAR DIMENSION */}
       <div className="avoid-break mb-6">
-        <h2 className="text-sm font-bold text-gray-900 mb-2 uppercase tracking-wide">
+        <h2 className="mb-2 text-sm font-bold tracking-wide text-gray-900 uppercase">
           2. Profil de Maturité par Dimension
         </h2>
         <table className="w-full border-collapse border border-gray-200 text-xs">
           <thead>
             <tr className="bg-gray-100 text-left">
               <th className="border border-gray-200 p-2 font-bold">Dimension</th>
-              <th className="border border-gray-200 p-2 font-bold w-24 text-right">Score</th>
+              <th className="w-24 border border-gray-200 p-2 text-right font-bold">Score</th>
               <th className="border border-gray-200 p-2 font-bold">Constat & Analyse</th>
             </tr>
           </thead>
@@ -119,10 +118,10 @@ export default function PrintableReport({ report }: PrintableReportProps) {
                   <td className="border border-gray-200 p-2 font-semibold text-gray-900">
                     {meta.label}
                   </td>
-                  <td className="border border-gray-200 p-2 text-right font-mono font-bold text-primary-700">
+                  <td className="text-primary-700 border border-gray-200 p-2 text-right font-mono font-bold">
                     {score} / 100
                   </td>
-                  <td className="border border-gray-200 p-2 text-gray-600 text-[11px]">
+                  <td className="border border-gray-200 p-2 text-[11px] text-gray-600">
                     {meta.description}
                   </td>
                 </tr>
@@ -135,14 +134,14 @@ export default function PrintableReport({ report }: PrintableReportProps) {
       {/* POINTS FORTS */}
       {strengths.length > 0 && (
         <div className="avoid-break mb-6">
-          <h2 className="text-sm font-bold text-gray-900 mb-2 uppercase tracking-wide">
+          <h2 className="mb-2 text-sm font-bold tracking-wide text-gray-900 uppercase">
             3. Vos Principaux Points Forts
           </h2>
           <div className="grid grid-cols-3 gap-3">
             {strengths.map((item) => (
-              <div key={item.id} className="p-3 bg-gray-50 rounded border border-gray-200">
-                <h3 className="font-bold text-gray-900 text-xs mb-1">{item.title}</h3>
-                <p className="text-gray-600 text-[11px] leading-snug">{item.description}</p>
+              <div key={item.id} className="rounded border border-gray-200 bg-gray-50 p-3">
+                <h3 className="mb-1 text-xs font-bold text-gray-900">{item.title}</h3>
+                <p className="text-[11px] leading-snug text-gray-600">{item.description}</p>
               </div>
             ))}
           </div>
@@ -154,7 +153,7 @@ export default function PrintableReport({ report }: PrintableReportProps) {
 
       {/* POINTS DE VIGILANCE */}
       <div className="avoid-break mb-6">
-        <h2 className="text-sm font-bold text-gray-900 mb-2 uppercase tracking-wide">
+        <h2 className="mb-2 text-sm font-bold tracking-wide text-gray-900 uppercase">
           4. Points de Vigilance & Risques Identifiés
         </h2>
         {risks.length === 0 ? (
@@ -164,16 +163,16 @@ export default function PrintableReport({ report }: PrintableReportProps) {
             {risks.map((risk) => (
               <div
                 key={risk.id}
-                className="p-3 rounded border border-gray-200 bg-white avoid-break"
+                className="avoid-break rounded border border-gray-200 bg-white p-3"
               >
-                <div className="flex justify-between items-center mb-1">
-                  <span className="font-bold text-gray-900 text-xs">{risk.title}</span>
-                  <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-gray-100 text-gray-800">
+                <div className="mb-1 flex items-center justify-between">
+                  <span className="text-xs font-bold text-gray-900">{risk.title}</span>
+                  <span className="rounded bg-gray-100 px-2 py-0.5 text-[10px] font-bold text-gray-800 uppercase">
                     Niveau : {risk.level}
                   </span>
                 </div>
-                <p className="text-gray-600 text-[11px] mb-1.5">{risk.description}</p>
-                <p className="text-primary-800 text-[11px] font-semibold bg-gray-50 p-1.5 rounded">
+                <p className="mb-1.5 text-[11px] text-gray-600">{risk.description}</p>
+                <p className="text-primary-800 rounded bg-gray-50 p-1.5 text-[11px] font-semibold">
                   Recommandation : {risk.recommendation}
                 </p>
               </div>
@@ -184,24 +183,30 @@ export default function PrintableReport({ report }: PrintableReportProps) {
 
       {/* VOS 3 PRIORITÉS */}
       <div className="avoid-break mb-6">
-        <h2 className="text-sm font-bold text-gray-900 mb-2 uppercase tracking-wide">
+        <h2 className="mb-2 text-sm font-bold tracking-wide text-gray-900 uppercase">
           5. Top 3 Priorités d'Action
         </h2>
         <div className="space-y-3">
           {priorities.map((item, idx) => (
-            <div key={item.id} className="p-3 rounded border border-gray-200 bg-gray-50 avoid-break">
-              <div className="flex justify-between items-center mb-1">
-                <span className="font-bold text-gray-900 text-xs">
+            <div
+              key={item.id}
+              className="avoid-break rounded border border-gray-200 bg-gray-50 p-3"
+            >
+              <div className="mb-1 flex items-center justify-between">
+                <span className="text-xs font-bold text-gray-900">
                   {idx + 1}. {item.title}
                 </span>
-                <span className="text-[10px] text-gray-600 font-mono">
-                  Horizon : {item.horizon === '30-days' ? '30 jours' : item.horizon === '3-months' ? '3 mois' : '6 mois'}
+                <span className="font-mono text-[10px] text-gray-600">
+                  Horizon :{' '}
+                  {item.horizon === '30-days'
+                    ? '30 jours'
+                    : item.horizon === '3-months'
+                      ? '3 mois'
+                      : '6 mois'}
                 </span>
               </div>
-              <p className="text-gray-700 text-[11px] mb-1">{item.description}</p>
-              <p className="text-gray-900 font-semibold text-[11px]">
-                Action : {item.action}
-              </p>
+              <p className="mb-1 text-[11px] text-gray-700">{item.description}</p>
+              <p className="text-[11px] font-semibold text-gray-900">Action : {item.action}</p>
             </div>
           ))}
         </div>
@@ -209,29 +214,29 @@ export default function PrintableReport({ report }: PrintableReportProps) {
 
       {/* FEUILLE DE ROUTE */}
       <div className="avoid-break mb-6">
-        <h2 className="text-sm font-bold text-gray-900 mb-2 uppercase tracking-wide">
+        <h2 className="mb-2 text-sm font-bold tracking-wide text-gray-900 uppercase">
           6. Plan d'Action Sequencé
         </h2>
         <div className="grid grid-cols-3 gap-3 text-xs">
-          <div className="border border-gray-200 p-3 rounded bg-white">
-            <h3 className="font-bold text-gray-900 mb-1 border-b pb-1">0 – 30 jours</h3>
-            <ul className="list-disc pl-4 space-y-1 text-[11px] text-gray-700">
+          <div className="rounded border border-gray-200 bg-white p-3">
+            <h3 className="mb-1 border-b pb-1 font-bold text-gray-900">0 – 30 jours</h3>
+            <ul className="list-disc space-y-1 pl-4 text-[11px] text-gray-700">
               {roadmap.thirtyDays.map((r) => (
                 <li key={r.id}>{r.title}</li>
               ))}
             </ul>
           </div>
-          <div className="border border-gray-200 p-3 rounded bg-white">
-            <h3 className="font-bold text-gray-900 mb-1 border-b pb-1">1 – 3 mois</h3>
-            <ul className="list-disc pl-4 space-y-1 text-[11px] text-gray-700">
+          <div className="rounded border border-gray-200 bg-white p-3">
+            <h3 className="mb-1 border-b pb-1 font-bold text-gray-900">1 – 3 mois</h3>
+            <ul className="list-disc space-y-1 pl-4 text-[11px] text-gray-700">
               {roadmap.threeMonths.map((r) => (
                 <li key={r.id}>{r.title}</li>
               ))}
             </ul>
           </div>
-          <div className="border border-gray-200 p-3 rounded bg-white">
-            <h3 className="font-bold text-gray-900 mb-1 border-b pb-1">3 – 6 mois</h3>
-            <ul className="list-disc pl-4 space-y-1 text-[11px] text-gray-700">
+          <div className="rounded border border-gray-200 bg-white p-3">
+            <h3 className="mb-1 border-b pb-1 font-bold text-gray-900">3 – 6 mois</h3>
+            <ul className="list-disc space-y-1 pl-4 text-[11px] text-gray-700">
               {roadmap.sixMonths.map((r) => (
                 <li key={r.id}>{r.title}</li>
               ))}
@@ -241,12 +246,13 @@ export default function PrintableReport({ report }: PrintableReportProps) {
       </div>
 
       {/* DISCLAIMER & CONTACT */}
-      <div className="avoid-break pt-4 mt-6 border-t border-gray-200 text-[10px] text-gray-500 space-y-2">
+      <div className="avoid-break mt-6 space-y-2 border-t border-gray-200 pt-4 text-[10px] text-gray-500">
         <p>
           <strong>Avertissement :</strong> {DIAGNOSTIC_DISCLAIMER}
         </p>
         <p>
-          Document édité par <strong>DevEvoke</strong> • Agence digitale spécialisée secteur médico-social • Contact : contact@devevoke.com • www.devevoke.com
+          Document édité par <strong>DevEvoke</strong> • Agence digitale spécialisée secteur
+          médico-social • Contact : contact@devevoke.com • www.devevoke.com
         </p>
       </div>
     </div>

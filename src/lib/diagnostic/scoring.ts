@@ -174,7 +174,8 @@ export function calculateFleetDiagnostic(
     maxPossible += 4 * q.weight;
   }
 
-  const score = maxPossible > 0 ? Math.max(0, Math.min(100, Math.round((rawScore / maxPossible) * 100))) : 0;
+  const score =
+    maxPossible > 0 ? Math.max(0, Math.min(100, Math.round((rawScore / maxPossible) * 100))) : 0;
 
   let level = 'Initial';
   if (score >= 75) level = 'Maîtrisé & Informatisé';

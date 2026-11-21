@@ -29,17 +29,19 @@ export function DemoConfirmationEmail({ data, referenceId }: DemoConfirmationPro
     {
       step: 1,
       title: 'Vérification du créneau sélectionné',
-      description: 'Nous confirmons la disponibilité de nos ingénieurs et créons le salon visio sécurisé.',
+      description:
+        'Nous confirmons la disponibilité de nos ingénieurs et créons le salon visio sécurisé.',
     },
     {
       step: 2,
       title: 'Envoi du lien de visioconférence (Google Meet / Teams)',
-      description: 'Vous recevrez l\'invitation calendrier sous 24h ouvrées.',
+      description: "Vous recevrez l'invitation calendrier sous 24h ouvrées.",
     },
     {
       step: 3,
       title: 'Démonstration guidée en conditions réelles (30 min)',
-      description: 'Présentation concrète axée sur vos enjeux opérationnels et réponses à vos questions.',
+      description:
+        'Présentation concrète axée sur vos enjeux opérationnels et réponses à vos questions.',
     },
   ];
 
@@ -50,17 +52,13 @@ export function DemoConfirmationEmail({ data, referenceId }: DemoConfirmationPro
     >
       <EmailBadge variant="purple">Démonstration Réservée</EmailBadge>
 
-      <EmailHeading as="h1">
-        Votre demande de démonstration
-      </EmailHeading>
+      <EmailHeading as="h1">Votre demande de démonstration</EmailHeading>
 
       <EmailText variant="bold" size="md">
         {salutation}
       </EmailText>
 
-      <EmailText variant="default">
-        Merci pour votre intérêt pour DevEvoke.
-      </EmailText>
+      <EmailText variant="default">Merci pour votre intérêt pour DevEvoke.</EmailText>
 
       <EmailText variant="muted">
         Nous avons bien reçu votre demande de démonstration concernant{' '}
@@ -69,7 +67,8 @@ export function DemoConfirmationEmail({ data, referenceId }: DemoConfirmationPro
       </EmailText>
 
       <EmailText variant="muted">
-        Nous allons revenir vers vous afin de définir le meilleur créneau et de préparer une démonstration adaptée à votre besoin.
+        Nous allons revenir vers vous afin de définir le meilleur créneau et de préparer une
+        démonstration adaptée à votre besoin.
       </EmailText>
 
       {/* Carte Détails de la Réservation */}
@@ -78,7 +77,12 @@ export function DemoConfirmationEmail({ data, referenceId }: DemoConfirmationPro
           <EmailField
             label="Référence dossier :"
             value={
-              <strong style={{ fontFamily: emailTokens.typography.monoFamily, color: emailTokens.colors.purpleText }}>
+              <strong
+                style={{
+                  fontFamily: emailTokens.typography.monoFamily,
+                  color: emailTokens.colors.purpleText,
+                }}
+              >
                 {referenceId}
               </strong>
             }

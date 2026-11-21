@@ -8,7 +8,8 @@ const mockContact = {
   email: 'jean.dupont@exemple-sas.fr',
   phone: '06 12 34 56 78',
   subject: 'Développement d’une plateforme SaaS de gestion',
-  message: 'Bonjour l’équipe DevEvoke, nous souhaitons automatiser nos processus de gestion et concevoir un portail client sur-mesure.',
+  message:
+    'Bonjour l’équipe DevEvoke, nous souhaitons automatiser nos processus de gestion et concevoir un portail client sur-mesure.',
 };
 
 export default function ContactConfirmationPreview() {

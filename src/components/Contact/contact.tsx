@@ -85,8 +85,7 @@ const Contact = ({
 
     const emailValidation = validateProfessionalEmail(data.email);
     if (!emailValidation.isValid) {
-      const msg =
-        emailValidation.message || EMAIL_VALIDATION_MESSAGES.INVALID_SYNTAX;
+      const msg = emailValidation.message || EMAIL_VALIDATION_MESSAGES.INVALID_SYNTAX;
       setError('email', { type: 'validate', message: msg });
       return;
     }
@@ -157,27 +156,25 @@ const Contact = ({
 
   return (
     <Fade cascade triggerOnce>
-      <section className="glass rounded-3xl border border-white/5 shadow-2xl overflow-hidden relative">
+      <section className="glass relative overflow-hidden rounded-3xl border border-white/5 shadow-2xl">
         {/* Subtle glow background */}
-        <div className="absolute top-0 left-1/4 w-1/2 h-64 bg-primary-500/10 blur-[100px] rounded-full pointer-events-none" />
+        <div className="bg-primary-500/10 pointer-events-none absolute top-0 left-1/4 h-64 w-1/2 rounded-full blur-[100px]" />
 
-        <div className="grid lg:grid-cols-12 relative z-10">
+        <div className="relative z-10 grid lg:grid-cols-12">
           {/* Formulaire */}
           <article
-            className={`p-6 sm:p-10 lg:p-12 flex flex-col justify-center ${
+            className={`flex flex-col justify-center p-6 sm:p-10 lg:p-12 ${
               hideImage ? 'lg:col-span-12' : 'lg:col-span-8'
             }`}
           >
             <div className="mb-8">
               {subtitle && (
-                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-                  {subtitle}
-                </h2>
+                <h2 className="mb-3 text-2xl font-bold text-white sm:text-3xl">{subtitle}</h2>
               )}
-              <span className="inline-block px-3 py-1 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-xs font-semibold uppercase tracking-wider mb-3">
+              <span className="bg-primary-500/10 border-primary-500/20 text-primary-400 mb-3 inline-block rounded-full border px-3 py-1 text-xs font-semibold tracking-wider uppercase">
                 {title}
               </span>
-              <p className="text-muted leading-relaxed text-sm sm:text-base">
+              <p className="text-muted text-sm leading-relaxed sm:text-base">
                 {description ||
                   'Vous envisagez un logiciel métier, une plateforme SaaS, une application mobile, un site web ou l’automatisation de vos processus ? Décrivez votre projet pour échanger directement avec le fondateur.'}
               </p>
@@ -195,15 +192,18 @@ const Contact = ({
                 type="text"
                 tabIndex={-1}
                 autoComplete="off"
-                className="opacity-0 absolute -left-[9999px] w-1 h-1 pointer-events-none"
+                className="pointer-events-none absolute -left-[9999px] h-1 w-1 opacity-0"
                 aria-hidden="true"
                 {...register('website')}
               />
 
               {/* Ligne 1 : Nom & Prénom */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="firstname" className="block text-xs font-semibold text-gray-300 mb-1">
+                  <label
+                    htmlFor="firstname"
+                    className="mb-1 block text-xs font-semibold text-gray-300"
+                  >
                     Prénom *
                   </label>
                   <input
@@ -215,8 +215,7 @@ const Contact = ({
                     {...register('firstname', {
                       required: 'Le prénom est requis',
                       validate: (val) =>
-                        val.trim().length >= 2 ||
-                        'Le prénom doit comporter au moins 2 caractères',
+                        val.trim().length >= 2 || 'Le prénom doit comporter au moins 2 caractères',
                       maxLength: {
                         value: 80,
                         message: 'Le prénom ne doit pas dépasser 80 caractères',
@@ -224,14 +223,17 @@ const Contact = ({
                     })}
                   />
                   {errors.firstname && (
-                    <span role="alert" className="text-red-400 text-xs mt-1 block">
+                    <span role="alert" className="mt-1 block text-xs text-red-400">
                       {errors.firstname.message || 'Ce champ est requis'}
                     </span>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="lastname" className="block text-xs font-semibold text-gray-300 mb-1">
+                  <label
+                    htmlFor="lastname"
+                    className="mb-1 block text-xs font-semibold text-gray-300"
+                  >
                     Nom
                   </label>
                   <input
@@ -245,9 +247,12 @@ const Contact = ({
               </div>
 
               {/* Ligne 2 : Organisation & Fonction */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="business" className="block text-xs font-semibold text-gray-300 mb-1">
+                  <label
+                    htmlFor="business"
+                    className="mb-1 block text-xs font-semibold text-gray-300"
+                  >
                     Entreprise / Organisation *
                   </label>
                   <input
@@ -268,14 +273,14 @@ const Contact = ({
                     })}
                   />
                   {errors.business && (
-                    <span role="alert" className="text-red-400 text-xs mt-1 block">
+                    <span role="alert" className="mt-1 block text-xs text-red-400">
                       {errors.business.message || 'Ce champ est requis'}
                     </span>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="role" className="block text-xs font-semibold text-gray-300 mb-1">
+                  <label htmlFor="role" className="mb-1 block text-xs font-semibold text-gray-300">
                     Votre fonction
                   </label>
                   <input
@@ -289,23 +294,37 @@ const Contact = ({
               </div>
 
               {/* Ligne 3 : Type d'organisation & Périmètre */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="establishmentType" className="block text-xs font-semibold text-gray-300 mb-1">
+                  <label
+                    htmlFor="establishmentType"
+                    className="mb-1 block text-xs font-semibold text-gray-300"
+                  >
                     Type d’organisation
                   </label>
-                  <select id="establishmentType" {...register('establishmentType')} className={selectClasses}>
+                  <select
+                    id="establishmentType"
+                    {...register('establishmentType')}
+                    className={selectClasses}
+                  >
                     <option value="PME / Entreprise">PME / Entreprise</option>
                     <option value="TPE / Indépendant">TPE / Indépendant</option>
                     <option value="Startup / Projet SaaS">Startup / Projet SaaS</option>
-                    <option value="Association gestionnaire / ESSMS">Association gestionnaire / Médico-Social</option>
-                    <option value="Association / Organisation professionnelle">Association / Organisation pro</option>
+                    <option value="Association gestionnaire / ESSMS">
+                      Association gestionnaire / Médico-Social
+                    </option>
+                    <option value="Association / Organisation professionnelle">
+                      Association / Organisation pro
+                    </option>
                     <option value="Autre organisation">Autre structure</option>
                   </select>
                 </div>
 
                 <div>
-                  <label htmlFor="siteCount" className="block text-xs font-semibold text-gray-300 mb-1">
+                  <label
+                    htmlFor="siteCount"
+                    className="mb-1 block text-xs font-semibold text-gray-300"
+                  >
                     Périmètre / Nombre de sites
                   </label>
                   <select id="siteCount" {...register('siteCount')} className={selectClasses}>
@@ -318,9 +337,9 @@ const Contact = ({
               </div>
 
               {/* Ligne 4 : Email pro & Téléphone */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="email" className="block text-xs font-semibold text-gray-300 mb-1">
+                  <label htmlFor="email" className="mb-1 block text-xs font-semibold text-gray-300">
                     Email professionnel *
                   </label>
                   <input
@@ -344,18 +363,14 @@ const Contact = ({
                     })}
                   />
                   {errors.email && (
-                    <span
-                      id="email-error"
-                      role="alert"
-                      className="text-red-400 text-xs mt-1 block"
-                    >
+                    <span id="email-error" role="alert" className="mt-1 block text-xs text-red-400">
                       {errors.email.message || 'Ce champ est requis'}
                     </span>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-xs font-semibold text-gray-300 mb-1">
+                  <label htmlFor="phone" className="mb-1 block text-xs font-semibold text-gray-300">
                     Téléphone direct
                   </label>
                   <input
@@ -371,24 +386,38 @@ const Contact = ({
               </div>
 
               {/* Ligne 5 : Type de projet & Budget indicatif */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 <div className="sm:col-span-1">
-                  <label htmlFor="projectType" className="block text-xs font-semibold text-gray-300 mb-1">
+                  <label
+                    htmlFor="projectType"
+                    className="mb-1 block text-xs font-semibold text-gray-300"
+                  >
                     Nature du projet
                   </label>
                   <select id="projectType" {...register('projectType')} className={selectClasses}>
                     <option value="Logiciel métier sur-mesure">Logiciel métier sur-mesure</option>
                     <option value="Conception & Développement SaaS">Plateforme SaaS</option>
-                    <option value="Application mobile (iOS / Android)">Application mobile nomade</option>
-                    <option value="Développement web & Espace client">Développement web & Espace client</option>
-                    <option value="Automatisation des processus">Automatisation des processus & API</option>
-                    <option value="Solution médico-sociale sur-mesure">Solution médico-sociale sur-mesure</option>
+                    <option value="Application mobile (iOS / Android)">
+                      Application mobile nomade
+                    </option>
+                    <option value="Développement web & Espace client">
+                      Développement web & Espace client
+                    </option>
+                    <option value="Automatisation des processus">
+                      Automatisation des processus & API
+                    </option>
+                    <option value="Solution médico-sociale sur-mesure">
+                      Solution médico-sociale sur-mesure
+                    </option>
                     <option value="Audit & Cadrage technique">Audit & Cadrage technique</option>
                   </select>
                 </div>
 
                 <div className="sm:col-span-1">
-                  <label htmlFor="budget" className="block text-xs font-semibold text-gray-300 mb-1">
+                  <label
+                    htmlFor="budget"
+                    className="mb-1 block text-xs font-semibold text-gray-300"
+                  >
                     Budget indicatif
                   </label>
                   <select id="budget" {...register('budget')} className={selectClasses}>
@@ -401,7 +430,7 @@ const Contact = ({
                 </div>
 
                 <div className="sm:col-span-1">
-                  <label htmlFor="delay" className="block text-xs font-semibold text-gray-300 mb-1">
+                  <label htmlFor="delay" className="mb-1 block text-xs font-semibold text-gray-300">
                     Délai souhaité
                   </label>
                   <select id="delay" {...register('delay')} className={selectClasses}>
@@ -415,7 +444,7 @@ const Contact = ({
 
               {/* Message / Description */}
               <div>
-                <label htmlFor="message" className="block text-xs font-semibold text-gray-300 mb-1">
+                <label htmlFor="message" className="mb-1 block text-xs font-semibold text-gray-300">
                   Description de votre besoin ou contexte *
                 </label>
                 <textarea
@@ -435,7 +464,7 @@ const Contact = ({
                   })}
                 />
                 {errors.content && (
-                  <span role="alert" className="text-red-400 text-xs mt-1 block">
+                  <span role="alert" className="mt-1 block text-xs text-red-400">
                     {errors.content.message || 'Ce champ est requis'}
                   </span>
                 )}
@@ -443,7 +472,10 @@ const Contact = ({
 
               {/* RGPD Checkbox */}
               <div>
-                <label htmlFor="rgpd" className="min-h-[44px] flex items-start gap-3 pt-1 cursor-pointer select-none">
+                <label
+                  htmlFor="rgpd"
+                  className="flex min-h-[44px] cursor-pointer items-start gap-3 pt-1 select-none"
+                >
                   <input
                     type="checkbox"
                     id="rgpd"
@@ -451,14 +483,16 @@ const Contact = ({
                     {...register('rgpdConsent', {
                       required: 'Veuillez accepter les conditions pour transmettre votre demande',
                     })}
-                    className="mt-1 size-4 rounded bg-white/5 border-white/20 text-primary-500 focus:ring-primary-500 cursor-pointer shrink-0"
+                    className="text-primary-500 focus:ring-primary-500 mt-1 size-4 shrink-0 cursor-pointer rounded border-white/20 bg-white/5"
                   />
-                  <span className="text-xs text-muted leading-relaxed">
-                    En soumettant ce formulaire, j’accepte que les informations saisies soient exploitées par DevEvoke pour échanger sur mon projet médico-social. Données confidentielles, non cédées à des tiers.
+                  <span className="text-muted text-xs leading-relaxed">
+                    En soumettant ce formulaire, j’accepte que les informations saisies soient
+                    exploitées par DevEvoke pour échanger sur mon projet médico-social. Données
+                    confidentielles, non cédées à des tiers.
                   </span>
                 </label>
                 {errors.rgpdConsent && (
-                  <span role="alert" className="text-red-400 text-xs mt-1 block">
+                  <span role="alert" className="mt-1 block text-xs text-red-400">
                     {errors.rgpdConsent.message || 'Ce champ est requis'}
                   </span>
                 )}
@@ -470,10 +504,10 @@ const Contact = ({
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`btn-primary w-full sm:w-auto px-8 py-3.5 text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-200 ${
+                    className={`btn-primary flex w-full items-center justify-center gap-2 px-8 py-3.5 text-sm font-semibold transition-all duration-200 sm:w-auto ${
                       isSubmitting
-                        ? 'opacity-70 cursor-wait'
-                        : 'cursor-pointer hover:shadow-lg hover:shadow-primary-500/25'
+                        ? 'cursor-wait opacity-70'
+                        : 'hover:shadow-primary-500/25 cursor-pointer hover:shadow-lg'
                     }`}
                   >
                     {isSubmitting ? (
@@ -481,7 +515,7 @@ const Contact = ({
                     ) : (
                       <>
                         <span>Transmettre mon projet</span>
-                        <Send className="w-4 h-4" />
+                        <Send className="h-4 w-4" />
                       </>
                     )}
                   </button>
@@ -490,28 +524,30 @@ const Contact = ({
                 {sendMsg && (
                   <div
                     role={!buttonSendMsg ? 'status' : 'alert'}
-                    className={`mt-4 p-5 rounded-2xl border ${
+                    className={`mt-4 rounded-2xl border p-5 ${
                       !buttonSendMsg
-                        ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300'
-                        : 'bg-red-500/10 border-red-500/20 text-red-400'
+                        ? 'border-emerald-500/20 bg-emerald-500/10 text-emerald-300'
+                        : 'border-red-500/20 bg-red-500/10 text-red-400'
                     }`}
                   >
                     <div className="flex items-start gap-3 text-sm">
                       {!buttonSendMsg ? (
-                        <CheckCircle2 className="size-5 shrink-0 text-emerald-400 mt-0.5" />
+                        <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-emerald-400" />
                       ) : (
-                        <ShieldCheck className="size-5 shrink-0 text-red-400 mt-0.5" />
+                        <ShieldCheck className="mt-0.5 size-5 shrink-0 text-red-400" />
                       )}
                       <div className="space-y-2">
                         <p className="font-semibold text-white">{sendText}</p>
                         {!buttonSendMsg && (
                           <>
-                            <p className="text-xs text-neutral-300 leading-relaxed">
-                              Un email de confirmation récapitulatif vient de vous être envoyé. Notre équipe prendra contact avec vous dans un délai de 24 à 48 heures ouvrées.
+                            <p className="text-xs leading-relaxed text-neutral-300">
+                              Un email de confirmation récapitulatif vient de vous être envoyé.
+                              Notre équipe prendra contact avec vous dans un délai de 24 à 48 heures
+                              ouvrées.
                             </p>
                             {referenceId && (
                               <div className="pt-1">
-                                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/10 border border-white/10 font-mono text-xs text-white">
+                                <span className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/10 px-2.5 py-1 font-mono text-xs text-white">
                                   <span>Réf. dossier :</span>
                                   <strong className="text-emerald-400">{referenceId}</strong>
                                 </span>
@@ -529,47 +565,51 @@ const Contact = ({
 
           {/* Image & Reassurance Side */}
           {!hideImage && (
-            <div className="hidden lg:flex lg:col-span-4 flex-col justify-between p-8 bg-surface/70 border-l border-white/5 relative">
+            <div className="bg-surface/70 relative hidden flex-col justify-between border-l border-white/5 p-8 lg:col-span-4 lg:flex">
               <div className="space-y-6">
-                <div className="p-4 rounded-2xl glass border border-white/5 space-y-2">
-                  <div className="flex items-center gap-2 text-primary-400 text-xs font-semibold uppercase tracking-wider">
-                    <ShieldCheck className="w-4 h-4" />
+                <div className="glass space-y-2 rounded-2xl border border-white/5 p-4">
+                  <div className="text-primary-400 flex items-center gap-2 text-xs font-semibold tracking-wider uppercase">
+                    <ShieldCheck className="h-4 w-4" />
                     Engagement de Confidentialité
                   </div>
-                  <p className="text-xs text-muted leading-relaxed">
-                    Les échanges préliminaires, cahiers des charges et données fonctionnelles partagés sont couverts par un accord de stricte confidentialité (NDA sur simple demande).
+                  <p className="text-muted text-xs leading-relaxed">
+                    Les échanges préliminaires, cahiers des charges et données fonctionnelles
+                    partagés sont couverts par un accord de stricte confidentialité (NDA sur simple
+                    demande).
                   </p>
                 </div>
 
                 <div className="space-y-3 text-xs text-gray-300">
-                  <h4 className="font-bold text-white text-sm">Ce que comprend notre retour :</h4>
+                  <h4 className="text-sm font-bold text-white">Ce que comprend notre retour :</h4>
                   <p className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary-400 mt-1.5 shrink-0" />
+                    <span className="bg-primary-400 mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" />
                     <span>Analyse d’adéquation fonctionnelle & faisabilité technique.</span>
                   </p>
                   <p className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary-400 mt-1.5 shrink-0" />
+                    <span className="bg-primary-400 mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" />
                     <span>Fourchette budgétaire et planning estimatif réaliste.</span>
                   </p>
                   <p className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary-400 mt-1.5 shrink-0" />
+                    <span className="bg-primary-400 mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" />
                     <span>Proposition d’un premier atelier de cadrage de 45 minutes en visio.</span>
                   </p>
                 </div>
               </div>
 
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 mt-8 group">
+              <div className="group relative mt-8 aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
                 <Image
                   fill
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.95]"
+                  className="object-cover object-center brightness-[0.95] transition-transform duration-700 group-hover:scale-105"
                   src="/images/home/workshop_coconception.webp"
                   alt="Échange et cadrage de projet avec l'équipe DevEvoke"
                   sizes="(max-width: 1024px) 0vw, 30vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-3 left-3 right-3 text-xs text-neutral-300">
-                  <span className="font-bold text-white block">Échange sans engagement</span>
-                  <span className="text-[11px] text-neutral-400">Atelier d&apos;écoute et faisabilité technique</span>
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
+                <div className="absolute right-3 bottom-3 left-3 text-xs text-neutral-300">
+                  <span className="block font-bold text-white">Échange sans engagement</span>
+                  <span className="text-[11px] text-neutral-400">
+                    Atelier d&apos;écoute et faisabilité technique
+                  </span>
                 </div>
               </div>
             </div>

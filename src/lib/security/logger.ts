@@ -10,7 +10,13 @@ import crypto from 'crypto';
 export interface FormLogContext {
   requestId: string;
   formType: 'contact' | 'quote' | 'demo' | 'diagnostic' | 'simulator' | 'newsletter' | 'unknown';
-  action: 'SUBMIT_ATTEMPT' | 'VALIDATION_FAILED' | 'RATE_LIMITED' | 'HONEYPOT_TRIGGERED' | 'EMAIL_SENT' | 'EMAIL_FAILED';
+  action:
+    | 'SUBMIT_ATTEMPT'
+    | 'VALIDATION_FAILED'
+    | 'RATE_LIMITED'
+    | 'HONEYPOT_TRIGGERED'
+    | 'EMAIL_SENT'
+    | 'EMAIL_FAILED';
   status: 'SUCCESS' | 'ERROR' | 'BLOCKED';
   referenceId?: string;
   ip?: string;

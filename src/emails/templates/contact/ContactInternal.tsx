@@ -33,9 +33,7 @@ export function ContactInternalEmail({ data, referenceId }: ContactInternalProps
     >
       <EmailBadge variant="info">Nouvelle Demande de Contact</EmailBadge>
 
-      <EmailHeading as="h1">
-        Nouvelle prise de contact
-      </EmailHeading>
+      <EmailHeading as="h1">Nouvelle prise de contact</EmailHeading>
 
       <EmailText variant="muted">
         Une nouvelle demande vient d'être envoyée depuis le formulaire de contact du site DevEvoke.
@@ -47,12 +45,17 @@ export function ContactInternalEmail({ data, referenceId }: ContactInternalProps
           <EmailField label="Nom complet :" value={<strong>{fullName}</strong>} />
           <EmailField label="Entreprise / Asso :" value={<strong>{company}</strong>} />
           {data.role && <EmailField label="Fonction :" value={data.role} />}
-          {data.establishmentType && <EmailField label="Type d'organisation :" value={data.establishmentType} />}
+          {data.establishmentType && (
+            <EmailField label="Type d'organisation :" value={data.establishmentType} />
+          )}
           {data.siteCount && <EmailField label="Périmètre / Sites :" value={data.siteCount} />}
           <EmailField
             label="Email direct :"
             value={
-              <a href={`mailto:${data.email}`} style={{ color: emailTokens.colors.primaryLight, textDecoration: 'none' }}>
+              <a
+                href={`mailto:${data.email}`}
+                style={{ color: emailTokens.colors.primaryLight, textDecoration: 'none' }}
+              >
                 {data.email}
               </a>
             }
@@ -61,7 +64,10 @@ export function ContactInternalEmail({ data, referenceId }: ContactInternalProps
             label="Téléphone :"
             value={
               phone !== 'Non renseigné' ? (
-                <a href={`tel:${phone}`} style={{ color: emailTokens.colors.primaryLight, textDecoration: 'none' }}>
+                <a
+                  href={`tel:${phone}`}
+                  style={{ color: emailTokens.colors.primaryLight, textDecoration: 'none' }}
+                >
                   {phone}
                 </a>
               ) : (
@@ -77,10 +83,19 @@ export function ContactInternalEmail({ data, referenceId }: ContactInternalProps
       <EmailCard title="Demande" variant="highlight">
         {data.subject && (
           <div style={{ marginBottom: '10px' }}>
-            <span style={{ fontSize: '11px', color: emailTokens.colors.textDimmed, textTransform: 'uppercase', fontWeight: 700 }}>
+            <span
+              style={{
+                fontSize: '11px',
+                color: emailTokens.colors.textDimmed,
+                textTransform: 'uppercase',
+                fontWeight: 700,
+              }}
+            >
               Sujet :{' '}
             </span>
-            <strong style={{ fontSize: '14px', color: emailTokens.colors.primaryLight }}>{data.subject}</strong>
+            <strong style={{ fontSize: '14px', color: emailTokens.colors.primaryLight }}>
+              {data.subject}
+            </strong>
           </div>
         )}
         <div
@@ -105,7 +120,11 @@ export function ContactInternalEmail({ data, referenceId }: ContactInternalProps
           <EmailField label="Page d'origine :" value="Formulaire de Contact (/contact)" />
           <EmailField
             label="Référence dossier :"
-            value={<strong style={{ fontFamily: emailTokens.typography.monoFamily }}>{referenceId}</strong>}
+            value={
+              <strong style={{ fontFamily: emailTokens.typography.monoFamily }}>
+                {referenceId}
+              </strong>
+            }
           />
           <EmailField label="Date & heure :" value={dateFormatted} isLast />
         </EmailFieldGroup>

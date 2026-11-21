@@ -65,7 +65,8 @@ export function formatCurrency(amount: number | string | null | undefined): stri
     return 'Non précisé';
   }
 
-  const numericValue = typeof amount === 'string' ? parseFloat(amount.replace(/[^\d.-]/g, '')) : amount;
+  const numericValue =
+    typeof amount === 'string' ? parseFloat(amount.replace(/[^\d.-]/g, '')) : amount;
   if (isNaN(numericValue)) {
     return String(amount);
   }

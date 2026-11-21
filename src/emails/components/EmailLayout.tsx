@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Html,
-  Head,
-  Preview,
-  Body,
-  Section,
-} from '@react-email/components';
+import { Html, Head, Preview, Body, Section } from '@react-email/components';
 import { emailTokens } from '../design-tokens';
 import { EmailContainer } from './EmailContainer';
 import { EmailHeader } from './EmailHeader';
@@ -18,12 +12,7 @@ interface EmailLayoutProps {
   children: React.ReactNode;
 }
 
-export function EmailLayout({
-  preview,
-  previewText,
-  referenceId,
-  children,
-}: EmailLayoutProps) {
+export function EmailLayout({ preview, previewText, referenceId, children }: EmailLayoutProps) {
   const preheaderText = preview || previewText;
 
   const bodyStyle: React.CSSProperties = {
@@ -51,9 +40,7 @@ export function EmailLayout({
       <Body style={bodyStyle}>
         <EmailContainer>
           <EmailHeader referenceId={referenceId} />
-          <Section style={contentSectionStyle}>
-            {children}
-          </Section>
+          <Section style={contentSectionStyle}>{children}</Section>
           <EmailFooter />
         </EmailContainer>
       </Body>

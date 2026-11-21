@@ -16,12 +16,7 @@ interface ModalProps {
   }>;
 }
 
-const Modal: React.FC<ModalProps> = ({
-  showModal,
-  setIsOpen,
-  contentModal,
-  prices,
-}) => {
+const Modal: React.FC<ModalProps> = ({ showModal, setIsOpen, contentModal, prices }) => {
   const [modal, setModal] = useState<ModalProps['prices'][number] | null>(null);
   const router = useRouter();
 
@@ -80,24 +75,24 @@ const Modal: React.FC<ModalProps> = ({
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ type: "spring", duration: 0.5, bounce: 0 }}
-            className="relative w-full max-w-2xl max-h-[92dvh] overflow-hidden rounded-3xl glass border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col"
+            transition={{ type: 'spring', duration: 0.5, bounce: 0 }}
+            className="glass relative flex max-h-[92dvh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
           >
             {/* Header */}
-            <div className="flex-shrink-0 flex items-center justify-between border-b border-white/10 p-4 sm:p-6 md:px-8 bg-black/20 backdrop-blur-md z-10">
+            <div className="z-10 flex flex-shrink-0 items-center justify-between border-b border-white/10 bg-black/20 p-4 backdrop-blur-md sm:p-6 md:px-8">
               <div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white tracking-tight">
-                  <span className="text-gradient drop-shadow-sm">
-                    {modal?.title}
-                  </span>
+                <h3 className="text-lg font-bold tracking-tight text-white sm:text-xl md:text-2xl">
+                  <span className="text-gradient drop-shadow-sm">{modal?.title}</span>
                 </h3>
                 {modal?.subtitle && (
-                  <p className="text-xs sm:text-sm text-primary-400 font-medium mt-1 uppercase tracking-wider">{modal.subtitle}</p>
+                  <p className="text-primary-400 mt-1 text-xs font-medium tracking-wider uppercase sm:text-sm">
+                    {modal.subtitle}
+                  </p>
                 )}
               </div>
               <button
                 type="button"
-                className="inline-flex size-11 min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-colors border border-white/5 cursor-pointer"
+                className="text-muted inline-flex size-11 min-h-[44px] min-w-[44px] shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/5 bg-white/5 transition-colors hover:bg-white/10 hover:text-white"
                 onClick={handleCloseModal}
                 aria-label="Fermer"
               >
@@ -114,17 +109,23 @@ const Modal: React.FC<ModalProps> = ({
             </div>
 
             {/* Body */}
-            <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 overflow-y-auto flex-grow custom-scrollbar">
+            <div className="custom-scrollbar flex-grow space-y-4 overflow-y-auto p-4 sm:space-y-6 sm:p-6 md:p-8">
               <ul className="space-y-3 sm:space-y-4">
                 {modal?.details.map((detail, i) => (
-                  <motion.li 
+                  <motion.li
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 + i * 0.05 }}
-                    key={i} 
-                    className="flex items-start gap-2.5 sm:gap-3 text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed"
+                    key={i}
+                    className="flex items-start gap-2.5 text-sm leading-relaxed text-gray-300 sm:gap-3 sm:text-base md:text-lg"
                   >
-                    <svg className="size-5 sm:size-6 shrink-0 text-primary-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <svg
+                      className="text-primary-400 mt-0.5 size-5 shrink-0 sm:size-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                     <span>{detail}</span>
@@ -134,18 +135,18 @@ const Modal: React.FC<ModalProps> = ({
             </div>
 
             {/* Footer */}
-            <div className="flex-shrink-0 flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-6 border-t border-white/10 bg-black/40 p-4 sm:p-6 md:px-8 backdrop-blur-md z-10">
+            <div className="z-10 flex flex-shrink-0 flex-col justify-between gap-4 border-t border-white/10 bg-black/40 p-4 backdrop-blur-md sm:flex-row sm:items-center sm:gap-6 sm:p-6 md:px-8">
               <div>
-                <span className="block text-xs sm:text-sm font-medium text-muted uppercase tracking-wider mb-0.5 sm:mb-1">
+                <span className="text-muted mb-0.5 block text-xs font-medium tracking-wider uppercase sm:mb-1 sm:text-sm">
                   À partir de
                 </span>
-                <span className="text-2xl sm:text-4xl font-bold text-white drop-shadow-sm">
+                <span className="text-2xl font-bold text-white drop-shadow-sm sm:text-4xl">
                   {modal?.price}
                 </span>
               </div>
               <button
                 type="button"
-                className="btn-primary w-full sm:w-auto px-8 py-3.5 min-h-[48px] shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] flex items-center justify-center"
+                className="btn-primary flex min-h-[48px] w-full items-center justify-center px-8 py-3.5 shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] sm:w-auto"
                 onClick={handleRedirect}
               >
                 Demander un devis

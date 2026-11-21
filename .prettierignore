@@ -1,0 +1,31 @@
+# Dependencies & Build outputs
+node_modules/
+.next/
+out/
+build/
+dist/
+coverage/
+
+# Test reports
+playwright-report/
+test-results/
+
+# Lockfiles, Dotfiles & Env files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.env*
+.gitignore
+.nvmrc
+.prettierignore
+
+# Static assets & standalone HTML templates
+public/
+src/images/
+*.webp
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico

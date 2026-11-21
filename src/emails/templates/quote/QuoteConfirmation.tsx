@@ -27,12 +27,14 @@ export function QuoteConfirmationEmail({ data, referenceId }: QuoteConfirmationP
     {
       step: 1,
       title: 'Analyse technique de votre besoin (24 à 48h ouvrées)',
-      description: 'Nos architectes logiciels étudient la faisabilité, les dépendances et la pile cible.',
+      description:
+        'Nos architectes logiciels étudient la faisabilité, les dépendances et la pile cible.',
     },
     {
       step: 2,
       title: 'Visio de cadrage technique offerte (30 min)',
-      description: 'Un échange direct sans jargon pour préciser les fonctionnalités et affiner les priorités.',
+      description:
+        'Un échange direct sans jargon pour préciser les fonctionnalités et affiner les priorités.',
     },
     {
       step: 3,
@@ -48,20 +50,20 @@ export function QuoteConfirmationEmail({ data, referenceId }: QuoteConfirmationP
     >
       <EmailBadge variant="success">Demande de devis enregistrée</EmailBadge>
 
-      <EmailHeading as="h1">
-        Votre demande de devis a bien été reçue
-      </EmailHeading>
+      <EmailHeading as="h1">Votre demande de devis a bien été reçue</EmailHeading>
 
       <EmailText variant="bold" size="md">
         {salutation}
       </EmailText>
 
       <EmailText variant="default">
-        Merci pour les informations transmises concernant votre projet pour <strong style={{ color: '#ffffff' }}>{company}</strong>.
+        Merci pour les informations transmises concernant votre projet pour{' '}
+        <strong style={{ color: '#ffffff' }}>{company}</strong>.
       </EmailText>
 
       <EmailText variant="muted">
-        Votre demande de devis a bien été enregistrée. Notre équipe va analyser votre besoin afin de vous apporter une réponse adaptée à votre projet.
+        Votre demande de devis a bien été enregistrée. Notre équipe va analyser votre besoin afin de
+        vous apporter une réponse adaptée à votre projet.
       </EmailText>
 
       {/* Carte Récapitulatif Projet */}
@@ -70,7 +72,12 @@ export function QuoteConfirmationEmail({ data, referenceId }: QuoteConfirmationP
           <EmailField
             label="Référence dossier :"
             value={
-              <strong style={{ fontFamily: emailTokens.typography.monoFamily, color: emailTokens.colors.successText }}>
+              <strong
+                style={{
+                  fontFamily: emailTokens.typography.monoFamily,
+                  color: emailTokens.colors.successText,
+                }}
+              >
                 {referenceId}
               </strong>
             }

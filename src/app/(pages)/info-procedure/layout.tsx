@@ -20,10 +20,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ProcessLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ProcessLayout({ children }: { children: React.ReactNode }) {
   return <section>{children}</section>;
 }

@@ -92,7 +92,9 @@ test.describe('Formulaires spécialisés (Rapport Diagnostic)', () => {
     // 1. Soumission à vide -> erreurs champs obligatoires + RGPD
     await submitBtn.click();
     await expect(dialog.getByText(/Le prénom doit comporter au moins 2 caractères/i)).toBeVisible();
-    await expect(dialog.getByText(/Le nom de l’association ou établissement est requis/i)).toBeVisible();
+    await expect(
+      dialog.getByText(/Le nom de l’association ou établissement est requis/i)
+    ).toBeVisible();
     await expect(dialog.getByText(/Veuillez saisir une adresse e-mail valide/i)).toBeVisible();
     await expect(dialog.getByText(/Veuillez accepter la transmission du rapport/i)).toBeVisible();
     expect(apiCalls).toBe(0);

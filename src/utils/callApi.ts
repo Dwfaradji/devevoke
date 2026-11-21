@@ -13,10 +13,7 @@ async function callApi({ url, data }: PropsApi): Promise<AxiosResponse<any>> {
       },
     });
   } catch (error) {
-    console.error(
-      `Erreur lors de l'envoi de la requête à l'URL ${url} :`,
-      error,
-    );
+    console.error(`Erreur lors de l'envoi de la requête à l'URL ${url} :`, error);
     throw error; // Lève l'erreur pour permettre au code appelant de la gérer
   }
 }

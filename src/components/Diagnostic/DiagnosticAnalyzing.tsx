@@ -29,32 +29,31 @@ export default function DiagnosticAnalyzing({ onFinish }: DiagnosticAnalyzingPro
   }, [onFinish]);
 
   return (
-    <div className="flex flex-col items-center justify-center text-center p-6 sm:p-12 my-auto max-w-xl mx-auto space-y-8 animate-in fade-in duration-300">
+    <div className="animate-in fade-in mx-auto my-auto flex max-w-xl flex-col items-center justify-center space-y-8 p-6 text-center duration-300 sm:p-12">
       {/* Pulsing circle graphic */}
-      <div className="relative w-24 h-24 flex items-center justify-center">
-        <div className="absolute inset-0 rounded-full bg-primary-500/20 animate-ping opacity-40" />
-        <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-primary-600 to-cyan-400 p-0.5 shadow-2xl shadow-primary-500/30">
-          <div className="w-full h-full bg-neutral-950 rounded-2xl flex items-center justify-center">
-            <Loader2 className="w-8 h-8 text-primary-400 animate-spin" />
+      <div className="relative flex h-24 w-24 items-center justify-center">
+        <div className="bg-primary-500/20 absolute inset-0 animate-ping rounded-full opacity-40" />
+        <div className="from-primary-600 shadow-primary-500/30 h-20 w-20 rounded-2xl bg-gradient-to-tr to-cyan-400 p-0.5 shadow-2xl">
+          <div className="flex h-full w-full items-center justify-center rounded-2xl bg-neutral-950">
+            <Loader2 className="text-primary-400 h-8 w-8 animate-spin" />
           </div>
         </div>
       </div>
 
       <div className="space-y-2">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-xs font-semibold uppercase tracking-wider">
-          <Sparkles className="w-3.5 h-3.5" />
+        <div className="bg-primary-500/10 border-primary-500/20 text-primary-400 inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold tracking-wider uppercase">
+          <Sparkles className="h-3.5 w-3.5" />
           <span>Calcul en cours</span>
         </div>
-        <h3 className="text-2xl sm:text-3xl font-black text-white">
-          Analyse de vos réponses...
-        </h3>
-        <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed max-w-md mx-auto">
-          Nous calculons votre niveau de maturité, identifions vos points de vigilance et formalisons vos priorités d'action.
+        <h3 className="text-2xl font-black text-white sm:text-3xl">Analyse de vos réponses...</h3>
+        <p className="mx-auto max-w-md text-xs leading-relaxed text-neutral-300 sm:text-sm">
+          Nous calculons votre niveau de maturité, identifions vos points de vigilance et
+          formalisons vos priorités d'action.
         </p>
       </div>
 
       {/* Checklist items */}
-      <div className="w-full max-w-sm space-y-2.5 text-left text-xs bg-neutral-900/60 p-4 rounded-2xl border border-white/5">
+      <div className="w-full max-w-sm space-y-2.5 rounded-2xl border border-white/5 bg-neutral-900/60 p-4 text-left text-xs">
         {steps.map((text, idx) => {
           const isDone = idx < stepIndex;
           const isCurrent = idx === stepIndex;
@@ -66,16 +65,16 @@ export default function DiagnosticAnalyzing({ onFinish }: DiagnosticAnalyzingPro
                 isDone
                   ? 'text-emerald-300'
                   : isCurrent
-                  ? 'text-white font-semibold'
-                  : 'text-neutral-400'
+                    ? 'font-semibold text-white'
+                    : 'text-neutral-400'
               }`}
             >
               {isDone ? (
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
               ) : isCurrent ? (
-                <div className="w-4 h-4 rounded-full border-2 border-primary-400 border-t-transparent animate-spin shrink-0" />
+                <div className="border-primary-400 h-4 w-4 shrink-0 animate-spin rounded-full border-2 border-t-transparent" />
               ) : (
-                <div className="w-4 h-4 rounded-full border border-neutral-700 shrink-0" />
+                <div className="h-4 w-4 shrink-0 rounded-full border border-neutral-700" />
               )}
               <span>{text}</span>
             </div>

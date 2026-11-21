@@ -48,9 +48,7 @@ export function ContactConfirmationEmail({ data, referenceId }: ContactConfirmat
     >
       <EmailBadge variant="success">Demande prise en compte</EmailBadge>
 
-      <EmailHeading as="h1">
-        Votre demande a bien été reçue
-      </EmailHeading>
+      <EmailHeading as="h1">Votre demande a bien été reçue</EmailHeading>
 
       <EmailText variant="bold" size="md">
         {salutation}
@@ -62,7 +60,8 @@ export function ContactConfirmationEmail({ data, referenceId }: ContactConfirmat
       </EmailText>
 
       <EmailText variant="muted">
-        Notre équipe va maintenant étudier votre besoin et reviendra vers vous dans les meilleurs délais.
+        Notre équipe va maintenant étudier votre besoin et reviendra vers vous dans les meilleurs
+        délais.
       </EmailText>
 
       {/* Carte Récapitulatif */}
@@ -71,7 +70,12 @@ export function ContactConfirmationEmail({ data, referenceId }: ContactConfirmat
           <EmailField
             label="Numéro de dossier :"
             value={
-              <strong style={{ fontFamily: emailTokens.typography.monoFamily, color: emailTokens.colors.successText }}>
+              <strong
+                style={{
+                  fontFamily: emailTokens.typography.monoFamily,
+                  color: emailTokens.colors.successText,
+                }}
+              >
                 {referenceId}
               </strong>
             }

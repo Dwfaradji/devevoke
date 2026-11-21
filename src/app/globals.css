@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* ═══════════════════════════════════════════════
    DESIGN SYSTEM — DevEvoke 3.0 (Tailwind v4)
@@ -12,7 +12,6 @@
 main {
   margin-top: var(--navbar-h, 72px);
 }
-
 
 @theme {
   /* ── Colors — Charte Graphique DevEvoke (D: Turquoise / E: Bleu Roi) ── */
@@ -76,7 +75,6 @@ main {
   --animate-aurora: aurora 15s linear infinite;
 
   @keyframes float {
-
     0%,
     100% {
       transform: translateY(0px);
@@ -88,7 +86,6 @@ main {
   }
 
   @keyframes pulse-glow {
-
     0%,
     100% {
       opacity: 0.5;
@@ -102,7 +99,6 @@ main {
   }
 
   @keyframes blob {
-
     0%,
     100% {
       transform: translate(0, 0) scale(1);
@@ -119,11 +115,15 @@ main {
 
   @keyframes aurora {
     0% {
-      background-position: 50% 50%, 50% 50%;
+      background-position:
+        50% 50%,
+        50% 50%;
     }
 
     100% {
-      background-position: 350% 50%, 350% 50%;
+      background-position:
+        350% 50%,
+        350% 50%;
     }
   }
 }
@@ -177,7 +177,6 @@ main {
    BASE STYLES & WCAG FOCUS RINGS
 ═══════════════════════════════════════════════ */
 @layer base {
-
   *,
   *::before,
   *::after {
@@ -194,7 +193,6 @@ main {
 
   /* Respect prefers-reduced-motion */
   @media (prefers-reduced-motion: reduce) {
-
     *,
     ::before,
     ::after {
@@ -300,7 +298,6 @@ main {
    COMPONENTS
 ═══════════════════════════════════════════════ */
 @layer components {
-
   /* Buttons */
   .btn-primary {
     display: inline-flex;
@@ -424,7 +421,9 @@ main {
     border-color: rgba(56, 198, 217, 0.35);
     background: rgba(10, 17, 32, 0.85);
     transform: translateY(-2px);
-    box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(56, 198, 217, 0.15);
+    box-shadow:
+      0 16px 32px -8px rgba(0, 0, 0, 0.5),
+      0 0 20px -5px rgba(56, 198, 217, 0.15);
   }
 
   .card-highlight {
@@ -495,7 +494,8 @@ main {
 
 .bg-grid {
   background-size: 40px 40px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   mask-image: radial-gradient(circle at center, black, transparent 80%);
 }
@@ -534,13 +534,13 @@ main {
   aside,
   button,
   .no-print,
-  [data-print="hide"] {
+  [data-print='hide'] {
     display: none !important;
     visibility: hidden !important;
   }
 
   /* Neutraliser le conteneur portal de la modal pour laisser s'écouler les pages */
-  [role="dialog"] {
+  [role='dialog'] {
     position: static !important;
     background: transparent !important;
     backdrop-filter: none !important;
@@ -553,7 +553,7 @@ main {
   }
 
   /* Masquer la boîte modale interactive (qui contient les boutons, animations et barre de scroll) */
-  [role="dialog"] > div:not(#printable-diagnostic-report) {
+  [role='dialog'] > div:not(#printable-diagnostic-report) {
     display: none !important;
     visibility: hidden !important;
   }

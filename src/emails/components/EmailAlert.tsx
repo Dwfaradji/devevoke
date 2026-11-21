@@ -9,12 +9,7 @@ interface EmailAlertProps {
   style?: React.CSSProperties;
 }
 
-export function EmailAlert({
-  title,
-  variant = 'info',
-  children,
-  style,
-}: EmailAlertProps) {
+export function EmailAlert({ title, variant = 'info', children, style }: EmailAlertProps) {
   let bg: string = emailTokens.colors.infoSurface;
   let border: string = emailTokens.colors.infoBorder;
   let titleColor: string = emailTokens.colors.infoText;

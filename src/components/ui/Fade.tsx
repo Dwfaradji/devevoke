@@ -11,15 +11,8 @@ export interface FadeProps {
   className?: string;
 }
 
-export const Fade: React.FC<FadeProps> = ({
-  children,
-  className,
-}) => {
-  return (
-    <div className={className}>
-      {children}
-    </div>
-  );
+export const Fade: React.FC<FadeProps> = ({ children, className }) => {
+  return <div className={className}>{children}</div>;
 };
 
 export default Fade;

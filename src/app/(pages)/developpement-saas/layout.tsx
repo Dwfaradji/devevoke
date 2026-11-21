@@ -13,16 +13,19 @@ export const metadata: Metadata = {
       'Conception de plateformes SaaS sécurisées pour associations gestionnaires, fédérations et porteurs de projets numériques médico-sociaux.',
     url: 'https://www.devevoke.com/developpement-saas',
     siteName: 'DevEvoke',
-    images: [{ url: '/icon.png', width: 800, height: 600, alt: 'Développement SaaS médico-social sur-mesure DevEvoke' }],
+    images: [
+      {
+        url: '/icon.png',
+        width: 800,
+        height: 600,
+        alt: 'Développement SaaS médico-social sur-mesure DevEvoke',
+      },
+    ],
     locale: 'fr_FR',
     type: 'website',
   },
 };
 
-export default function DeveloppementSaasLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function DeveloppementSaasLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

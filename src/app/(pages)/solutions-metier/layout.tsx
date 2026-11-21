@@ -13,16 +13,14 @@ export const metadata: Metadata = {
       'Fini les tableurs Excel dispersés et les progiciels rigides. Concevez un outil interne calqué sur les pratiques réelles de vos équipes avec DevEvoke.',
     url: 'https://www.devevoke.com/solutions-metier',
     siteName: 'DevEvoke',
-    images: [{ url: '/icon.png', width: 800, height: 600, alt: 'Logiciels métier sur-mesure DevEvoke' }],
+    images: [
+      { url: '/icon.png', width: 800, height: 600, alt: 'Logiciels métier sur-mesure DevEvoke' },
+    ],
     locale: 'fr_FR',
     type: 'website',
   },
 };
 
-export default function SolutionsMetierLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function SolutionsMetierLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

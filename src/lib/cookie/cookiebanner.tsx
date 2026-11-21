@@ -37,9 +37,7 @@ interface Cookies {
   preferences: boolean;
 }
 
-const CookieBanner: React.FC<CookieBannerProps> = ({
-  config,
-}) => {
+const CookieBanner: React.FC<CookieBannerProps> = ({ config }) => {
   const [isBannerVisible, setIsBannerVisible] = useState<boolean>(false);
   const [isSettingsVisible, setIsSettingsVisible] = useState<boolean>(false);
   const [cookies, setCookies] = useState<Cookies>({
@@ -52,10 +50,10 @@ const CookieBanner: React.FC<CookieBannerProps> = ({
   const applyConsent = (preferences: Cookies) => {
     if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
       (window as any).gtag('consent', 'update', {
-        'analytics_storage': preferences.analytics ? 'granted' : 'denied',
-        'ad_storage': preferences.marketing ? 'granted' : 'denied',
-        'ad_user_data': preferences.marketing ? 'granted' : 'denied',
-        'ad_personalization': preferences.marketing ? 'granted' : 'denied'
+        analytics_storage: preferences.analytics ? 'granted' : 'denied',
+        ad_storage: preferences.marketing ? 'granted' : 'denied',
+        ad_user_data: preferences.marketing ? 'granted' : 'denied',
+        ad_personalization: preferences.marketing ? 'granted' : 'denied',
       });
     }
   };
@@ -73,7 +71,12 @@ const CookieBanner: React.FC<CookieBannerProps> = ({
         // Ignorer les erreurs de parsing
       }
     } else if (hasRejected) {
-      const rejectedState = { necessary: true, analytics: false, marketing: false, preferences: false };
+      const rejectedState = {
+        necessary: true,
+        analytics: false,
+        marketing: false,
+        preferences: false,
+      };
       setCookies(rejectedState);
       applyConsent(rejectedState);
     } else {
@@ -103,7 +106,7 @@ const CookieBanner: React.FC<CookieBannerProps> = ({
     const maxAge = expiresDays * 24 * 60 * 60;
     document.cookie = `cookieConsent=true; max-age=${maxAge}; path=/; SameSite=Lax`;
     document.cookie = `cookiePreferences=${encodeURIComponent(
-      JSON.stringify(cookies),
+      JSON.stringify(cookies)
     )}; max-age=${maxAge}; path=/; SameSite=Lax`;
     applyConsent(cookies);
     setIsBannerVisible(false);
@@ -112,10 +115,15 @@ const CookieBanner: React.FC<CookieBannerProps> = ({
   const handleReject = () => {
     const expiresDays = config.expires || 365;
     const maxAge = expiresDays * 24 * 60 * 60;
-    const deactivatedState = { necessary: true, analytics: false, marketing: false, preferences: false };
+    const deactivatedState = {
+      necessary: true,
+      analytics: false,
+      marketing: false,
+      preferences: false,
+    };
     document.cookie = `cookieConsent=false; max-age=${maxAge}; path=/; SameSite=Lax`;
     document.cookie = `cookiePreferences=${encodeURIComponent(
-      JSON.stringify(deactivatedState),
+      JSON.stringify(deactivatedState)
     )}; max-age=${maxAge}; path=/; SameSite=Lax`;
     setCookies(deactivatedState);
     applyConsent(deactivatedState);
@@ -132,21 +140,21 @@ const CookieBanner: React.FC<CookieBannerProps> = ({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 50, scale: 0.95 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-[400px] z-50 flex flex-col glass rounded-3xl border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.6)] overflow-hidden bg-black/60 backdrop-blur-2xl"
+          className="glass fixed right-4 bottom-4 left-4 z-50 flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-black/60 shadow-[0_30px_60px_rgba(0,0,0,0.6)] backdrop-blur-2xl sm:right-6 sm:bottom-6 sm:left-auto sm:max-w-[400px]"
         >
           <div className="p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-2xl" aria-hidden="true">🍪</span>
-              <h4 className="text-lg font-bold text-white tracking-tight">
-                {config.title}
-              </h4>
+            <div className="mb-4 flex items-center gap-3">
+              <span className="text-2xl" aria-hidden="true">
+                🍪
+              </span>
+              <h4 className="text-lg font-bold tracking-tight text-white">{config.title}</h4>
             </div>
-            
-            <p className="text-sm text-gray-400 leading-relaxed mb-6">
+
+            <p className="mb-6 text-sm leading-relaxed text-gray-400">
               {config.description}{' '}
               <a
                 href={config.moreInfoBtnLink}
-                className="text-primary-400 hover:text-primary-300 underline underline-offset-4 transition-colors inline-block mt-1 font-medium"
+                className="text-primary-400 hover:text-primary-300 mt-1 inline-block font-medium underline underline-offset-4 transition-colors"
               >
                 {config.moreInfoBtnLabel}
               </a>
@@ -161,19 +169,23 @@ const CookieBanner: React.FC<CookieBannerProps> = ({
                   transition={{ duration: 0.3 }}
                   className="mb-6 overflow-hidden"
                 >
-                  <div className="pt-4 border-t border-white/10 space-y-5">
-                    <h5 className="text-[11px] font-bold text-white/40 uppercase tracking-[0.2em] mb-2">
+                  <div className="space-y-5 border-t border-white/10 pt-4">
+                    <h5 className="mb-2 text-[11px] font-bold tracking-[0.2em] text-white/40 uppercase">
                       {config.cookieTypesTitle}
                     </h5>
-                    
+
                     {/* Necessary cookies (disabled toggle) */}
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1">
-                        <div className="text-sm font-semibold text-gray-200">{config.necessaryCookieTypeLabel}</div>
-                        <div className="text-xs text-gray-500 mt-1 leading-relaxed">{config.necessaryCookieTypeDesc}</div>
+                        <div className="text-sm font-semibold text-gray-200">
+                          {config.necessaryCookieTypeLabel}
+                        </div>
+                        <div className="mt-1 text-xs leading-relaxed text-gray-500">
+                          {config.necessaryCookieTypeDesc}
+                        </div>
                       </div>
-                      <div className="relative inline-flex h-5 w-9 shrink-0 cursor-not-allowed items-center rounded-full bg-primary-500/50">
-                        <span className="translate-x-5 inline-block h-3 w-3 transform rounded-full bg-white transition" />
+                      <div className="bg-primary-500/50 relative inline-flex h-5 w-9 shrink-0 cursor-not-allowed items-center rounded-full">
+                        <span className="inline-block h-3 w-3 translate-x-5 transform rounded-full bg-white transition" />
                       </div>
                     </div>
 
@@ -182,14 +194,18 @@ const CookieBanner: React.FC<CookieBannerProps> = ({
                       <div key={value} className="flex items-start justify-between gap-4">
                         <div className="flex-1">
                           <div className="text-sm font-semibold text-gray-200">{type}</div>
-                          <div className="text-xs text-gray-500 mt-1 leading-relaxed">{description}</div>
+                          <div className="mt-1 text-xs leading-relaxed text-gray-500">
+                            {description}
+                          </div>
                         </div>
                         <button
                           type="button"
-                          onClick={() => setCookies(prev => ({ ...prev, [value]: !prev[value] }))}
+                          onClick={() => setCookies((prev) => ({ ...prev, [value]: !prev[value] }))}
                           className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full transition-colors duration-200 ease-in-out focus:outline-none ${cookies[value] ? 'bg-primary-500' : 'bg-white/10'}`}
                         >
-                          <span className={`${cookies[value] ? 'translate-x-5 bg-white' : 'translate-x-1 bg-gray-400'} inline-block h-3 w-3 transform rounded-full transition duration-200 ease-in-out`} />
+                          <span
+                            className={`${cookies[value] ? 'translate-x-5 bg-white' : 'translate-x-1 bg-gray-400'} inline-block h-3 w-3 transform rounded-full transition duration-200 ease-in-out`}
+                          />
                         </button>
                       </div>
                     ))}
@@ -201,22 +217,22 @@ const CookieBanner: React.FC<CookieBannerProps> = ({
             <div className="flex flex-col gap-3">
               <button
                 onClick={handleAccept}
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-primary-500 to-secondary-500 hover:opacity-90 text-white font-bold text-sm transition-opacity shadow-[0_0_20px_rgba(59,130,246,0.3)] cursor-pointer"
+                className="from-primary-500 to-secondary-500 w-full cursor-pointer rounded-xl bg-gradient-to-r py-3 text-sm font-bold text-white shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-opacity hover:opacity-90"
               >
-                {isSettingsVisible ? "Enregistrer mes choix" : config.acceptBtnLabel}
+                {isSettingsVisible ? 'Enregistrer mes choix' : config.acceptBtnLabel}
               </button>
-              
+
               <div className="flex gap-3">
                 <button
                   onClick={toggleSettings}
-                  className="flex-1 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 font-semibold text-xs transition-colors cursor-pointer"
+                  className="flex-1 cursor-pointer rounded-xl border border-white/10 bg-white/5 py-2.5 text-xs font-semibold text-gray-300 transition-colors hover:bg-white/10"
                 >
-                  {isSettingsVisible ? "Masquer les options" : config.settingsBtnLabel}
+                  {isSettingsVisible ? 'Masquer les options' : config.settingsBtnLabel}
                 </button>
                 {config.showDeclineBtn && (
                   <button
                     onClick={handleReject}
-                    className="flex-1 py-2.5 rounded-xl bg-transparent hover:bg-white/5 border border-white/5 text-gray-400 hover:text-gray-200 font-semibold text-xs transition-colors cursor-pointer"
+                    className="flex-1 cursor-pointer rounded-xl border border-white/5 bg-transparent py-2.5 text-xs font-semibold text-gray-400 transition-colors hover:bg-white/5 hover:text-gray-200"
                   >
                     {config.declineInfoBtnLabel}
                   </button>

@@ -13,31 +13,29 @@ export default function Icon() {
   const logoBase64 = `data:image/png;base64,${logoData.toString('base64')}`;
 
   return new ImageResponse(
-    (
-      <div
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: '#030712',
+        borderRadius: '14px',
+        overflow: 'hidden',
+        padding: '6px',
+      }}
+    >
+      <img
+        src={logoBase64}
+        alt="DevEvoke"
         style={{
           width: '100%',
           height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: '#030712',
-          borderRadius: '14px',
-          overflow: 'hidden',
-          padding: '6px',
+          objectFit: 'contain',
         }}
-      >
-        <img
-          src={logoBase64}
-          alt="DevEvoke"
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'contain',
-          }}
-        />
-      </div>
-    ),
+      />
+    </div>,
     {
       ...size,
     }

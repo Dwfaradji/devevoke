@@ -24,7 +24,9 @@ export function DemoInternalEmail({ data, referenceId }: DemoInternalProps) {
   const phone = formatPhone(data.phone);
   const solution = data.demoFocus || 'Solution DevEvoke';
   const slot = data.preferredSlot || 'À convenir';
-  const replySubject = encodeURIComponent(`DevEvoke : Confirmation de votre créneau de démonstration ${solution} [Réf: ${referenceId}]`);
+  const replySubject = encodeURIComponent(
+    `DevEvoke : Confirmation de votre créneau de démonstration ${solution} [Réf: ${referenceId}]`
+  );
   const mailtoUrl = `mailto:${data.email}?subject=${replySubject}`;
 
   return (
@@ -34,12 +36,11 @@ export function DemoInternalEmail({ data, referenceId }: DemoInternalProps) {
     >
       <EmailBadge variant="purple">Demande de Démonstration</EmailBadge>
 
-      <EmailHeading as="h1">
-        Nouvelle demande de démonstration
-      </EmailHeading>
+      <EmailHeading as="h1">Nouvelle demande de démonstration</EmailHeading>
 
       <EmailText variant="muted">
-        Un responsable d'établissement souhaite assister à une démonstration guidée en visioconférence.
+        Un responsable d'établissement souhaite assister à une démonstration guidée en
+        visioconférence.
       </EmailText>
 
       {/* SECTION 1 : DEMANDE */}
@@ -49,17 +50,32 @@ export function DemoInternalEmail({ data, referenceId }: DemoInternalProps) {
             label="Solution concernée :"
             value={<strong style={{ color: emailTokens.colors.primaryLight }}>{solution}</strong>}
           />
-          <EmailField
-            label="Disponibilités :"
-            value={<strong>{slot}</strong>}
-          />
-          {data.establishmentType && <EmailField label="Type d'établissement :" value={data.establishmentType} />}
-          {data.vehicleCount && <EmailField label="Taille de flotte / Sites :" value={data.vehicleCount} isLast />}
+          <EmailField label="Disponibilités :" value={<strong>{slot}</strong>} />
+          {data.establishmentType && (
+            <EmailField label="Type d'établissement :" value={data.establishmentType} />
+          )}
+          {data.vehicleCount && (
+            <EmailField label="Taille de flotte / Sites :" value={data.vehicleCount} isLast />
+          )}
         </EmailFieldGroup>
 
         {data.notes && (
-          <div style={{ marginTop: '14px', paddingTop: '12px', borderTop: `1px solid ${emailTokens.colors.border}` }}>
-            <div style={{ fontSize: '11px', color: emailTokens.colors.textDimmed, textTransform: 'uppercase', fontWeight: 700, marginBottom: '6px' }}>
+          <div
+            style={{
+              marginTop: '14px',
+              paddingTop: '12px',
+              borderTop: `1px solid ${emailTokens.colors.border}`,
+            }}
+          >
+            <div
+              style={{
+                fontSize: '11px',
+                color: emailTokens.colors.textDimmed,
+                textTransform: 'uppercase',
+                fontWeight: 700,
+                marginBottom: '6px',
+              }}
+            >
               Besoin spécifique / Attentes :
             </div>
             <div
@@ -89,7 +105,10 @@ export function DemoInternalEmail({ data, referenceId }: DemoInternalProps) {
           <EmailField
             label="Email direct :"
             value={
-              <a href={`mailto:${data.email}`} style={{ color: emailTokens.colors.primaryLight, textDecoration: 'none' }}>
+              <a
+                href={`mailto:${data.email}`}
+                style={{ color: emailTokens.colors.primaryLight, textDecoration: 'none' }}
+              >
                 {data.email}
               </a>
             }
@@ -98,7 +117,10 @@ export function DemoInternalEmail({ data, referenceId }: DemoInternalProps) {
             label="Téléphone direct :"
             value={
               phone !== 'Non renseigné' ? (
-                <a href={`tel:${phone}`} style={{ color: emailTokens.colors.primaryLight, textDecoration: 'none' }}>
+                <a
+                  href={`tel:${phone}`}
+                  style={{ color: emailTokens.colors.primaryLight, textDecoration: 'none' }}
+                >
                   {phone}
                 </a>
               ) : (
@@ -116,7 +138,11 @@ export function DemoInternalEmail({ data, referenceId }: DemoInternalProps) {
           <EmailField label="Page d'origine :" value="Demande de Démonstration Floticar" />
           <EmailField
             label="Référence dossier :"
-            value={<strong style={{ fontFamily: emailTokens.typography.monoFamily }}>{referenceId}</strong>}
+            value={
+              <strong style={{ fontFamily: emailTokens.typography.monoFamily }}>
+                {referenceId}
+              </strong>
+            }
           />
           <EmailField label="Date & heure :" value={formatDate(new Date())} isLast />
         </EmailFieldGroup>

@@ -25,7 +25,7 @@ const BlogsContainer = () => {
             transition={{ duration: 0.5, delay: i * 0.07 }}
           >
             <Link href={`/blog/${slugify(blog.title)}`} className="group block h-full">
-              <article className="h-full flex flex-col overflow-hidden rounded-3xl glass border border-white/5 transition-all duration-300 hover:border-white/10 hover:glass-strong hover:-translate-y-1 shadow-lg">
+              <article className="glass hover:glass-strong flex h-full flex-col overflow-hidden rounded-3xl border border-white/5 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-white/10">
                 {/* Image */}
                 <div className="relative h-56 overflow-hidden">
                   <Image
@@ -40,14 +40,18 @@ const BlogsContainer = () => {
                 </div>
 
                 {/* Contenu */}
-                <div className="p-6 md:p-8 flex flex-col flex-grow">
-                  <p className="mb-3 text-xs font-semibold text-primary-400 uppercase tracking-wider">
-                    {new Date(blog.date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'short', day: 'numeric' })}
+                <div className="flex flex-grow flex-col p-6 md:p-8">
+                  <p className="text-primary-400 mb-3 text-xs font-semibold tracking-wider uppercase">
+                    {new Date(blog.date).toLocaleDateString('fr-FR', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                    })}
                   </p>
-                  <h2 className="font-bold text-white leading-tight text-xl group-hover:text-primary-300 transition-colors line-clamp-2 mb-3">
+                  <h2 className="group-hover:text-primary-300 mb-3 line-clamp-2 text-xl leading-tight font-bold text-white transition-colors">
                     {blog.title}
                   </h2>
-                  <p className="text-sm text-muted-light line-clamp-3 leading-relaxed flex-grow">
+                  <p className="text-muted-light line-clamp-3 flex-grow text-sm leading-relaxed">
                     {blog.descriptionShort}
                   </p>
 

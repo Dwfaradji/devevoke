@@ -19,18 +19,12 @@ import {
   ContactConfirmationEmail,
   renderContactConfirmationText,
 } from './templates/contact/ContactConfirmation';
-import {
-  QuoteInternalEmail,
-  renderQuoteInternalText,
-} from './templates/quote/QuoteInternal';
+import { QuoteInternalEmail, renderQuoteInternalText } from './templates/quote/QuoteInternal';
 import {
   QuoteConfirmationEmail,
   renderQuoteConfirmationText,
 } from './templates/quote/QuoteConfirmation';
-import {
-  DemoInternalEmail,
-  renderDemoInternalText,
-} from './templates/demo/DemoInternal';
+import { DemoInternalEmail, renderDemoInternalText } from './templates/demo/DemoInternal';
 import {
   DemoConfirmationEmail,
   renderDemoConfirmationText,
@@ -83,8 +77,7 @@ export const emailSubjects = {
   newsletterInternal: (_data: NewsletterEmailData, ref: string) =>
     `Nouvel abonné newsletter — DevEvoke [Réf: ${ref}]`,
 
-  newsletterConfirmation: () =>
-    `Bienvenue dans la newsletter DevEvoke`,
+  newsletterConfirmation: () => `Bienvenue dans la newsletter DevEvoke`,
 } as const;
 
 /**
@@ -100,14 +93,12 @@ export const emailPreheaders = {
   quoteInternal: (data: QuoteEmailData) =>
     `Nouvelle demande de chiffrage pour le projet : ${data.projectType}.`,
 
-  quoteConfirmation: () =>
-    `Votre demande de devis a bien été transmise à notre pôle technique.`,
+  quoteConfirmation: () => `Votre demande de devis a bien été transmise à notre pôle technique.`,
 
   demoInternal: (data: DemoEmailData) =>
     `Demande de démonstration en visioconférence pour ${data.demoFocus}.`,
 
-  demoConfirmation: () =>
-    `Nous préparons votre démonstration personnalisée de 30 minutes.`,
+  demoConfirmation: () => `Nous préparons votre démonstration personnalisée de 30 minutes.`,
 
   diagnosticInternal: (data: DiagnosticEmailData) =>
     `Nouveau score d'analyse pour ${formatCompany(data.organization)} : ${data.globalScore}/100 (${data.maturityLevel}).`,
@@ -118,8 +109,7 @@ export const emailPreheaders = {
   newsletterInternal: (data: NewsletterEmailData) =>
     `Nouvelle inscription confirmée : ${data.email}.`,
 
-  newsletterConfirmation: () =>
-    `Votre veille technologique et métier commence maintenant.`,
+  newsletterConfirmation: () => `Votre veille technologique et métier commence maintenant.`,
 } as const;
 
 /**
@@ -130,70 +120,90 @@ export const emailTemplates: Record<EmailType, EmailTemplateDefinition<any>> = {
   'contact-internal': {
     subject: (data, ref) => emailSubjects.contactInternal(data, ref),
     preheader: (data) => emailPreheaders.contactInternal(data),
-    component: ({ data, referenceId }) => <ContactInternalEmail data={data} referenceId={referenceId} />,
+    component: ({ data, referenceId }) => (
+      <ContactInternalEmail data={data} referenceId={referenceId} />
+    ),
     text: (data, ref) => renderContactInternalText(data, ref),
     isClientEmail: false,
   },
   'contact-confirmation': {
     subject: (data, ref) => emailSubjects.contactConfirmation(data, ref),
     preheader: () => emailPreheaders.contactConfirmation(),
-    component: ({ data, referenceId }) => <ContactConfirmationEmail data={data} referenceId={referenceId} />,
+    component: ({ data, referenceId }) => (
+      <ContactConfirmationEmail data={data} referenceId={referenceId} />
+    ),
     text: (data, ref) => renderContactConfirmationText(data, ref),
     isClientEmail: true,
   },
   'quote-internal': {
     subject: (data, ref) => emailSubjects.quoteInternal(data, ref),
     preheader: (data) => emailPreheaders.quoteInternal(data),
-    component: ({ data, referenceId }) => <QuoteInternalEmail data={data} referenceId={referenceId} />,
+    component: ({ data, referenceId }) => (
+      <QuoteInternalEmail data={data} referenceId={referenceId} />
+    ),
     text: (data, ref) => renderQuoteInternalText(data, ref),
     isClientEmail: false,
   },
   'quote-confirmation': {
     subject: (data, ref) => emailSubjects.quoteConfirmation(data, ref),
     preheader: () => emailPreheaders.quoteConfirmation(),
-    component: ({ data, referenceId }) => <QuoteConfirmationEmail data={data} referenceId={referenceId} />,
+    component: ({ data, referenceId }) => (
+      <QuoteConfirmationEmail data={data} referenceId={referenceId} />
+    ),
     text: (data, ref) => renderQuoteConfirmationText(data, ref),
     isClientEmail: true,
   },
   'demo-internal': {
     subject: (data, ref) => emailSubjects.demoInternal(data, ref),
     preheader: (data) => emailPreheaders.demoInternal(data),
-    component: ({ data, referenceId }) => <DemoInternalEmail data={data} referenceId={referenceId} />,
+    component: ({ data, referenceId }) => (
+      <DemoInternalEmail data={data} referenceId={referenceId} />
+    ),
     text: (data, ref) => renderDemoInternalText(data, ref),
     isClientEmail: false,
   },
   'demo-confirmation': {
     subject: (data, ref) => emailSubjects.demoConfirmation(data, ref),
     preheader: () => emailPreheaders.demoConfirmation(),
-    component: ({ data, referenceId }) => <DemoConfirmationEmail data={data} referenceId={referenceId} />,
+    component: ({ data, referenceId }) => (
+      <DemoConfirmationEmail data={data} referenceId={referenceId} />
+    ),
     text: (data, ref) => renderDemoConfirmationText(data, ref),
     isClientEmail: true,
   },
   'diagnostic-internal': {
     subject: (data, ref) => emailSubjects.diagnosticInternal(data, ref),
     preheader: (data) => emailPreheaders.diagnosticInternal(data),
-    component: ({ data, referenceId }) => <DiagnosticInternalEmail data={data} referenceId={referenceId} />,
+    component: ({ data, referenceId }) => (
+      <DiagnosticInternalEmail data={data} referenceId={referenceId} />
+    ),
     text: (data, ref) => renderDiagnosticInternalText(data, ref),
     isClientEmail: false,
   },
   'diagnostic-confirmation': {
     subject: (data, ref) => emailSubjects.diagnosticConfirmation(data, ref),
     preheader: () => emailPreheaders.diagnosticConfirmation(),
-    component: ({ data, referenceId }) => <DiagnosticConfirmationEmail data={data} referenceId={referenceId} />,
+    component: ({ data, referenceId }) => (
+      <DiagnosticConfirmationEmail data={data} referenceId={referenceId} />
+    ),
     text: (data, ref) => renderDiagnosticConfirmationText(data, ref),
     isClientEmail: true,
   },
   'newsletter-internal': {
     subject: (data, ref) => emailSubjects.newsletterInternal(data, ref),
     preheader: (data) => emailPreheaders.newsletterInternal(data),
-    component: ({ data, referenceId }) => <NewsletterInternalEmail data={data} referenceId={referenceId} />,
+    component: ({ data, referenceId }) => (
+      <NewsletterInternalEmail data={data} referenceId={referenceId} />
+    ),
     text: (data, ref) => renderNewsletterInternalText(data, ref),
     isClientEmail: false,
   },
   'newsletter-confirmation': {
     subject: () => emailSubjects.newsletterConfirmation(),
     preheader: () => emailPreheaders.newsletterConfirmation(),
-    component: ({ data, referenceId }) => <NewsletterConfirmationEmail data={data} referenceId={referenceId} />,
+    component: ({ data, referenceId }) => (
+      <NewsletterConfirmationEmail data={data} referenceId={referenceId} />
+    ),
     text: (data, ref) => renderNewsletterConfirmationText(data, ref),
     isClientEmail: true,
   },

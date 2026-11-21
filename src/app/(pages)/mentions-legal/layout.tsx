@@ -11,10 +11,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function MentionsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function MentionsLayout({ children }: { children: React.ReactNode }) {
   return <section>{children}</section>;
 }

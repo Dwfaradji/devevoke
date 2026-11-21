@@ -51,7 +51,7 @@ export default function MaturityRadar({ dimensionScores }: MaturityRadarProps) {
       <div className="relative flex items-center justify-center py-4">
         <svg
           viewBox={`0 0 ${size} ${size}`}
-          className="w-full max-w-[340px] sm:max-w-[380px] h-auto overflow-visible select-none"
+          className="h-auto w-full max-w-[340px] overflow-visible select-none sm:max-w-[380px]"
           aria-label="Graphique radar de maturité numérique"
           role="img"
         >
@@ -106,7 +106,7 @@ export default function MaturityRadar({ dimensionScores }: MaturityRadarProps) {
             stroke="#38bdf8"
             strokeWidth="2.5"
             strokeLinejoin="round"
-            className="filter drop-shadow-[0_0_12px_rgba(56,189,248,0.4)]"
+            className="drop-shadow-[0_0_12px_rgba(56,189,248,0.4)] filter"
           />
 
           {/* Points sur chaque sommet */}
@@ -145,7 +145,7 @@ export default function MaturityRadar({ dimensionScores }: MaturityRadarProps) {
                   y="12"
                   textAnchor="middle"
                   dominantBaseline="central"
-                  className="fill-primary-400 text-[10px] font-bold font-mono"
+                  className="fill-primary-400 font-mono text-[10px] font-bold"
                 >
                   {score}/100
                 </text>
@@ -156,23 +156,24 @@ export default function MaturityRadar({ dimensionScores }: MaturityRadarProps) {
       </div>
 
       {/* Tableau accessible sous le radar (Section 36) */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2 border-t border-white/5">
+      <div className="grid grid-cols-2 gap-2.5 border-t border-white/5 pt-2 sm:grid-cols-3">
         {dimensions.map((dim) => {
           const score = dimensionScores[dim] ?? 0;
           const meta = DIMENSION_METADATA[dim];
 
           let scoreColor = 'text-amber-400 bg-amber-400/10 border-amber-400/20';
           if (score >= 70) scoreColor = 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20';
-          else if (score >= 45) scoreColor = 'text-primary-300 bg-primary-400/10 border-primary-400/20';
+          else if (score >= 45)
+            scoreColor = 'text-primary-300 bg-primary-400/10 border-primary-400/20';
 
           return (
             <div
               key={dim}
-              className="p-2.5 rounded-xl bg-neutral-900/60 border border-white/5 flex items-center justify-between"
+              className="flex items-center justify-between rounded-xl border border-white/5 bg-neutral-900/60 p-2.5"
             >
-              <span className="text-xs text-neutral-300 font-medium">{meta.shortLabel}</span>
+              <span className="text-xs font-medium text-neutral-300">{meta.shortLabel}</span>
               <span
-                className={`text-xs font-mono font-bold px-2 py-0.5 rounded-md border ${scoreColor}`}
+                className={`rounded-md border px-2 py-0.5 font-mono text-xs font-bold ${scoreColor}`}
               >
                 {score} / 100
               </span>

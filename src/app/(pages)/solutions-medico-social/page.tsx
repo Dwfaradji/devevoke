@@ -1,14 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  Layers, 
-  Globe, 
-  Smartphone, 
-  Workflow, 
-  ShieldCheck, 
-  ArrowRight, 
-  CheckCircle2, 
+import {
+  Layers,
+  Globe,
+  Smartphone,
+  Workflow,
+  ShieldCheck,
+  ArrowRight,
+  CheckCircle2,
 } from 'lucide-react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import MedicoSocialNavSwitcher from '@/components/ui/MedicoSocialNavSwitcher';
@@ -18,7 +18,8 @@ export default function SolutionsMedicoSocialPage() {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Solutions Numériques Médico-Social DevEvoke',
-    description: 'Catalogue des solutions logicielles et outils numériques développés par DevEvoke pour le secteur médico-social.',
+    description:
+      'Catalogue des solutions logicielles et outils numériques développés par DevEvoke pour le secteur médico-social.',
     itemListElement: [
       {
         '@type': 'ListItem',
@@ -85,7 +86,7 @@ export default function SolutionsMedicoSocialPage() {
     {
       title: 'Logiciels Métiers & Applications Web',
       desc: 'Développement sur-mesure d’outils centralisés pour fluidifier le dossier usager, les plannings et le suivi administratif.',
-      icon: <Layers className="size-6 text-primary-400" />,
+      icon: <Layers className="text-primary-400 size-6" />,
       link: '/developpement-logiciel-medico-social',
       linkLabel: 'Découvrir le développement logiciel',
       points: [
@@ -98,7 +99,7 @@ export default function SolutionsMedicoSocialPage() {
     {
       title: 'Portails Collaboratifs, Extranets & Espaces Familles',
       desc: 'Espaces sécurisés et ergonomiques pour fluidifier les liens entre professionnels, usagers, familles et partenaires institutionnels.',
-      icon: <Globe className="size-6 text-secondary-400" />,
+      icon: <Globe className="text-secondary-400 size-6" />,
       link: '/developpement-web',
       linkLabel: 'Découvrir nos portails et extranets',
       badge: 'Espaces Sécurisés RGPD',
@@ -112,7 +113,7 @@ export default function SolutionsMedicoSocialPage() {
     {
       title: 'Applications Mobiles & Tablettes Soignants',
       desc: 'Outils tactiles fluides conçus pour les éducateurs, soignants et intervenants nomades sur le terrain.',
-      icon: <Smartphone className="size-6 text-accent" />,
+      icon: <Smartphone className="text-accent size-6" />,
       link: '/application-mobile',
       linkLabel: 'Découvrir nos solutions mobiles',
       points: [
@@ -206,71 +207,78 @@ export default function SolutionsMedicoSocialPage() {
         <MedicoSocialNavSwitcher />
 
         {/* HERO */}
-        <header className="relative py-16 md:py-24 text-center px-4 max-w-5xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary-500/30 mb-8">
-            <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse" />
-            <span className="text-xs sm:text-sm font-medium text-gray-200 tracking-wide uppercase">
+        <header className="relative mx-auto max-w-5xl px-4 py-16 text-center md:py-24">
+          <div className="glass border-primary-500/30 mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2">
+            <span className="bg-primary-400 h-2 w-2 animate-pulse rounded-full" />
+            <span className="text-xs font-medium tracking-wide text-gray-200 uppercase sm:text-sm">
               Catalogue Numérique DevEvoke
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-8 leading-[1.15]">
+          <h1 className="mb-8 text-4xl leading-[1.15] font-extrabold tracking-tight text-white sm:text-6xl">
             Solutions numériques et logiciels pour le{' '}
             <span className="text-gradient drop-shadow-sm">secteur médico-social</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-muted leading-relaxed max-w-3xl mx-auto mb-10">
-            Découvrez l’ensemble des technologies créées par <strong>DevEvoke</strong> pour équiper les <strong>associations</strong>, <strong>IME</strong>, <strong>SESSAD</strong>, <strong>ESAT</strong> et <strong>EHPAD</strong>. Des outils pensés pour simplifier le travail des équipes et renforcer la qualité de l’accompagnement.
+          <p className="text-muted mx-auto mb-10 max-w-3xl text-lg leading-relaxed sm:text-xl">
+            Découvrez l’ensemble des technologies créées par <strong>DevEvoke</strong> pour équiper
+            les <strong>associations</strong>, <strong>IME</strong>, <strong>SESSAD</strong>,{' '}
+            <strong>ESAT</strong> et <strong>EHPAD</strong>. Des outils pensés pour simplifier le
+            travail des équipes et renforcer la qualité de l’accompagnement.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/contact" className="btn-primary w-full sm:w-auto text-base">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link href="/contact" className="btn-primary w-full text-base sm:w-auto">
               Présenter votre projet à un consultant
               <ArrowRight className="size-4" />
             </Link>
-            <Link href="/agence-digitale-medico-social" className="btn-outline w-full sm:w-auto text-base">
+            <Link
+              href="/agence-digitale-medico-social"
+              className="btn-outline w-full text-base sm:w-auto"
+            >
               Notre expertise médico-sociale
             </Link>
           </div>
         </header>
 
         {/* SECTION 1 : NOS SOLUTIONS PAR THÉMATIQUE */}
-        <section className="py-16 border-t border-white/5">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
+        <section className="border-t border-white/5 py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto mb-16 max-w-3xl text-center">
               <span className="section-label">Offre Technologique</span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-3 mb-6">
+              <h2 className="mt-3 mb-6 text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 Nos 4 piliers d’ingénierie logicielle
               </h2>
               <p className="text-muted text-lg">
-                Des solutions fiables, modulaires et évolutives pour moderniser chaque dimension de votre organisation.
+                Des solutions fiables, modulaires et évolutives pour moderniser chaque dimension de
+                votre organisation.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid gap-8 md:grid-cols-2">
               {categories.map((cat, idx) => (
                 <div
                   key={idx}
-                  className="glass rounded-3xl p-8 sm:p-10 border border-white/5 hover:border-primary-500/30 transition-all duration-300 flex flex-col justify-between group"
+                  className="glass hover:border-primary-500/30 group flex flex-col justify-between rounded-3xl border border-white/5 p-8 transition-all duration-300 sm:p-10"
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="size-12 rounded-2xl bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <div className="mb-6 flex items-center justify-between">
+                      <div className="flex size-12 items-center justify-center rounded-2xl bg-white/5 transition-transform group-hover:scale-110">
                         {cat.icon}
                       </div>
                       {cat.badge && (
-                        <span className="text-xs px-3 py-1 rounded-full bg-secondary-500/20 text-secondary-300 border border-secondary-500/30 font-medium">
+                        <span className="bg-secondary-500/20 text-secondary-300 border-secondary-500/30 rounded-full border px-3 py-1 text-xs font-medium">
                           {cat.badge}
                         </span>
                       )}
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-3">{cat.title}</h3>
-                    <p className="text-muted leading-relaxed mb-6">{cat.desc}</p>
+                    <h3 className="mb-3 text-2xl font-bold text-white">{cat.title}</h3>
+                    <p className="text-muted mb-6 leading-relaxed">{cat.desc}</p>
 
-                    <ul className="space-y-3 mb-8">
+                    <ul className="mb-8 space-y-3">
                       {cat.points.map((pt, pIdx) => (
                         <li key={pIdx} className="flex items-start gap-2.5 text-sm text-gray-300">
-                          <CheckCircle2 className="size-4 text-emerald-400 shrink-0 mt-0.5" />
+                          <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-emerald-400" />
                           <span>{pt}</span>
                         </li>
                       ))}
@@ -279,7 +287,7 @@ export default function SolutionsMedicoSocialPage() {
 
                   <Link
                     href={cat.link}
-                    className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 font-semibold text-sm group-hover:translate-x-1 transition-all"
+                    className="text-primary-400 hover:text-primary-300 inline-flex items-center gap-2 text-sm font-semibold transition-all group-hover:translate-x-1"
                   >
                     {cat.linkLabel}
                     <ArrowRight className="size-4" />
@@ -291,23 +299,24 @@ export default function SolutionsMedicoSocialPage() {
         </section>
 
         {/* SECTION 2 : SOLUTIONS PAR TYPE D'ÉTABLISSEMENT */}
-        <section className="py-20 border-t border-white/5 bg-surface/30">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
+        <section className="bg-surface/30 border-t border-white/5 py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto mb-16 max-w-3xl text-center">
               <span className="section-label">Adaptation Métier</span>
-              <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight mt-3 mb-6">
+              <h2 className="mt-3 mb-6 text-3xl font-bold tracking-tight text-white sm:text-5xl">
                 Des solutions adaptées à chaque établissement
               </h2>
               <p className="text-muted text-lg">
-                Consultez nos approches ciblées selon votre type de structure médico-sociale ou sanitaire.
+                Consultez nos approches ciblées selon votre type de structure médico-sociale ou
+                sanitaire.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {etablissements.map((etab, i) => (
                 <div
                   key={i}
-                  className="glass rounded-3xl border border-white/5 overflow-hidden flex flex-col justify-between hover:border-white/20 hover:glass-strong transition-all duration-300 group shadow-xl"
+                  className="glass hover:glass-strong group flex flex-col justify-between overflow-hidden rounded-3xl border border-white/5 shadow-xl transition-all duration-300 hover:border-white/20"
                 >
                   <div>
                     <div className="relative h-48 w-full overflow-hidden">
@@ -316,30 +325,28 @@ export default function SolutionsMedicoSocialPage() {
                         alt={etab.title}
                         width={600}
                         height={360}
-                        className="size-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                        className="size-full transform object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-[var(--color-bg)]/40 to-transparent" />
                       <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 rounded-full text-xs font-semibold bg-primary-500/80 text-white backdrop-blur-md shadow-lg">
+                        <span className="bg-primary-500/80 rounded-full px-3 py-1 text-xs font-semibold text-white shadow-lg backdrop-blur-md">
                           {etab.badge}
                         </span>
                       </div>
                     </div>
 
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary-300 transition-colors">
+                      <h3 className="group-hover:text-primary-300 mb-2 text-xl font-bold text-white transition-colors">
                         {etab.title}
                       </h3>
-                      <p className="text-sm text-muted leading-relaxed">
-                        {etab.desc}
-                      </p>
+                      <p className="text-muted text-sm leading-relaxed">{etab.desc}</p>
                     </div>
                   </div>
 
                   <div className="p-6 pt-0">
                     <Link
                       href={etab.link}
-                      className="text-xs font-semibold uppercase tracking-wider text-primary-400 group-hover:text-white inline-flex items-center gap-1.5 transition-colors"
+                      className="text-primary-400 inline-flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase transition-colors group-hover:text-white"
                     >
                       Découvrir l'offre dédiée →
                     </Link>
@@ -351,18 +358,20 @@ export default function SolutionsMedicoSocialPage() {
         </section>
 
         {/* SECTION 3 : SÉCURITÉ & HÉBERGEMENT */}
-        <section className="py-16 border-t border-white/5 bg-surface/40">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <div className="inline-flex items-center justify-center size-14 rounded-full bg-primary-500/10 text-primary-400 mx-auto">
+        <section className="bg-surface/40 border-t border-white/5 py-16">
+          <div className="mx-auto max-w-5xl space-y-6 px-4 text-center sm:px-6 lg:px-8">
+            <div className="bg-primary-500/10 text-primary-400 mx-auto inline-flex size-14 items-center justify-center rounded-full">
               <ShieldCheck className="size-8" />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">
+            <h2 className="text-2xl font-bold text-white sm:text-3xl">
               Garantie Sécurité Web, Confidentialité & RGPD
             </h2>
-            <p className="text-muted leading-relaxed text-base max-w-3xl mx-auto">
-              Toutes les solutions conçues par DevEvoke appliquent les meilleures pratiques de sécurité applicative et de conformité RGPD. Hébergement souverain sur serveurs situés en France, chiffrement TLS 1.3 et respect de la confidentialité professionnelle.
+            <p className="text-muted mx-auto max-w-3xl text-base leading-relaxed">
+              Toutes les solutions conçues par DevEvoke appliquent les meilleures pratiques de
+              sécurité applicative et de conformité RGPD. Hébergement souverain sur serveurs situés
+              en France, chiffrement TLS 1.3 et respect de la confidentialité professionnelle.
             </p>
-            <div className="pt-2 flex justify-center gap-4">
+            <div className="flex justify-center gap-4 pt-2">
               <Link href="/securite-et-conformite" className="btn-primary text-sm">
                 Sécurité & Conformité RGPD
               </Link>
@@ -374,17 +383,18 @@ export default function SolutionsMedicoSocialPage() {
         </section>
 
         {/* SECTION 4 : CTA FINAL */}
-        <section className="py-24 px-4 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-t from-primary-500/10 via-transparent to-transparent pointer-events-none" />
-          <div className="max-w-4xl mx-auto glass-strong p-10 sm:p-16 rounded-3xl text-center border border-primary-500/30 shadow-[0_0_60px_rgba(59,130,246,0.2)] relative z-10">
+        <section className="relative overflow-hidden px-4 py-24">
+          <div className="from-primary-500/10 pointer-events-none absolute inset-0 bg-gradient-to-t via-transparent to-transparent" />
+          <div className="glass-strong border-primary-500/30 relative z-10 mx-auto max-w-4xl rounded-3xl border p-10 text-center shadow-[0_0_60px_rgba(59,130,246,0.2)] sm:p-16">
             <span className="section-label mb-4 inline-block">Un besoin spécifique ?</span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-white mb-6">
+            <h2 className="mb-6 text-3xl font-bold text-white sm:text-5xl">
               Co-construisons la solution numérique de votre établissement
             </h2>
-            <p className="text-muted text-lg sm:text-xl mb-10 max-w-2xl mx-auto">
-              Vous avez un cahier des charges, une idée de logiciel ou un besoin de modernisation ? Nos architectes et développeurs vous conseillent sans engagement.
+            <p className="text-muted mx-auto mb-10 max-w-2xl text-lg sm:text-xl">
+              Vous avez un cahier des charges, une idée de logiciel ou un besoin de modernisation ?
+              Nos architectes et développeurs vous conseillent sans engagement.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link href="/contact" className="btn-primary text-base">
                 Contacter DevEvoke
                 <ArrowRight className="size-4" />

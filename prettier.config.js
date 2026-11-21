@@ -1,6 +1,10 @@
-const styleguide = require('@vercel/style-guide/prettier');
-
+/** @type {import('prettier').Config} */
 module.exports = {
-  ...styleguide,
-  plugins: [...styleguide.plugins, 'prettier-plugin-tailwindcss'],
+  endOfLine: 'lf',
+  printWidth: 100,
+  semi: true,
+  singleQuote: true,
+  tabWidth: 2,
+  trailingComma: 'es5',
+  plugins: ['prettier-plugin-tailwindcss'],
 };

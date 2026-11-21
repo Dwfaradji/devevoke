@@ -58,7 +58,12 @@ export async function sendMail(options: SendMailOptions): Promise<EmailSendResul
       ...(options.replyTo ? { replyTo: stripCrlf(options.replyTo) } : {}),
       subject: stripCrlf(options.subject),
       html: options.html,
-      text: options.text || options.html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(),
+      text:
+        options.text ||
+        options.html
+          .replace(/<[^>]+>/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim(),
     };
 
     const info = await transporter.sendMail(mailOptions);

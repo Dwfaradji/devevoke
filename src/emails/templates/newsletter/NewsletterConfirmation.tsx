@@ -17,34 +17,34 @@ interface NewsletterConfirmationProps {
 
 export function NewsletterConfirmationEmail({ data, referenceId }: NewsletterConfirmationProps) {
   return (
-    <EmailLayout
-      preview="Bienvenue dans la communauté DevEvoke"
-      referenceId={referenceId}
-    >
+    <EmailLayout preview="Bienvenue dans la communauté DevEvoke" referenceId={referenceId}>
       <EmailBadge variant="success">Inscription Confirmée</EmailBadge>
 
-      <EmailHeading as="h1">
-        Bienvenue dans la communauté DevEvoke
-      </EmailHeading>
+      <EmailHeading as="h1">Bienvenue dans la communauté DevEvoke</EmailHeading>
 
       <EmailText variant="bold" size="md">
         Bonjour,
       </EmailText>
 
       <EmailText variant="default">
-        Votre inscription à notre lettre d'information avec l'adresse <strong style={{ color: '#ffffff' }}>{data.email}</strong> a bien été enregistrée.
+        Votre inscription à notre lettre d'information avec l'adresse{' '}
+        <strong style={{ color: '#ffffff' }}>{data.email}</strong> a bien été enregistrée.
       </EmailText>
 
       <EmailCard title="Ce que vous allez recevoir">
         <div style={{ color: emailTokens.colors.muted, fontSize: '13px', lineHeight: '1.7' }}>
           <div style={{ marginBottom: '8px' }}>
-            <strong style={{ color: '#ffffff' }}>• Analyses & Veille technologique :</strong> nos retours d'expérience sur l'architecture logicielle, le SaaS et les technologies modernes.
+            <strong style={{ color: '#ffffff' }}>• Analyses & Veille technologique :</strong> nos
+            retours d'expérience sur l'architecture logicielle, le SaaS et les technologies
+            modernes.
           </div>
           <div style={{ marginBottom: '8px' }}>
-            <strong style={{ color: '#ffffff' }}>• Numérisation médico-sociale :</strong> études de cas pratiques sur la modernisation des ESSMS et associations.
+            <strong style={{ color: '#ffffff' }}>• Numérisation médico-sociale :</strong> études de
+            cas pratiques sur la modernisation des ESSMS et associations.
           </div>
           <div>
-            <strong style={{ color: '#ffffff' }}>• Zéro spam :</strong> nous envoyons uniquement des contenus de fond à haute valeur ajoutée, avec désinscription libre en 1 clic.
+            <strong style={{ color: '#ffffff' }}>• Zéro spam :</strong> nous envoyons uniquement des
+            contenus de fond à haute valeur ajoutée, avec désinscription libre en 1 clic.
           </div>
         </div>
       </EmailCard>
@@ -54,7 +54,10 @@ export function NewsletterConfirmationEmail({ data, referenceId }: NewsletterCon
   );
 }
 
-export function renderNewsletterConfirmationText(data: NewsletterEmailData, referenceId: string): string {
+export function renderNewsletterConfirmationText(
+  data: NewsletterEmailData,
+  referenceId: string
+): string {
   return `
 ==================================================
 BIENVENUE DANS LA NEWSLETTER DEVEVOKE

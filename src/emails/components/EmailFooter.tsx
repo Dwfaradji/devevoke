@@ -44,9 +44,7 @@ export function EmailFooter() {
   return (
     <Section style={footerContainerStyle}>
       <Text style={brandHeadingStyle}>DevEvoke — Agence Digitale</Text>
-      <Text style={textStyle}>
-        Sites web · Applications · SaaS · Solutions métier
-      </Text>
+      <Text style={textStyle}>Sites web · Applications · SaaS · Solutions métier</Text>
       <Text style={textStyle}>
         <Link href={emailTokens.brand.website} style={linkStyle}>
           www.devevoke.com
@@ -60,9 +58,11 @@ export function EmailFooter() {
       <Hr style={{ borderColor: emailTokens.colors.borderSubtle, margin: '14px 0' }} />
 
       <Text style={legalTextStyle}>
-        DevEvoke | SIREN : {emailTokens.brand.siren} | Hébergement sécurisé en France | Conformité RGPD
+        DevEvoke | SIREN : {emailTokens.brand.siren} | Hébergement sécurisé en France | Conformité
+        RGPD
         <br />
-        Cet email transactionnel a été transmis suite à une interaction sur le site officiel de DevEvoke.
+        Cet email transactionnel a été transmis suite à une interaction sur le site officiel de
+        DevEvoke.
         <br />
         &copy; {currentYear} DevEvoke — Tous droits réservés.
       </Text>

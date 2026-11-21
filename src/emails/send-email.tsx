@@ -2,10 +2,7 @@ import React from 'react';
 import { Resend } from 'resend';
 import { render } from '@react-email/components';
 import { getEmailConfig } from './email-config';
-import {
-  SendTransactionalEmailOptions,
-  SendTransactionalEmailResult,
-} from './email-types';
+import { SendTransactionalEmailOptions, SendTransactionalEmailResult } from './email-types';
 import { securityLogger } from '../lib/security/logger';
 import { generateReference } from '../lib/security/reference';
 import { stripCrlf } from '../lib/security/sanitization';
@@ -17,12 +14,7 @@ import {
   emailPreheaders,
 } from './email-registry';
 
-export {
-  emailTemplates,
-  emailTemplateRegistry,
-  emailSubjects,
-  emailPreheaders,
-};
+export { emailTemplates, emailTemplateRegistry, emailSubjects, emailPreheaders };
 
 // Singleton client Resend
 let resendClient: Resend | null = null;
@@ -47,7 +39,9 @@ export interface RecordedEmailCall {
 
 const recordedEmailCalls: RecordedEmailCall[] = [];
 let customMockHandler:
-  | ((call: RecordedEmailCall) => Promise<SendTransactionalEmailResult> | SendTransactionalEmailResult)
+  | ((
+      call: RecordedEmailCall
+    ) => Promise<SendTransactionalEmailResult> | SendTransactionalEmailResult)
   | null = null;
 
 export function getRecordedEmailCalls(): RecordedEmailCall[] {
@@ -60,7 +54,9 @@ export function clearRecordedEmailCalls(): void {
 
 export function setEmailMockHandler(
   handler:
-    | ((call: RecordedEmailCall) => Promise<SendTransactionalEmailResult> | SendTransactionalEmailResult)
+    | ((
+        call: RecordedEmailCall
+      ) => Promise<SendTransactionalEmailResult> | SendTransactionalEmailResult)
     | null
 ): void {
   customMockHandler = handler;
@@ -103,10 +99,7 @@ export async function sendTransactionalEmail(
 
   // Détermination des destinataires
   const toRecipient =
-    options.to ||
-    (definition.isClientEmail
-      ? options.data.email
-      : config.internalRecipient);
+    options.to || (definition.isClientEmail ? options.data.email : config.internalRecipient);
 
   if (!toRecipient) {
     return {
@@ -120,8 +113,8 @@ export async function sendTransactionalEmail(
   const replyTo = options.replyTo
     ? stripCrlf(options.replyTo)
     : !definition.isClientEmail && options.data.email
-    ? stripCrlf(options.data.email)
-    : config.internalRecipient;
+      ? stripCrlf(options.data.email)
+      : config.internalRecipient;
 
   const callRecord: RecordedEmailCall = {
     type: options.type,
@@ -189,7 +182,10 @@ export async function sendTransactionalEmail(
         };
       }
     } catch (resendError: any) {
-      console.warn('[EMAIL WARNING] Resend send failed, attempting fallback transporter:', resendError?.message);
+      console.warn(
+        '[EMAIL WARNING] Resend send failed, attempting fallback transporter:',
+        resendError?.message
+      );
     }
   }
 

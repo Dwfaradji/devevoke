@@ -1,14 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  Layers, 
-  CheckCircle2, 
-  ArrowRight, 
-  Cpu, 
-  Server, 
+import {
+  Layers,
+  CheckCircle2,
+  ArrowRight,
+  Cpu,
+  Server,
   HeadphonesIcon,
-  Sparkles
+  Sparkles,
 } from 'lucide-react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import MedicoSocialNavSwitcher from '@/components/ui/MedicoSocialNavSwitcher';
@@ -18,7 +18,8 @@ export default function DeveloppementLogicielMedicoSocialPage() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: 'Développement Logiciel Médico-Social Sur-Mesure',
-    serviceType: 'Conception et développement de logiciels sur-mesure pour établissements médico-sociaux',
+    serviceType:
+      'Conception et développement de logiciels sur-mesure pour établissements médico-sociaux',
     provider: {
       '@type': 'Organization',
       name: 'DevEvoke',
@@ -53,17 +54,17 @@ export default function DeveloppementLogicielMedicoSocialPage() {
 
   const atouts = [
     {
-      icon: <Layers className="size-6 text-primary-400" />,
+      icon: <Layers className="text-primary-400 size-6" />,
       title: 'Un outil 100% adapté à vos protocoles',
       desc: 'Finies les fonctionnalités superflues ou les formulaires rigides imposés par les progiciels du marché. Chaque écran répond exactement à votre méthode de travail.',
     },
     {
-      icon: <Server className="size-6 text-secondary-400" />,
+      icon: <Server className="text-secondary-400 size-6" />,
       title: 'Hébergement Souverain & RGPD',
       desc: 'Vos données sont hébergées en France sur des serveurs sécurisés garantissant une haute disponibilité et une conformité rigoureuse au RGPD.',
     },
     {
-      icon: <Cpu className="size-6 text-accent" />,
+      icon: <Cpu className="text-accent size-6" />,
       title: 'Interopérabilité & Connexion API',
       desc: 'Intégrez facilement votre nouveau logiciel avec vos systèmes existants : paie, comptabilité, messagerie sécurisée MSSanté et annuaires.',
     },
@@ -93,56 +94,66 @@ export default function DeveloppementLogicielMedicoSocialPage() {
         <MedicoSocialNavSwitcher />
 
         {/* HERO */}
-        <header className="relative py-16 md:py-24 text-center px-4 max-w-5xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary-500/30 mb-8">
-            <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse" />
-            <span className="text-xs sm:text-sm font-medium text-gray-200 tracking-wide uppercase">
+        <header className="relative mx-auto max-w-5xl px-4 py-16 text-center md:py-24">
+          <div className="glass border-primary-500/30 mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2">
+            <span className="bg-primary-400 h-2 w-2 animate-pulse rounded-full" />
+            <span className="text-xs font-medium tracking-wide text-gray-200 uppercase sm:text-sm">
               Ingénierie Logicielle Sur-Mesure
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-8 leading-[1.15]">
+          <h1 className="mb-8 text-4xl leading-[1.15] font-extrabold tracking-tight text-white sm:text-6xl">
             Développement de logiciels métiers pour le{' '}
             <span className="text-gradient drop-shadow-sm">secteur médico-social</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-muted leading-relaxed max-w-3xl mx-auto mb-10">
-            Concevez une application web ou un progiciel parfaitement aligné sur le fonctionnement de votre établissement médico-social (IME, SESSAD, ESAT, EHPAD) ou de votre association gestionnaire.
+          <p className="text-muted mx-auto mb-10 max-w-3xl text-lg leading-relaxed sm:text-xl">
+            Concevez une application web ou un progiciel parfaitement aligné sur le fonctionnement
+            de votre établissement médico-social (IME, SESSAD, ESAT, EHPAD) ou de votre association
+            gestionnaire.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/contact" className="btn-primary w-full sm:w-auto text-base">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link href="/contact" className="btn-primary w-full text-base sm:w-auto">
               Présenter votre cahier des charges
               <ArrowRight className="size-4" />
             </Link>
-            <Link href="/solutions-medico-social" className="btn-outline w-full sm:w-auto text-base">
+            <Link
+              href="/solutions-medico-social"
+              className="btn-outline w-full text-base sm:w-auto"
+            >
               Voir nos autres solutions
             </Link>
           </div>
         </header>
 
         {/* ATOUTS DU SUR-MESURE */}
-        <section className="py-16 border-t border-white/5">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
+        <section className="border-t border-white/5 py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto mb-16 max-w-3xl text-center">
               <span className="section-label">Pourquoi le Sur-Mesure ?</span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-3 mb-6">
+              <h2 className="mt-3 mb-6 text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 Pourquoi choisir un développement sur-mesure pour votre établissement ?
               </h2>
               <p className="text-muted text-lg">
-                Les progiciels généralistes du marché imposent souvent des interfaces lourdes, des coûts de licence exorbitants et une rigidité qui freine l’adhésion des professionnels.
+                Les progiciels généralistes du marché imposent souvent des interfaces lourdes, des
+                coûts de licence exorbitants et une rigidité qui freine l’adhésion des
+                professionnels.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid gap-8 md:grid-cols-2">
               {atouts.map((atout, idx) => (
-                <div key={idx} className="glass p-8 sm:p-10 rounded-3xl border border-white/5 flex flex-col justify-between">
+                <div
+                  key={idx}
+                  className="glass flex flex-col justify-between rounded-3xl border border-white/5 p-8 sm:p-10"
+                >
                   <div>
-                    <div className="size-12 rounded-2xl bg-white/5 flex items-center justify-center mb-6">
+                    <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-white/5">
                       {atout.icon}
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-3">{atout.title}</h3>
-                    <p className="text-muted leading-relaxed text-base">{atout.desc}</p>
+                    <h3 className="mb-3 text-2xl font-bold text-white">{atout.title}</h3>
+                    <p className="text-muted text-base leading-relaxed">{atout.desc}</p>
                   </div>
                 </div>
               ))}
@@ -151,16 +162,17 @@ export default function DeveloppementLogicielMedicoSocialPage() {
         </section>
 
         {/* EXEMPLES D'APPLICATIONS DÉVELOPPÉES */}
-        <section className="py-20 bg-surface/30 border-y border-white/5">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-12 gap-12 items-center">
-              <div className="lg:col-span-6 space-y-6">
+        <section className="bg-surface/30 border-y border-white/5 py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid items-center gap-12 lg:grid-cols-12">
+              <div className="space-y-6 lg:col-span-6">
                 <span className="section-label">Cas d'Usage Concrets</span>
-                <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
                   Quelles applications logicielles pouvons-nous développer pour vous ?
                 </h2>
-                <p className="text-muted leading-relaxed text-base">
-                  De la gestion opérationnelle quotidienne au pilotage stratégique de plusieurs établissements, nous concevons des logiciels adaptés à tous les services :
+                <p className="text-muted text-base leading-relaxed">
+                  De la gestion opérationnelle quotidienne au pilotage stratégique de plusieurs
+                  établissements, nous concevons des logiciels adaptés à tous les services :
                 </p>
 
                 <ul className="space-y-4 pt-2">
@@ -172,54 +184,70 @@ export default function DeveloppementLogicielMedicoSocialPage() {
                     'Outil de suivi logistique, plannings de réservation et gestion des ressources partagées',
                     'Tableaux de bord d’activité et reporting réglementaire pour directions générales',
                   ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-muted text-sm sm:text-base">
-                      <CheckCircle2 className="size-5 text-emerald-400 shrink-0 mt-0.5" />
+                    <li key={i} className="text-muted flex items-start gap-3 text-sm sm:text-base">
+                      <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-emerald-400" />
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="lg:col-span-6 space-y-6">
-                <div className="relative rounded-3xl overflow-hidden glass border border-white/10 shadow-2xl group">
+              <div className="space-y-6 lg:col-span-6">
+                <div className="glass group relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
                   <Image
                     src="/images/home/workshop_coconception.webp"
                     alt="Atelier de co-conception d'application métier médico-sociale"
                     width={800}
                     height={460}
-                    className="w-full h-[260px] sm:h-[300px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+                    className="h-[260px] w-full transform object-cover object-center transition-transform duration-700 group-hover:scale-105 sm:h-[300px]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-transparent to-transparent opacity-85" />
-                  <div className="absolute bottom-4 left-6 right-6">
-                    <span className="text-xs uppercase tracking-widest text-primary-300 font-bold">Co-conception UX</span>
-                    <p className="text-white text-sm font-medium">Un logiciel taillé sur-mesure pour vos protocoles internes</p>
+                  <div className="absolute right-6 bottom-4 left-6">
+                    <span className="text-primary-300 text-xs font-bold tracking-widest uppercase">
+                      Co-conception UX
+                    </span>
+                    <p className="text-sm font-medium text-white">
+                      Un logiciel taillé sur-mesure pour vos protocoles internes
+                    </p>
                   </div>
                 </div>
 
-                <div className="glass-strong rounded-3xl p-8 border border-white/10 shadow-2xl space-y-6">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-3">
-                    <Sparkles className="size-6 text-primary-400" />
+                <div className="glass-strong space-y-6 rounded-3xl border border-white/10 p-8 shadow-2xl">
+                  <h3 className="flex items-center gap-3 text-xl font-bold text-white sm:text-2xl">
+                    <Sparkles className="text-primary-400 size-6" />
                     Stack Technologique Moderne & Durable
                   </h3>
-                  <p className="text-sm text-muted leading-relaxed">
-                    Nous refusons les technologies obsolètes. Nos développements s’appuient sur les frameworks les plus performants du marché garantissant vitesse, maintenabilité et sécurité :
+                  <p className="text-muted text-sm leading-relaxed">
+                    Nous refusons les technologies obsolètes. Nos développements s’appuient sur les
+                    frameworks les plus performants du marché garantissant vitesse, maintenabilité
+                    et sécurité :
                   </p>
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 rounded-2xl bg-white/5 border border-white/5">
-                      <span className="text-white font-bold block mb-1">Next.js & React</span>
-                      <span className="text-xs text-muted">Interfaces ultra-réactives, légères et ergonomiques</span>
+                    <div className="rounded-2xl border border-white/5 bg-white/5 p-4">
+                      <span className="mb-1 block font-bold text-white">Next.js & React</span>
+                      <span className="text-muted text-xs">
+                        Interfaces ultra-réactives, légères et ergonomiques
+                      </span>
                     </div>
-                    <div className="p-4 rounded-2xl bg-white/5 border border-white/5">
-                      <span className="text-white font-bold block mb-1">Node & TypeScript</span>
-                      <span className="text-xs text-muted">Typage strict et logique métier sécurisée</span>
+                    <div className="rounded-2xl border border-white/5 bg-white/5 p-4">
+                      <span className="mb-1 block font-bold text-white">Node & TypeScript</span>
+                      <span className="text-muted text-xs">
+                        Typage strict et logique métier sécurisée
+                      </span>
                     </div>
-                    <div className="p-4 rounded-2xl bg-white/5 border border-white/5">
-                      <span className="text-white font-bold block mb-1">PostgreSQL & Redis</span>
-                      <span className="text-xs text-muted">Bases relationnelles chiffrées et haute performance</span>
+                    <div className="rounded-2xl border border-white/5 bg-white/5 p-4">
+                      <span className="mb-1 block font-bold text-white">PostgreSQL & Redis</span>
+                      <span className="text-muted text-xs">
+                        Bases relationnelles chiffrées et haute performance
+                      </span>
                     </div>
-                    <div className="p-4 rounded-2xl bg-white/5 border border-white/5">
-                      <span className="text-white font-bold block mb-1">Docker & Cloud Souverain</span>
-                      <span className="text-xs text-muted">Conteneurisation sécurisée sur serveurs situés en France</span>
+                    <div className="rounded-2xl border border-white/5 bg-white/5 p-4">
+                      <span className="mb-1 block font-bold text-white">
+                        Docker & Cloud Souverain
+                      </span>
+                      <span className="text-muted text-xs">
+                        Conteneurisation sécurisée sur serveurs situés en France
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -230,26 +258,30 @@ export default function DeveloppementLogicielMedicoSocialPage() {
 
         {/* MÉTHODOLOGIE DE DÉVELOPPEMENT */}
         <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto mb-16 max-w-3xl text-center">
               <span className="section-label">Processus de Réalisation</span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-3 mb-6">
+              <h2 className="mt-3 mb-6 text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 Les étapes d’un projet logiciel avec DevEvoke
               </h2>
               <p className="text-muted text-lg">
-                Une méthode structurée pour respecter vos budgets, vos délais et garantir l'adhésion totale de vos équipes.
+                Une méthode structurée pour respecter vos budgets, vos délais et garantir l'adhésion
+                totale de vos équipes.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
               {etapes.map((etape, idx) => (
-                <div key={idx} className="glass p-8 rounded-3xl border border-white/5 flex flex-col justify-between">
+                <div
+                  key={idx}
+                  className="glass flex flex-col justify-between rounded-3xl border border-white/5 p-8"
+                >
                   <div>
-                    <span className="text-3xl font-extrabold font-mono text-primary-400 block mb-4">
+                    <span className="text-primary-400 mb-4 block font-mono text-3xl font-extrabold">
                       {etape.num}
                     </span>
-                    <h3 className="text-xl font-bold text-white mb-3">{etape.title}</h3>
-                    <p className="text-sm text-muted leading-relaxed">{etape.desc}</p>
+                    <h3 className="mb-3 text-xl font-bold text-white">{etape.title}</h3>
+                    <p className="text-muted text-sm leading-relaxed">{etape.desc}</p>
                   </div>
                 </div>
               ))}
@@ -258,17 +290,18 @@ export default function DeveloppementLogicielMedicoSocialPage() {
         </section>
 
         {/* CTA FINAL */}
-        <section className="py-24 px-4 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-t from-primary-500/10 via-transparent to-transparent pointer-events-none" />
-          <div className="max-w-4xl mx-auto glass-strong p-10 sm:p-16 rounded-3xl text-center border border-primary-500/30 shadow-[0_0_60px_rgba(59,130,246,0.2)] relative z-10">
+        <section className="relative overflow-hidden px-4 py-24">
+          <div className="from-primary-500/10 pointer-events-none absolute inset-0 bg-gradient-to-t via-transparent to-transparent" />
+          <div className="glass-strong border-primary-500/30 relative z-10 mx-auto max-w-4xl rounded-3xl border p-10 text-center shadow-[0_0_60px_rgba(59,130,246,0.2)] sm:p-16">
             <span className="section-label mb-4 inline-block">Concrétisons votre outil</span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-white mb-6">
+            <h2 className="mb-6 text-3xl font-bold text-white sm:text-5xl">
               Vous avez un projet de développement logiciel médico-social ?
             </h2>
-            <p className="text-muted text-lg sm:text-xl mb-10 max-w-2xl mx-auto">
-              Discutez de votre projet avec un consultant DevEvoke. Nous établissons un diagnostic clair et un devis transparent sans engagement.
+            <p className="text-muted mx-auto mb-10 max-w-2xl text-lg sm:text-xl">
+              Discutez de votre projet avec un consultant DevEvoke. Nous établissons un diagnostic
+              clair et un devis transparent sans engagement.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link href="/contact" className="btn-primary text-base">
                 Prendre contact avec nos architectes
                 <ArrowRight className="size-4" />

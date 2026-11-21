@@ -10,7 +10,8 @@ const mockQuote = {
   projectType: 'Application Web & Mobile Nomade',
   budget: '25 000 € - 50 000 €',
   delay: '2 à 3 mois',
-  description: 'Nous souhaitons équiper 60 professionnels nomades d’une solution moderne avec synchronisation hors-ligne et hébergement sécurisé ISO 27001.',
+  description:
+    'Nous souhaitons équiper 60 professionnels nomades d’une solution moderne avec synchronisation hors-ligne et hébergement sécurisé ISO 27001.',
 };
 
 export default function QuoteConfirmationPreview() {

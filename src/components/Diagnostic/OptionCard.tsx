@@ -27,43 +27,43 @@ export default function OptionCard({
       role="radio"
       aria-checked={isSelected}
       onClick={onSelect}
-      className={`w-full text-left p-4 sm:p-5 rounded-2xl border transition-all duration-200 group flex items-start gap-3.5 sm:gap-4 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-400 select-none ${
+      className={`group focus:ring-primary-400 flex w-full cursor-pointer items-start gap-3.5 rounded-2xl border p-4 text-left transition-all duration-200 select-none focus:ring-2 focus:outline-none sm:gap-4 sm:p-5 ${
         isSelected
-          ? 'bg-primary-500/15 border-primary-500 text-white shadow-lg shadow-primary-500/15 scale-[1.01]'
-          : 'bg-neutral-900/60 border-white/10 text-neutral-300 hover:bg-neutral-800/80 hover:border-white/20 hover:scale-[1.005]'
+          ? 'bg-primary-500/15 border-primary-500 shadow-primary-500/15 scale-[1.01] text-white shadow-lg'
+          : 'border-white/10 bg-neutral-900/60 text-neutral-300 hover:scale-[1.005] hover:border-white/20 hover:bg-neutral-800/80'
       }`}
     >
       {/* Indicator icon / badge */}
       <div
-        className={`w-7 h-7 rounded-xl shrink-0 mt-0.5 border flex items-center justify-center font-bold text-xs transition-colors duration-150 ${
+        className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-xl border text-xs font-bold transition-colors duration-150 ${
           isSelected
             ? 'border-primary-400 bg-primary-500 text-white shadow-sm'
-            : 'border-white/20 bg-black/40 text-neutral-400 group-hover:border-primary-400/60 group-hover:text-white'
+            : 'group-hover:border-primary-400/60 border-white/20 bg-black/40 text-neutral-400 group-hover:text-white'
         }`}
       >
         {isSelected ? (
-          <CheckCircle2 className="w-4 h-4 text-white" />
+          <CheckCircle2 className="h-4 w-4 text-white" />
         ) : (
           <span>{indexKey ?? '○'}</span>
         )}
       </div>
 
       {/* Content */}
-      <div className="flex-1 min-w-0">
+      <div className="min-w-0 flex-1">
         <div className="flex items-center justify-between gap-2">
           <p
-            className={`text-sm sm:text-base font-semibold leading-snug ${
-              isSelected ? 'text-white font-bold' : 'text-neutral-200 group-hover:text-primary-300'
+            className={`text-sm leading-snug font-semibold sm:text-base ${
+              isSelected ? 'font-bold text-white' : 'group-hover:text-primary-300 text-neutral-200'
             } transition-colors`}
           >
             {label}
           </p>
           {badge && (
             <span
-              className={`text-[10px] font-mono px-2 py-0.5 rounded-full shrink-0 border ${
+              className={`shrink-0 rounded-full border px-2 py-0.5 font-mono text-[10px] ${
                 isSelected
                   ? 'bg-primary-500/20 text-primary-200 border-primary-500/30'
-                  : 'bg-white/5 text-neutral-400 border-white/10'
+                  : 'border-white/10 bg-white/5 text-neutral-400'
               }`}
             >
               {badge}
@@ -71,11 +71,7 @@ export default function OptionCard({
           )}
         </div>
 
-        {detail && (
-          <p className="text-xs text-neutral-400 mt-1 leading-relaxed">
-            {detail}
-          </p>
-        )}
+        {detail && <p className="mt-1 text-xs leading-relaxed text-neutral-400">{detail}</p>}
       </div>
     </button>
   );

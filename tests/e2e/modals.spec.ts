@@ -86,7 +86,10 @@ test.describe('Modales, Simulateurs Multi-Étapes & Accordéons UI', () => {
     await expect(page.getByText(/Quitter le diagnostic \?/i)).toBeVisible();
 
     // Cliquer sur "Continuer" dans la modale de confirmation annule la fermeture
-    await page.getByRole('button', { name: /^Continuer$/i }).last().click();
+    await page
+      .getByRole('button', { name: /^Continuer$/i })
+      .last()
+      .click();
     await expect(page.getByText(/Quitter le diagnostic \?/i)).toBeHidden();
     await expect(dialog).toBeVisible();
 

@@ -40,14 +40,7 @@ export type ProfessionalEmailVerification = {
 };
 
 export interface HunterEmailVerifierData {
-  status?:
-    | 'valid'
-    | 'invalid'
-    | 'accept_all'
-    | 'webmail'
-    | 'disposable'
-    | 'unknown'
-    | string;
+  status?: 'valid' | 'invalid' | 'accept_all' | 'webmail' | 'disposable' | 'unknown' | string;
   result?: string;
   score?: number;
   email?: string;
@@ -77,7 +70,10 @@ export interface VerifyProfessionalEmailOptions {
   fetchFn?: typeof fetch;
   hunterVerifier?: (
     email: string
-  ) => Promise<HunterEmailVerifierData | HunterApiEnvelope> | HunterEmailVerifierData | HunterApiEnvelope;
+  ) =>
+    | Promise<HunterEmailVerifierData | HunterApiEnvelope>
+    | HunterEmailVerifierData
+    | HunterApiEnvelope;
 }
 
 const HUNTER_API_ENDPOINT = 'https://api.hunter.io/v2/email-verifier';
@@ -130,10 +126,7 @@ export function clearHunterVerificationCache(): void {
  * Ne permet jamais de reconstruire l'adresse e-mail d'origine (RGPD Sections 21 & 23).
  */
 export function hashEmailForCache(normalizedEmail: string): string {
-  return crypto
-    .createHash('sha256')
-    .update(`${normalizedEmail}:${CACHE_HASH_SALT}`)
-    .digest('hex');
+  return crypto.createHash('sha256').update(`${normalizedEmail}:${CACHE_HASH_SALT}`).digest('hex');
 }
 
 /**
@@ -226,18 +219,14 @@ function resolveAllowAcceptAll(override?: boolean): boolean {
 }
 
 function isAutomatedTestEnvironment(): boolean {
-  return (
-    process.env.EMAIL_TEST_MODE === 'true' || process.env.NODE_ENV === 'test'
-  );
+  return process.env.EMAIL_TEST_MODE === 'true' || process.env.NODE_ENV === 'test';
 }
 
 /**
  * Simulateur déterministe utilisé uniquement en environnement de test automatisé (Playwright / Integration)
  * lorsqu'aucun mock explicite ni clé API réelle n'est fourni.
  */
-function simulateHunterInTestMode(
-  normalizedEmail: string
-): HunterEmailVerifierData {
+function simulateHunterInTestMode(normalizedEmail: string): HunterEmailVerifierData {
   const [localPart, domain = ''] = normalizedEmail.split('@');
 
   // Simulation d'erreur / timeout Hunter pour les tests E2E & intégration
@@ -294,11 +283,7 @@ function simulateHunterInTestMode(
   }
 
   // Simulation de statut unknown
-  if (
-    localPart === 'unknown' ||
-    domain === 'unknown.fr' ||
-    domain === 'unknown-domain.fr'
-  ) {
+  if (localPart === 'unknown' || domain === 'unknown.fr' || domain === 'unknown-domain.fr') {
     return {
       status: 'unknown',
       score: 40,
@@ -401,10 +386,7 @@ function unwrapHunterPayload(
 export async function verifyWithHunter(
   normalizedEmail: string,
   options: VerifyProfessionalEmailOptions = {}
-): Promise<
-  | { ok: true; data: HunterEmailVerifierData }
-  | { ok: false; reason: string }
-> {
+): Promise<{ ok: true; data: HunterEmailVerifierData } | { ok: false; reason: string }> {
   recordedHunterCallCount++;
 
   const activeMock = options.hunterVerifier ?? customHunterMockHandler;
@@ -511,8 +493,7 @@ export function validateHunterResult(
   options: VerifyProfessionalEmailOptions = {}
 ): ProfessionalEmailVerification {
   const status = hunterData.status;
-  const score =
-    typeof hunterData.score === 'number' ? hunterData.score : undefined;
+  const score = typeof hunterData.score === 'number' ? hunterData.score : undefined;
   const minScore = resolveMinScore(options.minScore);
   const allowAcceptAll = resolveAllowAcceptAll(options.allowAcceptAll);
 
@@ -557,8 +538,8 @@ export function validateHunterResult(
         status === 'invalid'
           ? 'hunter_status_invalid'
           : hunterData.mx_records === false
-          ? 'hunter_missing_mx'
-          : 'hunter_rejected_flags',
+            ? 'hunter_missing_mx'
+            : 'hunter_rejected_flags',
       userMessage: EMAIL_VALIDATION_MESSAGES.UNVERIFIED_PROFESSIONAL,
     };
   }
@@ -639,9 +620,7 @@ export function validateHunterResult(
   };
 }
 
-function getCachedVerification(
-  normalizedEmail: string
-): ProfessionalEmailVerification | null {
+function getCachedVerification(normalizedEmail: string): ProfessionalEmailVerification | null {
   const hashKey = hashEmailForCache(normalizedEmail);
   const entry = verificationCache.get(hashKey);
   if (!entry) {
@@ -702,9 +681,7 @@ export async function verifyProfessionalEmail(
       valid: false,
       normalizedEmail: syntaxResult.normalizedEmail,
       status: 'invalid',
-      reason: syntaxResult.normalizedEmail
-        ? 'invalid_syntax'
-        : 'email_required',
+      reason: syntaxResult.normalizedEmail ? 'invalid_syntax' : 'email_required',
       userMessage: EMAIL_VALIDATION_MESSAGES.INVALID_SYNTAX,
     };
   }
@@ -735,14 +712,9 @@ export async function verifyProfessionalEmail(
 
   // 4. Vérification de l'activation Hunter
   const verificationEnabled =
-    options.enabled ??
-    process.env.HUNTER_EMAIL_VERIFICATION_ENABLED !== 'false';
+    options.enabled ?? process.env.HUNTER_EMAIL_VERIFICATION_ENABLED !== 'false';
 
-  if (
-    !verificationEnabled &&
-    !options.hunterVerifier &&
-    !customHunterMockHandler
-  ) {
+  if (!verificationEnabled && !options.hunterVerifier && !customHunterMockHandler) {
     return {
       valid: true,
       normalizedEmail,
@@ -778,11 +750,7 @@ export async function verifyProfessionalEmail(
   }
 
   // 7. Validation métier du résultat Hunter
-  const decision = validateHunterResult(
-    normalizedEmail,
-    hunterResponse.data,
-    options
-  );
+  const decision = validateHunterResult(normalizedEmail, hunterResponse.data, options);
 
   if (useCache) {
     setCachedVerification(decision);
@@ -790,4 +758,3 @@ export async function verifyProfessionalEmail(
 
   return decision;
 }
-

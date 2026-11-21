@@ -11,7 +11,8 @@ const mockContact = {
   establishmentType: 'PME Industrielle',
   siteCount: '2 sites',
   subject: 'Développement d’une plateforme SaaS de gestion',
-  message: 'Bonjour l’équipe DevEvoke, nous souhaitons automatiser nos processus de gestion et concevoir un portail client sur-mesure.',
+  message:
+    'Bonjour l’équipe DevEvoke, nous souhaitons automatiser nos processus de gestion et concevoir un portail client sur-mesure.',
 };
 
 export default function ContactInternalPreview() {

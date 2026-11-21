@@ -18,7 +18,14 @@ export const metadata: Metadata = {
       'Socles numériques pré-configurés pour accélérer la digitalisation des établissements médico-sociaux et sanitaires.',
     url: 'https://www.devevoke.com/templates',
     siteName: 'DevEvoke',
-    images: [{ url: '/icon.png', width: 800, height: 600, alt: 'Socles et templates médico-sociaux DevEvoke' }],
+    images: [
+      {
+        url: '/icon.png',
+        width: 800,
+        height: 600,
+        alt: 'Socles et templates médico-sociaux DevEvoke',
+      },
+    ],
     locale: 'fr_FR',
     type: 'website',
   },

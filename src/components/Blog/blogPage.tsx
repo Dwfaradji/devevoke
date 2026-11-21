@@ -36,7 +36,7 @@ const renderTextWithLinks = (text: string): React.ReactNode => {
         <Link
           key={`link-${match.index}`}
           href={href}
-          className="text-primary-400 hover:text-primary-300 underline underline-offset-4 transition-colors font-medium"
+          className="text-primary-400 hover:text-primary-300 font-medium underline underline-offset-4 transition-colors"
         >
           {label}
         </Link>
@@ -48,7 +48,7 @@ const renderTextWithLinks = (text: string): React.ReactNode => {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-primary-400 hover:text-primary-300 underline underline-offset-4 transition-colors font-medium"
+          className="text-primary-400 hover:text-primary-300 font-medium underline underline-offset-4 transition-colors"
         >
           {label}
         </a>
@@ -77,36 +77,36 @@ const BlogPage = ({ blog }: PropsBlogPage) => {
   }, [blog]);
 
   const prevBlog = currentIndex > 0 ? blogData[currentIndex - 1] : null;
-  const nextBlog = currentIndex >= 0 && currentIndex < blogData.length - 1 ? blogData[currentIndex + 1] : null;
+  const nextBlog =
+    currentIndex >= 0 && currentIndex < blogData.length - 1 ? blogData[currentIndex + 1] : null;
   const formattedDate = useMemo(() => {
-    return blog ? new Date(blog.date).toLocaleDateString('fr-FR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    }) : '';
+    return blog
+      ? new Date(blog.date).toLocaleDateString('fr-FR', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })
+      : '';
   }, [blog]);
 
   return (
-    <article className="min-h-screen pb-24 relative">
+    <article className="relative min-h-screen pb-24">
       {/* Barre de progression de lecture */}
       <motion.div
         style={{ scaleX }}
-        className="fixed top-[72px] left-0 right-0 h-1 bg-gradient-to-r from-primary-400 to-secondary-500 origin-left z-40"
+        className="from-primary-400 to-secondary-500 fixed top-[72px] right-0 left-0 z-40 h-1 origin-left bg-gradient-to-r"
       />
 
       {/* Fil d'Ariane & Retour rapide au sommet */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2">
+      <div className="mx-auto max-w-7xl px-4 pt-2 sm:px-6 lg:px-8">
         <Breadcrumb
-          items={[
-            { label: 'Ressources & Guides', href: '/blog' },
-            { label: blog.title },
-          ]}
+          items={[{ label: 'Ressources & Guides', href: '/blog' }, { label: blog.title }]}
           backLink={{ href: '/blog', label: 'Retour aux articles' }}
         />
       </div>
 
       {/* Hero de l'article */}
-      <header className="relative w-full h-[60vh] min-h-[400px] max-h-[600px] flex flex-col justify-end mt-2">
+      <header className="relative mt-2 flex h-[60vh] max-h-[600px] min-h-[400px] w-full flex-col justify-end">
         {/* Image de fond avec overlay */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -121,21 +121,21 @@ const BlogPage = ({ blog }: PropsBlogPage) => {
         </div>
 
         {/* Contenu Hero */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-12">
+        <div className="relative z-10 mx-auto w-full max-w-4xl px-4 pb-12 sm:px-6 lg:px-8">
           <Fade direction="up" cascade damping={0.1} triggerOnce>
-            <div className="flex flex-wrap items-center gap-4 mb-6">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-500/20 border border-primary-500/30 text-primary-300 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm">
+            <div className="mb-6 flex flex-wrap items-center gap-4">
+              <span className="bg-primary-500/20 border-primary-500/30 text-primary-300 inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold tracking-wider uppercase backdrop-blur-sm">
                 DevEvoke
               </span>
-              <span className="text-sm font-medium text-muted-light">{formattedDate}</span>
+              <span className="text-muted-light text-sm font-medium">{formattedDate}</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1] mb-6">
+            <h1 className="mb-6 text-4xl leading-[1.1] font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               {blog.title}
             </h1>
 
             {/* Auteur & Partage */}
-            <div className="flex flex-wrap items-center justify-between gap-6 pt-6 border-t border-white/10">
+            <div className="flex flex-wrap items-center justify-between gap-6 border-t border-white/10 pt-6">
               <div className="flex items-center gap-4">
                 <Image
                   priority
@@ -147,11 +147,13 @@ const BlogPage = ({ blog }: PropsBlogPage) => {
                 />
                 <div>
                   <h3 className="font-semibold text-white">Boucif Faradji</h3>
-                  <p className="text-sm text-muted-light">Fondateur DevEvoke</p>
+                  <p className="text-muted-light text-sm">Fondateur DevEvoke</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-sm text-muted-light hidden sm:block">Partager cet article</span>
+                <span className="text-muted-light hidden text-sm sm:block">
+                  Partager cet article
+                </span>
                 <ButtonNetwork url={blog} />
               </div>
             </div>
@@ -160,8 +162,8 @@ const BlogPage = ({ blog }: PropsBlogPage) => {
       </header>
 
       {/* Corps de l'article */}
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-        <p className="text-xl md:text-2xl text-primary-200 font-medium leading-relaxed mb-12">
+      <div className="mx-auto mt-12 max-w-3xl px-4 sm:px-6 lg:px-8">
+        <p className="text-primary-200 mb-12 text-xl leading-relaxed font-medium md:text-2xl">
           {blog.descriptionShort}
         </p>
 
@@ -169,10 +171,10 @@ const BlogPage = ({ blog }: PropsBlogPage) => {
           {blog.descriptionLong?.map((val, i) => (
             <Fade direction="up" fraction={0.2} triggerOnce key={i}>
               <div className="prose prose-invert prose-lg max-w-none">
-                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 border-l-4 border-primary-500 pl-4">
+                <h2 className="border-primary-500 mb-6 border-l-4 pl-4 text-2xl font-bold text-white sm:text-3xl">
                   {val.title}
                 </h2>
-                <p className="text-muted leading-relaxed text-lg">
+                <p className="text-muted text-lg leading-relaxed">
                   {renderTextWithLinks(val.text)}
                 </p>
               </div>
@@ -181,23 +183,26 @@ const BlogPage = ({ blog }: PropsBlogPage) => {
         </div>
 
         {/* Navigation Inter-Articles (Précédent / Suivant) */}
-        <nav aria-label="Navigation entre articles" className="mt-20 pt-10 border-t border-white/10 space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <nav
+          aria-label="Navigation entre articles"
+          className="mt-20 space-y-6 border-t border-white/10 pt-10"
+        >
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {prevBlog ? (
               <Link
                 href={`/blog/${slugify(prevBlog.title)}`}
-                className="group p-5 rounded-2xl glass border border-white/5 hover:border-primary-500/30 hover:bg-white/5 transition-all flex flex-col justify-between"
+                className="group glass hover:border-primary-500/30 flex flex-col justify-between rounded-2xl border border-white/5 p-5 transition-all hover:bg-white/5"
               >
-                <div className="flex items-center gap-1.5 text-xs text-primary-400 font-semibold mb-2">
-                  <ArrowLeft className="size-3.5 group-hover:-translate-x-1 transition-transform" />
+                <div className="text-primary-400 mb-2 flex items-center gap-1.5 text-xs font-semibold">
+                  <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-1" />
                   <span>Article précédent</span>
                 </div>
-                <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-primary-300 transition-colors line-clamp-2">
+                <h3 className="group-hover:text-primary-300 line-clamp-2 text-sm font-bold text-white transition-colors sm:text-base">
                   {prevBlog.title}
                 </h3>
               </Link>
             ) : (
-              <div className="p-5 rounded-2xl border border-white/5 bg-white/[0.02] opacity-40 flex items-center justify-center text-xs text-neutral-500">
+              <div className="flex items-center justify-center rounded-2xl border border-white/5 bg-white/[0.02] p-5 text-xs text-neutral-500 opacity-40">
                 Premier article du blog
               </div>
             )}
@@ -205,29 +210,29 @@ const BlogPage = ({ blog }: PropsBlogPage) => {
             {nextBlog ? (
               <Link
                 href={`/blog/${slugify(nextBlog.title)}`}
-                className="group p-5 rounded-2xl glass border border-white/5 hover:border-primary-500/30 hover:bg-white/5 transition-all flex flex-col justify-between text-right"
+                className="group glass hover:border-primary-500/30 flex flex-col justify-between rounded-2xl border border-white/5 p-5 text-right transition-all hover:bg-white/5"
               >
-                <div className="flex items-center justify-end gap-1.5 text-xs text-primary-400 font-semibold mb-2">
+                <div className="text-primary-400 mb-2 flex items-center justify-end gap-1.5 text-xs font-semibold">
                   <span>Article suivant</span>
-                  <ArrowRight className="size-3.5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
                 </div>
-                <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-primary-300 transition-colors line-clamp-2">
+                <h3 className="group-hover:text-primary-300 line-clamp-2 text-sm font-bold text-white transition-colors sm:text-base">
                   {nextBlog.title}
                 </h3>
               </Link>
             ) : (
-              <div className="p-5 rounded-2xl border border-white/5 bg-white/[0.02] opacity-40 flex items-center justify-center text-xs text-neutral-500">
+              <div className="flex items-center justify-center rounded-2xl border border-white/5 bg-white/[0.02] p-5 text-xs text-neutral-500 opacity-40">
                 Dernier article publié
               </div>
             )}
           </div>
 
           <div className="flex justify-center pt-4">
-            <Link 
+            <Link
               href="/blog"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full glass border border-white/10 hover:border-primary-500/40 hover:bg-white/10 text-white font-medium text-sm transition-all group"
+              className="glass hover:border-primary-500/40 group inline-flex items-center justify-center gap-2 rounded-full border border-white/10 px-8 py-3.5 text-sm font-medium text-white transition-all hover:bg-white/10"
             >
-              <BookOpen className="size-4 text-primary-400" />
+              <BookOpen className="text-primary-400 size-4" />
               <span>Consulter tous les articles du blog</span>
             </Link>
           </div>

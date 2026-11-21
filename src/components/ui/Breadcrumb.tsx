@@ -36,7 +36,10 @@ export default function Breadcrumb({
   // utilise le dernier élément avec un href dans la hiérarchie ou /
   const fallbackParent = items.length > 1 ? items[items.length - 2] : null;
   const backHref = explicitBackHref || backLink?.href || fallbackParent?.href || '/';
-  const backLabel = explicitBackLabel || backLink?.label || (fallbackParent ? `Retour à ${fallbackParent.label}` : 'Retour');
+  const backLabel =
+    explicitBackLabel ||
+    backLink?.label ||
+    (fallbackParent ? `Retour à ${fallbackParent.label}` : 'Retour');
 
   const handleBack = (e: React.MouseEvent) => {
     // Si l'utilisateur clique et qu'il y a un historique navigateur interne
@@ -61,7 +64,13 @@ export default function Breadcrumb({
         '@type': 'ListItem',
         position: idx + 2,
         name: item.label,
-        ...(item.href ? { item: item.href.startsWith('http') ? item.href : `https://www.devevoke.com${item.href}` } : {}),
+        ...(item.href
+          ? {
+              item: item.href.startsWith('http')
+                ? item.href
+                : `https://www.devevoke.com${item.href}`,
+            }
+          : {}),
       })),
     ],
   };
@@ -75,7 +84,7 @@ export default function Breadcrumb({
 
       <nav
         aria-label="Fil d'Ariane et navigation retour"
-        className={`w-full py-3.5 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm text-neutral-400 ${className}`}
+        className={`mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3.5 text-xs text-neutral-400 sm:px-6 sm:text-sm lg:px-8 ${className}`}
       >
         {/* Fil d'Ariane Desktop & Tablette */}
         <ol className="flex flex-wrap items-center gap-1.5 sm:gap-2">
@@ -83,10 +92,10 @@ export default function Breadcrumb({
           <li className="flex items-center">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-neutral-400 hover:text-white transition-colors py-1 px-1.5 rounded-md hover:bg-white/5"
+              className="inline-flex items-center gap-1.5 rounded-md px-1.5 py-1 text-neutral-400 transition-colors hover:bg-white/5 hover:text-white"
               title="Retour à l'accueil"
             >
-              {showHomeIcon && <Home className="size-3.5 text-primary-400" />}
+              {showHomeIcon && <Home className="text-primary-400 size-3.5" />}
               <span className="hidden sm:inline">Accueil</span>
             </Link>
           </li>
@@ -95,18 +104,18 @@ export default function Breadcrumb({
             const isLast = index === items.length - 1;
             return (
               <li key={index} className="flex items-center gap-1.5 sm:gap-2">
-                <ChevronRight className="size-3.5 text-neutral-600 shrink-0" aria-hidden="true" />
+                <ChevronRight className="size-3.5 shrink-0 text-neutral-600" aria-hidden="true" />
                 {item.href && !isLast ? (
                   <Link
                     href={item.href}
-                    className="text-neutral-400 hover:text-white transition-colors py-1 px-1.5 rounded-md hover:bg-white/5 font-medium line-clamp-1 max-w-[140px] sm:max-w-[200px]"
+                    className="line-clamp-1 max-w-[140px] rounded-md px-1.5 py-1 font-medium text-neutral-400 transition-colors hover:bg-white/5 hover:text-white sm:max-w-[200px]"
                   >
                     {item.label}
                   </Link>
                 ) : (
                   <span
                     aria-current={isLast ? 'page' : undefined}
-                    className="text-neutral-200 font-semibold line-clamp-1 max-w-[180px] sm:max-w-[280px] md:max-w-none text-primary-300/90"
+                    className="text-primary-300/90 line-clamp-1 max-w-[180px] font-semibold text-neutral-200 sm:max-w-[280px] md:max-w-none"
                   >
                     {item.label}
                   </span>
@@ -121,11 +130,11 @@ export default function Breadcrumb({
           <Link
             href={backHref}
             onClick={handleBack}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary-500/30 text-xs font-medium text-neutral-300 hover:text-white transition-all active:scale-95 group shadow-sm"
+            className="hover:border-primary-500/30 group inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-neutral-300 shadow-sm transition-all hover:bg-white/10 hover:text-white active:scale-95"
             title={backLabel}
           >
-            <ArrowLeft className="size-3.5 text-primary-400 group-hover:-translate-x-0.5 transition-transform" />
-            <span className="hidden xs:inline">{backLabel}</span>
+            <ArrowLeft className="text-primary-400 size-3.5 transition-transform group-hover:-translate-x-0.5" />
+            <span className="xs:inline hidden">{backLabel}</span>
             <span className="xs:hidden">Retour</span>
           </Link>
         </div>

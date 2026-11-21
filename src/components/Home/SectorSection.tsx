@@ -1,11 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  Building2,
-  ArrowRight,
-  ShieldCheck,
-} from 'lucide-react';
+import { Building2, ArrowRight, ShieldCheck } from 'lucide-react';
 
 const featuredStructures = [
   {
@@ -50,7 +46,8 @@ const otherEstablishments = [
   {
     sigle: 'Associations Multi-Sites',
     title: 'Associations Gestionnaires',
-    focus: 'Centralisation des données, reporting de gouvernance et pilotage consolidé multi-établissements.',
+    focus:
+      'Centralisation des données, reporting de gouvernance et pilotage consolidé multi-établissements.',
     href: '/solutions-medico-social/associations',
   },
   {
@@ -63,70 +60,71 @@ const otherEstablishments = [
 
 export default function SectorSection() {
   return (
-    <section className="py-12 sm:py-20 lg:py-28 bg-neutral-900/60 border-t border-white/5 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+    <section className="relative border-t border-white/5 bg-neutral-900/60 py-12 sm:py-20 lg:py-28">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+        <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-16">
           <span className="section-label">
             <Building2 className="size-3.5" />
             Pôle Sectoriel d’Excellence
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4 sm:mb-5 leading-tight">
+          <h2 className="mb-4 text-2xl leading-tight font-bold tracking-tight text-white sm:mb-5 sm:text-4xl lg:text-5xl">
             Une expertise éprouvée dans le médico-social & associatif
           </h2>
-          <p className="text-sm sm:text-lg text-neutral-300 leading-relaxed">
-            Parce que les contraintes humaines et réglementaires du médico-social exigent une rigueur d’ingénierie absolue, DevEvoke y a développé un savoir-faire approfondi pour simplifier le quotidien des établissements.
+          <p className="text-sm leading-relaxed text-neutral-300 sm:text-lg">
+            Parce que les contraintes humaines et réglementaires du médico-social exigent une
+            rigueur d’ingénierie absolue, DevEvoke y a développé un savoir-faire approfondi pour
+            simplifier le quotidien des établissements.
           </p>
         </div>
 
         {/* 3 Featured Photographic Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-16">
+        <div className="mb-10 grid grid-cols-1 gap-6 sm:mb-16 sm:gap-8 lg:grid-cols-3">
           {featuredStructures.map((struct, idx) => (
             <Link
               key={idx}
               href={struct.href}
-              className="group rounded-3xl overflow-hidden border border-white/10 bg-neutral-900/80 hover:border-primary-500/40 transition-all duration-500 flex flex-col justify-between shadow-xl hover:shadow-2xl hover:shadow-primary-500/10"
+              className="group hover:border-primary-500/40 hover:shadow-primary-500/10 flex flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/80 shadow-xl transition-all duration-500 hover:shadow-2xl"
             >
               {/* Photo Header */}
-              <div className="relative h-48 sm:h-60 w-full overflow-hidden">
+              <div className="relative h-48 w-full overflow-hidden sm:h-60">
                 <Image
                   src={struct.image}
                   alt={struct.alt}
                   width={600}
                   height={400}
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.92] contrast-[1.05]"
+                  className="h-full w-full object-cover object-center brightness-[0.92] contrast-[1.05] transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/20 to-transparent pointer-events-none" />
-                
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/20 to-transparent" />
+
                 {/* Floating Tag */}
-                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 backdrop-blur-md bg-neutral-950/80 border border-white/15 px-3 py-1 rounded-full text-[11px] font-semibold text-primary-300">
+                <div className="text-primary-300 absolute top-3 left-3 rounded-full border border-white/15 bg-neutral-950/80 px-3 py-1 text-[11px] font-semibold backdrop-blur-md sm:top-4 sm:left-4">
                   {struct.sigle}
                 </div>
 
-                <div className="absolute top-3 right-3 sm:top-4 sm:right-4 backdrop-blur-md bg-primary-950/80 border border-primary-500/30 px-3 py-1 rounded-full text-[10px] font-mono text-emerald-300">
+                <div className="bg-primary-950/80 border-primary-500/30 absolute top-3 right-3 rounded-full border px-3 py-1 font-mono text-[10px] text-emerald-300 backdrop-blur-md sm:top-4 sm:right-4">
                   {struct.tag}
                 </div>
               </div>
 
               {/* Card Body */}
-              <div className="p-5 sm:p-7 flex-1 flex flex-col justify-between space-y-4">
+              <div className="flex flex-1 flex-col justify-between space-y-4 p-5 sm:p-7">
                 <div className="space-y-2">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-secondary-400 block">
+                  <span className="text-secondary-400 block text-[11px] font-semibold tracking-wider uppercase">
                     {struct.badge}
                   </span>
-                  <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-primary-300 transition-colors leading-snug">
+                  <h3 className="group-hover:text-primary-300 text-lg leading-snug font-bold text-white transition-colors sm:text-xl">
                     {struct.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal">
+                  <p className="text-xs leading-relaxed font-normal text-neutral-300 sm:text-sm">
                     {struct.desc}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs font-semibold text-primary-400 group-hover:text-white transition-colors">
+                <div className="text-primary-400 flex items-center justify-between border-t border-white/5 pt-4 text-xs font-semibold transition-colors group-hover:text-white">
                   <span>Découvrir les solutions adaptées</span>
-                  <ArrowRight className="size-4 group-hover:translate-x-1.5 transition-transform" />
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1.5" />
                 </div>
               </div>
             </Link>
@@ -134,28 +132,24 @@ export default function SectorSection() {
         </div>
 
         {/* Secondary Establishments Row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-3">
           {otherEstablishments.map((est, idx) => (
             <Link
               key={idx}
               href={est.href}
-              className="card-modern group flex flex-col justify-between hover:border-primary-500/40 text-left p-5 sm:p-6"
+              className="card-modern group hover:border-primary-500/40 flex flex-col justify-between p-5 text-left sm:p-6"
             >
               <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm font-bold font-mono text-primary-400">
-                    {est.sigle}
-                  </span>
-                  <ArrowRight className="size-4 text-neutral-500 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                <div className="mb-3 flex items-center justify-between">
+                  <span className="text-primary-400 font-mono text-sm font-bold">{est.sigle}</span>
+                  <ArrowRight className="size-4 text-neutral-500 transition-all group-hover:translate-x-1 group-hover:text-white" />
                 </div>
-                <h4 className="text-base font-bold text-white mb-1.5 group-hover:text-primary-300 transition-colors">
+                <h4 className="group-hover:text-primary-300 mb-1.5 text-base font-bold text-white transition-colors">
                   {est.title}
                 </h4>
-                <p className="text-xs text-neutral-400 leading-relaxed">
-                  {est.focus}
-                </p>
+                <p className="text-xs leading-relaxed text-neutral-400">{est.focus}</p>
               </div>
-              <div className="pt-3 mt-3 border-t border-white/5 text-[11px] font-medium text-primary-400">
+              <div className="text-primary-400 mt-3 border-t border-white/5 pt-3 text-[11px] font-medium">
                 Consulter les cas d&apos;usage →
               </div>
             </Link>
@@ -163,21 +157,21 @@ export default function SectorSection() {
         </div>
 
         {/* Reassurance Footer */}
-        <div className="mt-10 sm:mt-16 p-4 sm:p-6 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400 text-center sm:text-left">
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 rounded-2xl border border-white/5 bg-white/[0.02] p-4 text-center text-xs text-neutral-400 sm:mt-16 sm:flex-row sm:p-6 sm:text-left">
           <div className="flex items-center gap-2.5">
-            <ShieldCheck className="size-4 text-emerald-400 shrink-0" />
+            <ShieldCheck className="size-4 shrink-0 text-emerald-400" />
             <span>
-              Toutes les données associatives sont hébergées sur des serveurs souverains en France et chiffrées selon les préconisations CNIL.
+              Toutes les données associatives sont hébergées sur des serveurs souverains en France
+              et chiffrées selon les préconisations CNIL.
             </span>
           </div>
           <Link
             href="/medico-social"
-            className="text-white hover:text-primary-300 font-semibold sm:whitespace-nowrap inline-block pt-1 sm:pt-0"
+            className="hover:text-primary-300 inline-block pt-1 font-semibold text-white sm:pt-0 sm:whitespace-nowrap"
           >
             Explorer notre hub médico-social complet →
           </Link>
         </div>
-
       </div>
     </section>
   );

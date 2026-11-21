@@ -35,9 +35,9 @@ export default function MedicoSocialNavSwitcher({ className = '' }: { className?
   const pathname = usePathname();
 
   return (
-    <div className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-4 ${className}`}>
-      <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-white/5 py-1">
-        <span className="text-[11px] font-semibold uppercase tracking-wider text-secondary-400 shrink-0 hidden md:inline mr-2">
+    <div className={`mx-auto my-4 w-full max-w-7xl px-4 sm:px-6 lg:px-8 ${className}`}>
+      <div className="flex scrollbar-none items-center gap-1.5 overflow-x-auto border-b border-white/5 py-1 pb-2 sm:gap-2">
+        <span className="text-secondary-400 mr-2 hidden shrink-0 text-[11px] font-semibold tracking-wider uppercase md:inline">
           Secteurs :
         </span>
         {medicoSocialItems.map((item) => {
@@ -47,13 +47,15 @@ export default function MedicoSocialNavSwitcher({ className = '' }: { className?
             <Link
               key={item.href}
               href={item.href}
-              className={`shrink-0 flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-xs font-semibold transition-all active:scale-95 ${
+              className={`flex shrink-0 items-center gap-2 rounded-xl px-3 py-1.5 text-xs font-semibold transition-all active:scale-95 sm:px-3.5 sm:py-2 ${
                 isActive
-                  ? 'bg-gradient-to-r from-secondary-500/25 to-primary-500/20 text-white border border-secondary-500/40 shadow-sm shadow-secondary-500/10'
-                  : 'text-neutral-400 hover:text-white hover:bg-white/5 border border-transparent'
+                  ? 'from-secondary-500/25 to-primary-500/20 border-secondary-500/40 shadow-secondary-500/10 border bg-gradient-to-r text-white shadow-sm'
+                  : 'border border-transparent text-neutral-400 hover:bg-white/5 hover:text-white'
               }`}
             >
-              <Icon className={`size-3.5 ${isActive ? 'text-secondary-400' : 'text-neutral-500'}`} />
+              <Icon
+                className={`size-3.5 ${isActive ? 'text-secondary-400' : 'text-neutral-500'}`}
+              />
               <span>{item.label}</span>
             </Link>
           );

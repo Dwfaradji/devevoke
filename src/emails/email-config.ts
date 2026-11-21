@@ -14,15 +14,12 @@ export interface EmailAppConfig {
   internalRecipient: string;
   resendApiKey?: string;
   isResendConfigured: boolean;
-  audienceId?: string;
 }
 
 export function getEmailConfig(): EmailAppConfig {
   const resendApiKey = process.env.RESEND_API_KEY?.trim();
   const isResendConfigured = Boolean(
-    resendApiKey &&
-      resendApiKey !== 're_placeholder' &&
-      resendApiKey.startsWith('re_')
+    resendApiKey && resendApiKey !== 're_placeholder' && resendApiKey.startsWith('re_')
   );
 
   const fromName = process.env.EMAIL_FROM_NAME?.trim() || 'DevEvoke';
@@ -48,6 +45,5 @@ export function getEmailConfig(): EmailAppConfig {
     internalRecipient,
     resendApiKey,
     isResendConfigured,
-    audienceId: process.env.RESEND_AUDIENCE_ID?.trim(),
   };
 }

@@ -36,20 +36,20 @@ export function DiagnosticConfirmationEmail({ data, referenceId }: DiagnosticCon
     >
       <EmailBadge variant="purple">Diagnostic de Maturité Numérique</EmailBadge>
 
-      <EmailHeading as="h1">
-        Votre diagnostic a bien été enregistré
-      </EmailHeading>
+      <EmailHeading as="h1">Votre diagnostic a bien été enregistré</EmailHeading>
 
       <EmailText variant="bold" size="md">
         {salutation}
       </EmailText>
 
       <EmailText variant="default">
-        Votre diagnostic DevEvoke pour <strong style={{ color: '#ffffff' }}>{organization}</strong> est terminé.
+        Votre diagnostic DevEvoke pour <strong style={{ color: '#ffffff' }}>{organization}</strong>{' '}
+        est terminé.
       </EmailText>
 
       <EmailText variant="muted">
-        Nous avons analysé les différents éléments que vous avez renseignés afin d'identifier les principaux points d'attention et les opportunités d'amélioration de vos outils métier.
+        Nous avons analysé les différents éléments que vous avez renseignés afin d'identifier les
+        principaux points d'attention et les opportunités d'amélioration de vos outils métier.
       </EmailText>
 
       {/* BLOC 1 : RÉSULTAT OBTENU */}
@@ -71,7 +71,15 @@ export function DiagnosticConfirmationEmail({ data, referenceId }: DiagnosticCon
       {/* BLOC 2 : POINTS D'ATTENTION SI DISPONIBLES */}
       {data.criticalRisksSummary && data.criticalRisksSummary.length > 0 && (
         <EmailCard title="Principaux points d'attention" variant="warning">
-          <ul style={{ margin: '0', paddingLeft: '20px', color: emailTokens.colors.muted, fontSize: '13px', lineHeight: '1.6' }}>
+          <ul
+            style={{
+              margin: '0',
+              paddingLeft: '20px',
+              color: emailTokens.colors.muted,
+              fontSize: '13px',
+              lineHeight: '1.6',
+            }}
+          >
             {data.criticalRisksSummary.map((item, idx) => (
               <li key={idx} style={{ marginBottom: '6px' }}>
                 <strong style={{ color: emailTokens.colors.warningText }}>{item}</strong>
@@ -84,7 +92,15 @@ export function DiagnosticConfirmationEmail({ data, referenceId }: DiagnosticCon
       {/* BLOC 3 : RECOMMANDATIONS PRIORITAIRES */}
       {data.topPriorities && data.topPriorities.length > 0 ? (
         <EmailCard title="Recommandations prioritaires" variant="surface">
-          <ul style={{ margin: '0', paddingLeft: '20px', color: emailTokens.colors.muted, fontSize: '13px', lineHeight: '1.6' }}>
+          <ul
+            style={{
+              margin: '0',
+              paddingLeft: '20px',
+              color: emailTokens.colors.muted,
+              fontSize: '13px',
+              lineHeight: '1.6',
+            }}
+          >
             {data.topPriorities.map((item, idx) => (
               <li key={idx} style={{ marginBottom: '6px' }}>
                 <strong style={{ color: '#ffffff' }}>{item}</strong>
@@ -95,7 +111,8 @@ export function DiagnosticConfirmationEmail({ data, referenceId }: DiagnosticCon
       ) : (
         <EmailCard title="Recommandations prioritaires" variant="surface">
           <EmailText variant="muted" style={{ margin: 0 }}>
-            Modernisation de vos outils de suivi, centralisation du carnet de bord et sécurisation de la conformité réglementaire.
+            Modernisation de vos outils de suivi, centralisation du carnet de bord et sécurisation
+            de la conformité réglementaire.
           </EmailText>
         </EmailCard>
       )}
@@ -106,7 +123,12 @@ export function DiagnosticConfirmationEmail({ data, referenceId }: DiagnosticCon
           <EmailField
             label="Numéro de dossier :"
             value={
-              <strong style={{ fontFamily: emailTokens.typography.monoFamily, color: emailTokens.colors.purpleText }}>
+              <strong
+                style={{
+                  fontFamily: emailTokens.typography.monoFamily,
+                  color: emailTokens.colors.purpleText,
+                }}
+              >
                 {referenceId}
               </strong>
             }
@@ -118,7 +140,9 @@ export function DiagnosticConfirmationEmail({ data, referenceId }: DiagnosticCon
 
       {/* Proposition d'accompagnement */}
       <EmailAlert variant="neutral">
-        Si vous souhaitez aller plus loin, l'équipe DevEvoke peut vous accompagner dans l'analyse détaillée de votre situation et la mise en œuvre de solutions concrètes adaptées à votre quotidien.
+        Si vous souhaitez aller plus loin, l'équipe DevEvoke peut vous accompagner dans l'analyse
+        détaillée de votre situation et la mise en œuvre de solutions concrètes adaptées à votre
+        quotidien.
       </EmailAlert>
 
       <EmailButton href={`${emailTokens.brand.website}/contact?ref=${referenceId}`} align="center">
@@ -131,7 +155,10 @@ export function DiagnosticConfirmationEmail({ data, referenceId }: DiagnosticCon
   );
 }
 
-export function renderDiagnosticConfirmationText(data: DiagnosticEmailData, referenceId: string): string {
+export function renderDiagnosticConfirmationText(
+  data: DiagnosticEmailData,
+  referenceId: string
+): string {
   const salutation = formatSalutation(data.firstName);
   const organization = formatCompany(data.organization);
 
@@ -152,7 +179,7 @@ VOTRE NIVEAU D'ANALYSE
 - Score calculé : ${data.globalScore} / 100
 - Organisation : ${organization}
 
-${data.criticalRisksSummary && data.criticalRisksSummary.length > 0 ? `PRINCIPAUX POINTS D'ATTENTION :\n${data.criticalRisksSummary.map(r => `- ${r}`).join('\n')}\n\n` : ''}${data.topPriorities && data.topPriorities.length > 0 ? `RECOMMANDATIONS PRIORITAIRES :\n${data.topPriorities.map(p => `- ${p}`).join('\n')}\n\n` : ''}Si vous souhaitez aller plus loin, l'équipe DevEvoke peut vous accompagner dans l'analyse de votre situation.
+${data.criticalRisksSummary && data.criticalRisksSummary.length > 0 ? `PRINCIPAUX POINTS D'ATTENTION :\n${data.criticalRisksSummary.map((r) => `- ${r}`).join('\n')}\n\n` : ''}${data.topPriorities && data.topPriorities.length > 0 ? `RECOMMANDATIONS PRIORITAIRES :\n${data.topPriorities.map((p) => `- ${p}`).join('\n')}\n\n` : ''}Si vous souhaitez aller plus loin, l'équipe DevEvoke peut vous accompagner dans l'analyse de votre situation.
 
 Référence dossier : ${referenceId}
 Date : ${formatDate(new Date())}

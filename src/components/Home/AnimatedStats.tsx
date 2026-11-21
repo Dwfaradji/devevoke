@@ -9,7 +9,14 @@ const statsData = [
     suffix: '+',
     label: 'Établissements de santé',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
         <rect x="3" y="3" width="7" height="7" rx="2" />
         <rect x="14" y="3" width="7" height="7" rx="2" />
         <rect x="3" y="14" width="7" height="7" rx="2" />
@@ -23,7 +30,14 @@ const statsData = [
     suffix: '+',
     label: 'Outils & Logiciels Déployés',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
         <circle cx="9" cy="7" r="4" />
         <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -37,7 +51,14 @@ const statsData = [
     suffix: '%',
     label: 'Conformité RGPD & CNIL',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
         <circle cx="12" cy="12" r="10" />
         <path d="M8 14s1.5 2 4 2 4-2 4-2" />
         <line x1="9" y1="9" x2="9.01" y2="9" strokeWidth="2" strokeLinecap="round" />
@@ -51,7 +72,14 @@ const statsData = [
     suffix: 'M+',
     label: 'Dossiers Patients Traités',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
         <polyline points="16 18 22 12 16 6" />
         <polyline points="8 6 2 12 8 18" />
         <line x1="12" y1="2" x2="12" y2="22" />
@@ -62,29 +90,33 @@ const statsData = [
 ];
 
 const AnimatedStats = () => (
-  <section className="relative w-full border-y border-white/5 bg-black/50 backdrop-blur-xl z-20">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
+  <section className="relative z-20 w-full border-y border-white/5 bg-black/50 backdrop-blur-xl">
+    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+      <div className="grid grid-cols-2 gap-8 sm:gap-12 md:grid-cols-4">
         {statsData.map((stat, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className={`flex flex-col items-center justify-center text-center group relative ${
-              index % 2 !== 0 ? '' : 'before:absolute before:inset-y-0 before:-right-4 sm:before:-right-6 before:w-px before:bg-white/5'
+            className={`group relative flex flex-col items-center justify-center text-center ${
+              index % 2 !== 0
+                ? ''
+                : 'before:absolute before:inset-y-0 before:-right-4 before:w-px before:bg-white/5 sm:before:-right-6'
             } ${
-              index < 3 ? 'md:after:absolute md:after:inset-y-0 md:after:-right-6 md:after:w-px md:after:bg-white/5' : ''
+              index < 3
+                ? 'md:after:absolute md:after:inset-y-0 md:after:-right-6 md:after:w-px md:after:bg-white/5'
+                : ''
             }`}
           >
             {/* Nombre */}
-            <div className="text-4xl sm:text-5xl font-black tracking-tight text-white mb-2 drop-shadow-[0_2px_12px_rgba(56,189,248,0.35)]">
+            <div className="mb-2 text-4xl font-black tracking-tight text-white drop-shadow-[0_2px_12px_rgba(56,189,248,0.35)] sm:text-5xl">
               <CountUp start={0} end={stat.end} duration={2.5} suffix={stat.suffix} />
             </div>
 
             {/* Label */}
-            <p className="text-sm sm:text-base font-medium text-gray-400 group-hover:text-white transition-colors duration-300">
+            <p className="text-sm font-medium text-gray-400 transition-colors duration-300 group-hover:text-white sm:text-base">
               {stat.label}
             </p>
           </motion.div>

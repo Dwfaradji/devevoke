@@ -7,18 +7,17 @@ import {
   TwitterIcon,
   TwitterShareButton,
 } from 'next-share';
-import { slugify } from "@/utils/slugify";
-import { BlogProps } from "@/data/typeFile";
+import { slugify } from '@/utils/slugify';
+import { BlogProps } from '@/data/typeFile';
 
 interface PropsButtonNetwork {
   url: BlogProps;
-
 }
 
-const ButtonNetwork = ({ url }: PropsButtonNetwork) =>{
-  const shareUrl = `https://www.devevoke.com/blog/${slugify( url.title)}`; // Assurez-vous que l'URL de base soit correcte
+const ButtonNetwork = ({ url }: PropsButtonNetwork) => {
+  const shareUrl = `https://www.devevoke.com/blog/${slugify(url.title)}`; // Assurez-vous que l'URL de base soit correcte
   return (
-    <div className="gap-x-5 flex" aria-label="Boutons de partage sur les réseaux sociaux">
+    <div className="flex gap-x-5" aria-label="Boutons de partage sur les réseaux sociaux">
       {/* Facebook Share Button */}
       <FacebookShareButton
         url={shareUrl}

@@ -31,14 +31,16 @@ const founderPillars = [
 
 const TeamSection = () => {
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-      <div className="text-center mb-16">
+    <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mb-16 text-center">
         <span className="section-label mb-3 inline-block">Structure Indépendante & Proximité</span>
-        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+        <h2 className="mb-6 text-3xl font-bold text-white md:text-5xl">
           Une agence portée par son <span className="text-highlight">fondateur</span>
         </h2>
-        <p className="text-muted max-w-2xl mx-auto text-lg">
-          Chez DevEvoke, pas d&apos;intermédiaires superflus. Vous bénéficiez d&apos;un dialogue direct, d&apos;une agilité totale et d&apos;un haut niveau d&apos;exigence technique pour vos projets numériques.
+        <p className="text-muted mx-auto max-w-2xl text-lg">
+          Chez DevEvoke, pas d&apos;intermédiaires superflus. Vous bénéficiez d&apos;un dialogue
+          direct, d&apos;une agilité totale et d&apos;un haut niveau d&apos;exigence technique pour
+          vos projets numériques.
         </p>
       </div>
 
@@ -48,47 +50,63 @@ const TeamSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-16 relative overflow-hidden glass p-8 md:p-12 rounded-3xl border border-white/10 group"
+        className="glass group relative mb-16 overflow-hidden rounded-3xl border border-white/10 p-8 md:p-12"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-400/10 to-transparent opacity-50 z-0" />
-        
-        <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-10">
-          <div className="w-48 h-48 md:w-60 md:h-60 shrink-0 rounded-2xl overflow-hidden border-2 border-white/15 shadow-2xl relative">
+        <div className="from-primary-400/10 absolute inset-0 z-0 bg-gradient-to-br to-transparent opacity-50" />
+
+        <div className="relative z-10 flex flex-col items-center gap-10 md:flex-row md:items-start">
+          <div className="relative h-48 w-48 shrink-0 overflow-hidden rounded-2xl border-2 border-white/15 shadow-2xl md:h-60 md:w-60">
             <Image
               src={myPhoto}
               alt="Boucif Faradji - Fondateur de DevEvoke"
               width={400}
               height={400}
-              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+              className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
             />
           </div>
-          
-          <div className="flex-1 text-center md:text-left space-y-4">
+
+          <div className="flex-1 space-y-4 text-center md:text-left">
             <div>
               <h3 className="text-3xl font-bold text-white">Boucif Faradji</h3>
-              <p className="text-primary-400 font-semibold tracking-wide uppercase text-sm mt-1">
+              <p className="text-primary-400 mt-1 text-sm font-semibold tracking-wide uppercase">
                 Fondateur & Développeur Full-Stack
               </p>
             </div>
             <p className="text-muted leading-relaxed">
-              Développeur passionné par l’ingénierie logicielle et les architectures web modernes, j&apos;ai créé DevEvoke avec une vision claire : concevoir des solutions numériques et des logiciels métier sur mesure qui répondent aux contraintes réelles des entreprises, des organisations et des structures médico-sociales.
+              Développeur passionné par l’ingénierie logicielle et les architectures web modernes,
+              j&apos;ai créé DevEvoke avec une vision claire : concevoir des solutions numériques et
+              des logiciels métier sur mesure qui répondent aux contraintes réelles des entreprises,
+              des organisations et des structures médico-sociales.
             </p>
             <p className="text-muted leading-relaxed">
-              Que ce soit pour concevoir une plateforme SaaS métier, digitaliser un processus opérationnel complexe ou bâtir une application mobile professionnelle, DevEvoke privilégie toujours l&apos;utilité concrète, la pérennité du code et la proximité humaine.
+              Que ce soit pour concevoir une plateforme SaaS métier, digitaliser un processus
+              opérationnel complexe ou bâtir une application mobile professionnelle, DevEvoke
+              privilégie toujours l&apos;utilité concrète, la pérennité du code et la proximité
+              humaine.
             </p>
-            <div className="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-3 text-xs text-neutral-300">
-              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono">Next.js / React</span>
-              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono">TypeScript</span>
-              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono">Node.js / PostgreSQL</span>
-              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono">React Native</span>
-              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono">Hébergement France / RGPD</span>
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-2 text-xs text-neutral-300 md:justify-start">
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono">
+                Next.js / React
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono">
+                TypeScript
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono">
+                Node.js / PostgreSQL
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono">
+                React Native
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono">
+                Hébergement France / RGPD
+              </span>
             </div>
           </div>
         </div>
       </motion.div>
 
       {/* Pillars Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         {founderPillars.map((p, i) => {
           const Icon = p.icon;
           return (
@@ -98,13 +116,13 @@ const TeamSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
-              className="card-modern p-6 text-left space-y-3"
+              className="card-modern space-y-3 p-6 text-left"
             >
-              <div className="size-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary-400">
+              <div className="text-primary-400 flex size-11 items-center justify-center rounded-xl border border-white/10 bg-white/5">
                 <Icon className="size-5" />
               </div>
               <h3 className="text-base font-bold text-white">{p.title}</h3>
-              <p className="text-xs text-muted leading-relaxed font-normal">{p.desc}</p>
+              <p className="text-muted text-xs leading-relaxed font-normal">{p.desc}</p>
             </motion.div>
           );
         })}

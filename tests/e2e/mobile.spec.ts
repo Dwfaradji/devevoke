@@ -59,7 +59,9 @@ test.describe('Responsive & Navigation Mobile (Multi-Viewports)', () => {
     // Vérifier les liens du menu mobile
     const servicesLink = page.getByRole('link', { name: /Nos Expertises & Services/i });
     await expect(servicesLink).toBeVisible();
-    await expect(page.getByRole('link', { name: /Diagnostic Numérique Gratuit/i }).first()).toBeVisible();
+    await expect(
+      page.getByRole('link', { name: /Diagnostic Numérique Gratuit/i }).first()
+    ).toBeVisible();
 
     // Fermer puis rouvrir le menu
     await closeBtn.click();
@@ -110,9 +112,7 @@ test.describe('Responsive & Navigation Mobile (Multi-Viewports)', () => {
       const errorAlert = page.locator('#email-error');
       await expect(errorAlert).toBeVisible();
       await expect(errorAlert).toHaveAttribute('role', 'alert');
-      await expect(errorAlert).toContainText(
-        "Cette adresse e-mail n'a pas pu être vérifiée."
-      );
+      await expect(errorAlert).toContainText("Cette adresse e-mail n'a pas pu être vérifiée.");
       await expect(page.getByLabel('Email professionnel *')).toHaveAttribute(
         'aria-describedby',
         'email-error'

@@ -16,7 +16,10 @@ const HONEYPOT_FIELD_NAMES = [
  * Vérifie si le payload contient un champ honeypot renseigné.
  * Si oui, la requête provient très probablement d'un robot spammeur.
  */
-export function checkHoneypot(data: Record<string, unknown>): { isBot: boolean; fieldTriggered?: string } {
+export function checkHoneypot(data: Record<string, unknown>): {
+  isBot: boolean;
+  fieldTriggered?: string;
+} {
   if (!data || typeof data !== 'object') {
     return { isBot: false };
   }

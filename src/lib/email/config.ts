@@ -25,21 +25,18 @@ export function getEmailConfig(): EmailConfig {
   const user = process.env.SMTP_USER || '';
   const pass = process.env.SMTP_PASS || '';
   const resendKey = process.env.RESEND_API_KEY || '';
-  const isResendConfigured = Boolean(resendKey && resendKey !== 're_placeholder' && resendKey.startsWith('re_'));
+  const isResendConfigured = Boolean(
+    resendKey && resendKey !== 're_placeholder' && resendKey.startsWith('re_')
+  );
   const isSmtpConfigured = Boolean(host && port && user && pass);
-  const isConfigured = isResendConfigured || isSmtpConfigured || process.env.NODE_ENV !== 'production';
+  const isConfigured =
+    isResendConfigured || isSmtpConfigured || process.env.NODE_ENV !== 'production';
 
   const internalRecipient =
-    process.env.DEVOKE_CONTACT_EMAIL ||
-    process.env.EMAIL_TO ||
-    user ||
-    'contact@devevoke.com';
+    process.env.DEVOKE_CONTACT_EMAIL || process.env.EMAIL_TO || user || 'contact@devevoke.com';
 
   const rawFromAddress =
-    process.env.EMAIL_FROM_ADDRESS ||
-    process.env.EMAIL_FROM ||
-    user ||
-    'contact@devevoke.com';
+    process.env.EMAIL_FROM_ADDRESS || process.env.EMAIL_FROM || user || 'contact@devevoke.com';
   const match = rawFromAddress.match(/<([^>]+)>/);
   const fromAddress = match ? match[1].trim() : rawFromAddress.trim();
 

@@ -22,7 +22,9 @@ export function QuoteInternalEmail({ data, referenceId }: QuoteInternalProps) {
   const fullName = formatName(data.firstName, data.lastName);
   const company = formatCompany(data.business);
   const phone = formatPhone(data.phone);
-  const replySubject = encodeURIComponent(`DevEvoke : Cadrage de votre devis pour ${company} [Réf: ${referenceId}]`);
+  const replySubject = encodeURIComponent(
+    `DevEvoke : Cadrage de votre devis pour ${company} [Réf: ${referenceId}]`
+  );
   const mailtoUrl = `mailto:${data.email}?subject=${replySubject}`;
   const project = data.projectType || 'Projet digital';
 
@@ -33,9 +35,7 @@ export function QuoteInternalEmail({ data, referenceId }: QuoteInternalProps) {
     >
       <EmailBadge variant="amber">Demande de Devis</EmailBadge>
 
-      <EmailHeading as="h1">
-        Nouvelle demande de devis
-      </EmailHeading>
+      <EmailHeading as="h1">Nouvelle demande de devis</EmailHeading>
 
       <EmailText variant="muted">
         Un prospect vient de soumettre une demande de devis et un besoin de cadrage technique.
@@ -53,12 +53,28 @@ export function QuoteInternalEmail({ data, referenceId }: QuoteInternalProps) {
             value={<strong>{data.budget || 'En cours de cadrage'}</strong>}
           />
           <EmailField label="Délai souhaité :" value={data.delay || '1 à 3 mois'} />
-          {data.establishmentType && <EmailField label="Type d'organisation :" value={data.establishmentType} />}
+          {data.establishmentType && (
+            <EmailField label="Type d'organisation :" value={data.establishmentType} />
+          )}
           {data.siteCount && <EmailField label="Périmètre / Sites :" value={data.siteCount} />}
         </EmailFieldGroup>
 
-        <div style={{ marginTop: '16px', paddingTop: '14px', borderTop: `1px solid ${emailTokens.colors.border}` }}>
-          <div style={{ fontSize: '11px', color: emailTokens.colors.textDimmed, textTransform: 'uppercase', fontWeight: 700, marginBottom: '8px' }}>
+        <div
+          style={{
+            marginTop: '16px',
+            paddingTop: '14px',
+            borderTop: `1px solid ${emailTokens.colors.border}`,
+          }}
+        >
+          <div
+            style={{
+              fontSize: '11px',
+              color: emailTokens.colors.textDimmed,
+              textTransform: 'uppercase',
+              fontWeight: 700,
+              marginBottom: '8px',
+            }}
+          >
             Description du besoin & fonctionnalités :
           </div>
           <div
@@ -87,7 +103,10 @@ export function QuoteInternalEmail({ data, referenceId }: QuoteInternalProps) {
           <EmailField
             label="Email direct :"
             value={
-              <a href={`mailto:${data.email}`} style={{ color: emailTokens.colors.primaryLight, textDecoration: 'none' }}>
+              <a
+                href={`mailto:${data.email}`}
+                style={{ color: emailTokens.colors.primaryLight, textDecoration: 'none' }}
+              >
                 {data.email}
               </a>
             }
@@ -96,7 +115,10 @@ export function QuoteInternalEmail({ data, referenceId }: QuoteInternalProps) {
             label="Téléphone :"
             value={
               phone !== 'Non renseigné' ? (
-                <a href={`tel:${phone}`} style={{ color: emailTokens.colors.primaryLight, textDecoration: 'none' }}>
+                <a
+                  href={`tel:${phone}`}
+                  style={{ color: emailTokens.colors.primaryLight, textDecoration: 'none' }}
+                >
                   {phone}
                 </a>
               ) : (
@@ -113,7 +135,11 @@ export function QuoteInternalEmail({ data, referenceId }: QuoteInternalProps) {
         <EmailFieldGroup>
           <EmailField
             label="Référence dossier :"
-            value={<strong style={{ fontFamily: emailTokens.typography.monoFamily }}>{referenceId}</strong>}
+            value={
+              <strong style={{ fontFamily: emailTokens.typography.monoFamily }}>
+                {referenceId}
+              </strong>
+            }
           />
           <EmailField label="Date de soumission :" value={formatDate(new Date())} isLast />
         </EmailFieldGroup>

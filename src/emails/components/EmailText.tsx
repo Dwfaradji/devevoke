@@ -9,12 +9,7 @@ interface EmailTextProps {
   style?: React.CSSProperties;
 }
 
-export function EmailText({
-  variant = 'default',
-  size = 'base',
-  children,
-  style,
-}: EmailTextProps) {
+export function EmailText({ variant = 'default', size = 'base', children, style }: EmailTextProps) {
   let color: string = emailTokens.colors.muted;
   let fontWeight: number = emailTokens.typography.bodyWeight;
 

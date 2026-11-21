@@ -26,8 +26,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: NextMetadata = {
   metadataBase: new URL('https://www.devevoke.com'),
   title: {
-    default:
-      'DevEvoke | Solutions Digitales & Développement Sur-Mesure pour le Médico-Social',
+    default: 'DevEvoke | Solutions Digitales & Développement Sur-Mesure pour le Médico-Social',
     template: '%s | DevEvoke',
   },
   description:
@@ -51,8 +50,7 @@ export const metadata: NextMetadata = {
     canonical: 'https://www.devevoke.com',
   },
   openGraph: {
-    title:
-      'DevEvoke | Solutions Digitales & Logiciels Sur-Mesure pour le Médico-Social',
+    title: 'DevEvoke | Solutions Digitales & Logiciels Sur-Mesure pour le Médico-Social',
     description:
       'Conception de logiciels métiers, applications web et mobiles, plateformes SaaS et sites internet pour les établissements et associations du secteur médico-social.',
     url: 'https://www.devevoke.com',
@@ -70,8 +68,7 @@ export const metadata: NextMetadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title:
-      'DevEvoke | Solutions Digitales & Développement Sur-Mesure Médico-Social',
+    title: 'DevEvoke | Solutions Digitales & Développement Sur-Mesure Médico-Social',
     description:
       'Logiciels métiers sur-mesure, applications web et mobiles, SaaS et automatisation pour ESMS, associations gestionnaires, IME, SESSAD, DITEP, ESAT et EHPAD.',
     images: ['/icon.png'],
@@ -86,11 +83,7 @@ export const viewport = {
   viewportFit: 'cover',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -107,10 +100,7 @@ export default function RootLayout({
           name: 'Boucif Faradji',
           jobTitle: 'Fondateur & Développeur Full-Stack',
         },
-        sameAs: [
-          'https://www.linkedin.com/company/devevoke/',
-          'https://github.com/Dwfaradji',
-        ],
+        sameAs: ['https://www.linkedin.com/company/devevoke/', 'https://github.com/Dwfaradji'],
         contactPoint: {
           '@type': 'ContactPoint',
           contactType: 'Customer Support',
@@ -161,19 +151,19 @@ export default function RootLayout({
       </head>
       <GoogleAnalytics GA_TRACKING_ID={String(process.env.GA_TRACKING_ID)} />
       <AppHead />
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans min-h-screen antialiased selection:bg-sky-500/30 selection:text-white`}>
+      <body
+        className={`${inter.variable} ${spaceGrotesk.variable} min-h-screen font-sans antialiased selection:bg-sky-500/30 selection:text-white`}
+      >
         {/* Lien d'accès rapide (Skip Link) pour l'accessibilité RGAA / WCAG */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2.5 focus:rounded-xl focus:bg-primary-500 focus:text-white focus:font-semibold focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white"
+          className="focus:bg-primary-500 sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:rounded-xl focus:px-4 focus:py-2.5 focus:font-semibold focus:text-white focus:shadow-2xl focus:ring-2 focus:ring-white focus:outline-none"
         >
           Aller au contenu principal
         </a>
         <Navbar />
-        <main id="main-content" tabIndex={-1} className="mx-auto max-w-7xl w-full outline-none">
-          <PageTransition>
-            {children}
-          </PageTransition>
+        <main id="main-content" tabIndex={-1} className="mx-auto w-full max-w-7xl outline-none">
+          <PageTransition>{children}</PageTransition>
         </main>
         <Footer />
         <FloatingQuickNav />

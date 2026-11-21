@@ -20,11 +20,11 @@ export const emailTokens = {
   colors: {
     // Arrière-plans
     background: '#030712', // gray-950 (fond externe)
-    canvas: '#0b1120',     // Boîte email principale
-    surface: '#0f172a',    // slate-900 (cartes intérieures)
+    canvas: '#0b1120', // Boîte email principale
+    surface: '#0f172a', // slate-900 (cartes intérieures)
     surfaceRaised: '#1e293b', // slate-800 (encadrés surélevés)
-    surfaceLight: '#1e293b',  // Alias rétro-compatibilité
-    surfaceCard: '#111827',   // gray-900
+    surfaceLight: '#1e293b', // Alias rétro-compatibilité
+    surfaceCard: '#111827', // gray-900
 
     // Bordures
     border: '#1e293b',
@@ -32,18 +32,18 @@ export const emailTokens = {
     borderSubtle: '#141d2e',
 
     // Textes
-    text: '#f9fafb',        // Blanc doux lisible
+    text: '#f9fafb', // Blanc doux lisible
     primaryText: '#ffffff', // Blanc pur
-    muted: '#cbd5e1',       // slate-300 (ratio 7:1 sur fond sombre)
-    textMuted: '#cbd5e1',   // Alias rétro-compatibilité
-    textDimmed: '#94a3b8',  // slate-400 (mentions secondaires)
-    textSubtle: '#64748b',  // slate-500 (footer légal)
+    muted: '#cbd5e1', // slate-300 (ratio 7:1 sur fond sombre)
+    textMuted: '#cbd5e1', // Alias rétro-compatibilité
+    textDimmed: '#94a3b8', // slate-400 (mentions secondaires)
+    textSubtle: '#64748b', // slate-500 (footer légal)
 
     // Couleurs d'action & Marque (Charte DevEvoke: D: Turquoise / E: Bleu Roi)
-    primary: '#38c6d9',     // Turquoise Cyan vif (Lettre D)
-    primaryLight: '#8cf0f8',// Cyan glacé
+    primary: '#38c6d9', // Turquoise Cyan vif (Lettre D)
+    primaryLight: '#8cf0f8', // Cyan glacé
     primaryDark: '#0e5a8a', // Bleu Canard / Océan
-    secondary: '#1e62a8',   // Bleu Roi / Saphir (Lettre E)
+    secondary: '#1e62a8', // Bleu Roi / Saphir (Lettre E)
     secondaryLight: '#48a4e8', // Bleu Azur moyen
 
     // Variantes de statut (Accessibles, fort contraste)
@@ -89,8 +89,10 @@ export const emailTokens = {
   },
 
   typography: {
-    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
-    monoFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace",
+    fontFamily:
+      "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+    monoFamily:
+      "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace",
 
     // Poids de polices
     bodyWeight: 400,
@@ -153,4 +155,14 @@ export const emailTokens = {
 // Alias universel emailTheme
 export const emailTheme = emailTokens;
 
-export type BadgeVariant = 'blue' | 'emerald' | 'amber' | 'purple' | 'red' | 'default' | 'info' | 'success' | 'warning' | 'danger';
+export type BadgeVariant =
+  | 'blue'
+  | 'emerald'
+  | 'amber'
+  | 'purple'
+  | 'red'
+  | 'default'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'danger';

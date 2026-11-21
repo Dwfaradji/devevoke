@@ -25,18 +25,20 @@ const Page = () => {
       <AboutMore />
       <TeamSection />
       <AboutGrid />
-      
+
       {/* Call to Action Final */}
-      <section className="py-24 px-4 relative overflow-hidden mb-16">
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent pointer-events-none" />
-        <div className="max-w-4xl mx-auto glass p-10 sm:p-16 rounded-3xl text-center border border-primary/20 shadow-[0_0_50px_rgba(59,130,246,0.15)] relative z-10">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+      <section className="relative mb-16 overflow-hidden px-4 py-24">
+        <div className="from-primary/10 pointer-events-none absolute inset-0 bg-gradient-to-t to-transparent" />
+        <div className="glass border-primary/20 relative z-10 mx-auto max-w-4xl rounded-3xl border p-10 text-center shadow-[0_0_50px_rgba(59,130,246,0.15)] sm:p-16">
+          <h2 className="mb-6 text-3xl font-bold text-white sm:text-4xl">
             Prêt à concevoir la solution numérique de votre organisation ?
           </h2>
-          <p className="text-muted text-lg mb-8 max-w-2xl mx-auto">
-            Échangeons sur vos processus, vos défis de gestion opérationnelle ou votre projet de plateforme logicielle. Découvrez comment DevEvoke conçoit des outils pérennes, élégants et adaptés à votre métier.
+          <p className="text-muted mx-auto mb-8 max-w-2xl text-lg">
+            Échangeons sur vos processus, vos défis de gestion opérationnelle ou votre projet de
+            plateforme logicielle. Découvrez comment DevEvoke conçoit des outils pérennes, élégants
+            et adaptés à votre métier.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link href="/contact" className="btn-primary inline-flex">
               Discuter de votre projet →
             </Link>

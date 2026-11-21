@@ -14,14 +14,14 @@ const PricingMain = () => {
   };
 
   return (
-    <section className="py-8 relative">
+    <section className="relative py-8">
       {/* Background glow for pricing section */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[600px] bg-primary-600/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="bg-primary-600/10 pointer-events-none absolute top-1/2 left-1/2 h-[600px] w-full max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]" />
 
       <div className="relative z-10 space-y-6">
         {prices.map((tarif, i) => {
           const isFeatured = tarif.id === '3'; // CRM sur mesure
-          
+
           return (
             <motion.article
               key={tarif.id}
@@ -30,53 +30,57 @@ const PricingMain = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className={`group relative overflow-hidden rounded-3xl transition-all duration-500 ${
-                isFeatured 
-                  ? 'bg-gradient-to-br from-surface-2 to-surface border border-primary-400/30 shadow-[0_0_40px_rgba(59,130,246,0.15)] lg:scale-[1.02] z-10' 
+                isFeatured
+                  ? 'from-surface-2 to-surface border-primary-400/30 z-10 border bg-gradient-to-br shadow-[0_0_40px_rgba(59,130,246,0.15)] lg:scale-[1.02]'
                   : 'glass hover:glass-strong border border-white/5 hover:border-white/10'
               }`}
             >
               {/* Highlight effect for featured */}
               {isFeatured && (
-                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary-400 to-secondary-400" />
+                <div className="from-primary-400 to-secondary-400 absolute inset-x-0 top-0 h-1 bg-gradient-to-r" />
               )}
-              
-              {/* Subtle hover gradient */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-400/0 via-primary-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-              <div className="flex flex-col lg:flex-row h-full">
+              {/* Subtle hover gradient */}
+              <div className="from-primary-400/0 via-primary-400/5 pointer-events-none absolute inset-0 bg-gradient-to-r to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+              <div className="flex h-full flex-col lg:flex-row">
                 {/* Infos */}
                 <div className="flex-1 p-8 sm:p-10 lg:pr-12">
-                  <div className="flex flex-wrap items-center gap-4 mb-4">
-                    <h3 className="text-3xl font-bold text-white tracking-tight">
-                      {tarif.title}
-                    </h3>
+                  <div className="mb-4 flex flex-wrap items-center gap-4">
+                    <h3 className="text-3xl font-bold tracking-tight text-white">{tarif.title}</h3>
                     {isFeatured && (
-                      <span className="badge bg-primary-600/20 text-primary-400 border-primary-400/30 text-xs font-bold uppercase tracking-wider py-1">
+                      <span className="badge bg-primary-600/20 text-primary-400 border-primary-400/30 py-1 text-xs font-bold tracking-wider uppercase">
                         Populaire
                       </span>
                     )}
                   </div>
-                  
-                  <h4 className="text-xl font-medium text-secondary-400 mb-4">
-                    {tarif.subtitle}
-                  </h4>
-                  
-                  <p className="text-muted leading-relaxed max-w-2xl text-base mb-8">
+
+                  <h4 className="text-secondary-400 mb-4 text-xl font-medium">{tarif.subtitle}</h4>
+
+                  <p className="text-muted mb-8 max-w-2xl text-base leading-relaxed">
                     {tarif.description}
                   </p>
-                  
+
                   {/* Partial list of details (preview) */}
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
+                  <ul className="mb-2 grid grid-cols-1 gap-3 sm:grid-cols-2">
                     {tarif.details.slice(0, 4).map((detail, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-sm text-muted-light">
-                        <svg className="w-5 h-5 text-primary-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <li key={idx} className="text-muted-light flex items-start gap-3 text-sm">
+                        <svg
+                          className="text-primary-400 mt-0.5 h-5 w-5 shrink-0"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
                           <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="leading-snug" title={detail}>{detail}</span>
+                        <span className="leading-snug" title={detail}>
+                          {detail}
+                        </span>
                       </li>
                     ))}
                     {tarif.details.length > 4 && (
-                      <li className="flex items-start gap-3 text-sm text-muted-light italic">
+                      <li className="text-muted-light flex items-start gap-3 text-sm italic">
                         <span className="pl-8">+ {tarif.details.length - 4} autres avantages</span>
                       </li>
                     )}
@@ -84,22 +88,30 @@ const PricingMain = () => {
                 </div>
 
                 {/* Prix + CTA */}
-                <div className="flex flex-col items-center justify-center gap-5 sm:gap-6 border-t border-white/5 bg-black/20 px-5 sm:px-8 py-6 sm:py-10 lg:border-l lg:border-t-0 lg:min-w-[320px] backdrop-blur-sm">
+                <div className="flex flex-col items-center justify-center gap-5 border-t border-white/5 bg-black/20 px-5 py-6 backdrop-blur-sm sm:gap-6 sm:px-8 sm:py-10 lg:min-w-[320px] lg:border-t-0 lg:border-l">
                   <div className="text-center">
-                    <p className="text-xs sm:text-sm font-medium text-muted uppercase tracking-wider mb-1 sm:mb-2">À partir de</p>
-                    <p className="text-3xl sm:text-5xl font-bold text-white tracking-tight drop-shadow-sm">
+                    <p className="text-muted mb-1 text-xs font-medium tracking-wider uppercase sm:mb-2 sm:text-sm">
+                      À partir de
+                    </p>
+                    <p className="text-3xl font-bold tracking-tight text-white drop-shadow-sm sm:text-5xl">
                       {tarif.price}
                     </p>
                   </div>
-                  
+
                   <button
                     onClick={() => handleOpenModal(tarif.id)}
-                    className={isFeatured ? 'btn-primary w-full py-3.5 sm:py-4 min-h-[48px] text-sm sm:text-base shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'btn-outline w-full py-3.5 sm:py-4 min-h-[48px] text-sm sm:text-base'}
+                    className={
+                      isFeatured
+                        ? 'btn-primary min-h-[48px] w-full py-3.5 text-sm shadow-[0_0_20px_rgba(59,130,246,0.3)] sm:py-4 sm:text-base'
+                        : 'btn-outline min-h-[48px] w-full py-3.5 text-sm sm:py-4 sm:text-base'
+                    }
                     aria-label={`En savoir plus sur la ${tarif.title}`}
                   >
                     Découvrir l&apos;offre
                   </button>
-                  <p className="text-xs text-muted-light text-center mt-2">Paiement flexible : 30% à la commande</p>
+                  <p className="text-muted-light mt-2 text-center text-xs">
+                    Paiement flexible : 30% à la commande
+                  </p>
                 </div>
               </div>
             </motion.article>

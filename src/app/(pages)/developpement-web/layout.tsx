@@ -13,16 +13,19 @@ export const metadata: Metadata = {
       'Sites internet d’associations et d’ESMS, portails usagers/familles et applications web Next.js. Architecture moderne, SEO et conformité RGPD.',
     url: 'https://www.devevoke.com/developpement-web',
     siteName: 'DevEvoke',
-    images: [{ url: '/icon.png', width: 800, height: 600, alt: 'Création de site web et application médico-sociale DevEvoke' }],
+    images: [
+      {
+        url: '/icon.png',
+        width: 800,
+        height: 600,
+        alt: 'Création de site web et application médico-sociale DevEvoke',
+      },
+    ],
     locale: 'fr_FR',
     type: 'website',
   },
 };
 
-export default function DeveloppementWebLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function DeveloppementWebLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

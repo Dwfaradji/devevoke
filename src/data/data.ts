@@ -171,7 +171,7 @@ const dataPriceOptions = [
     title: 'Audit de Sécurité & RGPD',
     price: 'Sur Devis',
     description:
-      "Vérification des bonnes pratiques de cybersécurité web et de conformité aux préconisations de la CNIL avant mise en production.",
+      'Vérification des bonnes pratiques de cybersécurité web et de conformité aux préconisations de la CNIL avant mise en production.',
     details: [
       'Audit de sécurité applicative',
       'Vérification du chiffrement (HTTPS / TLS 1.3)',
@@ -184,7 +184,7 @@ const dataPriceOptions = [
     title: 'Intégration & Connecteurs API Métiers',
     price: 'Sur Devis',
     description:
-      "Connectez vos nouvelles applications aux logiciels administratifs, de comptabilité ou de gestion déjà en place dans votre organisation.",
+      'Connectez vos nouvelles applications aux logiciels administratifs, de comptabilité ou de gestion déjà en place dans votre organisation.',
     details: [
       'Conception d’API REST sécurisées',
       'Connecteurs d’export et d’import automatique',
@@ -197,7 +197,7 @@ const dataPriceOptions = [
     title: 'Forfait Maintenance & Sécurité Cloud',
     price: 'Sur Devis',
     description:
-      "Garantissez la disponibilité, la pérennité et les mises à jour régulières de vos applications dans la durée.",
+      'Garantissez la disponibilité, la pérennité et les mises à jour régulières de vos applications dans la durée.',
     details: [
       'Hébergement cloud souverain en France (ISO 27001)',
       'Sauvegardes quotidiennes externalisées',
@@ -275,7 +275,7 @@ const services: Service[] = [
 //Pages footer information
 const pageInfosPrice: PageInfo[] = [
   {
-    titleH1: 'Modalités d\'accompagnement et tarification DevEvoke',
+    titleH1: "Modalités d'accompagnement et tarification DevEvoke",
   },
   {
     title: 'Accompagnement au forfait ou sur devis',
@@ -313,7 +313,7 @@ const pageInfosPrice: PageInfo[] = [
 
 const pageInfosProcess: PageInfo[] = [
   {
-    titleH1: "Processus d’accompagnement et de conception",
+    titleH1: 'Processus d’accompagnement et de conception',
   },
   {
     title: 'Étape 1 : Cadrage des Besoins & Immersion Métier',
@@ -382,14 +382,15 @@ const politiqueConfidentialite: PageInfo[] = [
   },
   {
     title: 'Hébergement Souverain et Sécurité',
-    text: "Le site web DevEvoke ainsi que les données transmises via nos formulaires de contact sont hébergés sur des infrastructures situées en France et en Union Européenne, garantissant la souveraineté et la conformité aux normes européennes de protection des données.",
+    text: 'Le site web DevEvoke ainsi que les données transmises via nos formulaires de contact sont hébergés sur des infrastructures situées en France et en Union Européenne, garantissant la souveraineté et la conformité aux normes européennes de protection des données.',
   },
   {
     title: 'Données collectées et finalités',
     text: "Les données recueillies (nom, prénom, organisation, fonction, email professionnel, téléphone, description de besoin) ont pour unique finalité le traitement des demandes de devis, de démonstration, de diagnostic numérique ou d'inscription à la newsletter B2B. Elles ne sont en aucun cas cédées ou revendues à des tiers.",
   },
   {
-    title: 'Vérification des adresses e-mail professionnelles et lutte contre la fraude (Art. 6.1.f RGPD)',
+    title:
+      'Vérification des adresses e-mail professionnelles et lutte contre la fraude (Art. 6.1.f RGPD)',
     text: "Afin de garantir la fiabilité des échanges B2B, prévenir les abus et protéger nos formulaires contre le spam et la fraude (base légale : intérêt légitime de DevEvoke au sens de l'article 6.1.f du RGPD), l'adresse e-mail professionnelle saisie lors de la soumission d'un formulaire fait l'objet d'une vérification technique de délivrabilité côté serveur via notre sous-traitant spécialisé Hunter Web Services Inc. (encadré par un accord de traitement des données — Data Processing Addendum / DPA — conforme au RGPD). Conformément au principe de minimisation des données (article 5.1.c du RGPD), seule l'adresse e-mail est transmise lors de cette vérification : aucun nom, prénom, numéro de téléphone, nom d'établissement ou contenu de message n'est communiqué à ce prestataire. Aucune adresse e-mail n'est conservée en clair dans nos caches techniques (empreintes cryptographiques SHA-256 uniquement) ni dans nos journaux de sécurité.",
   },
   {

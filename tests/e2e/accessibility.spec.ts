@@ -69,7 +69,10 @@ test.describe('Accessibilité Essentielle, Navigation Clavier & Captures Visuell
 
     // Vérifier la fermeture clavier Escape sur une modale
     await page.goto('/tarifs');
-    await page.getByRole('button', { name: /En savoir plus sur la/i }).first().click();
+    await page
+      .getByRole('button', { name: /En savoir plus sur la/i })
+      .first()
+      .click();
     const dialog = page.getByRole('dialog');
     await expect(dialog).toBeVisible();
 

@@ -32,13 +32,15 @@ export const DIMENSION_METADATA: Record<
   organization: {
     label: 'Organisation & processus',
     shortLabel: 'Organisation',
-    description: 'Gestion des flux administratifs, documentation et limitation des doubles saisies.',
+    description:
+      'Gestion des flux administratifs, documentation et limitation des doubles saisies.',
     icon: 'Building2',
   },
   businessTools: {
     label: 'Outils métier',
     shortLabel: 'Outils métier',
-    description: 'Adéquation du DUI et des applications logicielles aux pratiques réelles des équipes.',
+    description:
+      'Adéquation du DUI et des applications logicielles aux pratiques réelles des équipes.',
     icon: 'Layers',
   },
   mobility: {
@@ -50,19 +52,22 @@ export const DIMENSION_METADATA: Record<
   data: {
     label: 'Données & interopérabilité',
     shortLabel: 'Données',
-    description: 'Circulation des informations entre logiciels, synchronisations et absence de silos.',
+    description:
+      'Circulation des informations entre logiciels, synchronisations et absence de silos.',
     icon: 'Database',
   },
   security: {
     label: 'Cybersécurité & protection des données',
     shortLabel: 'Sécurité',
-    description: 'Gouvernance des comptes, politique de sauvegarde, gestion des départs et chartes.',
+    description:
+      'Gouvernance des comptes, politique de sauvegarde, gestion des départs et chartes.',
     icon: 'Shield',
   },
   management: {
     label: 'Pilotage & reporting',
     shortLabel: 'Pilotage',
-    description: 'Capacité de la direction à consolider les indicateurs et décider sans délai excessif.',
+    description:
+      'Capacité de la direction à consolider les indicateurs et décider sans délai excessif.',
     icon: 'BarChart3',
   },
 };

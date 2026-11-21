@@ -3,12 +3,7 @@ import { TransactionalEmailResult } from './types';
 import { sendTransactionalEmail as sendReactEmail } from '../../emails/send-email';
 import { EmailType } from '../../emails/email-types';
 
-export type TransactionalFormType =
-  | 'contact'
-  | 'quote'
-  | 'demo'
-  | 'diagnostic'
-  | 'newsletter';
+export type TransactionalFormType = 'contact' | 'quote' | 'demo' | 'diagnostic' | 'newsletter';
 
 /**
  * Détermine le type de formulaire à partir des propriétés du payload
@@ -20,7 +15,10 @@ export function detectFormType(data: Partial<ContactSubmissionInput>): Transacti
   if (data.projectType?.toLowerCase().includes('diagnostic')) {
     return 'diagnostic';
   }
-  if (data.projectType?.toLowerCase().includes('devis') || data.projectType?.toLowerCase().includes('offre')) {
+  if (
+    data.projectType?.toLowerCase().includes('devis') ||
+    data.projectType?.toLowerCase().includes('offre')
+  ) {
     return 'quote';
   }
   return 'contact';

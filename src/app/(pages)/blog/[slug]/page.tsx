@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const url = `https://www.devevoke.com/blog/${slug}`;
 
-  // Les images importées dans Next.js via Next/Image ou Webpack (ex: article1.src) 
+  // Les images importées dans Next.js via Next/Image ou Webpack (ex: article1.src)
   // renvoient un chemin relatif en production, on s'assure d'avoir l'URL absolue.
   const imageUrl = blog.img?.startsWith('http') ? blog.img : `https://www.devevoke.com${blog.img}`;
 

@@ -10,13 +10,7 @@ interface EmailCardProps {
   style?: React.CSSProperties;
 }
 
-export function EmailCard({
-  title,
-  badge,
-  variant = 'default',
-  children,
-  style,
-}: EmailCardProps) {
+export function EmailCard({ title, badge, variant = 'default', children, style }: EmailCardProps) {
   let backgroundColor: string = emailTokens.colors.surface;
   let borderColor: string = emailTokens.colors.border;
 
@@ -81,11 +75,7 @@ export function EmailCard({
                     <div style={titleStyle}>{title}</div>
                   </td>
                 )}
-                {badge && (
-                  <td style={{ verticalAlign: 'middle', textAlign: 'right' }}>
-                    {badge}
-                  </td>
-                )}
+                {badge && <td style={{ verticalAlign: 'middle', textAlign: 'right' }}>{badge}</td>}
               </tr>
             </tbody>
           </table>

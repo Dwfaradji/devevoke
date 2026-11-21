@@ -34,7 +34,8 @@ export const RECOMMENDATION_CATALOG: Array<
     urgency: 5,
     horizon: '30-days',
     relatedSolution: 'security',
-    condition: (_, __, ___, risks) => risks.some((r) => r.id === 'no_backup' || r.id === 'fragile_backup'),
+    condition: (_, __, ___, risks) =>
+      risks.some((r) => r.id === 'no_backup' || r.id === 'fragile_backup'),
   },
 
   // 2. Gestion des comptes et départs
@@ -111,7 +112,10 @@ export const RECOMMENDATION_CATALOG: Array<
     horizon: '3-months',
     relatedSolution: 'customSoftware',
     condition: (_, answers, scores) =>
-      scores.businessTools < 60 || answers.q4 === 'q4_a' || answers.q6 === 'q6_a' || answers.q6 === 'q6_b',
+      scores.businessTools < 60 ||
+      answers.q4 === 'q4_a' ||
+      answers.q6 === 'q6_a' ||
+      answers.q6 === 'q6_b',
   },
 
   // 6. Connecteurs et interopérabilité des données
@@ -129,7 +133,8 @@ export const RECOMMENDATION_CATALOG: Array<
     horizon: '3-months',
     relatedSolution: 'integration',
     condition: (_, __, scores, risks) =>
-      scores.data < 60 || risks.some((r) => r.id === 'data_silos' || r.id === 'fragmented_information_system'),
+      scores.data < 60 ||
+      risks.some((r) => r.id === 'data_silos' || r.id === 'fragmented_information_system'),
   },
 
   // 7. Tableaux de bord de direction automatisés
@@ -147,7 +152,10 @@ export const RECOMMENDATION_CATALOG: Array<
     horizon: '6-months',
     relatedSolution: 'customSoftware',
     condition: (_, answers, scores) =>
-      scores.management < 65 || answers.q16 === 'q16_a' || answers.q16 === 'q16_b' || answers.q17 === 'q17_a',
+      scores.management < 65 ||
+      answers.q16 === 'q16_a' ||
+      answers.q16 === 'q16_b' ||
+      answers.q17 === 'q17_a',
   },
 
   // 8. Gestion informatisée des véhicules et déplacements
@@ -208,12 +216,8 @@ export const RECOMMENDATION_CATALOG: Array<
  * Calcule le score de priorité d'une recommandation :
  * priorityScore = (impact * 0.45) + (urgency * 0.40) + ((6 - effort) * 0.15)
  */
-export function calculatePriorityScore(
-  impact: number,
-  effort: number,
-  urgency: number
-): number {
-  return Number(((impact * 0.45) + (urgency * 0.40) + ((6 - effort) * 0.15)).toFixed(2));
+export function calculatePriorityScore(impact: number, effort: number, urgency: number): number {
+  return Number((impact * 0.45 + urgency * 0.4 + (6 - effort) * 0.15).toFixed(2));
 }
 
 /**
@@ -258,9 +262,7 @@ export function getTopPriorities(recommendations: Recommendation[]): Recommendat
  * Extrait les Quick Wins : recommandations à fort impact (>=4) et faible effort (<=2), max 3
  */
 export function getQuickWins(recommendations: Recommendation[]): Recommendation[] {
-  return recommendations
-    .filter((r) => r.impact >= 4 && r.effort <= 2)
-    .slice(0, 3);
+  return recommendations.filter((r) => r.impact >= 4 && r.effort <= 2).slice(0, 3);
 }
 
 /**
@@ -373,7 +375,10 @@ export function detectRelevantSolutions(
   const solutions = new Set<DevEvokeSolution>();
 
   // Sécurité
-  if (dimensionScores.security < 65 || risks.some((r) => r.dimension === 'security' && (r.level === 'critical' || r.level === 'high'))) {
+  if (
+    dimensionScores.security < 65 ||
+    risks.some((r) => r.dimension === 'security' && (r.level === 'critical' || r.level === 'high'))
+  ) {
     solutions.add('security');
   }
 
@@ -388,12 +393,18 @@ export function detectRelevantSolutions(
   }
 
   // Interopérabilité / Intégration
-  if (dimensionScores.data < 60 || risks.some((r) => r.id === 'data_silos' || r.id === 'fragmented_information_system')) {
+  if (
+    dimensionScores.data < 60 ||
+    risks.some((r) => r.id === 'data_silos' || r.id === 'fragmented_information_system')
+  ) {
     solutions.add('integration');
   }
 
   // Application mobile (uniquement si équipes mobiles régulières)
-  if ((profile.mobility === 'regularly' || profile.mobility === 'daily') && dimensionScores.mobility < 65) {
+  if (
+    (profile.mobility === 'regularly' || profile.mobility === 'daily') &&
+    dimensionScores.mobility < 65
+  ) {
     solutions.add('mobileApp');
   }
 

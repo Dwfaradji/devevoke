@@ -28,7 +28,7 @@ export function EmailField({
     return null;
   }
 
-  const displayValue = isEmpty ? (fallback || 'Non renseigné') : value;
+  const displayValue = isEmpty ? fallback || 'Non renseigné' : value;
 
   const rowStyle: React.CSSProperties = {
     borderBottom: isLast ? 'none' : `1px solid ${emailTokens.colors.border}`,

@@ -24,10 +24,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PriceLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function PriceLayout({ children }: { children: React.ReactNode }) {
   return <section>{children}</section>;
 }

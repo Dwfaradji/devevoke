@@ -2,13 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  Building, 
-  Heart, 
-  ShieldCheck, 
-  ArrowRight, 
-  Smartphone,
-} from 'lucide-react';
+import { Building, Heart, ShieldCheck, ArrowRight, Smartphone } from 'lucide-react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import MedicoSocialNavSwitcher from '@/components/ui/MedicoSocialNavSwitcher';
 
@@ -34,7 +28,9 @@ export const metadata: Metadata = {
       'Gagnez du temps administratif et facilitez le quotidien de vos équipes grâce à des outils ergonomiques conformes au RGPD.',
     url: 'https://www.devevoke.com/solutions-medico-social/ehpad',
     siteName: 'DevEvoke',
-    images: [{ url: '/icon.png', width: 800, height: 600, alt: 'Solutions logicielles pour EHPAD' }],
+    images: [
+      { url: '/icon.png', width: 800, height: 600, alt: 'Solutions logicielles pour EHPAD' },
+    ],
     locale: 'fr_FR',
     type: 'website',
   },
@@ -56,7 +52,10 @@ export default function SolutionsEhpadPage() {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       <div className="overflow-hidden pb-24">
         <Breadcrumb
@@ -71,66 +70,72 @@ export default function SolutionsEhpadPage() {
         <MedicoSocialNavSwitcher />
 
         {/* HERO */}
-        <header className="relative py-16 md:py-24 text-center px-4 max-w-5xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary-500/30 mb-8">
-            <Building className="size-4 text-primary-400" />
-            <span className="text-xs sm:text-sm font-medium text-gray-200 tracking-wide uppercase">
+        <header className="relative mx-auto max-w-5xl px-4 py-16 text-center md:py-24">
+          <div className="glass border-primary-500/30 mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2">
+            <Building className="text-primary-400 size-4" />
+            <span className="text-xs font-medium tracking-wide text-gray-200 uppercase sm:text-sm">
               Grand Âge & Dépendance
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-8 leading-[1.15]">
+          <h1 className="mb-8 text-4xl leading-[1.15] font-extrabold tracking-tight text-white sm:text-6xl">
             Solutions numériques et logiciels pour{' '}
             <span className="text-gradient drop-shadow-sm">EHPAD & Résidences Autonomie</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-muted leading-relaxed max-w-3xl mx-auto mb-10">
-            Libérez vos soignants de la lourdeur administrative, fluidifiez les transmissions au lit du résident et offrez aux familles un espace d’échange transparent et rassurant.
+          <p className="text-muted mx-auto mb-10 max-w-3xl text-lg leading-relaxed sm:text-xl">
+            Libérez vos soignants de la lourdeur administrative, fluidifiez les transmissions au lit
+            du résident et offrez aux familles un espace d’échange transparent et rassurant.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/contact" className="btn-primary w-full sm:w-auto text-base">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link href="/contact" className="btn-primary w-full text-base sm:w-auto">
               Demander un audit pour votre EHPAD
               <ArrowRight className="size-4" />
             </Link>
-            <Link href="/securite-et-conformite" className="btn-outline w-full sm:w-auto text-base">
+            <Link href="/securite-et-conformite" className="btn-outline w-full text-base sm:w-auto">
               Nos garanties Sécurité & RGPD
             </Link>
           </div>
         </header>
 
         {/* ENJEUX EHPAD */}
-        <section className="py-16 border-t border-white/5">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-12 gap-12 items-center mb-16">
-              <div className="lg:col-span-6 space-y-6">
+        <section className="border-t border-white/5 py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-16 grid items-center gap-12 lg:grid-cols-12">
+              <div className="space-y-6 lg:col-span-6">
                 <span className="section-label">Défis Soignants & Qualité</span>
-                <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
                   Redonner du temps soignant auprès des personnes âgées
                 </h2>
-                <p className="text-muted leading-relaxed text-base sm:text-lg">
-                  Les soignants en EHPAD (aides-soignantes, infirmières, psychologues) passent trop de temps devant des logiciels administratifs complexes à saisir des informations en double, au détriment du temps passé auprès des résidents.
+                <p className="text-muted text-base leading-relaxed sm:text-lg">
+                  Les soignants en EHPAD (aides-soignantes, infirmières, psychologues) passent trop
+                  de temps devant des logiciels administratifs complexes à saisir des informations
+                  en double, au détriment du temps passé auprès des résidents.
                 </p>
-                <p className="text-muted leading-relaxed text-base sm:text-lg">
-                  Notre philosophie : concevoir des interfaces ultra-épurées, tactiles et rapides, utilisables sur tablette ou smartphone directement dans la chambre, pour saisir les constantes, valider les repas ou consigner un événement en moins de 30 secondes.
+                <p className="text-muted text-base leading-relaxed sm:text-lg">
+                  Notre philosophie : concevoir des interfaces ultra-épurées, tactiles et rapides,
+                  utilisables sur tablette ou smartphone directement dans la chambre, pour saisir
+                  les constantes, valider les repas ou consigner un événement en moins de 30
+                  secondes.
                 </p>
               </div>
 
               <div className="lg:col-span-6">
-                <div className="relative rounded-3xl overflow-hidden glass border border-white/10 shadow-2xl group">
+                <div className="glass group relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
                   <Image
                     src="/images/home/ehpad_coordination_life.webp"
                     alt="Coordinatrice de vie et résidente en EHPAD partageant un moment chaleureux avec tablette"
                     width={800}
                     height={520}
-                    className="w-full h-[360px] sm:h-[420px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+                    className="h-[360px] w-full transform object-cover object-center transition-transform duration-700 group-hover:scale-105 sm:h-[420px]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent opacity-85" />
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <span className="px-3 py-1 rounded-full bg-primary-500/20 text-primary-300 text-xs font-semibold border border-primary-500/30 mb-2 inline-block">
+                  <div className="from-bg absolute inset-0 bg-gradient-to-t via-transparent to-transparent opacity-85" />
+                  <div className="absolute right-6 bottom-6 left-6">
+                    <span className="bg-primary-500/20 text-primary-300 border-primary-500/30 mb-2 inline-block rounded-full border px-3 py-1 text-xs font-semibold">
                       Lien Social & Qualité de Vie
                     </span>
-                    <p className="text-white font-medium text-sm sm:text-base">
+                    <p className="text-sm font-medium text-white sm:text-base">
                       Le numérique comme vecteur de lien entre résidents, soignants et familles.
                     </p>
                   </div>
@@ -138,34 +143,37 @@ export default function SolutionsEhpadPage() {
               </div>
             </div>
 
-            <div className="grid sm:grid-cols-3 gap-6">
-              <div className="glass p-6 rounded-2xl border border-white/5 hover:border-white/20 transition-all">
-                <div className="size-12 rounded-xl bg-primary-500/10 flex items-center justify-center text-primary-400 mb-4">
+            <div className="grid gap-6 sm:grid-cols-3">
+              <div className="glass rounded-2xl border border-white/5 p-6 transition-all hover:border-white/20">
+                <div className="bg-primary-500/10 text-primary-400 mb-4 flex size-12 items-center justify-center rounded-xl">
                   <Smartphone className="size-6" />
                 </div>
-                <h3 className="text-white font-bold text-lg mb-2">Transmissions Ciblées Mobiles</h3>
-                <p className="text-sm text-muted leading-relaxed">
-                  Saisie rapide de la méthode DAR (Donnée, Action, Résultat) sur tablette soignante avec alertes automatiques à l'IDEC.
+                <h3 className="mb-2 text-lg font-bold text-white">Transmissions Ciblées Mobiles</h3>
+                <p className="text-muted text-sm leading-relaxed">
+                  Saisie rapide de la méthode DAR (Donnée, Action, Résultat) sur tablette soignante
+                  avec alertes automatiques à l'IDEC.
                 </p>
               </div>
 
-              <div className="glass p-6 rounded-2xl border border-white/5 hover:border-white/20 transition-all">
-                <div className="size-12 rounded-xl bg-secondary-500/10 flex items-center justify-center text-secondary-400 mb-4">
+              <div className="glass rounded-2xl border border-white/5 p-6 transition-all hover:border-white/20">
+                <div className="bg-secondary-500/10 text-secondary-400 mb-4 flex size-12 items-center justify-center rounded-xl">
                   <Heart className="size-6" />
                 </div>
-                <h3 className="text-white font-bold text-lg mb-2">Portail Familles Sécurisé</h3>
-                <p className="text-sm text-muted leading-relaxed">
-                  Partage des activités, gazette de l’établissement, menus et messages rassurants pour impliquer les proches dans le quotidien.
+                <h3 className="mb-2 text-lg font-bold text-white">Portail Familles Sécurisé</h3>
+                <p className="text-muted text-sm leading-relaxed">
+                  Partage des activités, gazette de l’établissement, menus et messages rassurants
+                  pour impliquer les proches dans le quotidien.
                 </p>
               </div>
 
-              <div className="glass p-6 rounded-2xl border border-white/5 hover:border-white/20 transition-all">
-                <div className="size-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4">
+              <div className="glass rounded-2xl border border-white/5 p-6 transition-all hover:border-white/20">
+                <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
                   <ShieldCheck className="size-6" />
                 </div>
-                <h3 className="text-white font-bold text-lg mb-2">Hébergement Souverain & RGPD</h3>
-                <p className="text-sm text-muted leading-relaxed">
-                  Hébergement souverain sur serveurs en France, chiffrement TLS et conformité stricte aux exigences de protection des données.
+                <h3 className="mb-2 text-lg font-bold text-white">Hébergement Souverain & RGPD</h3>
+                <p className="text-muted text-sm leading-relaxed">
+                  Hébergement souverain sur serveurs en France, chiffrement TLS et conformité
+                  stricte aux exigences de protection des données.
                 </p>
               </div>
             </div>
@@ -173,15 +181,16 @@ export default function SolutionsEhpadPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-20 px-4">
-          <div className="max-w-4xl mx-auto glass-strong p-10 sm:p-14 rounded-3xl text-center border border-primary-500/30">
-            <h2 className="text-3xl font-bold text-white mb-4">
+        <section className="px-4 py-20">
+          <div className="glass-strong border-primary-500/30 mx-auto max-w-4xl rounded-3xl border p-10 text-center sm:p-14">
+            <h2 className="mb-4 text-3xl font-bold text-white">
               Modernisez le système d’information de votre EHPAD
             </h2>
-            <p className="text-muted text-base sm:text-lg mb-8 max-w-2xl mx-auto">
-              Échangez avec nos spécialistes du secteur sanitaire et médico-social pour préparer votre transition numérique.
+            <p className="text-muted mx-auto mb-8 max-w-2xl text-base sm:text-lg">
+              Échangez avec nos spécialistes du secteur sanitaire et médico-social pour préparer
+              votre transition numérique.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link href="/contact" className="btn-primary text-base">
                 Contacter un expert EHPAD
                 <ArrowRight className="size-4" />
@@ -192,18 +201,45 @@ export default function SolutionsEhpadPage() {
             </div>
 
             {/* Maillage inter-établissements */}
-            <div className="mt-12 pt-8 border-t border-white/10 text-xs sm:text-sm text-muted">
-              <span className="block mb-3 font-semibold uppercase tracking-wider text-white/70">Découvrez également nos solutions pour :</span>
+            <div className="text-muted mt-12 border-t border-white/10 pt-8 text-xs sm:text-sm">
+              <span className="mb-3 block font-semibold tracking-wider text-white/70 uppercase">
+                Découvrez également nos solutions pour :
+              </span>
               <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
-                <Link href="/solutions-medico-social/ime" className="hover:text-primary-400 underline underline-offset-4 transition-colors">IME</Link>
+                <Link
+                  href="/solutions-medico-social/ime"
+                  className="hover:text-primary-400 underline underline-offset-4 transition-colors"
+                >
+                  IME
+                </Link>
                 <span>•</span>
-                <Link href="/solutions-medico-social/sessad" className="hover:text-primary-400 underline underline-offset-4 transition-colors">SESSAD</Link>
+                <Link
+                  href="/solutions-medico-social/sessad"
+                  className="hover:text-primary-400 underline underline-offset-4 transition-colors"
+                >
+                  SESSAD
+                </Link>
                 <span>•</span>
-                <Link href="/solutions-medico-social/esat" className="hover:text-primary-400 underline underline-offset-4 transition-colors">ESAT</Link>
+                <Link
+                  href="/solutions-medico-social/esat"
+                  className="hover:text-primary-400 underline underline-offset-4 transition-colors"
+                >
+                  ESAT
+                </Link>
                 <span>•</span>
-                <Link href="/solutions-medico-social/associations" className="hover:text-primary-400 underline underline-offset-4 transition-colors">Associations gestionnaires</Link>
+                <Link
+                  href="/solutions-medico-social/associations"
+                  className="hover:text-primary-400 underline underline-offset-4 transition-colors"
+                >
+                  Associations gestionnaires
+                </Link>
                 <span>•</span>
-                <Link href="/developpement-logiciel-medico-social" className="hover:text-primary-400 underline underline-offset-4 transition-colors">Logiciel médico-social sur-mesure</Link>
+                <Link
+                  href="/developpement-logiciel-medico-social"
+                  className="hover:text-primary-400 underline underline-offset-4 transition-colors"
+                >
+                  Logiciel médico-social sur-mesure
+                </Link>
               </div>
             </div>
           </div>

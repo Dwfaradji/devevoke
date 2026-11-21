@@ -13,23 +13,32 @@ const BlogHome = () => {
   const nextPosts = sortedPosts.slice(1, 4);
 
   return (
-    <section id="section6" className="py-16 md:py-24 lg:py-32 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+    <section id="section6" className="relative py-16 md:py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* En-tête de section */}
-        <div className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <span className="section-label mb-4">Actualités &amp; Insights</span>
-            <h2 className="text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl tracking-tight">
-              Derniers{' '}
-              <span className="text-highlight">
-                articles
-              </span>
+            <h2 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Derniers <span className="text-highlight">articles</span>
             </h2>
           </div>
-          <Link href="/blog" className="group flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 hover:border-white/20 transition-all duration-300 shrink-0">
+          <Link
+            href="/blog"
+            className="group flex shrink-0 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 font-medium text-white transition-all duration-300 hover:border-white/20 hover:bg-white/10"
+          >
             Tous les articles
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="transition-transform group-hover:translate-x-1"
+            >
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </Link>
@@ -41,15 +50,17 @@ const BlogHome = () => {
         </div>
 
         {/* 3 articles suivants */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid gap-8 md:grid-cols-3">
           {nextPosts.map((post) => {
             const formattedDate = new Date(post.date).toLocaleDateString('fr-FR', {
-              year: 'numeric', month: 'short', day: 'numeric',
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
             });
             return (
               <div key={post.id}>
                 <Link href={`/blog/${slugify(post.title)}`}>
-                  <article className="group flex flex-col h-full rounded-2xl glass border border-white/5 overflow-hidden hover:border-white/15 hover:glass-strong transition-all duration-300 hover:-translate-y-1">
+                  <article className="group glass hover:glass-strong flex h-full flex-col overflow-hidden rounded-2xl border border-white/5 transition-all duration-300 hover:-translate-y-1 hover:border-white/15">
                     {/* Image Container */}
                     <div className="relative h-48 w-full overflow-hidden">
                       <Image
@@ -62,23 +73,33 @@ const BlogHome = () => {
                     </div>
 
                     {/* Content */}
-                    <div className="flex flex-col flex-grow p-6">
-                      <div className="flex items-center justify-between text-xs text-muted mb-3">
+                    <div className="flex flex-grow flex-col p-6">
+                      <div className="text-muted mb-3 flex items-center justify-between text-xs">
                         <span>{formattedDate}</span>
                         <span>{post.readingTime} min</span>
                       </div>
 
-                      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary-400 transition-colors line-clamp-2">
+                      <h3 className="group-hover:text-primary-400 mb-3 line-clamp-2 text-xl font-bold text-white transition-colors">
                         {post.title}
                       </h3>
 
-                      <p className="text-sm text-muted leading-relaxed line-clamp-2 mb-6 flex-grow">
+                      <p className="text-muted mb-6 line-clamp-2 flex-grow text-sm leading-relaxed">
                         {post.descriptionShort}
                       </p>
 
-                      <div className="flex items-center gap-2 text-sm font-medium text-primary-400 group-hover:text-primary-300 transition-colors pt-4 border-t border-white/5 mt-auto">
+                      <div className="text-primary-400 group-hover:text-primary-300 mt-auto flex items-center gap-2 border-t border-white/5 pt-4 text-sm font-medium transition-colors">
                         Lire l'article
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform">
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="transition-transform group-hover:translate-x-1"
+                        >
                           <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
                       </div>
@@ -89,7 +110,6 @@ const BlogHome = () => {
             );
           })}
         </div>
-
       </div>
     </section>
   );

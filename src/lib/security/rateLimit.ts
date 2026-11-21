@@ -109,10 +109,7 @@ class RateLimiter {
     record.timestamps = record.timestamps.filter((ts) => ts > windowStart);
 
     const oldestTimestamp = record.timestamps[0] ?? now;
-    const resetSeconds = Math.max(
-      0,
-      Math.ceil((oldestTimestamp + config.windowMs - now) / 1000)
-    );
+    const resetSeconds = Math.max(0, Math.ceil((oldestTimestamp + config.windowMs - now) / 1000));
 
     if (record.timestamps.length >= config.maxRequests) {
       return {
@@ -154,10 +151,7 @@ class RateLimiter {
     const existing = this.duplicateStore.get(key);
 
     if (existing && existing.expiresAt > now) {
-      const retryAfterSeconds = Math.max(
-        1,
-        Math.ceil((existing.expiresAt - now) / 1000)
-      );
+      const retryAfterSeconds = Math.max(1, Math.ceil((existing.expiresAt - now) / 1000));
       return {
         isDuplicate: true,
         retryAfterSeconds,
@@ -191,9 +185,7 @@ class RateLimiter {
     }
     this.lastCleanup = now;
 
-    const maxWindow = Math.max(
-      ...Object.values(FORM_SECURITY_LIMITS).map((c) => c.windowMs)
-    );
+    const maxWindow = Math.max(...Object.values(FORM_SECURITY_LIMITS).map((c) => c.windowMs));
     const oldestAllowed = now - maxWindow;
 
     for (const [key, record] of this.store.entries()) {
@@ -214,11 +206,10 @@ class RateLimiter {
 /**
  * Calcule une empreinte anonymisée (SHA-256) d'une soumission pour détecter les doublons immédiats.
  */
-export function computeSubmissionFingerprint(
-  payload: Record<string, unknown>
-): string {
+export function computeSubmissionFingerprint(payload: Record<string, unknown>): string {
   const email = typeof payload.email === 'string' ? payload.email.trim().toLowerCase() : '';
-  const business = typeof payload.business === 'string' ? payload.business.trim().toLowerCase() : '';
+  const business =
+    typeof payload.business === 'string' ? payload.business.trim().toLowerCase() : '';
   const content = typeof payload.content === 'string' ? payload.content.trim() : '';
   return crypto
     .createHash('sha256')

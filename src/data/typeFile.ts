@@ -57,13 +57,7 @@ interface BlogProps {
   readingTime: number;
   category: string;
   date: string;
-  metaDescription:string
+  metaDescription: string;
 }
 
-export type {
-  Project,
-  Price,
-  Service,
-  PageInfo,
-  BlogProps,
-};
+export type { Project, Price, Service, PageInfo, BlogProps };
