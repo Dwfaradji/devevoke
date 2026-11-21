@@ -29,7 +29,6 @@ export function EmailLogo({ size = 'md' }: EmailLogoProps) {
                   width: `${iconSize}px`,
                   height: `${iconSize}px`,
                   borderRadius: '7px',
-                  backgroundColor: '#1e62a8',
                   border: '1px solid #38c6d9',
                   textAlign: 'center',
                   lineHeight: `${iconSize}px`,
