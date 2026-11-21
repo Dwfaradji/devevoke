@@ -16,6 +16,54 @@ interface PropsBlogPage {
   blog: BlogProps;
 }
 
+const renderTextWithLinks = (text: string): React.ReactNode => {
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  if (!linkRegex.test(text)) {
+    return text;
+  }
+  linkRegex.lastIndex = 0;
+  const parts: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = linkRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    const [, label, href] = match;
+    if (href.startsWith('/')) {
+      parts.push(
+        <Link
+          key={`link-${match.index}`}
+          href={href}
+          className="text-primary-400 hover:text-primary-300 underline underline-offset-4 transition-colors font-medium"
+        >
+          {label}
+        </Link>
+      );
+    } else {
+      parts.push(
+        <a
+          key={`link-${match.index}`}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary-400 hover:text-primary-300 underline underline-offset-4 transition-colors font-medium"
+        >
+          {label}
+        </a>
+      );
+    }
+    lastIndex = linkRegex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts;
+};
+
 const BlogPage = ({ blog }: PropsBlogPage) => {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -125,7 +173,7 @@ const BlogPage = ({ blog }: PropsBlogPage) => {
                   {val.title}
                 </h2>
                 <p className="text-muted leading-relaxed text-lg">
-                  {val.text}
+                  {renderTextWithLinks(val.text)}
                 </p>
               </div>
             </Fade>

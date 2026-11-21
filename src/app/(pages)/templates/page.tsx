@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 
-import { articles } from '@/data/dataSlideDevis';
+import { articles } from '@/data/dataWebTemplate';
 import Template from '@/components/Template/template';
 import { Fade } from '@/components/ui/Fade';
 import Link from 'next/link';
