@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import MedicoSocialNavSwitcher from '@/components/ui/MedicoSocialNavSwitcher';
+import { SITE_URL } from '@/config/site';
 
 export default function DeveloppementLogicielMedicoSocialPage() {
   const jsonLd = {
@@ -23,7 +24,7 @@ export default function DeveloppementLogicielMedicoSocialPage() {
     provider: {
       '@type': 'Organization',
       name: 'DevEvoke',
-      url: 'https://www.devevoke.com',
+      url: SITE_URL,
     },
     description:
       'Service de développement informatique d’applications web, logiciels ERP et plateformes métiers pour structures sociales et médico-sociales.',

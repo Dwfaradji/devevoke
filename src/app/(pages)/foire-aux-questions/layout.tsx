@@ -1,25 +1,15 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import { createPageMetadata } from '@/config/site';
 
-export const metadata: Metadata = {
-  title: 'Foire Aux Questions (FAQ) | Solutions Digitales & Logiciels Métier',
+export const metadata: Metadata = createPageMetadata({
+  path: '/foire-aux-questions',
+  title: 'Foire Aux Questions (FAQ) & Méthode',
   description:
-    'Retrouvez les réponses aux questions fréquentes sur la conception de logiciels métier, plateformes SaaS, applications mobiles, l’hébergement souverain en France et la conformité RGPD.',
-  alternates: {
-    canonical: 'https://www.devevoke.com/foire-aux-questions',
-  },
-  openGraph: {
-    title: 'Foire Aux Questions (FAQ) — DevEvoke',
-    description:
-      'Questions fréquentes sur nos logiciels métiers, plateformes SaaS, applications mobiles et accompagnement numérique sur mesure.',
-    url: 'https://www.devevoke.com/foire-aux-questions',
-    siteName: 'DevEvoke',
-    images: [{ url: '/icon.png', width: 800, height: 600, alt: 'FAQ DevEvoke' }],
-    locale: 'fr_FR',
-    type: 'website',
-  },
-};
+    'Réponses aux questions fréquentes sur nos logiciels métiers, plateformes SaaS, applications mobiles hors-ligne, hébergement en France et conformité RGPD.',
+  imageAlt: 'FAQ DevEvoke',
+});
 
-export default function FAQLayout({ children }: { children: React.ReactNode }) {
+export default function FaqLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

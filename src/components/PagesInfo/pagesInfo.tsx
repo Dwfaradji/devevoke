@@ -24,7 +24,7 @@ const PagesInfo = ({ infosText }: PagesInfoProps) => {
     <div className="overflow-hidden pb-24">
       {/* Fil d'Ariane & Bouton Retour */}
       <Breadcrumb
-        items={[{ label: 'Informations', href: '/info-tarif' }, { label: mainTitle }]}
+        items={[{ label: 'Informations', href: '/a-propos' }, { label: mainTitle }]}
         backLink={{ href: '/', label: 'Retour au site' }}
       />
 

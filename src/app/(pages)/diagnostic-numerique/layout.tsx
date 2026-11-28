@@ -1,20 +1,13 @@
 import type { Metadata } from 'next';
+import { createPageMetadata } from '@/config/site';
 
-export const metadata: Metadata = {
-  title: 'Diagnostic Numérique Médico-Social Gratuit | Évaluez votre structure',
+export const metadata: Metadata = createPageMetadata({
+  path: '/diagnostic-numerique',
+  title: 'Diagnostic Numérique Médico-Social Gratuit',
   description:
-    'Évaluez en 3 minutes la maturité numérique de votre établissement ou association médico-sociale (IME, SESSAD, ESAT, EHPAD). Obtenez un score précis, une analyse de vos risques et des recommandations concrètes.',
-  alternates: {
-    canonical: 'https://www.devevoke.com/diagnostic-numerique',
-  },
-  openGraph: {
-    title: 'Diagnostic Numérique Médico-Social Gratuit | DevEvoke',
-    description:
-      'Mesurez la maturité digitale de votre structure médico-sociale et découvrez comment supprimer la double saisie et fluidifier vos processus métiers.',
-    url: 'https://www.devevoke.com/diagnostic-numerique',
-    type: 'website',
-  },
-};
+    'Évaluez en 3 minutes la maturité numérique de votre structure médico-sociale (IME, SESSAD, ESAT, EHPAD) et recevez des recommandations concrètes.',
+  imageAlt: 'Diagnostic numérique médico-social gratuit DevEvoke',
+});
 
 export default function DiagnosticLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;

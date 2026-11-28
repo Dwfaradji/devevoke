@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import MedicoSocialNavSwitcher from '@/components/ui/MedicoSocialNavSwitcher';
+import { buildAbsoluteUrl } from '@/config/site';
 
 export default function SolutionsMedicoSocialPage() {
   const jsonLd = {
@@ -25,49 +26,49 @@ export default function SolutionsMedicoSocialPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Développement de Logiciels Métiers & Applications Web Médico-Social',
-        url: 'https://www.devevoke.com/developpement-logiciel-medico-social',
+        url: buildAbsoluteUrl('/developpement-logiciel-medico-social'),
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Applications Mobiles Hors-Ligne pour Équipes Terrain & SESSAD',
-        url: 'https://www.devevoke.com/application-mobile',
+        url: buildAbsoluteUrl('/application-mobile'),
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'Solutions Numériques pour Associations Gestionnaires',
-        url: 'https://www.devevoke.com/solutions-medico-social/associations',
+        url: buildAbsoluteUrl('/solutions-medico-social/associations'),
       },
       {
         '@type': 'ListItem',
         position: 4,
         name: 'Solutions Numériques pour IME & DITEP',
-        url: 'https://www.devevoke.com/solutions-medico-social/ime',
+        url: buildAbsoluteUrl('/solutions-medico-social/ime'),
       },
       {
         '@type': 'ListItem',
         position: 5,
         name: 'Solutions Numériques pour SESSAD',
-        url: 'https://www.devevoke.com/solutions-medico-social/sessad',
+        url: buildAbsoluteUrl('/solutions-medico-social/sessad'),
       },
       {
         '@type': 'ListItem',
         position: 6,
         name: 'Solutions Numériques pour ESAT',
-        url: 'https://www.devevoke.com/solutions-medico-social/esat',
+        url: buildAbsoluteUrl('/solutions-medico-social/esat'),
       },
       {
         '@type': 'ListItem',
         position: 7,
         name: 'Solutions Numériques pour EHPAD',
-        url: 'https://www.devevoke.com/solutions-medico-social/ehpad',
+        url: buildAbsoluteUrl('/solutions-medico-social/ehpad'),
       },
       {
         '@type': 'ListItem',
         position: 8,
         name: 'Diagnostic Numérique Médico-Social',
-        url: 'https://www.devevoke.com/diagnostic-numerique',
+        url: buildAbsoluteUrl('/diagnostic-numerique'),
       },
     ],
   };

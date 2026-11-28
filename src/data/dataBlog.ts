@@ -23,6 +23,7 @@ const blogData: BlogProps[] = [
   {
     id: '1',
     title: "Qu'est-ce que la certification HDS et pourquoi est-elle obligatoire ?",
+    metaTitle: 'Certification HDS : Enjeux & Obligations',
     descriptionShort:
       "Découvrez les enjeux de l'Hébergement de Données de Santé (HDS) et pourquoi cette certification est une exigence légale absolue pour tout logiciel médical en France.",
     descriptionLong: [
@@ -82,11 +83,19 @@ const blogData: BlogProps[] = [
     alt: 'Infrastructures serveurs sécurisées et conformité certification HDS données de santé',
     readingTime: 10,
     category: 'Sécurité & Conformité',
+    filterCategory: 'Sécurité & RGPD',
     date: '2025-05-10',
+    relatedService: {
+      label: 'Sécurité & Hébergement Souverain',
+      href: '/securite-et-conformite',
+      description:
+        'Découvrez nos standards de chiffrement, contrôle d’accès RBAC et hébergement souverain en France.',
+    },
   },
   {
     id: '2',
     title: 'Interopérabilité en Santé : Comprendre les standards HL7 et FHIR',
+    metaTitle: 'Interopérabilité Santé : HL7 et FHIR',
     descriptionShort:
       "L'isolement logiciel est le pire ennemi du parcours de soin. Découvrez comment les normes HL7 et FHIR révolutionnent l'échange de données médicales.",
     descriptionLong: [
@@ -147,11 +156,19 @@ const blogData: BlogProps[] = [
     alt: "Schéma d'interopérabilité logicielle en santé avec les standards HL7 et API FHIR",
     readingTime: 9,
     category: 'Interopérabilité & SI',
+    filterCategory: 'Autres',
     date: '2025-06-15',
+    relatedService: {
+      label: 'Automatisation & Interopérabilité API',
+      href: '/automatisation',
+      description:
+        'Connectez vos logiciels métiers et supprimez les doubles saisies grâce à nos passerelles API sécurisées.',
+    },
   },
   {
     id: '3',
     title: 'Comment concevoir un logiciel métier UX-friendly pour un EHPAD ?',
+    metaTitle: 'Logiciel Métier UX-Friendly en EHPAD',
     descriptionShort:
       "La surcharge administrative épuise le personnel soignant. Un design (UX) adapté à la réalité du terrain est vital pour l'adoption d'un logiciel en EHPAD.",
     descriptionLong: [
@@ -210,11 +227,19 @@ const blogData: BlogProps[] = [
     alt: 'Interface ergonomique sur tablette tactile pour le personnel soignant en EHPAD',
     readingTime: 8,
     category: 'Design & Ergonomie',
+    filterCategory: 'Médico-social',
     date: '2025-07-02',
+    relatedService: {
+      label: 'Solutions Numériques pour EHPAD',
+      href: '/solutions-medico-social/ehpad',
+      description:
+        'Des interfaces ergonomiques pensées pour alléger la saisie soignante et fluidifier les transmissions.',
+    },
   },
   {
     id: '4',
     title: 'Cybersécurité Médicale : Protéger les dossiers patients face aux ransomwares',
+    metaTitle: 'Cybersécurité Médicale & Ransomwares',
     descriptionShort:
       'Les hôpitaux et établissements médico-sociaux sont les cibles privilégiées des cyberattaques. Analyse approfondie des stratégies de défense et de résilience.',
     descriptionLong: [
@@ -274,11 +299,19 @@ const blogData: BlogProps[] = [
     alt: 'Protection cybersécurité des dossiers patients et établissements médico-sociaux contre les ransomwares',
     readingTime: 9,
     category: 'Sécurité & Conformité',
+    filterCategory: 'Sécurité & RGPD',
     date: '2025-08-05',
+    relatedService: {
+      label: 'Sécurité & Conformité RGPD',
+      href: '/securite-et-conformite',
+      description:
+        'Protégez vos données sensibles avec une architecture sécurisée et un hébergement souverain en France.',
+    },
   },
   {
     id: '5',
     title: "Progressive Web Apps (PWA) : L'outil idéal pour les infirmiers libéraux",
+    metaTitle: 'PWA pour Infirmiers et Soins à Domicile',
     descriptionShort:
       'Fini les applications lourdes et les zones sans réseau. Découvrez pourquoi les PWA remplacent les applications natives pour les soins à domicile.',
     descriptionLong: [
@@ -337,11 +370,19 @@ const blogData: BlogProps[] = [
     alt: 'Application mobile Progressive Web App fonctionnant hors-ligne pour les soins et interventions à domicile',
     readingTime: 9,
     category: 'Développement Mobile',
+    filterCategory: 'Applications mobiles',
     date: '2025-09-06',
+    relatedService: {
+      label: 'Applications Mobiles & Mode Hors-Ligne',
+      href: '/application-mobile',
+      description:
+        'Outils tactiles iOS, Android et PWA conçus pour les tournées de terrain même sans réseau.',
+    },
   },
   {
     id: '6',
     title: "L'Intelligence Artificielle au service de l'imagerie et du diagnostic",
+    metaTitle: 'IA en Imagerie et Diagnostic Médical',
     descriptionShort:
       "Comment l'IA générative et le Deep Learning transforment le quotidien des radiologues et réduisent drastiquement l'errance médicale.",
     descriptionLong: [
@@ -400,11 +441,19 @@ const blogData: BlogProps[] = [
     alt: "Analyse d'imagerie médicale assistée par intelligence artificielle et interface clinique",
     readingTime: 9,
     category: 'Innovation & IA',
+    filterCategory: 'Autres',
     date: '2025-10-07',
+    relatedService: {
+      label: 'Conception de Plateformes SaaS',
+      href: '/developpement-saas',
+      description:
+        'Architecture cloud multi-structures, API sécurisées et interfaces métiers sur-mesure.',
+    },
   },
   {
     id: '7',
     title: 'Startups MedTech : Construire un MVP (Produit Minimum Viable) qui convertit',
+    metaTitle: 'Startups MedTech : Construire un MVP',
     descriptionShort:
       'Ne perdez pas des années à coder la mauvaise application. Guide méthodologique complet pour valider votre idée de logiciel de santé rapidement.',
     descriptionLong: [
@@ -463,11 +512,19 @@ const blogData: BlogProps[] = [
     alt: "Conception et prototypage d'un Produit Minimum Viable SaaS pour la santé et le médico-social",
     readingTime: 8,
     category: 'Développement Logiciel',
+    filterCategory: 'Autres',
     date: '2025-11-08',
+    relatedService: {
+      label: 'Développement SaaS Sur-Mesure',
+      href: '/developpement-saas',
+      description:
+        'De la conception UX à la mise en production : lancez votre plateforme SaaS sécurisée et évolutive.',
+    },
   },
   {
     id: '8',
     title: 'SEO Médical : Comment positionner la vitrine de son cabinet ou EHPAD',
+    metaTitle: 'SEO Médical pour Cabinet ou EHPAD',
     descriptionShort:
       'Un beau site ne sert à rien s\'il est invisible sur Google. Techniques avancées de référencement local et de "Your Money Your Life" (YMYL).',
     descriptionLong: [
@@ -526,11 +583,19 @@ const blogData: BlogProps[] = [
     alt: 'Optimisation du référencement naturel SEO local et performances web pour EHPAD et établissements de santé',
     readingTime: 9,
     category: 'Stratégie Digitale',
+    filterCategory: 'Autres',
     date: '2025-12-08',
+    relatedService: {
+      label: 'Création & Refonte de Sites Web',
+      href: '/developpement-web',
+      description:
+        'Sites vitrines Next.js rapides, accessibles (RGAA) et optimisés pour le référencement naturel.',
+    },
   },
   {
     id: '9',
     title: 'Numérique Éco-responsable (Green IT) : Comment décarboner les logiciels de santé ?',
+    metaTitle: 'Green IT : Logiciels de Santé Sobres',
     descriptionShort:
       "Le secteur de la santé génère une empreinte carbone massive. Découvrez comment l'éco-conception logicielle réduit l'impact environnemental des cliniques.",
     descriptionLong: [
@@ -589,11 +654,19 @@ const blogData: BlogProps[] = [
     alt: 'Éco-conception logicielle Green IT et sobriété numérique pour les établissements de santé et médico-sociaux',
     readingTime: 8,
     category: 'Innovation & Éthique',
+    filterCategory: 'Autres',
     date: '2026-01-09',
+    relatedService: {
+      label: 'Logiciels Métier Sur-Mesure',
+      href: '/solutions-metier',
+      description:
+        'Des applications sobres, rapides et durables pour remplacer les outils lourds et tableurs dispersés.',
+    },
   },
   {
     id: '10',
     title: "mHealth : L'essor des applications mobiles pour le suivi des maladies chroniques",
+    metaTitle: 'mHealth : Suivi des Maladies Chroniques',
     descriptionShort:
       'De l\'observance médicamenteuse à la télésurveillance, comment les applications "mHealth" transforment le quotidien des patients chroniques.',
     descriptionLong: [
@@ -652,11 +725,20 @@ const blogData: BlogProps[] = [
     alt: "Application mobile mHealth de suivi thérapeutique et d'accompagnement des patients chroniques",
     readingTime: 9,
     category: 'Développement Mobile',
+    filterCategory: 'Applications mobiles',
     date: '2026-02-09',
+    relatedService: {
+      label: 'Applications Mobiles Santé & Terrain',
+      href: '/application-mobile',
+      description:
+        'Applications iOS et Android ergonomiques et conformes au RGPD pour le suivi des usagers et équipes terrain.',
+    },
   },
   {
     id: '11',
     title: "Déployer une application santé sur l'App Store et Google Play : Les pièges à éviter",
+    metaTitle: 'Déployer une App Santé sur les Stores',
+    slug: 'deployer-une-application-sante-sur-lapp-store-et-google-play-les-pieges-a-eviter',
     descriptionShort:
       "Publier une application médicale sur iOS et Android relève du parcours du combattant. Voici comment franchir les fourches caudines d'Apple et Google.",
     descriptionLong: [
@@ -715,11 +797,19 @@ const blogData: BlogProps[] = [
     alt: "Publication et validation d'une application mobile de santé sur Apple App Store et Google Play Store",
     readingTime: 9,
     category: 'Développement Mobile',
+    filterCategory: 'Applications mobiles',
     date: '2026-03-10',
+    relatedService: {
+      label: 'Développement Mobile iOS & Android',
+      href: '/application-mobile',
+      description:
+        'Conception, conformité store et déploiement d’applications mobiles React Native et PWA.',
+    },
   },
   {
     id: '12',
     title: 'La transformation digitale des cliniques : Par où commencer ?',
+    metaTitle: 'Transformation Digitale des Cliniques',
     descriptionShort:
       "Face à la complexité des systèmes d'information, de nombreux directeurs de cliniques se sentent démunis. Méthodologie pour une transition réussie.",
     descriptionLong: [
@@ -778,11 +868,19 @@ const blogData: BlogProps[] = [
     alt: "Équipe de direction et praticiens pilotant la transformation digitale d'une clinique moderne",
     readingTime: 9,
     category: 'Stratégie Digitale',
+    filterCategory: 'Autres',
     date: '2026-04-10',
+    relatedService: {
+      label: 'Développement Logiciel Sur-Mesure',
+      href: '/developpement-logiciel-medico-social',
+      description:
+        'Modernisez vos processus sans tout remplacer : outils métiers sur-mesure interopérables et sécurisés.',
+    },
   },
   {
     id: '13',
     title: 'Le rôle central du DSI en EHPAD face aux nouveaux défis technologiques',
+    metaTitle: 'Rôle du DSI en EHPAD et Gouvernance SI',
     descriptionShort:
       "Souvent isolé, le Directeur des Systèmes d'Information (DSI) d'un groupe d'EHPAD doit aujourd'hui orchestrer une véritable révolution technologique et sécuritaire.",
     descriptionLong: [
@@ -841,12 +939,21 @@ const blogData: BlogProps[] = [
     alt: "Directeur des Systèmes d'Information pilotant l'architecture numérique d'un groupement d'EHPAD",
     readingTime: 8,
     category: 'Stratégie Digitale',
+    filterCategory: 'Médico-social',
     date: '2026-05-11',
+    relatedService: {
+      label: 'Solutions & Accompagnement EHPAD',
+      href: '/solutions-medico-social/ehpad',
+      description:
+        'Outils ergonomiques pour EHPAD et groupements : transmissions soignantes, portail familles et gouvernance SI.',
+    },
   },
   {
     id: '14',
     title:
       "Gestion des véhicules en association médico-sociale : comment optimiser la flotte d'un IME ou SESSAD ?",
+    metaTitle: 'Gestion de Flotte Véhicules IME & SESSAD',
+    slug: 'gestion-des-vehicules-en-association-medico-sociale-ime-sessad',
     descriptionShort:
       'Minibus adaptés PMR, véhicules de service partagés, obligations de sécurité et justification budgétaire : guide méthodologique pour structurer la gestion du parc automobile en IME, SESSAD et association.',
     descriptionLong: [
@@ -886,16 +993,25 @@ const blogData: BlogProps[] = [
     ],
     img: imgFlotteVehiculesEsms.src,
     metaDescription:
-      'Comment optimiser la gestion de flotte automobile en association médico-sociale, IME et SESSAD ? Sécurité PMR, réservation partagée, maîtrise des coûts LLD et CPOM.',
+      'Optimiser la gestion de flotte automobile en association médico-sociale, IME et SESSAD : sécurité PMR, réservation partagée, coûts LLD et pilotage CPOM.',
     alt: 'Gestion numérique du parc de véhicules et minibus adaptés pour IME, SESSAD et association médico-sociale',
     readingTime: 8,
     category: 'Médico-Social & Mobilité',
+    filterCategory: 'Médico-social',
     date: '2026-07-15',
+    relatedService: {
+      label: 'Gestion de Flotte ESMS (Floticar)',
+      href: '/logiciel-gestion-vehicules-medico-social',
+      description:
+        'Dématérialisez le carnet de bord, les réservations partagées et les alertes d’entretien de vos véhicules.',
+    },
   },
   {
     id: '15',
     title:
       'Transformation numérique du médico-social : guide pratique pour les associations gestionnaires et DSI',
+    metaTitle: 'Transformation Numérique Médico-Sociale',
+    slug: 'transformation-numerique-du-medico-social-guide-pratique-pour-les-associations-gestionnaires-et-dsi',
     descriptionShort:
       'Comment structurer le Schéma Directeur des Systèmes d’Information (SDSI) d’une association médico-sociale multi-établissements sans heurter les équipes de terrain ? Méthodologie, gouvernance et RGPD.',
     descriptionLong: [
@@ -943,12 +1059,21 @@ const blogData: BlogProps[] = [
     alt: "Comité de direction et DSI d'une association médico-sociale élaborant leur stratégie de transformation numérique",
     readingTime: 9,
     category: 'Stratégie Médico-Sociale',
+    filterCategory: 'Médico-social',
     date: '2026-08-18',
+    relatedService: {
+      label: 'Solutions SI Associations Gestionnaires',
+      href: '/solutions-medico-social/associations',
+      description:
+        'Pilotage multi-établissements, consolidation des données et outils métiers adaptés aux associations d’ESMS.',
+    },
   },
   {
     id: '16',
     title:
       "Digitalisation des ESAT : concilier gestion d'atelier de production et suivi du projet personnalisé",
+    metaTitle: 'Digitalisation des ESAT : Atelier & PPA',
+    slug: 'digitalisation-des-esat-concilier-gestion-datelier-de-production-et-suivi-du-projet-personnalise',
     descriptionShort:
       "Entre exigences commerciales des clients donneurs d'ordres et accompagnement médico-social des travailleurs en situation de handicap, découvrez comment un logiciel sur-mesure unifie le pilotage de votre ESAT.",
     descriptionLong: [
@@ -992,16 +1117,25 @@ const blogData: BlogProps[] = [
     ],
     img: imgDigitalisationEsat.src,
     metaDescription:
-      "Comment digitaliser un ESAT ? Guide complet pour unifier la gestion de production d'atelier (devis, commandes, planning) et le suivi du projet personnalisé (PPA, compétences).",
+      'Comment digitaliser un ESAT ? Unifiez gestion de production d’atelier (devis, commandes, planning) et suivi du projet personnalisé (PPA, compétences).',
     alt: "Moniteur d'atelier et travailleur en ESAT utilisant une tablette numérique de suivi de production",
     readingTime: 9,
     category: 'Médico-Social & Handicap',
+    filterCategory: 'Médico-social',
     date: '2026-09-22',
+    relatedService: {
+      label: 'Logiciels & Outils pour ESAT',
+      href: '/solutions-medico-social/esat',
+      description:
+        'Unifiez gestion commerciale d’atelier, suivi de production et accompagnement du projet personnalisé.',
+    },
   },
   {
     id: '17',
     title:
       'Automatisation administrative en ESMS : supprimer les doubles saisies et fiabiliser le pilotage (CPOM, indicateurs ARS)',
+    metaTitle: 'Automatisation Administrative en ESMS',
+    slug: 'automatisation-administrative-en-esms-supprimer-les-doubles-saisies-et-fiabiliser-le-pilotage-cpom-indicateurs-ars',
     descriptionShort:
       "Ressaisies entre logiciels RH, paie et suivi d'activité, consolidation laborieuse des indicateurs CPOM et ANAP : découvrez comment l'automatisation par API libère les équipes administratives du médico-social.",
     descriptionLong: [
@@ -1046,16 +1180,25 @@ const blogData: BlogProps[] = [
     ],
     img: imgAutomatisationEsms.src,
     metaDescription:
-      "Comment supprimer les doubles saisies en établissement médico-social (ESMS) ? Guide de l'automatisation administrative, synchronisation API et pilotage CPOM / ARS.",
+      'Supprimer les doubles saisies en ESMS : guide de l’automatisation administrative, synchronisation par API et fiabilisation du pilotage CPOM et ARS.',
     alt: "Directeur d'association médico-sociale et responsable administratif analysant un tableau de bord automatisé",
     readingTime: 9,
     category: 'Automatisation & Pilotage',
+    filterCategory: 'Médico-social',
     date: '2026-10-19',
+    relatedService: {
+      label: 'Automatisation des Processus ESMS',
+      href: '/automatisation',
+      description:
+        'Supprimez les ressaisies entre vos outils via API et fiabilisez vos tableaux de bord CPOM et ARS.',
+    },
   },
   {
     id: '18',
     title:
       'Portail familles et cahier de liaison numérique en IME, SESSAD et foyer : sécuriser la co-construction du parcours usager',
+    metaTitle: 'Portail Familles & Liaison IME / SESSAD',
+    slug: 'portail-familles-et-cahier-de-liaison-numerique-en-ime-sessad-et-foyer-securiser-la-co-construction-du-parcours-usager',
     descriptionShort:
       'Cahiers papier égarés, groupes WhatsApp non conformes au RGPD, sollicitations hors horaires : comment déployer un portail familles sécurisé qui valorise la co-construction du Projet Personnalisé.',
     descriptionLong: [
@@ -1082,7 +1225,7 @@ const blogData: BlogProps[] = [
       {
         title:
           '5. Préserver le temps éducatif et le droit à la déconnexion grâce à une UX protectrice',
-        text: "La crainte la plus fréquente exprimée par les équipes éducatives et soignantes lors de l'évocation d'un portail familles est la peur d'une surcharge de travail ou d'une sollicitation permanente de la part des proches. Cette inquiétude est parfaitement légitime et rejoint les principes d'[ergonomie cognitive des logiciels médico-sociaux](/blog/comment-concevoir-un-logiciel-metier-ux-friendly-pour-un-ehpad-) : elle doit être traitée dès la conception de l'interface (UX Design) par des règles de fonctionnement protectrices définies avec la direction et le Conseil de la Vie Sociale (CVS). Contrairement à WhatsApp où un message arrive instantanément avec un accusé de lecture culpabilisant (« vu à 20h42 »), un cahier de liaison professionnel intègre nativement une régulation asynchrone. Un parent peut rédiger une information le dimanche soir à 22 heures depuis son smartphone lorsque son emploi du temps le lui permet ; mais le système retient automatiquement la notification et ne la délivre à l'équipe éducative que le lundi matin à partir de 8h30, à la prise de service. De même, du côté des professionnels, la saisie doit être ultra-rapide : grâce à des modèles de transmission pré-structurés, à la dictée vocale sur tablette ou au partage groupé d'une activité d'atelier pour six jeunes simultanément (tout en individualisant la visibilité pour chaque famille afin de respecter l'intimité des autres usagers), l'éducateur renseigne le cahier de liaison en moins de deux minutes. L'outil numérique devient ainsi un bouclier qui canalise les sollicitations et protège la sérénité des équipes.",
+        text: "La crainte la plus fréquente exprimée par les équipes éducatives et soignantes lors de l'évocation d'un portail familles est la peur d'une surcharge de travail ou d'une sollicitation permanente de la part des proches. Cette inquiétude est parfaitement légitime et rejoint les principes d'[ergonomie cognitive des logiciels médico-sociaux](/blog/comment-concevoir-un-logiciel-metier-ux-friendly-pour-un-ehpad) : elle doit être traitée dès la conception de l'interface (UX Design) par des règles de fonctionnement protectrices définies avec la direction et le Conseil de la Vie Sociale (CVS). Contrairement à WhatsApp où un message arrive instantanément avec un accusé de lecture culpabilisant (« vu à 20h42 »), un cahier de liaison professionnel intègre nativement une régulation asynchrone. Un parent peut rédiger une information le dimanche soir à 22 heures depuis son smartphone lorsque son emploi du temps le lui permet ; mais le système retient automatiquement la notification et ne la délivre à l'équipe éducative que le lundi matin à partir de 8h30, à la prise de service. De même, du côté des professionnels, la saisie doit être ultra-rapide : grâce à des modèles de transmission pré-structurés, à la dictée vocale sur tablette ou au partage groupé d'une activité d'atelier pour six jeunes simultanément (tout en individualisant la visibilité pour chaque famille afin de respecter l'intimité des autres usagers), l'éducateur renseigne le cahier de liaison en moins de deux minutes. L'outil numérique devient ainsi un bouclier qui canalise les sollicitations et protège la sérénité des équipes.",
       },
       {
         title:
@@ -1105,7 +1248,14 @@ const blogData: BlogProps[] = [
     alt: 'Éducatrice spécialisée en IME partageant un cahier de liaison numérique sur tablette avec un parent',
     readingTime: 9,
     category: 'Coordination & Parcours Usager',
+    filterCategory: 'Médico-social',
     date: '2026-11-21',
+    relatedService: {
+      label: 'Solutions pour IME, DITEP & Familles',
+      href: '/solutions-medico-social/ime',
+      description:
+        'Portails familles sécurisés, coordination pluridisciplinaire et suivi éducatif conformes au RGPD.',
+    },
   },
 ];
 export default blogData;

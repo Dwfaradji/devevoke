@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ChevronRight, Home, ArrowLeft } from 'lucide-react';
+import { SITE_URL, buildAbsoluteUrl } from '@/config/site';
 
 export interface BreadcrumbItem {
   label: string;
@@ -58,7 +59,7 @@ export default function Breadcrumb({
         '@type': 'ListItem',
         position: 1,
         name: 'Accueil',
-        item: 'https://www.devevoke.com/',
+        item: `${SITE_URL}/`,
       },
       ...items.map((item, idx) => ({
         '@type': 'ListItem',
@@ -66,9 +67,7 @@ export default function Breadcrumb({
         name: item.label,
         ...(item.href
           ? {
-              item: item.href.startsWith('http')
-                ? item.href
-                : `https://www.devevoke.com${item.href}`,
+              item: buildAbsoluteUrl(item.href),
             }
           : {}),
       })),

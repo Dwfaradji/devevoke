@@ -5,36 +5,15 @@ import Image from 'next/image';
 import { GraduationCap, Calendar, ArrowRight, HeartHandshake, FileText } from 'lucide-react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import MedicoSocialNavSwitcher from '@/components/ui/MedicoSocialNavSwitcher';
+import { SITE_URL, createPageMetadata } from '@/config/site';
 
-export const metadata: Metadata = {
-  title: 'Logiciels Sur-Mesure & Solutions Numériques pour IME et DITEP',
+export const metadata: Metadata = createPageMetadata({
+  path: '/solutions-medico-social/ime',
+  title: 'Logiciels & Outils pour IME et DITEP',
   description:
-    'Solutions digitales conçues pour les Instituts Médico-Éducatifs (IME) et DITEP : suivi éducatif et thérapeutique, coordination pluridisciplinaire, portail familles, logistique des transports et conformité RGPD.',
-  keywords: [
-    'logiciel IME',
-    'solution numérique IME',
-    'logiciel DITEP',
-    'institut médico éducatif logiciel',
-    'suivi éducatif IME',
-    'application médico-sociale enfance',
-    'DevEvoke',
-  ],
-  alternates: {
-    canonical: 'https://www.devevoke.com/solutions-medico-social/ime',
-  },
-  openGraph: {
-    title: 'Logiciels Sur-Mesure & Solutions Numériques pour IME et DITEP | DevEvoke',
-    description:
-      'Facilitez le quotidien des éducateurs, rééducateurs et directions d’IME et DITEP avec des outils numériques pensés pour l’accompagnement des enfants et adolescents.',
-    url: 'https://www.devevoke.com/solutions-medico-social/ime',
-    siteName: 'DevEvoke',
-    images: [
-      { url: '/icon.png', width: 800, height: 600, alt: 'Solutions logicielles pour IME et DITEP' },
-    ],
-    locale: 'fr_FR',
-    type: 'website',
-  },
-};
+    'Solutions digitales pour IME et DITEP : suivi éducatif et thérapeutique, coordination pluridisciplinaire, portail familles, transports et RGPD.',
+  imageAlt: 'Solutions logicielles pour IME et DITEP',
+});
 
 export default function SolutionsImePage() {
   const jsonLd = {
@@ -44,7 +23,7 @@ export default function SolutionsImePage() {
     provider: {
       '@type': 'Organization',
       name: 'DevEvoke',
-      url: 'https://www.devevoke.com',
+      url: SITE_URL,
     },
     description:
       'Outils numériques de suivi éducatif, coordination pluridisciplinaire, lien familles et gestion logistique pour IME et DITEP.',

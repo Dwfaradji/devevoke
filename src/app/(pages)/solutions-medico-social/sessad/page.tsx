@@ -5,41 +5,15 @@ import Image from 'next/image';
 import { MapPin, Smartphone, Clock, ArrowRight, FileCheck, Calendar, Users } from 'lucide-react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import MedicoSocialNavSwitcher from '@/components/ui/MedicoSocialNavSwitcher';
+import { SITE_URL, createPageMetadata } from '@/config/site';
 
-export const metadata: Metadata = {
-  title: 'Applications Mobiles Hors-Ligne & Solutions Numériques pour SESSAD',
+export const metadata: Metadata = createPageMetadata({
+  path: '/solutions-medico-social/sessad',
+  title: 'Applications Mobiles & Outils SESSAD',
   description:
-    'Solutions logicielles et applications mobiles adaptées aux SESSAD, SAVS et SAMSAH : saisie de comptes-rendus en mode hors-ligne, organisation des tournées nomades, suivi des véhicules de service et conformité RGPD.',
-  keywords: [
-    'logiciel SESSAD',
-    'solution numérique SESSAD',
-    'application mobile SESSAD',
-    'application éducateur SESSAD',
-    'tournées médico-sociales logiciel',
-    'gestion véhicules SESSAD',
-    'DevEvoke',
-  ],
-  alternates: {
-    canonical: 'https://www.devevoke.com/solutions-medico-social/sessad',
-  },
-  openGraph: {
-    title: 'Applications Mobiles & Solutions Numériques pour SESSAD | DevEvoke',
-    description:
-      'Facilitez les interventions mobiles de vos éducateurs et rééducateurs en SESSAD grâce à des outils terrain ergonomiques fonctionnant même hors-ligne.',
-    url: 'https://www.devevoke.com/solutions-medico-social/sessad',
-    siteName: 'DevEvoke',
-    images: [
-      {
-        url: '/icon.png',
-        width: 800,
-        height: 600,
-        alt: 'Solutions logicielles et mobiles pour SESSAD',
-      },
-    ],
-    locale: 'fr_FR',
-    type: 'website',
-  },
-};
+    'Applications mobiles hors-ligne et logiciels pour SESSAD, SAVS et SAMSAH : comptes-rendus terrain, tournées nomades, suivi véhicules et RGPD.',
+  imageAlt: 'Solutions logicielles et mobiles pour SESSAD',
+});
 
 export default function SolutionsSessadPage() {
   const jsonLd = {
@@ -49,7 +23,7 @@ export default function SolutionsSessadPage() {
     provider: {
       '@type': 'Organization',
       name: 'DevEvoke',
-      url: 'https://www.devevoke.com',
+      url: SITE_URL,
     },
     description:
       'Applications mobiles hors-ligne, organisation des tournées d’intervention, saisie de comptes-rendus terrain et suivi logistique pour équipes de SESSAD.',

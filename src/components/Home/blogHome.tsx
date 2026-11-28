@@ -3,13 +3,11 @@ import BlogHeader from '../Blog/blogHeader';
 import Link from 'next/link';
 import Image from 'next/image';
 import blogData from '@/data/dataBlog';
-import { slugify } from '@/utils/slugify';
+import { getBlogSlug, sortBlogsByDateDesc } from '@/utils/blog';
 
 const BlogHome = () => {
   // Trier les articles par date et prendre les 3 suivants (après le 1er qui est dans BlogHeader)
-  const sortedPosts = [...blogData].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  const sortedPosts = sortBlogsByDateDesc(blogData);
   const nextPosts = sortedPosts.slice(1, 4);
 
   return (
@@ -59,7 +57,7 @@ const BlogHome = () => {
             });
             return (
               <div key={post.id}>
-                <Link href={`/blog/${slugify(post.title)}`}>
+                <Link href={`/blog/${getBlogSlug(post)}`}>
                   <article className="group glass hover:glass-strong flex h-full flex-col overflow-hidden rounded-2xl border border-white/5 transition-all duration-300 hover:-translate-y-1 hover:border-white/15">
                     {/* Image Container */}
                     <div className="relative h-48 w-full overflow-hidden">

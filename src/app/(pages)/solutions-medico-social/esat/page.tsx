@@ -5,33 +5,15 @@ import Image from 'next/image';
 import { Briefcase, Users, ArrowRight, Workflow, FileSpreadsheet } from 'lucide-react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import MedicoSocialNavSwitcher from '@/components/ui/MedicoSocialNavSwitcher';
+import { SITE_URL, createPageMetadata } from '@/config/site';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
+  path: '/solutions-medico-social/esat',
   title: 'Logiciels & Outils Numériques pour ESAT',
   description:
-    'Solutions numériques sur-mesure pour ESAT : gestion commerciale d’ateliers, suivi du projet d’accompagnement des travailleurs handicapés et pilotage d’activité.',
-  keywords: [
-    'logiciel ESAT',
-    'solution numérique ESAT',
-    'gestion atelier ESAT',
-    'projet personnalisé travailleur ESAT',
-    'facturation ESAT logiciel',
-    'DevEvoke',
-  ],
-  alternates: {
-    canonical: 'https://www.devevoke.com/solutions-medico-social/esat',
-  },
-  openGraph: {
-    title: 'Logiciels & Outils Numériques pour ESAT | DevEvoke',
-    description:
-      'Conciliez performance d’atelier et accompagnement médico-social avec nos logiciels sur-mesure pour ESAT.',
-    url: 'https://www.devevoke.com/solutions-medico-social/esat',
-    siteName: 'DevEvoke',
-    images: [{ url: '/icon.png', width: 800, height: 600, alt: 'Logiciels pour ESAT' }],
-    locale: 'fr_FR',
-    type: 'website',
-  },
-};
+    'Solutions numériques sur-mesure pour ESAT : gestion commerciale d’ateliers, suivi du projet d’accompagnement des travailleurs et pilotage d’activité.',
+  imageAlt: 'Logiciels pour ESAT',
+});
 
 export default function SolutionsEsatPage() {
   const jsonLd = {
@@ -41,7 +23,7 @@ export default function SolutionsEsatPage() {
     provider: {
       '@type': 'Organization',
       name: 'DevEvoke',
-      url: 'https://www.devevoke.com',
+      url: SITE_URL,
     },
     description:
       'Logiciels de gestion d’ateliers de production et de suivi médico-social pour les Établissements et Services d’Aide par le Travail (ESAT).',

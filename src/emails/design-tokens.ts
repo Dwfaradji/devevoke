@@ -5,13 +5,15 @@
  * (Gmail, Outlook 2016-365, Apple Mail, Yahoo, Thunderbird).
  */
 
+import { SITE_URL, buildAbsoluteUrl } from '@/config/site';
+
 export const emailTokens = {
   brand: {
     name: 'DevEvoke',
     tagline: 'Agence digitale · Solutions logicielles & numériques sur-mesure',
-    website: 'https://www.devevoke.com',
+    website: SITE_URL,
     contactEmail: 'contact@devevoke.com',
-    logoUrl: 'https://www.devevoke.com/images/home/workshop_coconception.webp',
+    logoUrl: buildAbsoluteUrl('/images/home/workshop_coconception.webp'),
     servicesSummary: 'Sites web · Applications · SaaS · Solutions métier',
     location: 'Perpignan (Occitanie) · Accompagnement France entière',
     siren: '878 438 951 00013',

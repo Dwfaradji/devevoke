@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { Fade } from '@/components/ui/Fade';
+import { SITE_URL } from '@/config/site';
 
 const Page = () => {
   return (
@@ -188,8 +189,8 @@ const Page = () => {
                 Email : <a href="mailto:contact@devevoke.com">contact@devevoke.com</a>
                 <br />
                 Site :{' '}
-                <a href="https://www.devevoke.com" target="_blank" rel="noopener noreferrer">
-                  www.devevoke.com
+                <a href={SITE_URL} target="_blank" rel="noopener noreferrer">
+                  {SITE_URL.replace(/^https?:\/\//, '')}
                 </a>
               </p>
             </div>

@@ -1,29 +1,18 @@
 import React from 'react';
-
 import type { Metadata } from 'next';
+import { createPageMetadata } from '@/config/site';
 
-export const metadata: Metadata = {
-  title: 'Ressources & Guides : Transformation Numérique & Logiciels Médico-Sociaux',
+export const metadata: Metadata = createPageMetadata({
+  path: '/blog',
+  title: 'Ressources & Guides Médico-Social',
   description:
-    'Articles, guides pratiques et analyses pour les directions d’ESMS et associations médico-sociales : digitalisation des processus, choix d’un logiciel sur-mesure, ergonomie UX, sécurité des données et conformité RGPD.',
-  alternates: {
-    canonical: 'https://www.devevoke.com/blog',
-  },
+    'Articles et guides pratiques pour directions d’ESMS et associations : transformation numérique, logiciels métiers, ergonomie UX, sécurité et RGPD.',
+  imageAlt: 'Blog et ressources DevEvoke',
   robots: {
     follow: true,
     index: true,
   },
-  openGraph: {
-    title: 'Ressources & Guides Numériques Médico-Social | DevEvoke',
-    description:
-      'Guides pratiques sur la transformation digitale des établissements médico-sociaux, les logiciels métiers sur-mesure, le RGPD et l’interopérabilité.',
-    url: 'https://www.devevoke.com/blog',
-    siteName: 'DevEvoke',
-    images: [{ url: '/icon.png', width: 800, height: 600, alt: 'Blog et ressources DevEvoke' }],
-    locale: 'fr_FR',
-    type: 'website',
-  },
-};
+});
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;

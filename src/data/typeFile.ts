@@ -47,17 +47,34 @@ interface Text {
   text: string;
 }
 
+type BlogFilterCategory =
+  | 'Médico-social'
+  | 'Sécurité & RGPD'
+  | 'Applications mobiles'
+  | 'Autres';
+
+interface BlogRelatedService {
+  label: string;
+  href: string;
+  description: string;
+}
+
 interface BlogProps {
   id: string;
   title: string;
+  metaTitle?: string;
+  slug?: string;
   descriptionShort: string;
   descriptionLong: Text[];
   img: string;
   alt: string;
   readingTime: number;
   category: string;
+  filterCategory?: BlogFilterCategory;
   date: string;
+  updatedAt?: string;
   metaDescription: string;
+  relatedService?: BlogRelatedService;
 }
 
-export type { Project, Price, Service, PageInfo, BlogProps };
+export type { Project, Price, Service, PageInfo, BlogProps, BlogFilterCategory, BlogRelatedService };

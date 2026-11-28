@@ -2,13 +2,11 @@ import React from 'react';
 import Image from 'next/image';
 import blogData from '@/data/dataBlog';
 import Link from 'next/link';
-import { slugify } from '@/utils/slugify';
+import { getBlogSlug, sortBlogsByDateDesc } from '@/utils/blog';
 import myPhoto from '@/images/about/photo-profil-688.webp';
 
 const BlogHeader = () => {
-  const sortedPosts = [...blogData].sort(
-    (a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  const sortedPosts = sortBlogsByDateDesc(blogData);
   const latestPost = sortedPosts[0];
   const formattedDate = new Date(latestPost.date).toLocaleDateString('fr-FR', {
     year: 'numeric',
@@ -17,7 +15,7 @@ const BlogHeader = () => {
   });
 
   return (
-    <Link href={`/blog/${slugify(latestPost.title)}`}>
+    <Link href={`/blog/${getBlogSlug(latestPost)}`}>
       <article className="group glass hover:glass-strong relative overflow-hidden rounded-3xl border border-white/5 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-white/10">
         <div className="grid md:grid-cols-2">
           {/* Image */}

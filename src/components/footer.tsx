@@ -304,7 +304,7 @@ export default function Footer() {
             >
               Sécurité & Conformité
             </Link>
-            <Link href="/info-tarif" className="py-1 transition-colors hover:text-white">
+            <Link href="/tarifs" className="py-1 transition-colors hover:text-white">
               Modalités Tarifaires
             </Link>
             <button

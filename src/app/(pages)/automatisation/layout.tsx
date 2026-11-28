@@ -1,30 +1,13 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
+import { createPageMetadata } from '@/config/site';
 
-export const metadata: Metadata = {
-  title: 'Automatisation des Processus Métier & Interopérabilité Médico-Sociale',
+export const metadata: Metadata = createPageMetadata({
+  path: '/automatisation',
+  title: 'Automatisation & Interopérabilité ESMS',
   description:
-    'Digitalisation des processus métier, suppression des doubles saisies et interopérabilité entre logiciels pour établissements médico-sociaux (ESMS) et associations : synchronisation API, consolidation CPOM et gain de temps administratif.',
-  alternates: {
-    canonical: 'https://www.devevoke.com/automatisation',
-  },
-  openGraph: {
-    title: 'Automatisation des Processus & Interopérabilité Médico-Sociale | DevEvoke',
-    description:
-      'Libérez du temps pour l’accompagnement humain : connectez vos outils, supprimez les ressaisies manuelles et automatisez vos bilans d’activité.',
-    url: 'https://www.devevoke.com/automatisation',
-    siteName: 'DevEvoke',
-    images: [
-      {
-        url: '/icon.png',
-        width: 800,
-        height: 600,
-        alt: 'Automatisation des processus médico-sociaux DevEvoke',
-      },
-    ],
-    locale: 'fr_FR',
-    type: 'website',
-  },
-};
+    'Suppression des doubles saisies et interopérabilité entre logiciels médico-sociaux : connecteurs API sécurisés, bilans automatisés et pilotage CPOM.',
+  imageAlt: 'Automatisation des processus médico-sociaux DevEvoke',
+});
 
 export default function AutomatisationLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;

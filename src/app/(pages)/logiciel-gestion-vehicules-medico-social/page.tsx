@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import MedicoSocialNavSwitcher from '@/components/ui/MedicoSocialNavSwitcher';
+import { SITE_URL } from '@/config/site';
 
 export default function LogicielGestionVehiculesMedicoSocialPage() {
   const jsonLd = {
@@ -38,7 +39,7 @@ export default function LogicielGestionVehiculesMedicoSocialPage() {
     creator: {
       '@type': 'Organization',
       name: 'DevEvoke',
-      url: 'https://www.devevoke.com',
+      url: SITE_URL,
     },
   };
 

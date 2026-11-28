@@ -3,7 +3,8 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import BlogPage from '@/components/Blog/blogPage';
 import blogData from '@/data/dataBlog';
-import { slugify } from '@/utils/slugify';
+import { getBlogSlug } from '@/utils/blog';
+import { buildAbsoluteUrl, createPageMetadata } from '@/config/site';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -11,13 +12,13 @@ type Props = {
 
 export async function generateStaticParams() {
   return blogData.map((blog) => ({
-    slug: slugify(blog.title),
+    slug: getBlogSlug(blog),
   }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const blog = blogData.find((blog) => slugify(blog.title) === slug);
+  const blog = blogData.find((blog) => getBlogSlug(blog) === slug);
 
   if (!blog) {
     return {
@@ -26,52 +27,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const url = `https://www.devevoke.com/blog/${slug}`;
-
-  // Les images importées dans Next.js via Next/Image ou Webpack (ex: article1.src)
-  // renvoient un chemin relatif en production, on s'assure d'avoir l'URL absolue.
-  const imageUrl = blog.img?.startsWith('http') ? blog.img : `https://www.devevoke.com${blog.img}`;
-
-  return {
-    title: blog.title,
+  return createPageMetadata({
+    path: `/blog/${slug}`,
+    title: blog.metaTitle || blog.title,
     description: blog.metaDescription || blog.descriptionShort,
-    alternates: {
-      canonical: url,
-    },
-    openGraph: {
-      title: blog.title,
-      description: blog.metaDescription || blog.descriptionShort,
-      url: url,
-      type: 'article',
-      publishedTime: blog.date,
-      authors: ['DevEvoke'],
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: blog.alt || blog.title,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: blog.title,
-      description: blog.metaDescription || blog.descriptionShort,
-      images: [imageUrl],
-    },
-  };
+    image: blog.img || '/icon.png',
+    imageAlt: blog.alt || blog.title,
+    imageWidth: 1200,
+    imageHeight: 630,
+    type: 'article',
+    publishedTime: blog.date,
+    modifiedTime: blog.updatedAt || blog.date,
+    authors: ['Boucif Faradji'],
+  });
 }
 
 const Page = ({ params }: Props) => {
   const { slug } = React.use(params);
-  const blog = blogData.find((blog) => slugify(blog.title) === slug);
+  const blog = blogData.find((blog) => getBlogSlug(blog) === slug);
 
   if (!blog) {
     notFound();
   }
 
-  const imageUrl = blog.img?.startsWith('http') ? blog.img : `https://www.devevoke.com${blog.img}`;
+  const imageUrl = buildAbsoluteUrl(blog.img || '/icon.png');
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -80,22 +59,23 @@ const Page = ({ params }: Props) => {
     description: blog.metaDescription || blog.descriptionShort,
     image: imageUrl,
     datePublished: blog.date || '2024-01-01',
+    dateModified: blog.updatedAt || blog.date || '2024-01-01',
     author: {
-      '@type': 'Organization',
-      name: 'DevEvoke',
-      url: 'https://www.devevoke.com',
+      '@type': 'Person',
+      name: 'Boucif Faradji',
+      url: buildAbsoluteUrl('/a-propos'),
     },
     publisher: {
       '@type': 'Organization',
       name: 'DevEvoke',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.devevoke.com/icon.png',
+        url: buildAbsoluteUrl('/icon.png'),
       },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://www.devevoke.com/blog/${slug}`,
+      '@id': buildAbsoluteUrl(`/blog/${slug}`),
     },
   };
 

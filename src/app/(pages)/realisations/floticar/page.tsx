@@ -19,6 +19,7 @@ import {
   Calculator,
 } from 'lucide-react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
+import { SITE_URL } from '@/config/site';
 
 export default function FloticarCaseStudyPage() {
   const jsonLd = {
@@ -38,7 +39,7 @@ export default function FloticarCaseStudyPage() {
     creator: {
       '@type': 'Organization',
       name: 'DevEvoke',
-      url: 'https://www.devevoke.com',
+      url: SITE_URL,
     },
   };
 

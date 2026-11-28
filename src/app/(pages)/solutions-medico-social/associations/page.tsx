@@ -5,41 +5,15 @@ import Image from 'next/image';
 import { Building2, Layers, ShieldCheck, TrendingUp, ArrowRight } from 'lucide-react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import MedicoSocialNavSwitcher from '@/components/ui/MedicoSocialNavSwitcher';
+import { SITE_URL, createPageMetadata } from '@/config/site';
 
-export const metadata: Metadata = {
-  title: 'Solutions Digitales & SI Multi-Établissements pour Associations Médico-Sociales',
+export const metadata: Metadata = createPageMetadata({
+  path: '/solutions-medico-social/associations',
+  title: 'Solutions SI Associations Médico-Sociales',
   description:
-    'Solutions digitales sur-mesure pour associations gestionnaires médico-sociales : pilotage multi-établissements (ESMS), logiciels métiers, refonte de site internet, interopérabilité des SI et conformité RGPD.',
-  keywords: [
-    'logiciel association médico-sociale',
-    'solution numérique association gestionnaire',
-    'refonte site internet association médico-sociale',
-    'DSI médico-social',
-    'logiciel multi-établissements médico-social',
-    'digitalisation association médico-sociale',
-    'DevEvoke',
-  ],
-  alternates: {
-    canonical: 'https://www.devevoke.com/solutions-medico-social/associations',
-  },
-  openGraph: {
-    title: 'Solutions Digitales & Logiciels pour Associations Médico-Sociales | DevEvoke',
-    description:
-      'Accompagnement technologique sur-mesure pour les associations gestionnaires d’établissements sociaux et médico-sociaux (ESMS).',
-    url: 'https://www.devevoke.com/solutions-medico-social/associations',
-    siteName: 'DevEvoke',
-    images: [
-      {
-        url: '/icon.png',
-        width: 800,
-        height: 600,
-        alt: 'Solutions pour associations médico-sociales',
-      },
-    ],
-    locale: 'fr_FR',
-    type: 'website',
-  },
-};
+    'Outils numériques sur-mesure pour associations gestionnaires d’ESMS : pilotage multi-établissements, logiciels métiers, refonte web et conformité RGPD.',
+  imageAlt: 'Solutions pour associations médico-sociales',
+});
 
 export default function SolutionsAssociationsPage() {
   const jsonLd = {
@@ -49,7 +23,7 @@ export default function SolutionsAssociationsPage() {
     provider: {
       '@type': 'Organization',
       name: 'DevEvoke',
-      url: 'https://www.devevoke.com',
+      url: SITE_URL,
     },
     description:
       'Gouvernance des systèmes d’information, développement de logiciels sur-mesure, consolidation multi-sites et portails web pour associations gestionnaires.',

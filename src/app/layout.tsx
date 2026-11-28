@@ -8,6 +8,7 @@ import { Metadata as NextMetadata } from 'next/dist/lib/metadata/types/metadata-
 import GoogleAnalytics from '@/lib/GoogleAnalytics';
 import AppHead from '@/config/AppHead';
 import FloatingQuickNav from '@/components/ui/FloatingQuickNav';
+import { SITE_URL, SITE_NAME, buildAbsoluteUrl } from '@/config/site';
 
 import './globals.css';
 
@@ -24,55 +25,13 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: NextMetadata = {
-  metadataBase: new URL('https://www.devevoke.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'DevEvoke | Solutions Digitales & Développement Sur-Mesure pour le Médico-Social',
-    template: '%s | DevEvoke',
+    default: 'DevEvoke | Solutions Digitales Médico-Social',
+    template: `%s | ${SITE_NAME}`,
   },
   description:
-    'Agence digitale spécialisée dans les solutions numériques pour le secteur médico-social : logiciels métiers sur-mesure, applications web et mobiles, plateformes SaaS, création et refonte de sites pour ESMS, associations, IME, SESSAD, DITEP, ESAT et EHPAD.',
-  keywords: [
-    'agence digitale médico-social',
-    'agence web médico-social',
-    'solutions digitales médico-social',
-    'développement logiciel médico-social',
-    'logiciel sur mesure médico-social',
-    'application web ESMS',
-    'application mobile médico-social',
-    'transformation numérique médico-social',
-    'création site internet médico-social',
-    'automatisation processus médico-social',
-    'hébergement souverain France RGPD',
-    'Boucif Faradji',
-    'DevEvoke',
-  ],
-  alternates: {
-    canonical: 'https://www.devevoke.com',
-  },
-  openGraph: {
-    title: 'DevEvoke | Solutions Digitales & Logiciels Sur-Mesure pour le Médico-Social',
-    description:
-      'Conception de logiciels métiers, applications web et mobiles, plateformes SaaS et sites internet pour les établissements et associations du secteur médico-social.',
-    url: 'https://www.devevoke.com',
-    siteName: 'DevEvoke',
-    images: [
-      {
-        url: '/icon.png',
-        width: 800,
-        height: 600,
-        alt: 'DevEvoke - Solutions digitales et développement sur-mesure pour le médico-social',
-      },
-    ],
-    locale: 'fr_FR',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'DevEvoke | Solutions Digitales & Développement Sur-Mesure Médico-Social',
-    description:
-      'Logiciels métiers sur-mesure, applications web et mobiles, SaaS et automatisation pour ESMS, associations gestionnaires, IME, SESSAD, DITEP, ESAT et EHPAD.',
-    images: ['/icon.png'],
-  },
+    'Agence digitale médico-sociale : logiciels métiers, applications mobiles, SaaS et sites web sur-mesure pour ESMS, associations, IME, SESSAD et EHPAD.',
 };
 
 export const viewport = {
@@ -89,10 +48,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     '@graph': [
       {
         '@type': 'Organization',
-        '@id': 'https://www.devevoke.com/#organization',
+        '@id': `${SITE_URL}/#organization`,
         name: 'DevEvoke',
-        url: 'https://www.devevoke.com',
-        logo: 'https://www.devevoke.com/icon.png',
+        url: SITE_URL,
+        logo: buildAbsoluteUrl('/icon.png'),
         description:
           'Agence digitale française spécialisée dans la conception de solutions numériques et le développement sur-mesure pour le secteur médico-social (ESMS, associations gestionnaires, IME, SESSAD, DITEP, ESAT, EHPAD) : logiciels métiers, applications web et mobiles, plateformes SaaS et automatisation.',
         founder: {
@@ -110,21 +69,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       },
       {
         '@type': 'WebSite',
-        '@id': 'https://www.devevoke.com/#website',
-        url: 'https://www.devevoke.com',
+        '@id': `${SITE_URL}/#website`,
+        url: SITE_URL,
         name: 'DevEvoke',
         publisher: {
-          '@id': 'https://www.devevoke.com/#organization',
+          '@id': `${SITE_URL}/#organization`,
         },
       },
       {
         '@type': 'LocalBusiness',
-        '@id': 'https://www.devevoke.com/#localbusiness',
+        '@id': `${SITE_URL}/#localbusiness`,
         name: 'DevEvoke',
-        image: 'https://www.devevoke.com/icon.png',
+        image: buildAbsoluteUrl('/icon.png'),
         description:
           'Agence digitale basée à Perpignan (Occitanie) accompagnant les établissements médico-sociaux, associations et organisations partout en France dans le développement web Next.js, les applications mobiles, les plateformes SaaS et les logiciels métiers sur-mesure.',
-        url: 'https://www.devevoke.com',
+        url: SITE_URL,
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'Perpignan',

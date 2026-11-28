@@ -6,32 +6,15 @@ import { Lock, Server, FileCheck2, Users, ArrowRight, CheckCircle2 } from 'lucid
 import TrustBar from '@/components/Home/trustBar';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import ServicesNavSwitcher from '@/components/ui/ServicesNavSwitcher';
+import { createPageMetadata } from '@/config/site';
 
-export const metadata: Metadata = {
-  title: 'Sécurité Numérique, Hébergement France & Conformité RGPD Médico-Social',
+export const metadata: Metadata = createPageMetadata({
+  path: '/securite-et-conformite',
+  title: 'Sécurité Numérique & Conformité RGPD',
   description:
-    'Standards de sécurité et protection des données appliqués par DevEvoke pour les établissements et associations médico-sociales : conformité stricte au RGPD, hébergement souverain en France, chiffrement et contrôle d’accès RBAC.',
-  alternates: {
-    canonical: 'https://www.devevoke.com/securite-et-conformite',
-  },
-  openGraph: {
-    title: 'Sécurité & Protection des Données Médico-Sociales | DevEvoke',
-    description:
-      'Engagements techniques et organisationnels de DevEvoke pour garantir la confidentialité et la sécurité des données des établissements médico-sociaux.',
-    url: 'https://www.devevoke.com/securite-et-conformite',
-    siteName: 'DevEvoke',
-    images: [
-      {
-        url: '/icon.png',
-        width: 800,
-        height: 600,
-        alt: 'Sécurité et conformité RGPD médico-sociale DevEvoke',
-      },
-    ],
-    locale: 'fr_FR',
-    type: 'website',
-  },
-};
+    'Standards de sécurité DevEvoke pour le médico-social : conformité stricte RGPD, hébergement souverain en France, chiffrement et contrôle d’accès RBAC.',
+  imageAlt: 'Sécurité et conformité RGPD médico-sociale DevEvoke',
+});
 
 export default function SecuriteConformitePage() {
   return (

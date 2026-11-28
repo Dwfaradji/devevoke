@@ -9,7 +9,7 @@ const legalItems = [
   { href: '/cgv', label: 'Conditions Générales (CGV)', icon: FileText },
   { href: '/mentions-legal', label: 'Mentions Légales', icon: Shield },
   { href: '/politique-confidentialite', label: 'Confidentialité & RGPD', icon: Lock },
-  { href: '/info-tarif', label: 'Barème & Tarifs', icon: Tag },
+  { href: '/tarifs', label: 'Barème & Tarifs', icon: Tag },
   { href: '/info-procedure', label: 'Méthodologie Projet', icon: ListOrdered },
   { href: '/foire-aux-questions', label: 'Foire Aux Questions', icon: HelpCircle },
 ];

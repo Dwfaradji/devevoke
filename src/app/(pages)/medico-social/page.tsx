@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import MedicoSocialNavSwitcher from '@/components/ui/MedicoSocialNavSwitcher';
+import { SITE_URL, buildAbsoluteUrl } from '@/config/site';
 
 export default function MedicoSocialHubPage() {
   const jsonLd = {
@@ -26,8 +27,8 @@ export default function MedicoSocialHubPage() {
     provider: {
       '@type': 'Organization',
       name: 'DevEvoke',
-      url: 'https://www.devevoke.com',
-      logo: 'https://www.devevoke.com/icon.png',
+      url: SITE_URL,
+      logo: buildAbsoluteUrl('/icon.png'),
       founder: {
         '@type': 'Person',
         name: 'Boucif Faradji',

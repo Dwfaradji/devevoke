@@ -5,36 +5,15 @@ import Image from 'next/image';
 import { Building, Heart, ShieldCheck, ArrowRight, Smartphone } from 'lucide-react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import MedicoSocialNavSwitcher from '@/components/ui/MedicoSocialNavSwitcher';
+import { SITE_URL, createPageMetadata } from '@/config/site';
 
-export const metadata: Metadata = {
-  title: 'Transformation Numérique & Logiciels pour EHPAD',
+export const metadata: Metadata = createPageMetadata({
+  path: '/solutions-medico-social/ehpad',
+  title: 'Logiciels & Solutions Numériques EHPAD',
   description:
-    'Solutions digitales pour EHPAD et résidences autonomie : transmissions d’équipes ciblées, portail familles, allègement de la charge administrative et conformité RGPD.',
-  keywords: [
-    'logiciel EHPAD',
-    'solution numérique EHPAD',
-    'transformation numérique EHPAD',
-    'portail famille EHPAD',
-    'transmissions soignantes EHPAD',
-    'logiciel gestion EHPAD',
-    'DevEvoke',
-  ],
-  alternates: {
-    canonical: 'https://www.devevoke.com/solutions-medico-social/ehpad',
-  },
-  openGraph: {
-    title: 'Transformation Numérique & Logiciels pour EHPAD | DevEvoke',
-    description:
-      'Gagnez du temps administratif et facilitez le quotidien de vos équipes grâce à des outils ergonomiques conformes au RGPD.',
-    url: 'https://www.devevoke.com/solutions-medico-social/ehpad',
-    siteName: 'DevEvoke',
-    images: [
-      { url: '/icon.png', width: 800, height: 600, alt: 'Solutions logicielles pour EHPAD' },
-    ],
-    locale: 'fr_FR',
-    type: 'website',
-  },
-};
+    'Solutions digitales pour EHPAD et résidences autonomie : transmissions ciblées, portail familles, allègement administratif et conformité RGPD.',
+  imageAlt: 'Solutions logicielles pour EHPAD',
+});
 
 export default function SolutionsEhpadPage() {
   const jsonLd = {
@@ -44,7 +23,7 @@ export default function SolutionsEhpadPage() {
     provider: {
       '@type': 'Organization',
       name: 'DevEvoke',
-      url: 'https://www.devevoke.com',
+      url: SITE_URL,
     },
     description:
       'Conception d’outils numériques pour les EHPAD : transmissions de soins, portail famille et allègement administratif.',

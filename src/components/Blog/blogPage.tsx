@@ -8,8 +8,12 @@ import ButtonNetwork from '@/components/ui/ButtonNetwork/buttonNetwork';
 import myPhoto from '@/images/about/photo-profil-1920.webp';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import blogData from '@/data/dataBlog';
-import { slugify } from '@/utils/slugify';
-import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
+import {
+  getBlogFilterCategory,
+  getBlogSlug,
+  getRelatedBlogs,
+} from '@/utils/blog';
+import { ArrowLeft, ArrowRight, BookOpen, Layers } from 'lucide-react';
 import { motion, useScroll, useSpring } from 'motion/react';
 
 interface PropsBlogPage {
@@ -79,6 +83,7 @@ const BlogPage = ({ blog }: PropsBlogPage) => {
   const prevBlog = currentIndex > 0 ? blogData[currentIndex - 1] : null;
   const nextBlog =
     currentIndex >= 0 && currentIndex < blogData.length - 1 ? blogData[currentIndex + 1] : null;
+  const relatedBlogs = useMemo(() => getRelatedBlogs(blog, blogData, 3), [blog]);
   const formattedDate = useMemo(() => {
     return blog
       ? new Date(blog.date).toLocaleDateString('fr-FR', {
@@ -182,15 +187,81 @@ const BlogPage = ({ blog }: PropsBlogPage) => {
           ))}
         </div>
 
+        {/* Lien contextuel vers la page de service la plus pertinente */}
+        {blog.relatedService && (
+          <aside
+            aria-label="Service DevEvoke associé"
+            className="glass border-primary-500/20 mt-16 rounded-2xl border p-6 sm:p-8"
+          >
+            <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
+              <div className="space-y-2">
+                <span className="text-primary-400 inline-flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase">
+                  <Layers className="size-3.5" />
+                  Expertise associée
+                </span>
+                <h2 className="text-xl font-bold text-white">{blog.relatedService.label}</h2>
+                <p className="text-muted text-sm leading-relaxed">
+                  {blog.relatedService.description}
+                </p>
+              </div>
+              <Link
+                href={blog.relatedService.href}
+                className="btn-primary shrink-0 self-start sm:self-center"
+              >
+                <span>Découvrir l&apos;expertise</span>
+                <ArrowRight className="size-4" />
+              </Link>
+            </div>
+          </aside>
+        )}
+
+        {/* Articles liés */}
+        {relatedBlogs.length > 0 && (
+          <section aria-labelledby="related-articles-heading" className="mt-16">
+            <h2
+              id="related-articles-heading"
+              className="mb-6 text-xl font-bold text-white sm:text-2xl"
+            >
+              Articles liés
+            </h2>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+              {relatedBlogs.map((rel) => (
+                <Link
+                  key={rel.id}
+                  href={`/blog/${getBlogSlug(rel)}`}
+                  className="group glass hover:border-primary-500/30 flex flex-col justify-between rounded-2xl border border-white/5 p-5 transition-all hover:bg-white/5"
+                >
+                  <div>
+                    <div className="mb-2 flex items-center justify-between text-[11px] font-semibold">
+                      <span className="text-primary-400">{getBlogFilterCategory(rel)}</span>
+                      <span className="text-neutral-400">{rel.readingTime} min</span>
+                    </div>
+                    <h3 className="group-hover:text-primary-300 mb-2 line-clamp-2 text-sm font-bold text-white transition-colors">
+                      {rel.title}
+                    </h3>
+                    <p className="text-muted line-clamp-2 text-xs leading-relaxed">
+                      {rel.descriptionShort}
+                    </p>
+                  </div>
+                  <span className="text-primary-400 mt-4 inline-flex items-center gap-1 text-xs font-medium">
+                    Lire l&apos;article
+                    <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Navigation Inter-Articles (Précédent / Suivant) */}
         <nav
           aria-label="Navigation entre articles"
-          className="mt-20 space-y-6 border-t border-white/10 pt-10"
+          className="mt-16 space-y-6 border-t border-white/10 pt-10"
         >
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {prevBlog ? (
               <Link
-                href={`/blog/${slugify(prevBlog.title)}`}
+                href={`/blog/${getBlogSlug(prevBlog)}`}
                 className="group glass hover:border-primary-500/30 flex flex-col justify-between rounded-2xl border border-white/5 p-5 transition-all hover:bg-white/5"
               >
                 <div className="text-primary-400 mb-2 flex items-center gap-1.5 text-xs font-semibold">
@@ -209,7 +280,7 @@ const BlogPage = ({ blog }: PropsBlogPage) => {
 
             {nextBlog ? (
               <Link
-                href={`/blog/${slugify(nextBlog.title)}`}
+                href={`/blog/${getBlogSlug(nextBlog)}`}
                 className="group glass hover:border-primary-500/30 flex flex-col justify-between rounded-2xl border border-white/5 p-5 text-right transition-all hover:bg-white/5"
               >
                 <div className="text-primary-400 mb-2 flex items-center justify-end gap-1.5 text-xs font-semibold">

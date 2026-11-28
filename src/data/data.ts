@@ -340,7 +340,7 @@ const pageInfosProcess: PageInfo[] = [
     text: `Vos équipes sont accompagnées pour la prise en main. DevEvoke assure la maintenance proactive, le support technique et les évolutions futures.`,
   },
 ];
-const lienPolitiqueConfidentialite = `<a href='https://www.devevoke.com/politique-confidentialite'>politique de confidentialité</a>`;
+const lienPolitiqueConfidentialite = `<a href='/politique-confidentialite'>politique de confidentialité</a>`;
 const pageMentionsLegales: PageInfo[] = [
   {
     titleH1: 'Mentions légales',

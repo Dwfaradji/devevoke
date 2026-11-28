@@ -5,8 +5,11 @@ import PricingFAQ from '@/components/Pricing/pricingFAQ';
 import PricingCTA from '@/components/Pricing/pricingCTA';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import LegalNavSwitcher from '@/components/PagesInfo/LegalNavSwitcher';
+import { pageInfosPrice } from '@/data/data';
 
 const Page = () => {
+  const modalities = pageInfosPrice.filter((item) => item.title && item.text);
+
   return (
     <div className="overflow-hidden">
       <Breadcrumb
@@ -37,6 +40,35 @@ const Page = () => {
         </div>
         <PricingMain />
       </div>
+
+      {/* Modalités contractuelles & facturation (fusionnées depuis /info-tarif) */}
+      <section
+        aria-labelledby="modalites-tarifaires-heading"
+        className="mx-auto mb-24 max-w-5xl px-4 sm:px-6 lg:px-8"
+      >
+        <div className="mb-10 text-center">
+          <span className="section-label mb-3 inline-block">Cadre Contractuel</span>
+          <h2
+            id="modalites-tarifaires-heading"
+            className="text-2xl font-bold text-white sm:text-3xl"
+          >
+            Modalités d&apos;accompagnement et de facturation
+          </h2>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          {modalities.map((item, idx) => (
+            <article
+              key={item.title}
+              className={`glass rounded-3xl border border-white/5 p-6 sm:p-8 ${
+                idx === modalities.length - 1 && modalities.length % 2 === 1 ? 'md:col-span-2' : ''
+              }`}
+            >
+              <h3 className="mb-3 text-lg font-bold text-white">{item.title}</h3>
+              <p className="text-muted text-sm leading-relaxed">{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
 
       <PricingFAQ />
       <PricingCTA />

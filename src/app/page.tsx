@@ -1,4 +1,5 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import Header from '@/components/Home/header';
 import NeedsSection from '@/components/Home/NeedsSection';
 import SolutionsGrid from '@/components/Home/SolutionsGrid';
@@ -10,6 +11,16 @@ import WhyDevEvoke from '@/components/Home/WhyDevEvoke';
 import DiagnosticBanner from '@/components/Home/DiagnosticBanner';
 import BlogHome from '@/components/Home/blogHome';
 import FinalCTA from '@/components/Home/FinalCTA';
+import { createPageMetadata } from '@/config/site';
+
+export const metadata: Metadata = createPageMetadata({
+  path: '/',
+  isHome: true,
+  title: 'DevEvoke | Solutions Digitales Médico-Social',
+  description:
+    'Agence digitale médico-sociale : logiciels métiers, applications mobiles, SaaS et sites web sur-mesure pour ESMS, associations, IME, SESSAD et EHPAD.',
+  imageAlt: 'DevEvoke - Solutions digitales et développement sur-mesure pour le médico-social',
+});
 
 export default function HomePage() {
   return (

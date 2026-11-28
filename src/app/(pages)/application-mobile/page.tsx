@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import ServicesNavSwitcher from '@/components/ui/ServicesNavSwitcher';
+import { SITE_URL, buildAbsoluteUrl } from '@/config/site';
 
 export default function ApplicationMobilePage() {
   const jsonLd = {
@@ -24,8 +25,8 @@ export default function ApplicationMobilePage() {
     provider: {
       '@type': 'Organization',
       name: 'DevEvoke',
-      url: 'https://www.devevoke.com',
-      logo: 'https://www.devevoke.com/icon.png',
+      url: SITE_URL,
+      logo: buildAbsoluteUrl('/icon.png'),
       founder: {
         '@type': 'Person',
         name: 'Boucif Faradji',

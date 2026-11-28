@@ -16,7 +16,7 @@ const config = {
     'Ce site utilise des cookies d’analyse Google Analytics pour mesurer la fréquentation et optimiser l’expérience. Le suivi est activé par défaut, mais vous pouvez le désactiver selon votre choix.',
   acceptBtnLabel: 'Accepter',
   declineInfoBtnLabel: 'Refuser',
-  moreInfoBtnLink: 'https://www.devevoke.com/politique-confidentialite',
+  moreInfoBtnLink: '/politique-confidentialite',
   moreInfoBtnLabel: 'Politique de confidentialité',
   cookieTypesTitle: 'Gestion des cookies',
   necessaryCookieTypeLabel: 'Nécessaires (Obligatoires)',

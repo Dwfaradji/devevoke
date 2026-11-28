@@ -1,25 +1,13 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
+import { createPageMetadata } from '@/config/site';
 
-export const metadata: Metadata = {
-  title: 'Logiciel Sur-Mesure Médico-Social & Outils Internes (Remplacement Excel)',
+export const metadata: Metadata = createPageMetadata({
+  path: '/solutions-metier',
+  title: 'Logiciels Métier & Remplacement Excel',
   description:
-    'Développement de logiciels sur-mesure et d’outils internes pour établissements médico-sociaux (ESMS) et associations : remplacement des fichiers Excel dispersés, centralisation des données et tableaux de bord de direction.',
-  alternates: {
-    canonical: 'https://www.devevoke.com/solutions-metier',
-  },
-  openGraph: {
-    title: 'Logiciel Sur-Mesure Médico-Social & Outils Internes | DevEvoke',
-    description:
-      'Fini les tableurs Excel dispersés et les progiciels rigides. Concevez un outil interne calqué sur les pratiques réelles de vos équipes avec DevEvoke.',
-    url: 'https://www.devevoke.com/solutions-metier',
-    siteName: 'DevEvoke',
-    images: [
-      { url: '/icon.png', width: 800, height: 600, alt: 'Logiciels métier sur-mesure DevEvoke' },
-    ],
-    locale: 'fr_FR',
-    type: 'website',
-  },
-};
+    'Développement de logiciels internes sur-mesure pour ESMS et associations : remplacement des tableurs Excel, centralisation et tableaux de bord.',
+  imageAlt: 'Logiciels métier sur-mesure DevEvoke',
+});
 
 export default function SolutionsMetierLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;

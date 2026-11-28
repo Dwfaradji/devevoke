@@ -1,30 +1,13 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
+import { createPageMetadata } from '@/config/site';
 
-export const metadata: Metadata = {
-  title: 'Transformation Numérique Médico-Social & ESMS (IME, SESSAD, DITEP, EHPAD)',
+export const metadata: Metadata = createPageMetadata({
+  path: '/medico-social',
+  title: 'Transformation Numérique Médico-Social',
   description:
-    'Accompagnement à la transformation numérique et digitalisation des établissements médico-sociaux (ESMS, IME, SESSAD, DITEP, ESAT, EHPAD) et associations gestionnaires : modernisation des outils métiers, mobilité terrain, sécurité et RGPD.',
-  alternates: {
-    canonical: 'https://www.devevoke.com/medico-social',
-  },
-  openGraph: {
-    title: 'Transformation Numérique Médico-Social & ESMS | DevEvoke',
-    description:
-      'Modernisation des processus métiers, applications mobiles hors-ligne et logiciels sur-mesure dédiés aux IME, SESSAD, DITEP, ESAT, EHPAD et associations gestionnaires.',
-    url: 'https://www.devevoke.com/medico-social',
-    siteName: 'DevEvoke',
-    images: [
-      {
-        url: '/icon.png',
-        width: 800,
-        height: 600,
-        alt: 'Transformation numérique médico-social DevEvoke',
-      },
-    ],
-    locale: 'fr_FR',
-    type: 'website',
-  },
-};
+    'Accompagnement numérique des ESMS (IME, SESSAD, DITEP, ESAT, EHPAD) et associations : modernisation des outils métiers, mobilité terrain et RGPD.',
+  imageAlt: 'Transformation numérique médico-social DevEvoke',
+});
 
 export default function MedicoSocialLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
